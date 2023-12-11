@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChapterTable extends Migration
+class CreateChaptersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateChapterTable extends Migration
      */
     public function up()
     {
-        Schema::create('chapter', function (Blueprint $table) {
+        Schema::create('chapters', function (Blueprint $table) {
             $table->string('email')->unique();
             $table->foreign('email')
             ->references('email')

@@ -21,7 +21,7 @@ class CreateSnsProfilesTable extends Migration
             ->onDelete('cascade');
 
             $table->unsignedInteger('history');
-            $table->string('text');
+            $table->string('comment');
             $table->timestamps();
         });
     }

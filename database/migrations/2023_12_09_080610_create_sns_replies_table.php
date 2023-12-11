@@ -20,6 +20,7 @@ class CreateSnsRepliesTable extends Migration
             ->on('sns_posts')
             ->onDelete('cascade');
 
+
             $table->string('email')->unique()->nullable(false);
             $table->foreign('email')
             ->references('email')
