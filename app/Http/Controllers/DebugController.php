@@ -34,6 +34,7 @@ class DebugController extends Controller
     public function getReply(Request $request)
     {
         Models\SnsReply::create([
+            'id' => $request->id,
             'email' => $request->email,
             'text' =>$request->text,
         ]);

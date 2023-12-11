@@ -35,6 +35,7 @@
     <form action="{{ route('debugReply') }}" method="POST">
         @csrf
         <span>sns_repliesテーブルにINSERTする</span><br>
+        <input type="text" name="id" placeholder="リプライした投稿のid" required><br>
         <input type="text" name="email" placeholder="リプライした人のemail" required><br>
         <input type="text" name="text" placeholder="リプライの内容" required><br>
         <input type="submit" value="登録"><br>
