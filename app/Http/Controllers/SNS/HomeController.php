@@ -16,16 +16,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        User::create([
-            'email' => 'aaa@ggg.com',
-            'name' =>'john doe',
-            'password' => '1234',
-        ]);
-        SnsPost::create([
-            'email' => 'aaa@ggg.com',
-            'text' =>'john doe',
-            'image_filename' => 'dd.png',
-        ]);
 
         // データベースからランダムに5件の投稿を取得
         $randomPosts = SnsPost::inRandomOrder()->limit(5)->get();
