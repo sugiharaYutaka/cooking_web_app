@@ -15,7 +15,7 @@
   <div class="header fixed-top">
     <div class="container-fluid p0">
       <div class="row border">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light bg-color-2">
+        <nav class="navbar navbar-expand-lg navbar-light bg-color-2">
             <!--<div class="col-lg-2">
             </div>-->
             <div class="col-2 d-flex">

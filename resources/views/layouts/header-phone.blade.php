@@ -15,7 +15,7 @@
   <div class="header fixed-top">
     <div class="container-fluid p0">
       <div class="row border">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light bg-color-2">
+        <nav class="navbar navbar-expand-lg navbar-light bg-color-2">
             <div class="col-lg-10 ml-5">
                 <!--<a><img class="logo" src="{{asset('image/logo.png')}}" ></a>-->
                 <button type="button"  style="border: none; background: transparent;" class="btn"><a href="{{ route('top') }}"><img class="logo" src="{{asset('image/logo.png')}}"></a></button>
