@@ -10,7 +10,7 @@
 
     <style>
         body {
-            padding-top: 75px;
+            padding-top: 86px;
             padding-bottom: 80px;
         }
 
