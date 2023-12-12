@@ -70,3 +70,6 @@ Route::post('/debugReply',    [App\Http\Controllers\DebugController::class, 'get
 Route::post('/debugProfile',  [App\Http\Controllers\DebugController::class, 'getProfile'])->name('debugProfile');
 Route::post('/debugFollow',   [App\Http\Controllers\DebugController::class, 'getFollow'])->name('debugFollow');
 Route::post('/debugChapter',  [App\Http\Controllers\DebugController::class, 'getChapter'])->name('debugChapter');
+
+Route::get('/register',          [App\Http\Controllers\Auth\RegisterController::class, 'show'])->name('register');
+Route::post('/abc',           [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('abc');
