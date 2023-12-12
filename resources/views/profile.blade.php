@@ -10,7 +10,7 @@
 
     <style>
         body {
-            padding-top: 75px;
+            padding-top: 85px;
             padding-bottom: 80px;
         }
 
@@ -87,14 +87,25 @@
         <img src="https://t3.ftcdn.net/jpg/05/05/44/78/360_F_505447855_pI5F0LDCyNfZ2rzNowBoBuQ9IgT3EQQ7.jpg">
     </div>
 
+
+    <form action="{{ route('profile') }}" method="post" class="forminput">
+        @csrf
+        <input type="hidden" name="email" value="w@w.w" />
+        <input class="submit-button" type="submit" value="フォロー">
+    </form>
+
+
     <hr>
 
-    <form action="/profile" method="post" class="forminput">
+    <form action="{{ route('profile') }}" method="post" class="forminput">
+        @method('PUT')
+        @csrf
 
         @foreach($data as $userData)
         @endforeach
 
         {{ $data }}
+        <input type="hidden" name="email" value="w@w.w" />
 
         <div class="flex-name">
             <p>名前</p>
@@ -105,7 +116,7 @@
 
         <div class="flex-comment">
             <p>自己紹介</p>
-            <textarea class="input" id="comment" cols="35" rows="5">{{ $userData->text }}</textarea>
+            <textarea class="input" name="comment" cols="35" rows="5">{{ $userData->comment }}</textarea>
         </div>
 
         <hr>
