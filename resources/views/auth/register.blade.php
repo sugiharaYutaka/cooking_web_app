@@ -72,7 +72,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-3 text-center">
                                 <button type="submit" class="btn" style="background-color: transparent; border: 1px solid #776B5D; color: #676F77;">
-                                    登録
+                                    <a href="{{ route('abc') }}" class="no-underline text-dark d-block">登録
                                 </button>
                             </div>
                         </div>
