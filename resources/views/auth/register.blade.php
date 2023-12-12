@@ -1,3 +1,4 @@
+@extends('layouts.header-' . (Agent::isMobile() ? 'phone' : 'pc-sns'))
 @extends('layouts.app')
 
 @section('content')
