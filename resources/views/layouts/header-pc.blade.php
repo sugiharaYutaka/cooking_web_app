@@ -30,10 +30,10 @@
                         <button type="button" class="btn"><a href="{{ route('study') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/study.png') }}" class="footericon"><br>勉強</a></button>
                     </div>
                     <div class="col-lg-1">
-                      <button type="button" class="btn"><a href="{{ route('recipe') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/recipe.png') }}" class="footericon"><br>献立</a></button>
+                        <button type="button" class="btn"><a href="{{ route('recipe') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/recipe.png') }}" class="footericon"><br>献立</a></button>
                     </div>
                     <div class="col-lg-1">
-                       <button type="button" class="btn"><a href="{{ route('sns') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/SNS.png') }}" class="footericon"><br>SNS</a></button>
+                        <button type="button" class="btn"><a href="{{ route('sns') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/SNS.png') }}" class="footericon"><br>SNS</a></button>
                     </div>
                     <div class="col-lg-1">
                         <button type="button" class="btn"><a href="{{ route('dictionary') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/dictionary.png') }}" class="footericon"><br>知識箱</a></button>
