@@ -62,6 +62,10 @@ Route::get('/sns/post', function () {
 Route::get('/profile', [App\Http\Controllers\SNS\ProfileController::class, 'show'])->name('profile');
 Route::put('/profile', [App\Http\Controllers\SNS\ProfileController::class, 'update']);
 
+Route::get('/taktiedebug', [App\Http\Controllers\TaktiedebugController::class, 'show'])->name('taktiedebug');
+Route::post('/taktiedebugreg', [App\Http\Controllers\TaktiedebugController::class, 'register'])->name('taktiedebugreg');
+
+
 Route::get('/debug',          [App\Http\Controllers\DebugController::class, 'show'])->name('debug');
 Route::post('/debugRegister', [App\Http\Controllers\DebugController::class, 'getRegister'])->name('debugRegister');
 Route::post('/debugPost',     [App\Http\Controllers\DebugController::class, 'getPost'])->name('debugPost');
