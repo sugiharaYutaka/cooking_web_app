@@ -17,7 +17,7 @@
     <div class="header fixed-top">
         <div class="container-fluid p0">
             <div class="row border">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light bg-color-2">
+                <nav class="navbar navbar-expand-lg navbar-light bg-color-2">
                     <!--<div class="col-lg-2">
             </div>-->
                     <div class="col-2 d-flex">
@@ -27,16 +27,16 @@
                     <div class="col-lg-1">
                     </div>
                     <div class="col-lg-1">
-                        <button type="button" class="btn"><a href="{{ route('top') }}" class="no-underline text-dark"><img src="{{ asset('image/cooking.png') }}" class="headerbotton"><br>通常モード</a></button>
+                        <button type="button" class="btn"><a href="{{ route('study') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/study.png') }}" class="footericon"><br>勉強</a></button>
                     </div>
                     <div class="col-lg-1">
-                        <button type="button" class="btn"><a href="{{ route('home') }}" class="no-underline text-dark"><img src="{{ asset('image/home.png') }}" class="headerbotton"><br>ホーム</a></button>
+                      <button type="button" class="btn"><a href="{{ route('recipe') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/recipe.png') }}" class="footericon"><br>献立</a></button>
                     </div>
                     <div class="col-lg-1">
-                        <button type="button" class="btn"><a href="{{ route('post') }}" class="no-underline text-dark"><img src="{{ asset('image/post.png') }}" class="headerbotton"><br>投稿</a></button>
+                       <button type="button" class="btn"><a href="{{ route('sns') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/SNS.png') }}" class="footericon"><br>SNS</a></button>
                     </div>
                     <div class="col-lg-1">
-                        <button type="button" class="btn"><a href="{{ route('profile') }}" class="no-underline text-dark"><img src="{{ asset('image/profile.png') }}" class="headerbotton"><br>プロフィール</a></button>
+                        <button type="button" class="btn"><a href="{{ route('dictionary') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/dictionary.png') }}" class="footericon"><br>知識箱</a></button>
                     </div>
                     <div class="col-lg-4">
                     </div>
