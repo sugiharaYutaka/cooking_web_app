@@ -1,4 +1,4 @@
-@extends('layouts.header-' . (Agent::isMobile() ? 'phone' : 'pc'))
+@extends('layouts.header-' . (Agent::isMobile() ? 'phone' : 'pc-sns'))
 
 <!DOCTYPE html>
 <html lang="ja">
