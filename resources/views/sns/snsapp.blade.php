@@ -8,6 +8,10 @@
     <style>
         /* ...（前回のスタイル） ... */
 
+        h1{
+            margin-top: 100px;
+        }
+
         .interaction-icons {
             display: flex;
             justify-content: space-between;
@@ -51,9 +55,9 @@
             <div class="col-md-8 offset-md-2">
                  <!-- データベースからランダムに取得した投稿を表示する -->
                 @foreach($randomPosts as $post)
-                    <div class="card post mb-3">
+                    <div class="card post mt-5">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $post->title }}</h5>
+                            <h5 class="card-title">{{ $post->text }}</h5>
                             <p class="card-text">{{ $post->content }}</p>
                             <!-- いいねとリプライ（コメント）フォーム -->
                             <div class="interaction-icons">
