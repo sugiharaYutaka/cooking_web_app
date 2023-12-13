@@ -84,13 +84,13 @@
 <body>
     <div class="center">
         <h1>プロフィール</h1>
-        <img src="https://t3.ftcdn.net/jpg/05/05/44/78/360_F_505447855_pI5F0LDCyNfZ2rzNowBoBuQ9IgT3EQQ7.jpg">
+        <img src="{{ asset('/storage/img/'.$icon_filename) }}">
     </div>
 
 
     <form action="{{ route('profile') }}" method="post" class="forminput">
         @csrf
-        <input type="hidden" name="email" value="w@w.w" />
+        <input type="hidden" name="email" value="{{ $email }}" />
         <input class="submit-button" type="submit" value="フォロー">
     </form>
 
@@ -105,7 +105,12 @@
         @endforeach
 
         {{ $data }}
-        <input type="hidden" name="email" value="w@w.w" />
+        <br>
+        {{ $email }}
+        <br>
+        {{ $icon_filename }}
+
+        <input type="hidden" name="email" value="{{ $email }}" />
 
         <div class="flex-name">
             <p>名前</p>

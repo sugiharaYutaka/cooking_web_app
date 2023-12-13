@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -76,13 +77,19 @@ class RegisterController extends Controller
         return view('auth/register');
     }
 
-    public function index(Request $request)
+    public function process(Request $request)
     {
-        return User::create([
-            'email' => $request->email,
-            'name' =>$request->name,
-            'password' => $request->password,
-        ]);
-        return redirect(top);
+        $name = $request->input('name');
+        $email = $request->input('email');
+
+        // セッションにデータを保存
+        $request->session()->put('name', $name);
+        $request->session()->put('email', $email);
+
+        // セッションに保存された値を取得して表示する例
+        $savedName = $request->session()->get('name');
+        $savedEmail = $request->session()->get('email');
+
+        return redirect()->route('top');
     }
 }

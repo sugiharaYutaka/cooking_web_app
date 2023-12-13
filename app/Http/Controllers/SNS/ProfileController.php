@@ -19,11 +19,16 @@ class ProfileController extends Controller
         return $data;
     }
 
-    public function show()
+    public function show(Request $request)
     {
-        $data = $this->select('w@w.w');
+        $email = $request->session()->get('email');
+        $icon_filename = $request->session()->get('icon_filename');
 
-        return view('profile', ['data' => $data]);
+        $data = $this->select($email);
+        //$data = $this->select('w@w.w');
+
+        return view('profile', compact('data', 'email', 'icon_filename'));
+        //return view('profile', ['email' => $email], ['icon_filename' => $icon_filename]);
     }
 
     public function update(Request $request)
