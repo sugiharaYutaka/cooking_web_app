@@ -8,6 +8,12 @@
     <style>
         /* ...（前回のスタイル） ... */
 
+
+        img{
+            width: 50px;
+            height: 50px;
+        }
+
         h1{
             margin-top: 100px;
         }
@@ -53,18 +59,17 @@
         <!-- 投稿を表示するカード -->
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                 <!-- データベースからランダムに取得した投稿を表示する -->
-                @foreach($randomPosts as $post)
+                @foreach($data as $post)
                     <div class="card post mt-5">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $post->text }}</h5>
-                            <p class="card-text">{{ $post->content }}</p>
-                            <!-- いいねとリプライ（コメント）フォーム -->
+                        <div class="cart-body">
+                            <img src="{{ asset( 'image' ) . '/'. $post->image_filename }}">
+                            {{ $post->name }}<br>
+                            {{ $post->text }}
                             <div class="interaction-icons">
                                 <button class="like-btn">いいね</button>
                                 <button class="reply-btn">リプライ</button>
                             </div>
-                        <!-- コメント入力フォーム -->
+
                             <form class="comment-input" style="display: none;">
                                 <div class="mb-3">
                                     <label for="commentInput" class="form-label">コメントを入力</label>
@@ -74,6 +79,25 @@
                             </form>
                         </div>
                     </div>
+                    <!---<div class="card post mt-5">
+                        <div class="card-body">
+                            <div class="card-name">{{ $post->name}}</div>
+                            <h5 class="card-title">{{ $post->text }}</h5>
+                             いいねとリプライ（コメント）フォーム 
+                            <div class="interaction-icons">
+                                <button class="like-btn">いいね</button>
+                                <button class="reply-btn">リプライ</button>
+                            </div>
+                             コメント入力フォーム 
+                            <form class="comment-input" style="display: none;">
+                                <div class="mb-3">
+                                    <label for="commentInput" class="form-label">コメントを入力</label>
+                                    <textarea class="form-control" id="commentInput" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">投稿</button>
+                            </form>
+                        </div>
+                    </div> --->
                 @endforeach
             </div>
         </div>
