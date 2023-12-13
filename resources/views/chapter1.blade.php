@@ -1,10 +1,8 @@
-<script src="https://www.academic-gihara0655.com/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
-<link href="https://www.academic-gihara0655.com/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="chapter.css" rel="stylesheet">
+@extends('layouts.header-' . (Agent::isMobile() ? 'phone' : 'pc'))
 
-<script src="{{ asset('chapter.css') }}" defer></script>
+<link type="text/css" rel="stylesheet" href="{{ asset('') . 'chapter-' . (Agent::isMobile() ? 'phone' : 'pc') . '.css'}}" />
 
-<div class="entirety">
+<div class="entirety body-margin">
     <div class="container-fluid p-0">
 
         <!--- タイトルと画像の設置 --->
@@ -25,9 +23,9 @@
 
         <!--- 材料 --->
         <br>
-        <div class="card">
-            <div class="card-header">
-                <strong>親子丼の材料（１人前）</strong>
+        <div class="card-chapter">
+            <div class="card-header bg-color-2 border-top border-bottom">
+                <div class="m-3 fw-bold">親子丼の材料（１人前）</div>
             </div>
             <div class="card-body">
                 <ul>
@@ -90,10 +88,10 @@
 
     <!--- 作り方 --->
 
-    <h2>親子丼の作り方</h2>
-    <div class="card">
-        <div class="card-header">
-            STEP1 準備を整えよう
+    <h2 class="mt-5">親子丼の作り方</h2>
+    <div class="card-chapter">
+        <div class="card-header bg-color-2 border-top border-bottom">
+            <div class="m-3 fw-bold">STEP1 準備を整えよう</div>
         </div>
         <div class="card-body">
             <div class="youtube_wrap">
@@ -109,8 +107,8 @@
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-header">
+    <div class="card-chapter">
+        <div class="card-heade border-top border-bottomr">
             STEP2 三つ葉を切ろう
         </div>
         <div class="card-body">
@@ -126,9 +124,9 @@
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-header">
-            STEP3 鶏もも肉を切ろう
+    <div class="card-chapter">
+        <div class="card-header bg-color-2 border-top border-bottom">
+            <div class="m-3 fw-bold">STEP3 鶏もも肉を切ろう</div>
         </div>
         <div class="card-body">
             <div class="youtube_wrap">
@@ -142,9 +140,9 @@
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-header">
-            STEP4 玉ねぎを切ろう
+    <div class="card-chapter">
+        <div class="card-header bg-color-2 border-top border-bottom">
+            <div class="m-3 fw-bold">STEP4 玉ねぎを切ろう</div>
         </div>
         <div class="card-body">
             <div class="youtube_wrap">
@@ -182,9 +180,9 @@
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-header">
-            STEP5 つゆを沸かそう
+    <div class="card-chapter">
+        <div class="card-header bg-color-2 border-top border-bottom">
+            <div class="m-3 fw-bold">STEP5 つゆを沸かそう</div>
         </div>
         <div class="card-body">
             <div class="youtube_wrap">
@@ -203,9 +201,9 @@
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-header">
-            STEP6 卵で閉じよう
+    <div class="card-chapterd">
+        <div class="card-header bg-color-2 border-top border-bottom">
+            <div class="m-3 fw-bold">STEP6 卵で閉じよう</div>
         </div>
         <div class="card-body">
             <div class="youtube_wrap">
@@ -226,9 +224,9 @@
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-header">
-            STEP7 完成!!!
+    <div class="card-chapter">
+        <div class="card-header bg-color-2 border-top border-bottom">
+            <div class="m-3 fw-bold">STEP7 完成!!!</div>
         </div>
         <div class="card-body">
             <div class="youtube_wrap">
@@ -247,3 +245,5 @@
 
 
 </div>
+
+@extends('layouts.footer')
