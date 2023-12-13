@@ -16,10 +16,10 @@ class CreateSnsPostsTable extends Migration
         Schema::create('sns_posts', function (Blueprint $table) {
             $table->id('id');
             $table->string('text')->nullable(false);
-            $table->string('image_filename')->nullable();
+            $table->string('image_filename')->nullable(true);
             $table->unsignedBigInteger('good')->default(0);
 
-            $table->string('email')->unique()->nullable(false);
+            $table->string('email')->nullable(false);
             $table->foreign('email')
             ->references('email')
             ->on('users')
