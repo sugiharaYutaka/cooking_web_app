@@ -21,6 +21,8 @@ class ProfileController extends Controller
 
     public function show(Request $request)
     {
+        $request->session()->put('email', 'w@w.w');
+
         $email = $request->session()->get('email');
         $icon_filename = $request->session()->get('icon_filename');
 
