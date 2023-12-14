@@ -90,6 +90,12 @@ class RegisterController extends Controller
         $savedName = $request->session()->get('name');
         $savedEmail = $request->session()->get('email');
 
+        User::create([
+            'email' => $request->email,
+            'name' => $request->name,
+            'password' => $request->password,
+        ]);
+
         return redirect()->route('top');
     }
 }
