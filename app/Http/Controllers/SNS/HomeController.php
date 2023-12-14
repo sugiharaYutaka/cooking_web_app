@@ -17,9 +17,30 @@ class HomeController extends Controller
     public function index()
     {
 
-        // データベースからランダムに5件の投稿を取得
-        $randomPosts = SnsPost::inRandomOrder()->limit(5)->get();
+        $data = $this -> toriaezu();
+        
+        return view('sns.home', compact('data'));
 
-        return view('sns.home', compact('randomPosts'));
+
+    }
+
+    private function toriaezu()
+    {
+        $data = SnsPost::select([
+            'sns_posts.id',
+            'sns_posts.image_filename',
+            'sns_posts.email',
+            'sns_posts.text',
+            'users.name',
+            'users.icon_filename'
+          ])
+          ->from('sns_posts')
+          ->orderBy('sns_posts.id','asc')
+          ->join('users', function($join) {
+              $join->on('sns_posts.email', '=', 'users.email');
+          })
+
+          ->get();
+        return $data;
     }
 }

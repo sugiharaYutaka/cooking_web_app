@@ -21,6 +21,8 @@ class ProfileController extends Controller
 
     public function show(Request $request)
     {
+        $request->session()->put('email', 'w@w.w');
+
         $email = $request->session()->get('email');
         $icon_filename = $request->session()->get('icon_filename');
 
@@ -33,6 +35,20 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
+        $email = $request->session()->get('email');
+
+
+        if ($request->file('image_file')) {
+            $path = $request->file('image_file')->store('public/img');
+
+            DB::table('users')
+                ->where('email', $email)
+                ->update(['icon_filename' => basename($path)]);
+
+            $request->session()->put('icon_filename', basename($path));
+        }
+
+
 
         DB::table('users')
             ->where('email', $request->email)
@@ -42,8 +58,11 @@ class ProfileController extends Controller
             ->where('email', $request->email)
             ->update(['comment' => $request->comment, 'history' => $request->history]);
 
-        $data = $this->select($request->email);
+        return redirect()->back();
+    }
 
-        return view('profile', ['data' => $data]);
+    public function follow(Request $request)
+    {
+        return view('top');
     }
 }
