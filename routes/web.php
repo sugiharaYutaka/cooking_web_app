@@ -54,10 +54,8 @@ Route::get('/top', [App\Http\Controllers\TopController::class, 'show'])->name('t
 Route::get('/top', [App\Http\Controllers\TopController::class, 'show'])->name('top');
 Route::get('/top', [App\Http\Controllers\TopController::class, 'show'])->name('top');
 
-
-Route::get('/sns/post', function () {
-    return view('sns/snspost');
-})->name('post');
+Route::get('/sns/post', [App\Http\Controllers\SNS\PostController::class, 'show'])->name('post');
+Route::post('/sns/post', [App\Http\Controllers\SNS\PostController::class, 'post']);
 
 Route::get('/profile', [App\Http\Controllers\SNS\ProfileController::class, 'show'])->name('profile');
 Route::put('/profile', [App\Http\Controllers\SNS\ProfileController::class, 'update']);
