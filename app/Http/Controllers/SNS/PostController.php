@@ -17,7 +17,11 @@ class PostController extends Controller
 
     public function post(Request $request)
     {
-        $path = $request->file('image')->store('public/img');
+        if ($request->file('image')) {
+            $path = $request->file('image')->store('public/img');
+        } else {
+            $path = NULL;
+        }
 
         Models\SnsPost::create([
             'email' => $request->email,
