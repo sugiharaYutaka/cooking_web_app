@@ -20,13 +20,10 @@
             margin-right: 15%;
         }
 
-        .center .imgcircle {
+        .imgcircle {
             text-align: center;
             height: 120px;
             width: 120px;
-        }
-
-        .imgcircle {
             border-radius: 50%;
             object-fit: cover;
         }
@@ -57,7 +54,8 @@
         }
 
         .forminput img {
-            margin-left: 20px;
+            margin-right: 45%;
+            margin-bottom: 10px;
             height: 60px;
             width: 60px;
         }
@@ -65,6 +63,13 @@
         .forminput p {
             font-size: 18px;
             width: 90px;
+        }
+
+        .forminput span {
+            text-align: left;
+            height: 30px;
+            width: 60%;
+            font-size: 15px;
         }
 
         .forminput .text {
@@ -105,6 +110,7 @@
             height: 40px;
             width: 140px;
             margin: auto;
+            margin-top: 10px;
             font-weight: bold;
             border: 2px solid #111;
             color: #228b22;
@@ -116,14 +122,20 @@
 <body>
     <div class="center">
         <h1>プロフィール</h1>
+        @if ($icon_filename == "user_icon.png")
+        <img class="imgcircle" src="{{ asset('image/user_icon.png') }}">
+        @else
         <img class="imgcircle" src="{{ asset('/storage/img/'.$icon_filename) }}">
+        @endif
 
 
+        @if ($email != $target_email)
         <form action="{{ route('profile') }}" method="post" class="forminput">
             @csrf
-            <input type="hidden" name="email" value="{{ $email }}" />
+            <input type="hidden" name="target_email" value="{{ $target_email }}" />
             <input class="submit-button" type="submit" value="フォロー">
         </form>
+        @endif
 
 
         <hr>
@@ -135,37 +147,53 @@
             @foreach($data as $userData)
             @endforeach
 
+
+            @if ($email == $target_email)
             <input type="hidden" name="email" value="{{ $email }}" />
 
             <div class="flex-icon">
                 <p>アイコン</p>
-
-                <input type="file" class="file" name="image_file" onchange="previewImage(this);" accept=".jpg, .jpeg, .png">
                 <img class="imgcircle" id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;">
+                <input type="file" class="form-control" name="image" onchange="previewImage(this);" accept=".jpg, .jpeg, .png">
             </div>
 
             <hr>
+            @endif
 
             <div class="flex-name">
                 <p>名前</p>
-                <input type="text" class="text" name="name" value="{{ $userData->name }}">
+                @if ($email == $target_email)
+                <input type="text" class="text" name="name" value="{{ $userData->name }}" required>
+                @else
+                <span>{{ $userData->name }}</span>
+                @endif
             </div>
 
             <hr>
 
             <div class="flex-comment">
                 <p>自己紹介</p>
+                @if ($email == $target_email)
                 <textarea name="comment" cols="35" rows="5">{{ $userData->comment }}</textarea>
+                @else
+                <span>{{ $userData->comment }}</span>
+                @endif
             </div>
 
             <hr>
 
             <div class="flex-history">
                 <p>料理歴</p>
-                <input type="text" class="text" name="history" value="{{ $userData->history }}">
+                @if ($email == $target_email)
+                <input type="text" class="text" name="history" value="{{ $userData->history }}" required>
+                @else
+                <span>{{ $userData->history }}</span>
+                @endif
             </div>
 
+            @if ($email == $target_email)
             <input class="submit-button" type="submit" value="変更">
+            @endif
 
         </form>
     </div>
