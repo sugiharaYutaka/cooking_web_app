@@ -42,6 +42,8 @@
     <!-- ナビゲーションバー -->
     <!-- ...（前回のナビゲーションバー） ... -->
 
+
+
     <!-- コンテンツ -->
     <div class="container-fluid">
         <h1>投稿一覧</h1>
@@ -50,54 +52,44 @@
             <div class="col">
                 <hr>
                 @foreach($data as $post)
-                <div class="post-body">
-                    <div class="container">
-                        <div class="row mt-1">
-                            <div class="col-2 text-end">
-                                <img class="post-icon" src="{{ asset( 'image' ) . '/'. $post->icon_filename }}">
+                    <div class="card post mt-5">
+                        <div class="cart-body">
+                            <img src="{{ asset( 'image' ) . '/'. $post->image_filename }}">
+                            {{ $post->name }}<br>
+                            {{ $post->text }}
+                            <div class="interaction-icons">
+                                <button class="like-btn">いいね</button>
+                                <button class="reply-btn">リプライ</button>
                             </div>
-                            <div class="col align-self-center">
-                                <span class="h5">{{ $post->name }}</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-10 offset-2">
-                                <span>{{ $post->text }}</span>
-                            </div>
-                        </div>
 
-                        @if($post->image_filename)
-                        <div class="row">
-                            <div class="col-10 offset-2">
-                                <img class="post-image" src="{{ asset( 'image' ) . '/'. $post->image_filename }}">
-                            </div>
+                            <form class="comment-input" style="display: none;">
+                                <div class="mb-3">
+                                    <label for="commentInput" class="form-label">コメントを入力</label>
+                                    <textarea class="form-control" id="commentInput" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">投稿</button>
+                            </form>
                         </div>
-                        @endif
-
-                        <div class="row">
-                            <div class="col text-end">
-                                <form class="like-form" method="POST" action="/like-post">
-                                    @csrf <!-- CSRFトークンを追加 -->
-                                    <input type="hidden" name="post_id" value="{{ $post->id }}">
-                                    <span class="like-count">{{ $likeCounts[$post->id] }}</span> <!-- いいね数を表示 -->
-                                    <button type="submit" class="like-btn interaction-button my-2">♡</button>
-                                    <!-- 他のボタンとフォーム -->
-                                </form>
-                                <!--<button class="like-btn interaction-button my-2">♡</button>-->
-                                <button class="reply-btn interaction-button my-2">リプライ</button>
-                            </div>
-                        </div>
-
-                        <form class="comment-input" style="display: none;">
-                            <div class="mb-3">
-                                <label for="commentInput" class="form-label">コメントを入力</label>
-                                <textarea class="form-control" id="commentInput" rows="3"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">投稿</button>
-                        </form>
                     </div>
-                </div>
-                <hr>
+                    <!---<div class="card post mt-5">
+                        <div class="card-body">
+                            <div class="card-name">{{ $post->name}}</div>
+                            <h5 class="card-title">{{ $post->text }}</h5>
+                             いいねとリプライ（コメント）フォーム 
+                            <div class="interaction-icons">
+                                <button class="like-btn">いいね</button>
+                                <button class="reply-btn">リプライ</button>
+                            </div>
+                             コメント入力フォーム 
+                            <form class="comment-input" style="display: none;">
+                                <div class="mb-3">
+                                    <label for="commentInput" class="form-label">コメントを入力</label>
+                                    <textarea class="form-control" id="commentInput" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">投稿</button>
+                            </form>
+                        </div>
+                    </div> --->
                 @endforeach
             </div>
         </div>
@@ -117,6 +109,20 @@
                 }
             });
         });
+    </script>
+
+    <script>
+        var pusher = new Pusher('YOUR_PUSHER_APP_KEY', {
+        cluster: 'YOUR_PUSHER_APP_CLUSTER',
+        encrypted: true
+        });
+
+        var channel = pusher.subscribe('channel-name');
+        channel.bind('App\\Events\\YourEventName', function(data) {
+        // 新しい投稿があった場合の処理
+        // データを取得して投稿リストに追加するなどの処理を行う
+        });
+
     </script>
 </body>
 

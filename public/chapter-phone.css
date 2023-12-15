@@ -1,4 +1,6 @@
-
+.entirety{
+    font-size: 200%;
+}
 
 h1{
     margin-top: 20px;
@@ -33,7 +35,7 @@ p{
 
 ul{
     margin-top: -10px;
-    margin-left: 0px;
+    margin-left: 40px;
 }
 
 .inlist1{
@@ -88,12 +90,9 @@ ul{
 .textBox {
     border: 2px solid darkorange;
     border-radius: 5px;
-    padding: 15px;
+    padding: 30px;
     margin-top: 30px;
-    margin-left: 20px;
-    margin-right: 20px;
     margin-bottom: 40px;
-    font-weight: bolder;
     position: relative;
     }
     
@@ -106,13 +105,11 @@ ul{
     left: 30px;
     padding: 3px 10px;
     position: absolute;
-    top: -15px;
+    top: -30px;
 }
 
 .cooking_text{
     font-size: 120%;
     margin-bottom: 50px;
-    margin-left: 20px;
-    margin-right: 20px;
 }
 
