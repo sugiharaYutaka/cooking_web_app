@@ -34,8 +34,6 @@ Route::get('/dictionary', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\SNS\HomeController::class, 'index'])->name('home');
-
 Route::get('/sns', [App\Http\Controllers\SNS\HomeController::class, 'index'])->name('sns');
 
 Route::get('/chapter1', [App\Http\Controllers\Chapter1Controller::class, 'index'])->name('chapter1');
