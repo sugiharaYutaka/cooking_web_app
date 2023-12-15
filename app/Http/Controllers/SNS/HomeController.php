@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Models\SnsPost;
 use App\Models\User;
 
+// Pusher関連
+use App\Events\YourEventName;
+use Illuminate\Support\Facades\Event;
+
 class HomeController extends Controller
 {
     /**
@@ -23,6 +27,8 @@ class HomeController extends Controller
 
 
     }
+
+
 
     private function toriaezu()
     {

@@ -8,13 +8,7 @@
     <style>
         /* ...（前回のスタイル） ... */
 
-
-        img{
-            width: 50px;
-            height: 50px;
-        }
-
-        h1{
+        h1 {
             margin-top: 100px;
         }
 
@@ -53,6 +47,8 @@
     <!-- ナビゲーションバー -->
     <!-- ...（前回のナビゲーションバー） ... -->
 
+
+
     <!-- コンテンツ -->
     <div class="container-fluid">
         <h1>投稿一覧</h1>
@@ -60,11 +56,18 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 @foreach($data as $post)
-                    <div class="card post mt-5">
-                        <div class="cart-body">
-                            <img src="{{ asset( 'image' ) . '/'. $post->image_filename }}">
-                            {{ $post->name }}<br>
-                            {{ $post->text }}
+                <div class="card post mt-5">
+                    <div class="cart-body">
+                        <div class="container">
+                            <div class="row">
+                                <img class="col-2 mx-2 post-icon" src="{{ asset( 'image' ) . '/'. $post->image_filename }}">
+                                <span class="col h5">{{ $post->name }}</span>
+                            </div>
+                            <div class="row">
+                                <div class="col-2 mx-2"></div>
+                                <span class="col">{{ $post->text }}</span>
+                            </div>
+
                             <div class="interaction-icons">
                                 <button class="like-btn">いいね</button>
                                 <button class="reply-btn">リプライ</button>
@@ -79,25 +82,7 @@
                             </form>
                         </div>
                     </div>
-                    <!---<div class="card post mt-5">
-                        <div class="card-body">
-                            <div class="card-name">{{ $post->name}}</div>
-                            <h5 class="card-title">{{ $post->text }}</h5>
-                             いいねとリプライ（コメント）フォーム 
-                            <div class="interaction-icons">
-                                <button class="like-btn">いいね</button>
-                                <button class="reply-btn">リプライ</button>
-                            </div>
-                             コメント入力フォーム 
-                            <form class="comment-input" style="display: none;">
-                                <div class="mb-3">
-                                    <label for="commentInput" class="form-label">コメントを入力</label>
-                                    <textarea class="form-control" id="commentInput" rows="3"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">投稿</button>
-                            </form>
-                        </div>
-                    </div> --->
+                </div>
                 @endforeach
             </div>
         </div>
@@ -108,7 +93,7 @@
     <script>
         const replyButtons = document.querySelectorAll('.reply-btn');
         replyButtons.forEach(button => {
-            button.addEventListener('click', function () {
+            button.addEventListener('click', function() {
                 const commentInput = this.parentElement.nextElementSibling;
                 if (commentInput.style.display === 'none') {
                     commentInput.style.display = 'block';
@@ -117,6 +102,20 @@
                 }
             });
         });
+    </script>
+
+    <script>
+        var pusher = new Pusher('YOUR_PUSHER_APP_KEY', {
+        cluster: 'YOUR_PUSHER_APP_CLUSTER',
+        encrypted: true
+        });
+
+        var channel = pusher.subscribe('channel-name');
+        channel.bind('App\\Events\\YourEventName', function(data) {
+        // 新しい投稿があった場合の処理
+        // データを取得して投稿リストに追加するなどの処理を行う
+        });
+
     </script>
 </body>
 

@@ -1,8 +1,8 @@
 <script src="https://www.academic-gihara0655.com/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 <link href="https://www.academic-gihara0655.com/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="chapter.css" rel="stylesheet">
+<link href="chapter-phone.css" rel="stylesheet">
 
-<script src="{{ asset('chapter.css') }}" defer></script>
+<script src="{{ asset('chapter-phone.css') }}" defer></script>
 
 <div class="entirety">
     <div class="container-fluid p-0">
