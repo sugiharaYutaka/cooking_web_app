@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
+use App\Models;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -65,7 +65,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Models\User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -85,15 +85,23 @@ class RegisterController extends Controller
         // セッションにデータを保存
         $request->session()->put('name', $name);
         $request->session()->put('email', $email);
+        $request->session()->put('icon_filename', 'user_icon.png');
 
         // セッションに保存された値を取得して表示する例
         $savedName = $request->session()->get('name');
         $savedEmail = $request->session()->get('email');
+        $savedIconFileName = $request->session()->get('icon_filename');
 
-        User::create([
+        Models\User::create([
             'email' => $request->email,
             'name' => $request->name,
             'password' => $request->password,
+        ]);
+
+        Models\SnsProfile::create([
+            'email' => $request->email,
+            'history' => 0,
+            'comment' => '',
         ]);
 
         return redirect()->route('top');

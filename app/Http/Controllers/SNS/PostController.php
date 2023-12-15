@@ -3,12 +3,32 @@
 namespace App\Http\Controllers\SNS;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
+use App\Models;
 
 class PostController extends Controller
 {
-    public function show()
+    public function show(Request $request)
     {
-        return view();
+        $email = $request->session()->get('email');
+
+        return view('sns.snspost', compact('email'));
+    }
+
+    public function post(Request $request)
+    {
+        if ($request->file('image')) {
+            $path = $request->file('image')->store('public/img');
+        } else {
+            $path = NULL;
+        }
+
+        Models\SnsPost::create([
+            'email' => $request->email,
+            'text' => $request->text,
+            'image_filename' => basename($path),
+        ]);
+
+        return redirect()->back();
     }
 }
