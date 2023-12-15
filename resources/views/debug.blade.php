@@ -28,6 +28,7 @@
         @csrf
         <span>sns_postsテーブルにINSERTする</span><br>
         <input type="text" name="text" placeholder="投稿内容" required><br>
+        <input type="text" name="image" placeholder="画像ファイル"><br>
         <input type="text" name="email" placeholder="投稿したユーザのメールアドレス" required><br>
         <input type="submit" value="登録"><br>
     </form>

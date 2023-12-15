@@ -1,5 +1,4 @@
 @extends('layouts.header-' . (Agent::isMobile() ? 'phone' : 'pc'))
-<!--@extends('layouts.app')-->
 
 <div class="container">
     <div class="row justify-content-center">
@@ -86,3 +85,4 @@
         </div>
     </div>
 </div>
+@extends('layouts.footer')

@@ -21,11 +21,15 @@ class HomeController extends Controller
     public function index()
     {
 
-        $data = $this -> toriaezu();
-        
-        return view('sns.home', compact('data'));
+        $data = $this->toriaezu();
+        $likeCounts = []; // いいね数を格納する配列
 
+        foreach ($data as $post) {
+            // 各投稿のいいね数を取得して配列に格納
+            $likeCounts[$post->id] = $this->getLikeCount($post->id);
+        }
 
+        return view('sns.home', compact('data', 'likeCounts'));
     }
 
 
@@ -39,14 +43,49 @@ class HomeController extends Controller
             'sns_posts.text',
             'users.name',
             'users.icon_filename'
-          ])
-          ->from('sns_posts')
-          ->orderBy('sns_posts.id','asc')
-          ->join('users', function($join) {
-              $join->on('sns_posts.email', '=', 'users.email');
-          })
+        ])
+            ->from('sns_posts')
+            ->orderBy('sns_posts.id', 'asc')
+            ->join('users', function ($join) {
+                $join->on('sns_posts.email', '=', 'users.email');
+            })
 
-          ->get();
+            ->get();
         return $data;
+    }
+    private function getLikeCount($postId)
+    {
+        // $postIdに基づいていいね数を取得する処理を実行
+        $post = SnsPost::find($postId);
+
+        if ($post) {
+            return $post->good ?? 0;
+        }
+
+        return 0;
+    }
+
+    //いいね機能
+    public function likePost(Request $request)
+    {
+        $postId = $request->post_id;
+
+        // 該当の投稿を取得
+        $post = SnsPost::find($postId);
+
+        // 投稿が存在し、取得できた場合
+        if ($post) {
+            // good カラムをインクリメント
+            $post->increment('good');
+
+            // インクリメントした後の値を取得する場合
+            // $newGoodValue = $post->fresh()->good;
+
+            // 必要に応じてレスポンスなどの追加処理を行うこともできます
+
+            return redirect()->route('sns');
+        } else {
+            return response()->json(['message' => '投稿が見つかりません'], 404);
+        }
     }
 }

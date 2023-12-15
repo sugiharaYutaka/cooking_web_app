@@ -38,19 +38,18 @@
                         <!-- ここにフォームやコンテンツを追加 -->
                         <!-- Image Upload Form -->
                         <button type="button" class="mt-3" style="border: none; background: none;">テキストを入力</button>
-                        <form method="POST" action=""> <!-- 後でactionの中を書く -->
-                            <textarea id="userInput" name="userInput"></textarea>
-                        </form>
-
-                        <form method="POST" action="" enctype="multipart/form-data"> <!-- 後でactionの中を書く -->
+                        <form method="POST" action="{{ route('post') }}" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="email" value="{{ $email }}" />
+
+                            <textarea id="userInput" name="text"></textarea>
                             <div class="mb-3">
                                 <label for="image" class="form-label">Select Image</label>
                                 <input type="file" class="form-control" id="image" name="image">
                             </div>
+                            <button type="submit" class="btn btn-primary">送信</button>
                         </form>
 
-                        <button type="submit" class="btn btn-primary">送信</button>
                     </div>
                 </div>
             </div>

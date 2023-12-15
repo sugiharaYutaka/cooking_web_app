@@ -28,6 +28,7 @@ class DebugController extends Controller
         Models\SnsPost::create([
             'email' => $request->email,
             'text' =>$request->text,
+            'image_filename' => $request->image,
         ]);
         return redirect()->back();
     }
