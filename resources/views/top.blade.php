@@ -69,7 +69,7 @@
             flex: 35%;
         }
 
-        .flex-left {
+        .flex-right {
             display: flex;
             flex-direction: column;
         }
@@ -77,7 +77,7 @@
 
 
 
-        .flex .flex-left .tutorial {
+        .flex .flex-right .tutorial {
             margin: 5px 5px 5px;
             text-align: center;
             padding: 0.5em 1em;
@@ -86,12 +86,12 @@
             /*点線*/
         }
 
-        .flex .flex-left .tutorial p {
+        .flex .flex-right .tutorial p {
             margin: 0;
             padding: 0;
         }
 
-        .flex .flex-left .tutorial img {
+        .flex .flex-right .tutorial img {
             width: 100%;
             border-radius: 10px;
         }
@@ -100,7 +100,7 @@
 
 
 
-        .flex .flex-left .iine {
+        .flex .flex-right .iine {
             margin: 5px 5px 5px;
             text-align: center;
         }
@@ -200,22 +200,8 @@
     <hr>
 
     <div class="flex">
+
         <div class="flex-left">
-            <!-- 料理チュートリアル -->
-            <p class="text-center h6">料理チュートリアル</p>
-            <div class="tutorial">
-                <a href="{{ route('study') }}">
-                    <p>
-                        ステップ0へ
-                    </p>
-                    <img class="tutorial-img" src="https://mpreview.aflo.com/epIejrhhrejN/afloimagemart_228170109.jpg">
-                </a>
-            </div>
-            <!-- 料理チュートリアル end -->
-        </div>
-
-
-        <div class="flex-right">
             <!-- いいね数ランキング -->
             <p class="text-center h6">過去30日間のいいね数</p>
             <div class="iine">
@@ -262,6 +248,22 @@
             </div>
             <!-- いいね数ランキング end -->
         </div>
+
+
+        <div class="flex-right">
+            <!-- 料理チュートリアル -->
+            <p class="text-center h6">料理チュートリアル</p>
+            <div class="tutorial">
+                <a href="{{ route('study') }}">
+                    <p>
+                        ステップ0へ
+                    </p>
+                    <img class="tutorial-img" src="https://mpreview.aflo.com/epIejrhhrejN/afloimagemart_228170109.jpg">
+                </a>
+            </div>
+            <!-- 料理チュートリアル end -->
+        </div>
+    </div>
 
 </body>
 
