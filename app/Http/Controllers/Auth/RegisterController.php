@@ -95,7 +95,7 @@ class RegisterController extends Controller
         Models\User::create([
             'email' => $request->email,
             'name' => $request->name,
-            'password' => $request->password,
+            'password' =>  Hash::make($request->password),
         ]);
 
         Models\SnsProfile::create([
