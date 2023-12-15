@@ -98,12 +98,6 @@ class RegisterController extends Controller
             'password' => $request->password,
         ]);
 
-        Models\SnsProfile::create([
-            'email' => $request->email,
-            'history' => 0,
-            'comment' => '',
-        ]);
-
         return redirect()->route('top');
     }
 }
