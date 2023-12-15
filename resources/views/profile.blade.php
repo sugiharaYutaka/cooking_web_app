@@ -133,7 +133,11 @@
         <form action="{{ route('profile') }}" method="post" class="forminput">
             @csrf
             <input type="hidden" name="target_email" value="{{ $target_email }}" />
-            <input class="submit-button" type="submit" value="フォロー">
+            @if ($is_following == true)
+            <input class="submit-button" type="submit" value="フォローを外す">
+            @else
+            <input class="submit-button" type="submit" value="フォローする">
+            @endif
         </form>
         @endif
 

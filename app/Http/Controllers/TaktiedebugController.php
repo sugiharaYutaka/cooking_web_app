@@ -10,7 +10,7 @@ class TaktiedebugController extends Controller
 {
     public function show(Request $request)
     {
-        $request->session()->put('email', 'w@w.w');
+        $request->session()->put('target_email', 'w@w.w');
         //$request->session()->put('icon_filename', 'tZYwSiNgokUhMWKKWduktTe88GYY1CZd0TJGi6wy.png');
 
         $email = $request->session()->get('email');
