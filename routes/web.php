@@ -76,3 +76,6 @@ Route::post('/debugChapter',  [App\Http\Controllers\DebugController::class, 'get
 
 Route::get('/register',          [App\Http\Controllers\Auth\RegisterController::class, 'show'])->name('register');
 Route::post('/process',           [App\Http\Controllers\Auth\RegisterController::class, 'process'])->name('process');
+
+//いいね機能
+Route::post('/like-post', [App\Http\Controllers\SNS\HomeController::class, 'likePost']);

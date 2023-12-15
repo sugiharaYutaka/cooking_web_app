@@ -48,7 +48,7 @@
         <!-- 投稿を表示するカード -->
         <div class="row">
             <div class="col">
-            <hr>
+                <hr>
                 @foreach($data as $post)
                 <div class="post-body">
                     <div class="container">
@@ -76,7 +76,14 @@
 
                         <div class="row">
                             <div class="col text-end">
-                                <button class="like-btn interaction-button my-2">♡</button>
+                                <form class="like-form" method="POST" action="/like-post">
+                                    @csrf <!-- CSRFトークンを追加 -->
+                                    <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                    <span class="like-count">{{ $likeCounts[$post->id] }}</span> <!-- いいね数を表示 -->
+                                    <button type="submit" class="like-btn interaction-button my-2">♡</button>
+                                    <!-- 他のボタンとフォーム -->
+                                </form>
+                                <!--<button class="like-btn interaction-button my-2">♡</button>-->
                                 <button class="reply-btn interaction-button my-2">リプライ</button>
                             </div>
                         </div>
@@ -101,7 +108,7 @@
     <script>
         const replyButtons = document.querySelectorAll('.reply-btn');
         replyButtons.forEach(button => {
-            button.addEventListener('click', function () {
+            button.addEventListener('click', function() {
                 const commentInput = this.parentElement.nextElementSibling;
                 if (commentInput.style.display === 'none') {
                     commentInput.style.display = 'block';
