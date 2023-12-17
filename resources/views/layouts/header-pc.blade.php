@@ -33,7 +33,7 @@
                         <button type="button" class="btn"><a href="{{ route('sns') }}" class="no-underline text-dark"><img src="{{ asset('image/sns.png') }}" class="footericon"><br>SNS</a></button>
                     </div>
                     <div class="col-1 d-flex justify-content-center">
-                        <button type="button" class="btn"><a href="{{ route('dictionary') }}" class="no-underline text-dark"><img src="{{ asset('image/dictionary.png') }}" class="footericon"><br>知識箱</a></button>
+                        <button type="button" class="btn"><a href="{{ route('knowledge') }}" class="no-underline text-dark"><img src="{{ asset('image/knowledge.png') }}" class="footericon"><br>知識箱</a></button>
                     </div>
                     <div class="col-1 d-flex justify-content-center">
                         @guest
