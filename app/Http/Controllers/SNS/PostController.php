@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\SNS;
 
+use App\Events\YourEventName;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models;
@@ -12,7 +13,7 @@ class PostController extends Controller
     {
         $email = $request->session()->get('email');
 
-        return view('sns.snspost', compact('email'));
+        return view('sns.snspost', compact('email','data'));
     }
 
     public function post(Request $request)
@@ -23,13 +24,12 @@ class PostController extends Controller
             $path = NULL;
         }
 
-        Models\SnsPost::create([
+        $newPost = Models\SnsPost::create([
             'email' => $request->email,
             'text' => $request->text,
             'image_filename' => basename($path),
         ]);
-
-        return redirect()->back();
+        event(new YourEventName($newPost));
     }
 
     public function reply()

@@ -53,6 +53,7 @@ class HomeController extends Controller
             ->get();
         return $data;
     }
+    
     private function getLikeCount($postId)
     {
         // $postIdに基づいていいね数を取得する処理を実行
