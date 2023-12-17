@@ -28,9 +28,9 @@ Route::get('/recipe', function () {
 })->name('recipe');
 
 
-Route::get('/dictionary', function () {
-    return 'これは未実装のルートです';
-})->name('dictionary');
+Route::get('/knowledge', function () {
+    return view('knowledge.kitchenware');
+})->name('knowledge');
 
 Auth::routes();
 
