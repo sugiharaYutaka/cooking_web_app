@@ -29,7 +29,7 @@ Route::get('/recipe', function () {
 
 
 Route::get('/knowledge', function () {
-    return view('knowledge.kitchenware');
+    return view('knowledge');
 })->name('knowledge');
 
 Auth::routes();
