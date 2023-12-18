@@ -19,7 +19,7 @@
                                 <div class="row justify-content-center">
                                     <div class="col-md-10">
                                         <div class="card-body">
-                                            <form method="POST" action="{{ route('register') }}">
+                                            <form method="POST" action="{{ route('login') }}">
                                                 @csrf
                                                 <div class="row mb-3">
                                                     <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('メールアドレス') }}</label>
@@ -67,7 +67,6 @@
                             </div>
 
                         @else
-                            <a href="{{ route('account') }}" class="btn border-top border-bottom my-2">アカウント設定</a><br>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn border-top border-bottom my-2">ログアウト</button><br>
