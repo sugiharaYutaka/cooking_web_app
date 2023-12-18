@@ -5227,6 +5227,8 @@ __webpack_require__.r(__webpack_exports__);
       if (event.error) {
         console.error('Pusher error:', event.error);
       } else {
+        //postMaxより要素数が多くなって値がかえって来た場合　多くなった分の要素を削除する
+        //いいねボタンを押す間に新しい投稿がされたときの対策
         if (event.post_data.length > _this.postMax) {
           event.post_data = event.post_data.slice(event.post_data.length - _this.postMax);
         }
