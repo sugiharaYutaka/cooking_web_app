@@ -83,9 +83,12 @@ class RegisterController extends Controller
         $email = $request->input('email');
 
         // セッションにデータを保存
-        $request->session()->put('name', $name);
-        $request->session()->put('email', $email);
-        $request->session()->put('icon_filename', 'user_icon.png');
+        $data = Models\User::where('email',"=", $email)->first();
+        session([
+            "email" => $data->email,
+            "name" => $data->name,
+            "icon_filename" => $data->icon_filename,
+        ]);
 
         // セッションに保存された値を取得して表示する例
         $savedName = $request->session()->get('name');

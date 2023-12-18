@@ -24,7 +24,7 @@
                 @guest
                 <a href="#modalProfile" data-bs-toggle="modal"><img src="{{ asset('image/user_icon.png') }}" class="user-icon" style="width: 48px; height: 48px;"/></a>
                  @else
-                <a href="#modalProfile" data-bs-toggle="modal"><img src="{{ asset('') }}" class="user-icon" style="width: 48px; height: 48px;"/></a>
+                <a href="#modalProfile" data-bs-toggle="modal"><img src="{{ asset('image/' . session('icon_filename') ) }}" class="user-icon" style="width: 48px; height: 48px;"/></a>
                  @endguest
             </div>
         </nav>
