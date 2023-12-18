@@ -8,11 +8,6 @@
     <style>.accordion-button.text-center::after{ margin:0; }</style>
 
     <style>
-        body {
-            padding-top: 86px;
-            padding-bottom: 80px;
-        }
-
         .Container {
             position: relative;
             width: 100%;
@@ -180,7 +175,7 @@
 
 </head>
 
-<body style="margin-top: 150px; margin-bottom: 150px;">
+<body style="margin-top: 100px; margin-bottom: 150px;">
 
     <div class="Container">
         <div class="Box-Container">
