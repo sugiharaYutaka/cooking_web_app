@@ -80,3 +80,11 @@ Route::post('/like-post', [App\Http\Controllers\SNS\HomeController::class, 'like
 Route::get('/knowledgeBox/kitchenknife', function () {
     return view('knowledgeBox.kitchenknife');
 })->name('kitchenknife');
+
+Route::get('/knowledgeBox/skillet', function () {
+    return view('knowledgeBox.skillet');
+})->name('skillet');
+
+Route::get('/ComingSoon', function () {
+    return '近日追加予定！！！';
+})->name('ComingSoon');
