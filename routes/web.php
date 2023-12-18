@@ -29,7 +29,7 @@ Route::get('/recipe', function () {
 
 
 Route::get('/knowledgeBox', function () {
-    return view('knowledge');
+    return view('knowledgeBox.knowledgeBox');
 })->name('knowledge');
 
 Auth::routes();
@@ -76,3 +76,7 @@ Route::post('/process',           [App\Http\Controllers\Auth\RegisterController:
 
 //いいね機能
 Route::post('/like-post', [App\Http\Controllers\SNS\HomeController::class, 'likePost']);
+
+Route::get('/knowledgeBox/kitchenknife', function () {
+    return view('knowledgeBox.kitchenknife');
+})->name('kitchenknife');

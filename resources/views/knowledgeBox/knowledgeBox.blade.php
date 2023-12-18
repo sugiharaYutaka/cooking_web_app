@@ -30,11 +30,12 @@
                     <!-- Tab 1のコンテンツを3x3のグリッドで配置 -->
                     <div class="col-4 mb-3">
                         <div class="card">
-                            <img src="{{ asset('/knowledge/kitchenknife.jpg') }}" class="card-img-top custom-image-size">
-                            <div class="card-body">
-                                <h5 class="card-title">包丁</h5>
-                                <p class="card-text">Tab 1のコンテンツ1</p>
-                            </div>
+                            <a href="{{ route('kitchenknife') }}" class="no-underline text-dark">
+                                <img src="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Frying_pan.jpeg" class="card-img-top custom-image-size d-flex justify-content-center">
+                                <div class="card-body">
+                                    <h5 class="card-title d-flex justify-content-center">包丁</h5>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-4 mb-3">
@@ -175,11 +176,20 @@
 
 <style>
     /* カスタムの画像サイズを定義するクラス */
-    .custom-image-size {
-        /* ここに画像の幅や高さなどのスタイルを追加 */
-        /* 例えば、最大幅を指定する場合 */
-        max-width: 100%;
-        height: auto;
+    @media(max-width:750px) {
+        .custom-image-size {
+
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    @media(min-width:751px) {
+        .custom-image-size {
+
+            width: 200px;
+            height: 200px;
+        }
     }
 </style>
 
