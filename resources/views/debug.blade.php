@@ -66,5 +66,11 @@
         <input type="text" name="progress" placeholder="チャプターの進捗状況(int)" required><br>
         <input type="submit" value="登録"><br>
     </form>
+    <form action="{{ url('/like-post')}}" method="POST">
+        @csrf
+        <span>iine kasan</span><br>
+        <input type="text" name="post_id" placeholder="id" required><br>
+        <input type="submit" value="登録"><br>
+    </form>
 </body>
 </html>

@@ -15,36 +15,31 @@
 
 <body>
     <div class="header fixed-top">
-        <div class="container-fluid p0">
+        <div class="container-fluid">
             <div class="row border">
                 <nav class="navbar navbar-expand-lg navbar-light bg-color-2">
-                    <!--<div class="col-lg-2">
-            </div>-->
-                    <div class="col-2 d-flex">
-                        <!--<a><img class="logo" src="{{asset('image/logo.png')}}"></a>-->
+                    <div class="col-2 d-flex justify-content-center ps-5">
                         <button type="button" style="border: none; background: transparent;" class="btn"><a href="{{ route('top') }}"><img class="logo" src="{{asset('image/logo.png')}}"></a></button>
                     </div>
-                    <div class="col-lg-1">
+                    <div class="col-5">
                     </div>
-                    <div class="col-lg-1">
-                        <button type="button" class="btn"><a href="{{ route('study') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/study.png') }}" class="footericon"><br>勉強</a></button>
+                    <div class="col-1 d-flex justify-content-center">
+                        <button type="button" class="btn"><a href="{{ route('study') }}" class="no-underline text-dark"><img src="{{ asset('image/study.png') }}" class="footericon"><br>勉強</a></button>
                     </div>
-                    <div class="col-lg-1">
-                        <button type="button" class="btn"><a href="{{ route('recipe') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/recipe.png') }}" class="footericon"><br>献立</a></button>
+                    <div class="col-1 d-flex justify-content-center">
+                        <button type="button" class="btn"><a href="{{ route('recipe') }}" class="no-underline text-dark"><img src="{{ asset('image/recipe.png') }}" class="footericon"><br>レシピ</a></button>
                     </div>
-                    <div class="col-lg-1">
-                        <button type="button" class="btn"><a href="{{ route('sns') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/SNS.png') }}" class="footericon"><br>SNS</a></button>
+                    <div class="col-1 d-flex justify-content-center">
+                        <button type="button" class="btn"><a href="{{ route('sns') }}" class="no-underline text-dark"><img src="{{ asset('image/sns.png') }}" class="footericon"><br>SNS</a></button>
                     </div>
-                    <div class="col-lg-1">
-                        <button type="button" class="btn"><a href="{{ route('dictionary') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/dictionary.png') }}" class="footericon"><br>知識箱</a></button>
+                    <div class="col-1 d-flex justify-content-center">
+                        <button type="button" class="btn"><a href="{{ route('knowledge') }}" class="no-underline text-dark"><img src="{{ asset('image/knowledge.png') }}" class="footericon"><br>知識箱</a></button>
                     </div>
-                    <div class="col-lg-4">
-                    </div>
-                    <div class="col-1">
+                    <div class="col-1 d-flex justify-content-center">
                         @guest
-                        <a href="#modalProfile" data-bs-toggle="modal"><img src="{{ asset('image/user_icon.png') }}" class="user-icon" style="width: 48px; height: 48px;" /></a>
+                        <button type="button" class="btn"><a href="#modalProfile" data-bs-toggle="modal" class="no-underline text-dark"><img src=" {{ asset('image/profile.png') }}" class="footericon"><br>未ログイン</a></button>
                         @else
-                        <a href="#modalProfile" data-bs-toggle="modal"><img src="{{ asset('') }}" class="user-icon" style="width: 48px; height: 48px;" /></a>
+                        <button type="button" class="btn"><a href="{{ route('profile') }}" class="no-underline text-dark"><img src=" {{ asset('image/user_icon1.png') }}" class="footericon"><br>プロフィール</a></button>
                         @endguest
                     </div>
                 </nav>

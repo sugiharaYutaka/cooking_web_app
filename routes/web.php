@@ -28,13 +28,11 @@ Route::get('/recipe', function () {
 })->name('recipe');
 
 
-Route::get('/dictionary', function () {
-    return 'これは未実装のルートです';
-})->name('dictionary');
+Route::get('/knowledge', function () {
+    return view('knowledge');
+})->name('knowledge');
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\SNS\HomeController::class, 'index'])->name('home');
 
 Route::get('/sns', [App\Http\Controllers\SNS\HomeController::class, 'index'])->name('sns');
 
