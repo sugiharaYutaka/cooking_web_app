@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -82,14 +83,6 @@ class RegisterController extends Controller
         $name = $request->input('name');
         $email = $request->input('email');
 
-        // セッションにデータを保存
-        $data = Models\User::where('email',"=", $email)->first();
-        session([
-            "email" => $data->email,
-            "name" => $data->name,
-            "icon_filename" => $data->icon_filename,
-        ]);
-
         // セッションに保存された値を取得して表示する例
         $savedName = $request->session()->get('name');
         $savedEmail = $request->session()->get('email');
@@ -100,13 +93,21 @@ class RegisterController extends Controller
             'name' => $request->name,
             'password' =>  Hash::make($request->password),
         ]);
-
         Models\SnsProfile::create([
             'email' => $request->email,
             'history' => 0,
             'comment' => '',
         ]);
 
-        return redirect()->route('top');
+        $data = Models\User::where('email',$email)->first();
+        Auth::login($data);
+        session([
+            "email" => $data->email,
+            "name" => $data->name,
+            "icon_filename" => $data->icon_filename,
+        ]);
+
+
+        return redirect("/top");
     }
 }
