@@ -28,7 +28,7 @@ Route::get('/recipe', function () {
 })->name('recipe');
 
 
-Route::get('/knowledge', function () {
+Route::get('/knowledgeBox', function () {
     return view('knowledge');
 })->name('knowledge');
 
