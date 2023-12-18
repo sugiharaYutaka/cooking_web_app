@@ -13,7 +13,8 @@ class PostController extends Controller
     {
         $email = $request->session()->get('email');
 
-        return view('sns.snspost', compact('email','data'));
+        //return view('sns.snspost', compact('email','data'));
+        return view('sns.snspost', compact('email') );
     }
 
     public function post(Request $request)
@@ -29,7 +30,7 @@ class PostController extends Controller
             'text' => $request->text,
             'image_filename' => basename($path),
         ]);
-        event(new YourEventName($newPost));
+        //event(new YourEventName($newPost));
     }
 
     public function reply()
