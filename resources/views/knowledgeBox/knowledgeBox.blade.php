@@ -30,8 +30,8 @@
                     <!-- Tab 1のコンテンツを3x3のグリッドで配置 -->
                     <div class="col-4 mb-3">
                         <div class="card">
-                            <a href="{{ route('kichenknife') }}" class="no-underline text-dark">
-                                <img src="{{ asset('/knowledge/kitchenknife.jpg') }}" class="card-img-top custom-image-size d-flex justify-content-center">
+                            <a href="{{ route('kitchenknife') }}" class="no-underline text-dark">
+                                <img src="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Frying_pan.jpeg" class="card-img-top custom-image-size d-flex justify-content-center">
                                 <div class="card-body">
                                     <h5 class="card-title d-flex justify-content-center">包丁</h5>
                                 </div>
