@@ -5219,14 +5219,16 @@ __webpack_require__.r(__webpack_exports__);
     this.postMax = this.parsedData.length;
     window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
       broadcaster: 'pusher',
-      key: "4bba746d7784feb8ad5b",
-      cluster: "ap3",
+      key: "",
+      cluster: "mt1",
       encrypted: true
     });
     window.Echo.channel('good-channel').listen('GoodEvent', function (event) {
       if (event.error) {
         console.error('Pusher error:', event.error);
       } else {
+        //postMaxより要素数が多くなって値がかえって来た場合　多くなった分の要素を削除する
+        //いいねボタンを押す間に新しい投稿がされたときの対策
         if (event.post_data.length > _this.postMax) {
           event.post_data = event.post_data.slice(event.post_data.length - _this.postMax);
         }
@@ -5334,8 +5336,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "4bba746d7784feb8ad5b",
-  cluster: "ap3",
+  key: "",
+  cluster: "mt1",
   encrypted: true
 });
 
