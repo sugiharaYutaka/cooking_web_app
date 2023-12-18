@@ -7,7 +7,8 @@
     <!--- アコーディオンを開いた時 マージン消す--->
     <style>.accordion-button.text-center::after{ margin:0; }</style>
 </head>
-<body style="margin-top: 150px; margin-bottom: 150px;  background-color:#F3EEEA;">
+<body style="margin-top: 150px; margin-bottom: 150px; background-image:'p0071_m.jpg';">
+
     <div class="container-fluid">
         <div class="row mx-2">
         <div class="accordion" id="accordionPanelsStayOpenExample">
