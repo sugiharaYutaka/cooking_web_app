@@ -23,10 +23,6 @@ Route::get('/', function () {
 | Stub Route
 |--------------------------------------------------------------------------
 */
-Route::get('/recipe', function () {
-    return 'これは未実装のルートです';
-})->name('recipe');
-
 
 Route::get('/knowledgeBox', function () {
     return view('knowledgeBox.knowledgeBox');
@@ -40,6 +36,9 @@ Route::get('/chapter1', [App\Http\Controllers\Chapter1Controller::class, 'index'
 
 Route::get('/top', [App\Http\Controllers\TopController::class, 'show']);
 
+Route::get('/recipe', [App\Http\Controllers\RecipeController::class, 'index'])->name('recipe');
+Route::get('/recipe/post', [App\Http\Controllers\RecipeController::class, 'post'])->name('recipepost');
+
 
 
 use App\Http\Controllers\ChapterController;
@@ -52,7 +51,7 @@ Route::get('/top', [App\Http\Controllers\TopController::class, 'show'])->name('t
 Route::get('/top', [App\Http\Controllers\TopController::class, 'show'])->name('top');
 Route::get('/top', [App\Http\Controllers\TopController::class, 'show'])->name('top');
 
-Route::get('/sns/post', [App\Http\Controllers\SNS\PostController::class, 'show'])->name('post');
+Route::get('/sns/post', [App\Http\Controllers\SNS\PostController::class, 'show'])->name('snspost');
 Route::post('/sns/post', [App\Http\Controllers\SNS\PostController::class, 'post']);
 
 Route::get('/profile', [App\Http\Controllers\SNS\ProfileController::class, 'show'])->name('profile');
