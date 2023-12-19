@@ -205,8 +205,10 @@
                         </button>
                     </h2>
                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
-                        <div class="accordion-body">
-                            <strong>チャプター1の詳細な内容がここに表示されます。</strong><br>
+                        <div class="accordion-body" style="text-align: center;">
+                            <img src="images/oyakodon.jpg" alt="チャプター1の画像" style="width: 100%; max-width: 400px; height: auto;">
+                            <strong style="font-size: 24px; display: block; margin: 5px auto;">親子丼</strong><br>
+                            <strong>鶏肉と卵を使ったシンプルでおいしい料理です。手軽に作れるので初心者におすすめです。</strong><br>
                             <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
                         </div>
                     </div>
@@ -219,6 +221,7 @@
                     </h2>
                     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                         <div class="accordion-body">
+                            <strong style="font-size: 24px; display: block; margin: 5px auto;">NULL</strong><br>
                             <strong>チャプター2の詳細な内容がここに表示されます。</strong><br>
                             <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
                         </div>
@@ -232,6 +235,7 @@
                     </h2>
                     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
                         <div class="accordion-body">
+                            <strong style="font-size: 24px; display: block; margin: 5px auto;">NULL</strong><br>
                             <strong>チャプター3の詳細な内容がここに表示されます。</strong><br>
                             <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
                         </div>
@@ -245,6 +249,7 @@
                     </h2>
                     <div id="panelsStayOpen-collapsefour" class="accordion-collapse collapse">
                         <div class="accordion-body">
+                            <strong style="font-size: 24px; display: block; margin: 5px auto;">NULL</strong><br>
                             <strong>チャプター3の詳細な内容がここに表示されます。</strong><br>
                             <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
                         </div>
@@ -258,6 +263,7 @@
                     </h2>
                     <div id="panelsStayOpen-collapsefive" class="accordion-collapse collapse">
                         <div class="accordion-body">
+                            <strong style="font-size: 24px; display: block; margin: 5px auto;">NULL</strong><br>
                             <strong>チャプター5の詳細な内容がここに表示されます。</strong><br>
                             <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
                         </div>
