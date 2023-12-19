@@ -80,6 +80,19 @@ class RegisterController extends Controller
 
     public function process(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'email_confirmation' => 'required|email|same:email',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('register')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $name = $request->input('name');
         $email = $request->input('email');
 
@@ -99,7 +112,7 @@ class RegisterController extends Controller
             'comment' => '',
         ]);
 
-        $data = Models\User::where('email',$email)->first();
+        $data = Models\User::where('email', $email)->first();
         Auth::login($data);
         session([
             "email" => $data->email,

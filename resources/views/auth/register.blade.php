@@ -40,18 +40,20 @@
 
                         <div class="row mb-3">
                             <label for="email-confirm" class="col-md-4 col-form-label text-md-end">メールアドレス確認</label>
-
                             <div class="col-md-6">
-                                <input id="email-confirm" type="email" class="form-control" name="email_confirmation" required autocomplete="new-email">
+                                <input id="email-confirm" type="email" class="form-control @error('email_confirmation') is-invalid @enderror" name="email_confirmation" required autocomplete="new-email">
+                                @error('email_confirmation')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">パスワード</label>
-
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -62,9 +64,13 @@
 
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">パスワード確認</label>
-
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password">
+                                @error('password_confirmation')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
