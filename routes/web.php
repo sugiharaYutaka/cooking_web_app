@@ -23,10 +23,6 @@ Route::get('/', function () {
 | Stub Route
 |--------------------------------------------------------------------------
 */
-Route::get('/recipe', function () {
-    return 'これは未実装のルートです';
-})->name('recipe');
-
 
 Route::get('/knowledgeBox', function () {
     return view('knowledgeBox.knowledgeBox');
@@ -39,6 +35,9 @@ Route::get('/sns', [App\Http\Controllers\SNS\HomeController::class, 'index'])->n
 Route::get('/chapter1', [App\Http\Controllers\Chapter1Controller::class, 'index'])->name('chapter1');
 
 Route::get('/top', [App\Http\Controllers\TopController::class, 'show']);
+
+Route::get('/recipe', [App\Http\Controllers\RecipeController::class, 'index'])->name('recipe');
+Route::get('/recipe/post', [App\Http\Controllers\RecipeController::class, 'post'])->name('recipepost');
 
 
 
