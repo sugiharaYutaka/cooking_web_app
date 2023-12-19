@@ -22,7 +22,10 @@
                                 <div class="container">
                                     <div class="row mt-1">
                                         <div class="col-2 text-end">
+                                            <!--
                                             <img class="post-icon" :src="_imagePath + parsedData[index].icon_filename">
+                                            -->
+                                            <input type="image" class="post-icon" :src="_imagePath + parsedData[index].icon_filename" @click="sendPost('profile', parsedData[index].id)">
                                         </div>
                                         <div class="col align-self-center">
                                             <span class="h5">{{ parsedData[index].name }}</span>
@@ -45,7 +48,7 @@
                                             <div class="like-form">
                                                 <input type="hidden" name="post_id" v-bind:value=parsedData[index].id>
                                                 <span class="like-count">{{parsedData[index].good}}</span> <!-- いいね数を表示 -->
-                                                <button type="submit" class="like-btn interaction-button my-2" @click="likePost(parsedData[index].id)">♡</button>
+                                                <button type="submit" class="like-btn interaction-button my-2" @click="sendPost('like',parsedData[index].id)">♡</button>
                                                 <!-- 他のボタンとフォーム -->
                                             </div>
                                             <!--<button class="like-btn interaction-button my-2">♡</button>-->
@@ -73,22 +76,28 @@
 <script>
 import Echo from 'laravel-echo';
   export default {
-    props:["postData","replyUrl","imagePath"],
+    props:["postData","replyUrl","profileUrl","imagePath"],
     data() {
       return {
         parsedData:null,
         postMax:0,
         _imagePath:null,
         _replyUrl:null,
+        profileUrl:null,
         commentInput:"comment-input"
       };
     },
     methods:{
-        likePost(postId){
+        sendPost(target,postId){
             let formData = new FormData();
             formData.append('post_id', postId);
-            //replyUrlにPOST送信
-            axios.post(this._replyUrl,formData)
+            if (target == 'like'){
+                //replyUrlにPOST送信
+                axios.post(this._replyUrl,formData)
+            }else if (target == 'profile'){
+                //profileUrlにPOST送信
+                axios.post(this.profileUrl,formData)
+            }
         },
     },
 
