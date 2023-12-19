@@ -5184,7 +5184,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5194,7 +5193,8 @@ __webpack_require__.r(__webpack_exports__);
       parsedData: null,
       postMax: 0,
       _imagePath: null,
-      _replyUrl: null
+      _replyUrl: null,
+      commentInput: "comment-input"
     };
   },
   methods: {
@@ -5238,7 +5238,7 @@ __webpack_require__.r(__webpack_exports__);
     });
   }
 });
-var replyButtons = document.querySelectorAll('.reply-btn');
+var replyButtons = document.querySelectorAll('.reply-btn8');
 replyButtons.forEach(function (button) {
   button.addEventListener('click', function () {
     var commentInput = this.parentElement.nextElementSibling;
@@ -33839,10 +33839,29 @@ var render = function () {
                             },
                             [_vm._v("リプライ")]
                           ),
+                          _vm._v(" "),
+                          _c(
+                            "form",
+                            {
+                              class:
+                                _vm.commentInput + _vm.parsedData[index].id,
+                              staticStyle: { display: "none" },
+                            },
+                            [
+                              _vm._m(1, true),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: { type: "submit" },
+                                },
+                                [_vm._v("投稿")]
+                              ),
+                            ]
+                          ),
                         ]),
                       ]),
-                      _vm._v(" "),
-                      _vm._m(1, true),
                     ]),
                   ]),
                   _vm._v(" "),
@@ -33879,30 +33898,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "form",
-      { staticClass: "comment-input", staticStyle: { display: "none" } },
-      [
-        _c("div", { staticClass: "mb-3" }, [
-          _c(
-            "label",
-            { staticClass: "form-label", attrs: { for: "commentInput" } },
-            [_vm._v("コメントを入力")]
-          ),
-          _vm._v(" "),
-          _c("textarea", {
-            staticClass: "form-control",
-            attrs: { id: "commentInput", rows: "3" },
-          }),
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_vm._v("投稿")]
-        ),
-      ]
-    )
+    return _c("div", { staticClass: "mb-3" }, [
+      _c(
+        "label",
+        { staticClass: "form-label", attrs: { for: "commentInput" } },
+        [_vm._v("コメントを入力")]
+      ),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "form-control",
+        attrs: { id: "commentInput", rows: "3" },
+      }),
+    ])
   },
 ]
 render._withStripped = true

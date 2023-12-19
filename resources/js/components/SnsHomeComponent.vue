@@ -50,16 +50,15 @@
                                             </div>
                                             <!--<button class="like-btn interaction-button my-2">♡</button>-->
                                             <button class="reply-btn interaction-button my-2">リプライ</button>
+                                            <form :class="commentInput + parsedData[index].id" style="display: none;">
+                                                <div class="mb-3">
+                                                    <label for="commentInput" class="form-label">コメントを入力</label>
+                                                    <textarea class="form-control" id="commentInput" rows="3"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">投稿</button>
+                                            </form>
                                         </div>
                                     </div>
-
-                                    <form class="comment-input" style="display: none;">
-                                        <div class="mb-3">
-                                            <label for="commentInput" class="form-label">コメントを入力</label>
-                                            <textarea class="form-control" id="commentInput" rows="3"></textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">投稿</button>
-                                    </form>
                                 </div>
                             </div>
                             <hr>
@@ -81,6 +80,7 @@ import Echo from 'laravel-echo';
         postMax:0,
         _imagePath:null,
         _replyUrl:null,
+        commentInput:"comment-input"
       };
     },
     methods:{
@@ -129,7 +129,7 @@ import Echo from 'laravel-echo';
     }
   };
 
-const replyButtons = document.querySelectorAll('.reply-btn');
+const replyButtons = document.querySelectorAll('.reply-btn8');
 replyButtons.forEach(button => {
     button.addEventListener('click', function() {
         const commentInput = this.parentElement.nextElementSibling;
