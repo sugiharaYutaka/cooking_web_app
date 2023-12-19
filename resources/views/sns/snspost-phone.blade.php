@@ -44,9 +44,10 @@
 
                             <textarea id="userInput" name="text"></textarea>
                             <div class="mb-3">
-                                <label for="image" class="form-label">Select Image</label>
-                                <input type="file" class="form-control" id="image" name="image">
+                                <label for="image" class="form-label">画像を追加する</label>
+                                <input type="file" class="form-control" id="image" name="image" onchange="previewImage(event)">
                             </div>
+                            <img id="preview" src="#" alt="Image Preview" class="" style="display: none; max-width: 200px; max-height: 200px; margin: 0 auto; text-align: center;">
                             <button type="submit" class="btn btn-primary">送信</button>
                         </form>
 
@@ -56,3 +57,20 @@
         </div>
     </div>
 </body>
+
+<script>
+    function previewImage(event) {
+        const input = event.target;
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const preview = document.getElementById('preview');
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

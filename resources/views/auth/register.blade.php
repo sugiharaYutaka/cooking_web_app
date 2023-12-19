@@ -75,10 +75,6 @@
                                 </button>
                             </div>
                         </div>
-
-                        <!--確認用-->
-                        <p>名前: {{ session('name') }}</p>
-                        <p>メールアドレス: {{ session('email') }}</p>
                     </form>
                 </div>
             </div>
