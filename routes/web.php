@@ -78,6 +78,7 @@ Route::post('/like-post', [App\Http\Controllers\SNS\HomeController::class, 'like
 
 // reply
 Route::post('/reply', [App\Http\Controllers\SNS\ReplyController::class, 'reply']);
+Route::post('/replyShow', [App\Http\Controllers\SNS\ReplyController::class, 'replyShow']);
 
 
 Route::get('/knowledgeBox/kitchenknife', function () {

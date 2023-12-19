@@ -5189,17 +5189,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["postData", "replyUrl", "imagePath"],
+  props: ["postData", "replyUrl", "imagePath", "replyPostUrl", "replyShowUrl"],
   data: function data() {
     return {
       parsedData: null,
       postMax: 0,
       _imagePath: null,
       _replyUrl: null,
-      commentInput: "comment-input"
+      _replyPostUrl: null,
+      _replyShowUrl: null,
+      commentInput: "comment-input",
+      csrfToken: null
     };
   },
   methods: {
@@ -5228,7 +5242,7 @@ __webpack_require__.r(__webpack_exports__);
         var formData = new FormData();
         formData.append('post_id', this.parsedData[index].id);
         formData.append('comment', comment);
-        axios.post('/reply', formData) // ここでリプライ送信用のエンドポイントを指定
+        axios.post(this._replyPostUrl, formData) // ここでリプライ送信用のエンドポイントを指定
         .then(function (response) {
           // リプライが送信された後の処理をここに記述
           console.log('Reply sent successfully');
@@ -5246,9 +5260,15 @@ __webpack_require__.r(__webpack_exports__);
     this.parsedData = JSON.parse(this.postData);
     this._imagePath = this.imagePath.replaceAll('\\', '').replaceAll('"', '') + '/';
     this._replyUrl = this.replyUrl.replaceAll('\\', '').replaceAll('"', '');
-    //console.log(this.parsedData)
-    //console.log(this._replyUrl)
-    //console.log(this._imagePath)
+    this._replyPostUrl = this.replyPostUrl.replaceAll('\\', '').replaceAll('"', '');
+    this._replyShowUrl = this.replyShowUrl.replaceAll('\\', '').replaceAll('"', '');
+
+    //snsapp.blade.phpに記述されているcsrfトークンを取得
+    this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    //console.log(this.parsedData);
+    //console.log(this._replyUrl);
+    //console.log(this._imagePath);
+    //console.log(this._replyPostUrl);
 
     //ページを最初に読み込んだ時の、投稿の数を入れとく
     this.postMax = this.parsedData.length;
@@ -5272,17 +5292,6 @@ __webpack_require__.r(__webpack_exports__);
       }
     });
   }
-});
-var replyButtons = document.querySelectorAll('.reply-btn8');
-replyButtons.forEach(function (button) {
-  button.addEventListener('click', function () {
-    var commentInput = this.parentElement.nextElementSibling;
-    if (commentInput.style.display === 'none') {
-      commentInput.style.display = 'block';
-    } else {
-      commentInput.style.display = 'none';
-    }
-  });
 });
 
 /***/ }),
@@ -33868,6 +33877,41 @@ var render = function () {
                           ]),
                           _vm._v(" "),
                           _c(
+                            "form",
+                            {
+                              staticStyle: { display: "inline" },
+                              attrs: {
+                                action: _vm._replyShowUrl,
+                                method: "post",
+                              },
+                            },
+                            [
+                              _c("input", {
+                                attrs: { type: "hidden", name: "_token" },
+                                domProps: { value: _vm.csrfToken },
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                attrs: { type: "hidden", name: "post_id" },
+                                domProps: { value: _vm.parsedData[index].id },
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "reply-btn interaction-button my-2",
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                                リプライを見る\n                                            "
+                                  ),
+                                ]
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
                             "button",
                             {
                               staticClass: "reply-btn interaction-button my-2",
@@ -33877,11 +33921,15 @@ var render = function () {
                                 },
                               },
                             },
-                            [_vm._v("リプライ")]
+                            [
+                              _vm._v(
+                                "リプライ\n                                        "
+                              ),
+                            ]
                           ),
                           _vm._v(" "),
                           _c(
-                            "form",
+                            "div",
                             {
                               class:
                                 _vm.commentInput + _vm.parsedData[index].id,
@@ -33901,7 +33949,11 @@ var render = function () {
                                     },
                                   },
                                 },
-                                [_vm._v("投稿")]
+                                [
+                                  _vm._v(
+                                    "投稿\n                                            "
+                                  ),
+                                ]
                               ),
                             ]
                           ),

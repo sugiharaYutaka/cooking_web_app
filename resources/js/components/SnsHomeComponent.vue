@@ -51,17 +51,28 @@
                                                     @click="likePost(parsedData[index].id)">♡</button>
                                                 <!-- 他のボタンとフォーム -->
                                             </div>
-                                            <!--<button class="like-btn interaction-button my-2">♡</button>-->
+
+                                            <form :action=_replyShowUrl method="post" style="display: inline;">
+                                                <input type="hidden" name="_token" :value=csrfToken>
+                                                <input type="hidden" name="post_id" :value=parsedData[index].id>
+                                                <button class="reply-btn interaction-button my-2">
+                                                    リプライを見る
+                                                </button>
+                                            </form>
+
                                             <button class="reply-btn interaction-button my-2"
-                                                @click="replyshow(index)">リプライ</button>
-                                            <form :class="commentInput + parsedData[index].id" style="display: none;">
+                                                @click="replyshow(index)">リプライ
+                                            </button>
+
+                                            <div :class="commentInput + parsedData[index].id" style="display: none;">
                                                 <div class="mb-3">
                                                     <label for="commentInput" class="form-label">コメントを入力</label>
                                                     <textarea class="form-control" id="commentInput" rows="3"></textarea>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary"
-                                                    @click="replyPost(index)">投稿</button>
-                                            </form>
+                                                    @click="replyPost(index)">投稿
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -78,14 +89,17 @@
 <script>
 import Echo from 'laravel-echo';
 export default {
-    props: ["postData", "replyUrl", "imagePath"],
+    props: ["postData", "replyUrl", "imagePath", "replyPostUrl","replyShowUrl"],
     data() {
         return {
             parsedData: null,
             postMax: 0,
             _imagePath: null,
             _replyUrl: null,
-            commentInput: "comment-input"
+            _replyPostUrl: null,
+            _replyShowUrl: null,
+            commentInput: "comment-input",
+            csrfToken:null,
         };
     },
     methods: {
@@ -115,7 +129,7 @@ export default {
                 formData.append('post_id', this.parsedData[index].id);
                 formData.append('comment', comment);
 
-                axios.post('/reply', formData) // ここでリプライ送信用のエンドポイントを指定
+                axios.post(this._replyPostUrl, formData) // ここでリプライ送信用のエンドポイントを指定
                     .then(response => {
                         // リプライが送信された後の処理をここに記述
                         console.log('Reply sent successfully');
@@ -135,9 +149,15 @@ export default {
         this.parsedData = JSON.parse(this.postData);
         this._imagePath = this.imagePath.replaceAll('\\', '').replaceAll('"', '') + '/';
         this._replyUrl = this.replyUrl.replaceAll('\\', '').replaceAll('"', '');
-        //console.log(this.parsedData)
-        //console.log(this._replyUrl)
-        //console.log(this._imagePath)
+        this._replyPostUrl = this.replyPostUrl.replaceAll('\\', '').replaceAll('"', '');
+        this._replyShowUrl = this.replyShowUrl.replaceAll('\\', '').replaceAll('"', '');
+
+        //snsapp.blade.phpに記述されているcsrfトークンを取得
+        this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        //console.log(this.parsedData);
+        //console.log(this._replyUrl);
+        //console.log(this._imagePath);
+        //console.log(this._replyPostUrl);
 
         //ページを最初に読み込んだ時の、投稿の数を入れとく
         this.postMax = this.parsedData.length;
@@ -165,16 +185,4 @@ export default {
         });
     }
 };
-
-const replyButtons = document.querySelectorAll('.reply-btn8');
-replyButtons.forEach(button => {
-    button.addEventListener('click', function () {
-        const commentInput = this.parentElement.nextElementSibling;
-        if (commentInput.style.display === 'none') {
-            commentInput.style.display = 'block';
-        } else {
-            commentInput.style.display = 'none';
-        }
-    });
-});
 </script>
