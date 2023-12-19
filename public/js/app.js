@@ -5188,6 +5188,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5208,7 +5209,7 @@ __webpack_require__.r(__webpack_exports__);
       //replyUrlにPOST送信
       axios.post(this._replyUrl, formData);
     },
-    replyPost: function replyPost(index) {
+    replyshow: function replyshow(index) {
       var commentInputClass = this.commentInput + this.parsedData[index].id;
       var commentInput = document.querySelector('.' + commentInputClass);
       if (commentInput) {
@@ -5217,6 +5218,25 @@ __webpack_require__.r(__webpack_exports__);
         } else {
           commentInput.style.display = 'none';
         }
+      }
+    },
+    replyPost: function replyPost(index) {
+      var commentInputClass = this.commentInput + this.parsedData[index].id;
+      var commentInput = document.querySelector('.' + commentInputClass);
+      var comment = commentInput.querySelector('textarea').value; // コメントの値を取得する
+      if (comment) {
+        var formData = new FormData();
+        formData.append('post_id', this.parsedData[index].id);
+        formData.append('comment', comment);
+        axios.post('/reply', formData) // ここでリプライ送信用のエンドポイントを指定
+        .then(function (response) {
+          // リプライが送信された後の処理をここに記述
+          console.log('Reply sent successfully');
+          // 他の更新やリダイレクトなどが必要ならば追加してください
+        })["catch"](function (error) {
+          // エラーが発生した場合の処理
+          console.error('Error sending reply:', error);
+        });
       }
     }
   },
@@ -33853,7 +33873,7 @@ var render = function () {
                               staticClass: "reply-btn interaction-button my-2",
                               on: {
                                 click: function ($event) {
-                                  return _vm.replyPost(index)
+                                  return _vm.replyshow(index)
                                 },
                               },
                             },
@@ -33875,6 +33895,11 @@ var render = function () {
                                 {
                                   staticClass: "btn btn-primary",
                                   attrs: { type: "submit" },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.replyPost(index)
+                                    },
+                                  },
                                 },
                                 [_vm._v("投稿")]
                               ),

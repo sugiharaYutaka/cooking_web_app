@@ -53,13 +53,14 @@
                                             </div>
                                             <!--<button class="like-btn interaction-button my-2">♡</button>-->
                                             <button class="reply-btn interaction-button my-2"
-                                                @click="replyPost(index)">リプライ</button>
+                                                @click="replyshow(index)">リプライ</button>
                                             <form :class="commentInput + parsedData[index].id" style="display: none;">
                                                 <div class="mb-3">
                                                     <label for="commentInput" class="form-label">コメントを入力</label>
                                                     <textarea class="form-control" id="commentInput" rows="3"></textarea>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">投稿</button>
+                                                <button type="submit" class="btn btn-primary"
+                                                    @click="replyPost(index)">投稿</button>
                                             </form>
                                         </div>
                                     </div>
@@ -94,7 +95,7 @@ export default {
             //replyUrlにPOST送信
             axios.post(this._replyUrl, formData)
         },
-        replyPost(index) {
+        replyshow(index) {
             const commentInputClass = this.commentInput + this.parsedData[index].id;
             const commentInput = document.querySelector('.' + commentInputClass);
             if (commentInput) {
@@ -104,7 +105,29 @@ export default {
                     commentInput.style.display = 'none';
                 }
             }
+        },
+        replyPost(index) {
+            const commentInputClass = this.commentInput + this.parsedData[index].id;
+            const commentInput = document.querySelector('.' + commentInputClass);
+            const comment = commentInput.querySelector('textarea').value; // コメントの値を取得する
+            if (comment) {
+                let formData = new FormData();
+                formData.append('post_id', this.parsedData[index].id);
+                formData.append('comment', comment);
+
+                axios.post('/reply', formData) // ここでリプライ送信用のエンドポイントを指定
+                    .then(response => {
+                        // リプライが送信された後の処理をここに記述
+                        console.log('Reply sent successfully');
+                        // 他の更新やリダイレクトなどが必要ならば追加してください
+                    })
+                    .catch(error => {
+                        // エラーが発生した場合の処理
+                        console.error('Error sending reply:', error);
+                    });
+            }
         }
+
     },
 
     mounted() {

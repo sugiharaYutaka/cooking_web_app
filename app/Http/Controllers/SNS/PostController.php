@@ -34,7 +34,4 @@ class PostController extends Controller
         return redirect("/sns");
     }
 
-    public function reply()
-    {
-    }
 }
