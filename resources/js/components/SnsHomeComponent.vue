@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <head>
             <meta charset="UTF-8">
             <title>SNS - 投稿一覧</title>
@@ -17,7 +18,7 @@
                 <div class="row">
                     <div class="col">
                         <hr>
-                        <div v-for="(post,index) in parsedData" :key="index">
+                        <div v-for="(post, index) in parsedData" :key="index">
                             <div class="post-body">
                                 <div class="container">
                                     <div class="row mt-1">
@@ -44,12 +45,15 @@
                                         <div class="col text-end">
                                             <div class="like-form">
                                                 <input type="hidden" name="post_id" v-bind:value=parsedData[index].id>
-                                                <span class="like-count">{{parsedData[index].good}}</span> <!-- いいね数を表示 -->
-                                                <button type="submit" class="like-btn interaction-button my-2" @click="likePost(parsedData[index].id)">♡</button>
+                                                <span class="like-count">{{ parsedData[index].good }}</span>
+                                                <!-- いいね数を表示 -->
+                                                <button type="submit" class="like-btn interaction-button my-2"
+                                                    @click="likePost(parsedData[index].id)">♡</button>
                                                 <!-- 他のボタンとフォーム -->
                                             </div>
                                             <!--<button class="like-btn interaction-button my-2">♡</button>-->
-                                            <button class="reply-btn interaction-button my-2">リプライ</button>
+                                            <button class="reply-btn interaction-button my-2"
+                                                @click="replyPost(index)">リプライ</button>
                                             <form :class="commentInput + parsedData[index].id" style="display: none;">
                                                 <div class="mb-3">
                                                     <label for="commentInput" class="form-label">コメントを入力</label>
@@ -72,31 +76,42 @@
 
 <script>
 import Echo from 'laravel-echo';
-  export default {
-    props:["postData","replyUrl","imagePath"],
+export default {
+    props: ["postData", "replyUrl", "imagePath"],
     data() {
-      return {
-        parsedData:null,
-        postMax:0,
-        _imagePath:null,
-        _replyUrl:null,
-        commentInput:"comment-input"
-      };
+        return {
+            parsedData: null,
+            postMax: 0,
+            _imagePath: null,
+            _replyUrl: null,
+            commentInput: "comment-input"
+        };
     },
-    methods:{
-        likePost(postId){
+    methods: {
+        likePost(postId) {
             let formData = new FormData();
             formData.append('post_id', postId);
             //replyUrlにPOST送信
-            axios.post(this._replyUrl,formData)
+            axios.post(this._replyUrl, formData)
         },
+        replyPost(index) {
+            const commentInputClass = this.commentInput + this.parsedData[index].id;
+            const commentInput = document.querySelector('.' + commentInputClass);
+            if (commentInput) {
+                if (commentInput.style.display === 'none' || commentInput.style.display === '') {
+                    commentInput.style.display = 'block';
+                } else {
+                    commentInput.style.display = 'none';
+                }
+            }
+        }
     },
 
-    mounted(){
+    mounted() {
         //bladeから受けっとったデータの整形
         this.parsedData = JSON.parse(this.postData);
-        this._imagePath = this.imagePath.replaceAll('\\','').replaceAll('"','') + '/';
-        this._replyUrl = this.replyUrl.replaceAll('\\','').replaceAll('"','');
+        this._imagePath = this.imagePath.replaceAll('\\', '').replaceAll('"', '') + '/';
+        this._replyUrl = this.replyUrl.replaceAll('\\', '').replaceAll('"', '');
         //console.log(this.parsedData)
         //console.log(this._replyUrl)
         //console.log(this._imagePath)
@@ -118,8 +133,7 @@ import Echo from 'laravel-echo';
             } else {
                 //postMaxより要素数が多くなって値がかえって来た場合　多くなった分の要素を削除する
                 //いいねボタンを押す間に新しい投稿がされたときの対策
-                if(event.post_data.length > this.postMax)
-                {
+                if (event.post_data.length > this.postMax) {
                     event.post_data = event.post_data.slice(event.post_data.length - this.postMax,);
                 }
                 //postのデータ更新
@@ -127,11 +141,11 @@ import Echo from 'laravel-echo';
             }
         });
     }
-  };
+};
 
 const replyButtons = document.querySelectorAll('.reply-btn8');
 replyButtons.forEach(button => {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function () {
         const commentInput = this.parentElement.nextElementSibling;
         if (commentInput.style.display === 'none') {
             commentInput.style.display = 'block';

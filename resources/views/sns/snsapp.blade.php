@@ -31,23 +31,9 @@
 </style>
 <div id="app">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <sns-home-component post-data="{{ json_encode($data) }}" reply-url="{{ json_encode( url('/like-post') ) }}" image-path="{{ json_encode( asset('image') ) }}">
+    <sns-home-component post-data="{{ json_encode($data) }}" reply-url="{{ json_encode( url('/like-post') ) }}" image-path="{{ json_encode( asset('/storage/img') ) }}">
     </sns-home-component>
 </div>
-    <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const replyButtons = document.querySelectorAll('.reply-btn');
-        replyButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const commentInput = this.parentElement.nextElementSibling;
-                if (commentInput.style.display === 'none') {
-                    commentInput.style.display = 'block';
-                } else {
-                    commentInput.style.display = 'none';
-                }
-            });
-        });
-    </script>
+
 
 </html>

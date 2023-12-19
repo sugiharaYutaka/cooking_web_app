@@ -5184,6 +5184,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5203,6 +5207,17 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('post_id', postId);
       //replyUrlにPOST送信
       axios.post(this._replyUrl, formData);
+    },
+    replyPost: function replyPost(index) {
+      var commentInputClass = this.commentInput + this.parsedData[index].id;
+      var commentInput = document.querySelector('.' + commentInputClass);
+      if (commentInput) {
+        if (commentInput.style.display === 'none' || commentInput.style.display === '') {
+          commentInput.style.display = 'block';
+        } else {
+          commentInput.style.display = 'none';
+        }
+      }
     }
   },
   mounted: function mounted() {
@@ -33836,6 +33851,11 @@ var render = function () {
                             "button",
                             {
                               staticClass: "reply-btn interaction-button my-2",
+                              on: {
+                                click: function ($event) {
+                                  return _vm.replyPost(index)
+                                },
+                              },
                             },
                             [_vm._v("リプライ")]
                           ),
