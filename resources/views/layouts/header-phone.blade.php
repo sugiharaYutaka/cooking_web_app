@@ -18,12 +18,10 @@
     <div class="container-fluid p0">
       <div class="row border">
         <nav class="navbar navbar-expand-lg navbar-light bg-color-2">
-          <div class="col-lg-2 d-flex justify-content-center ps-2">
-            <!--<a><img class="logo" src="{{asset('image/logo.png')}}" ></a>-->
-            <button type="button" style="border: none; background: transparent;" class="btn"><a href="{{ route('top') }}"><img class="logo" src="{{asset('image/logo.png')}}"></a></button>
+          <div class="col-10">
+            <button type="button" style="border: none; background: transparent;" class="btn mx-2"><a href="{{ route('top') }}"><img class="logo" src="{{asset('image/logo.png')}}"></a></button>
           </div>
-          <div class="col-lg-9"></div>
-          <div class="col-lg-1 d-flex justify-content-start">
+          <div class="col-2">
             @guest
             <a href="#modalProfile" data-bs-toggle="modal"><img src="{{ asset('image/user_icon.png') }}" class="user-icon" style="width: 48px; height: 48px;" /></a>
             @else
