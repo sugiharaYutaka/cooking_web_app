@@ -34,7 +34,7 @@
     <sns-home-component post-data="{{ json_encode($data) }}" reply-url="{{ json_encode( url('/like-post') ) }}" image-path="{{ json_encode( asset('image') ) }}">
     </sns-home-component>
 </div>
-    <!-- Bootstrap JavaScript -->
+    <!-- Bootstrap JavaScript 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const replyButtons = document.querySelectorAll('.reply-btn');
@@ -48,6 +48,6 @@
                 }
             });
         });
-    </script>
+    </script>-->
 
 </html>
