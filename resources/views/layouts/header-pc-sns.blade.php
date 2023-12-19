@@ -30,13 +30,13 @@
                         <button type="button" class="btn"><a href="{{ route('sns') }}" class="no-underline text-dark"><img src="{{ asset('image/sns.png') }}" class="footericon"><br>タイムライン</a></button>
                     </div>
                     <div class="col-1 d-flex justify-content-center">
-                        <button type="button" class="btn"><a href="{{ route('post') }}" class="no-underline text-dark"><img src="{{ asset('image/post.png') }}" class="footericon"><br>投稿</a></button>
+                        <button type="button" class="btn"><a href="{{ route('snspost') }}" class="no-underline text-dark"><img src="{{ asset('image/post.png') }}" class="footericon"><br>投稿</a></button>
                     </div>
                     <div class="col-1 d-flex justify-content-center">
                         @guest
                         <button type="button" class="btn"><a href="#modalProfile" data-bs-toggle="modal" class="no-underline text-dark"><img src=" {{ asset('image/profile.png') }}" class="footericon"><br>未ログイン</a></button>
                         @else
-                        <button type="button" class="btn"><a href="{{ route('profile') }}" class="no-underline text-dark"><img src=" {{ asset('image/' . session('icon_filename') )}}" class="footericon"><br>プロフィール</a></button>
+                        <button type="button" class="btn"><a href="{{ route('profile') }}" class="no-underline text-dark"><img src=" {{ asset('/storage/img/' . session('icon_filename') )}}" class="footericon"><br>プロフィール</a></button>
                         @endguest
                     </div>
 
