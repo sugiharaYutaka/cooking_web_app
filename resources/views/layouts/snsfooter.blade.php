@@ -26,7 +26,7 @@
                 <div class="btn-group" role="group" aria-label="Button group">
                     <button type="button" class="btn"><a href="{{ route('top') }}" class="no-underline text-dark"><img src="{{ asset('image/top.png') }}" class="footericon"><br>トップ</a></button>
                     <button type="button" class="btn"><a href="{{ route('sns') }}" class="no-underline text-dark"><img src="{{ asset('image/sns.png') }}" class="footericon"><br>タイムライン</a></button>
-                    <button type="button" class="btn"><a href="{{ route('post') }}" class="no-underline text-dark"><img src="{{ asset('image/post.png') }}" class="footericon"><br>投稿</a></button>
+                    <button type="button" class="btn"><a href="{{ route('snspost') }}" class="no-underline text-dark"><img src="{{ asset('image/post.png') }}" class="footericon"><br>投稿</a></button>
                     <button type="button" class="btn"><a href="{{ route('profile') }}" class="no-underline text-dark"><img src="{{ asset('image/profile.png') }}" class="footericon"><br>プロフィール</a></button>
                 </div>
             </div>
