@@ -39,7 +39,11 @@
                         @guest
                         <button type="button" class="btn"><a href="#modalProfile" data-bs-toggle="modal" class="no-underline text-dark"><img src=" {{ asset('image/profile.png') }}" class="footericon"><br>未ログイン</a></button>
                         @else
+                        @if (session('icon_filename') == "user_icon.png")
+                        <button type="button" class="btn"><a href="{{ route('profile') }}" class="no-underline text-dark"><img src="{{ asset('/image/user_icon.png') }}" class="footericon"><br>プロフィール</a></button>
+                        @else
                         <button type="button" class="btn"><a href="{{ route('profile') }}" class="no-underline text-dark"><img src=" {{ asset('/storage/img/' . session('icon_filename') )}}" class="footericon"><br>プロフィール</a></button>
+                        @endif
                         @endguest
                     </div>
                 </nav>
