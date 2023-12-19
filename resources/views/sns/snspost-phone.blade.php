@@ -38,7 +38,7 @@
                         <!-- ここにフォームやコンテンツを追加 -->
                         <!-- Image Upload Form -->
                         <button type="button" class="mt-3" style="border: none; background: none;">テキストを入力</button>
-                        <form method="POST" action="{{ route('post') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('snspost') }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="email" value="{{ $email }}" />
 

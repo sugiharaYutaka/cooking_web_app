@@ -14,7 +14,7 @@ class PostController extends Controller
         $email = $request->session()->get('email');
 
         //return view('sns.snspost', compact('email','data'));
-        return view('sns.snspost', compact('email') );
+        return view('sns.snspost', compact('email'));
     }
 
     public function post(Request $request)
@@ -31,10 +31,10 @@ class PostController extends Controller
             'image_filename' => basename($path),
         ]);
         //event(new YourEventName($newPost));
+        return redirect("/sns");
     }
 
     public function reply()
     {
-        
     }
 }

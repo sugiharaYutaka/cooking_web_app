@@ -34,7 +34,7 @@
                     <div class="card-body d-flex flex-column ">
                         <button type="button" class="mt-3" style="border: none; background: none;">テキストを入力</button>
 
-                        <form method="POST" action="{{ route('post') }}" enctype="multipart/form-data"> <!-- 後でactionの中を書く -->
+                        <form method="POST" action="{{ route('snspost') }}" enctype="multipart/form-data"> <!-- 後でactionの中を書く -->
                             @csrf
                             <input type="hidden" name="email" value="{{ $email }}" />
 
