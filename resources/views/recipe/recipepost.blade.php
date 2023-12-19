@@ -8,13 +8,16 @@
     <script src="https://cook.academic-gihara0655.com/bootstrap-5.3.2-dist/js/bootstrap.min.js"></script>
     <link href="https://cook.academic-gihara0655.com/bootstrap-5.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>レシピ投稿画面</title>
 
     <style>
         body{
             padding-top: 70px;
             
+        }
+        textarea{
+            margin-left: 20px;
+            margin-right: 20px;
         }
         .card {
             padding: 5px;
@@ -30,6 +33,7 @@
         #userInput2{
             height: 30px;
             margin-right: 50px;
+            margin-left: 50px;
         }
 
         #image-preview-container {
@@ -48,9 +52,6 @@
 </head>
 
 <body>
-
-
-
     <div class="card mt-5">
         <!--<div class="card-header">献立を投稿</div>-->
             <label for="image" class="form-label" style="margin-right: 1045px;">タイトルを決定</label>
@@ -63,9 +64,9 @@
                         <img id="ryouri_pre" class="image-preview" alt="料理写真プレビュー">
                     </div>
             <label for="image" class="form-label mt-5" style="margin-right: 1050px;">レシピの紹介</label>
-                <textarea id="userInput" name="text"></textarea>
+                <textarea id="userInput2" name="text"></textarea>
             <label for="image" class="form-label mt-5" style="margin-right: 1100px;">材料</label>
-                <textarea id="userInput" name="text" style="height: 80px;"></textarea>
+                <textarea id="userInput2" name="text" style="height: 80px;"></textarea>
 
             <label for="image" class="form-label mt-5" style="margin-right: 1090px;">作り方</label>
 
@@ -75,8 +76,10 @@
                             <div class="col-1">
                                 <label for="image" class="form-label2">①</label>
                             </div>
-                            <div class="col-8">
-                                <button type="button" class="btn col-8"><a href="#modalProfile" data-bs-toggle="modal">工程名</a></button>
+                            <div class="col-3">
+                                <button type="submit" class="btn col-8"><a href="#recipemodalProfile" data-bs-toggle="modal" style="color: black; text-decoration: none;">工程名を選択</a></button>
+                            </div>
+                            <div class="col-5">
                             </div>
                             <div class="col-3">
                                 <lanel for="image" class="form-label2 col-3" >工程写真を選択</lanel>
@@ -111,9 +114,22 @@
             </div>
 
             <label for="image" class="form-label mt-5" style="margin-right: 1055px;">コツ・豆知識</label>
-            <textarea id="userInput" name="text" style="height: 80px;"></textarea>
+            <textarea id="userInput2" name="text" style="height: 80px;"></textarea>
             <label for="image" class="form-label mt-5" style="margin-right: 1055px;">タグ</label>
+            <textarea id="userInput2" name="text" style="height: 80px;">#</textarea>
         
+            <div class="container mt-5 mb-5">
+                <div class="row">
+                    <div class="col-4">
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="col-12">投稿</button>
+                    </div>
+                    <div class="col-4">
+                    </div>
+                </div>
+            </div>
+
     </div>
 
     <script>
@@ -127,9 +143,7 @@
     </script>
 
 </body>
-
-
 </html>
 
-
+@extends('layouts.recipemodal')
 @extends('layouts.footer')
