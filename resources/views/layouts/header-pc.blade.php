@@ -23,14 +23,14 @@
                     </div>
                     <div class="col-5" style="margin-left: 10px;">
                         <form action="/search" method="GET" class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
+                            <input class="form-control mr-sm-2" type="search" placeholder="タグ検索" aria-label="Search" name="query">
                         </form>
                     </div>
                     <div class="col-1 d-flex justify-content-center">
                         <a href="{{ route('study') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/study.png') }}" class="footericon"><br>勉強</button></a>
                     </div>
                     <div class="col-1 d-flex justify-content-center">
-                        <a href="{{ route('recipe') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/recipe.png') }}" class="footericon"><br>レシピ</button></a>
+                        <a href="{{ route('recipe') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/recipe.png') }}" class="footericon"><br>献立</button></a>
                     </div>
                     <div class="col-1 d-flex justify-content-center">
                         <a href="{{ route('sns') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/sns.png') }}" class="footericon"><br>SNS</button></a>
