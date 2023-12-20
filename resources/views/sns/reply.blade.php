@@ -1,6 +1,6 @@
 @extends('layouts.header-' . (Agent::isMobile() ? 'phone' : 'pc-sns'))
 
-<div class="container-fluid body-margin">
+<div class="container-fluid body-margin" id="app">
     <div class="row">
         <div class="post-body">
             <div class="container ps-0 ms-0">
@@ -27,13 +27,11 @@
                 @endif
 
                 <div class="row">
-                    <div class="col text-end">
-                        <div class="like-form">
-                            <span class="like-count" style="color:#e0245e;">{{ $mainPost[0]->good }}♡</span>
-                        </div>
+                    <div class="col-12 text-end">
+                        <strong class="like-count mx-5 h5" style="color:#e0245e;">{{ $mainPost[0]->good }}♡</strong>
+                        <reply-form-component style="display:inline;" post-id="{{ json_encode($mainPost[0]->id) }}" reply-post-url="{{ json_encode(url('/reply')) }}"></reply-form-component>
                     </div>
                 </div>
-                <reply-form-component  post-id="{{ json_encode($mainPost[0]->id) }}" reply-post-url="{{ json_encode(url('/reply')) }}"></reply-form-component>
             </div>
         </div>
     </div>

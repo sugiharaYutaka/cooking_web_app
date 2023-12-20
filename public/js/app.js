@@ -5154,7 +5154,7 @@ __webpack_require__.r(__webpack_exports__);
       var comment = commentInput.querySelector('textarea').value; // コメントの値を取得する
       if (comment) {
         var formData = new FormData();
-        formData.append('post_id', this.parsedData[index].id);
+        formData.append('post_id', this.postId);
         formData.append('comment', comment);
         axios.post(this._replyPostUrl, formData) // ここでリプライ送信用のエンドポイントを指定
         .then(function (response) {

@@ -123,4 +123,9 @@
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-  }
+}
+.reply-btn {
+    background-color: #1da1f2;
+    color: #fff;
+    border: none;
+}
