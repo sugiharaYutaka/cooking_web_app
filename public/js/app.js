@@ -5263,7 +5263,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["postData", "replyUrl", "imagePath", "replyPostUrl", "replyShowUrl"],
+  props: ["postData", "replyUrl", "imagePath", "replyPostUrl", "replyShowUrl", "profileUrl"],
   data: function data() {
     return {
       parsedData: null,
@@ -5272,6 +5272,7 @@ __webpack_require__.r(__webpack_exports__);
       _replyUrl: null,
       _replyPostUrl: null,
       _replyShowUrl: null,
+      _profileUrl: null,
       commentInput: "comment-input",
       csrfToken: null
     };
@@ -5312,6 +5313,9 @@ __webpack_require__.r(__webpack_exports__);
           console.error('Error sending reply:', error);
         });
       }
+    },
+    showProfile: function showProfile(postId) {
+      location.href = '/profile?post_id=' + postId;
     }
   },
   mounted: function mounted() {
@@ -5322,6 +5326,7 @@ __webpack_require__.r(__webpack_exports__);
     this._replyUrl = this.replyUrl.replaceAll('\\', '').replaceAll('"', '');
     this._replyPostUrl = this.replyPostUrl.replaceAll('\\', '').replaceAll('"', '');
     this._replyShowUrl = this.replyShowUrl.replaceAll('\\', '').replaceAll('"', '');
+    this._profileUrl = this.profileUrl.replaceAll('\\', '').replaceAll('"', '');
 
     //snsapp.blade.phpに記述されているcsrfトークンを取得
     this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -34018,20 +34023,37 @@ var render = function () {
                     _c("div", { staticClass: "container ps-0 ms-0" }, [
                       _c("div", { staticClass: "row mt-1" }, [
                         _c("div", { staticClass: "col-2 text-end" }, [
-                          _c("img", {
+                          _c("input", {
                             staticClass: "post-icon",
                             attrs: {
+                              type: "image",
                               src:
                                 _vm._imagePath +
                                 _vm.parsedData[index].icon_filename,
+                            },
+                            on: {
+                              click: function ($event) {
+                                return _vm.showProfile(_vm.parsedData[index].id)
+                              },
                             },
                           }),
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "col align-self-center" }, [
-                          _c("span", { staticClass: "h5" }, [
-                            _vm._v(_vm._s(_vm.parsedData[index].name)),
-                          ]),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "h5",
+                              on: {
+                                click: function ($event) {
+                                  return _vm.showProfile(
+                                    _vm.parsedData[index].id
+                                  )
+                                },
+                              },
+                            },
+                            [_vm._v(_vm._s(_vm.parsedData[index].name))]
+                          ),
                         ]),
                       ]),
                       _vm._v(" "),
