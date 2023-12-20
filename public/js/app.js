@@ -5100,6 +5100,81 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ReplyFormComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ReplyFormComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["postId", "replyPostUrl"],
+  data: function data() {
+    return {
+      _replyPostUrl: null,
+      commentInput: "comment-input"
+    };
+  },
+  methods: {
+    replyshow: function replyshow() {
+      var commentInput = document.querySelector('.commentInput');
+      if (commentInput) {
+        if (commentInput.style.display === 'none' || commentInput.style.display === '') {
+          commentInput.style.display = 'block';
+        } else {
+          commentInput.style.display = 'none';
+        }
+      }
+    },
+    replyPost: function replyPost() {
+      var commentInput = document.querySelector('.commentInput');
+      var comment = commentInput.querySelector('textarea').value; // コメントの値を取得する
+      if (comment) {
+        var formData = new FormData();
+        formData.append('post_id', this.parsedData[index].id);
+        formData.append('comment', comment);
+        axios.post(this._replyPostUrl, formData) // ここでリプライ送信用のエンドポイントを指定
+        .then(function (response) {
+          // リプライが送信された後の処理をここに記述
+          console.log('Reply sent successfully');
+          // 他の更新やリダイレクトなどが必要ならば追加してください
+        })["catch"](function (error) {
+          // エラーが発生した場合の処理
+          console.error('Error sending reply:', error);
+        });
+      }
+    }
+  },
+  mounted: function mounted() {
+    this._replyPostUrl = this.replyPostUrl.replaceAll('\\', '').replaceAll('"', '');
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SnsHomeComponent.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SnsHomeComponent.vue?vue&type=script&lang=js& ***!
@@ -5112,21 +5187,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -5324,6 +5384,7 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 
 Vue.component('example-component', (__webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]));
 Vue.component('sns-home-component', (__webpack_require__(/*! ./components/SnsHomeComponent.vue */ "./resources/js/components/SnsHomeComponent.vue")["default"]));
+Vue.component('reply-form-component', (__webpack_require__(/*! ./components/ReplyFormComponent.vue */ "./resources/js/components/ReplyFormComponent.vue")["default"]));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33618,6 +33679,45 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/ReplyFormComponent.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/ReplyFormComponent.vue ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ReplyFormComponent_vue_vue_type_template_id_13d05ffa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReplyFormComponent.vue?vue&type=template&id=13d05ffa& */ "./resources/js/components/ReplyFormComponent.vue?vue&type=template&id=13d05ffa&");
+/* harmony import */ var _ReplyFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReplyFormComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ReplyFormComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReplyFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReplyFormComponent_vue_vue_type_template_id_13d05ffa___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ReplyFormComponent_vue_vue_type_template_id_13d05ffa___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ReplyFormComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/SnsHomeComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/SnsHomeComponent.vue ***!
@@ -33673,6 +33773,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/ReplyFormComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/ReplyFormComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReplyFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ReplyFormComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ReplyFormComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReplyFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/SnsHomeComponent.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/SnsHomeComponent.vue?vue&type=script&lang=js& ***!
@@ -33702,6 +33818,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExampleComponent.vue?vue&type=template&id=299e239e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ReplyFormComponent.vue?vue&type=template&id=13d05ffa&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/ReplyFormComponent.vue?vue&type=template&id=13d05ffa& ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReplyFormComponent_vue_vue_type_template_id_13d05ffa___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReplyFormComponent_vue_vue_type_template_id_13d05ffa___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReplyFormComponent_vue_vue_type_template_id_13d05ffa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ReplyFormComponent.vue?vue&type=template&id=13d05ffa& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ReplyFormComponent.vue?vue&type=template&id=13d05ffa&");
 
 
 /***/ }),
@@ -33771,6 +33904,84 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ReplyFormComponent.vue?vue&type=template&id=13d05ffa&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ReplyFormComponent.vue?vue&type=template&id=13d05ffa& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render),
+/* harmony export */   staticRenderFns: () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "button",
+      {
+        staticClass: "reply-btn interaction-button my-2",
+        on: {
+          click: function ($event) {
+            return _vm.replyshow()
+          },
+        },
+      },
+      [_vm._v("\n        返信\n    ")]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "commentInput", staticStyle: { display: "none" } },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            attrs: { type: "submit" },
+            on: {
+              click: function ($event) {
+                return _vm.replyPost()
+              },
+            },
+          },
+          [_vm._v("\n            投稿\n        ")]
+        ),
+      ]
+    ),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mb-3" }, [
+      _c(
+        "label",
+        { staticClass: "form-label", attrs: { for: "commentInput" } },
+        [_vm._v("コメントを入力")]
+      ),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "form-control",
+        attrs: { id: "commentInput", rows: "3" },
+      }),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SnsHomeComponent.vue?vue&type=template&id=6dce67b1&":
 /*!****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SnsHomeComponent.vue?vue&type=template&id=6dce67b1& ***!
@@ -33804,7 +34015,7 @@ var render = function () {
               _vm._l(_vm.parsedData, function (post, index) {
                 return _c("div", { key: index }, [
                   _c("div", { staticClass: "post-body" }, [
-                    _c("div", { staticClass: "container" }, [
+                    _c("div", { staticClass: "container ps-0 ms-0" }, [
                       _c("div", { staticClass: "row mt-1" }, [
                         _c("div", { staticClass: "col-2 text-end" }, [
                           _c("img", {
@@ -33849,32 +34060,40 @@ var render = function () {
                       _vm._v(" "),
                       _c("div", { staticClass: "row" }, [
                         _c("div", { staticClass: "col text-end" }, [
-                          _c("div", { staticClass: "like-form" }, [
-                            _c("input", {
-                              attrs: { type: "hidden", name: "post_id" },
-                              domProps: { value: _vm.parsedData[index].id },
-                            }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "like-count" }, [
-                              _vm._v(_vm._s(_vm.parsedData[index].good)),
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "like-btn interaction-button my-2",
-                                attrs: { type: "submit" },
-                                on: {
-                                  click: function ($event) {
-                                    return _vm.likePost(
-                                      _vm.parsedData[index].id
-                                    )
+                          _c(
+                            "div",
+                            {
+                              staticClass: "like-form",
+                              staticStyle: { display: "inline" },
+                            },
+                            [
+                              _c("input", {
+                                attrs: { type: "hidden", name: "post_id" },
+                                domProps: { value: _vm.parsedData[index].id },
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "like-btn interaction-button my-2",
+                                  attrs: { type: "submit" },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.likePost(
+                                        _vm.parsedData[index].id
+                                      )
+                                    },
                                   },
                                 },
-                              },
-                              [_vm._v("♡")]
-                            ),
-                          ]),
+                                [
+                                  _vm._v(
+                                    _vm._s(_vm.parsedData[index].good) + "♡"
+                                  ),
+                                ]
+                              ),
+                            ]
+                          ),
                           _vm._v(" "),
                           _c(
                             "form",
@@ -33904,54 +34123,7 @@ var render = function () {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                                                リプライを見る\n                                            "
-                                  ),
-                                ]
-                              ),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "reply-btn interaction-button my-2",
-                              on: {
-                                click: function ($event) {
-                                  return _vm.replyshow(index)
-                                },
-                              },
-                            },
-                            [
-                              _vm._v(
-                                "リプライ\n                                        "
-                              ),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              class:
-                                _vm.commentInput + _vm.parsedData[index].id,
-                              staticStyle: { display: "none" },
-                            },
-                            [
-                              _vm._m(1, true),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary",
-                                  attrs: { type: "submit" },
-                                  on: {
-                                    click: function ($event) {
-                                      return _vm.replyPost(index)
-                                    },
-                                  },
-                                },
-                                [
-                                  _vm._v(
-                                    "投稿\n                                            "
+                                    "\n                                                返信\n                                            "
                                   ),
                                 ]
                               ),
@@ -33988,23 +34160,6 @@ var staticRenderFns = [
           href: "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
           rel: "stylesheet",
         },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-3" }, [
-      _c(
-        "label",
-        { staticClass: "form-label", attrs: { for: "commentInput" } },
-        [_vm._v("コメントを入力")]
-      ),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: { id: "commentInput", rows: "3" },
       }),
     ])
   },

@@ -20,7 +20,7 @@
                         <hr>
                         <div v-for="(post, index) in parsedData" :key="index">
                             <div class="post-body">
-                                <div class="container">
+                                <div class="container ps-0 ms-0">
                                     <div class="row mt-1">
                                         <div class="col-2 text-end">
                                             <img class="post-icon" :src="_imagePath + parsedData[index].icon_filename">
@@ -43,12 +43,11 @@
 
                                     <div class="row">
                                         <div class="col text-end">
-                                            <div class="like-form">
+                                            <div class="like-form" style="display: inline;">
                                                 <input type="hidden" name="post_id" v-bind:value=parsedData[index].id>
-                                                <span class="like-count">{{ parsedData[index].good }}</span>
                                                 <!-- いいね数を表示 -->
                                                 <button type="submit" class="like-btn interaction-button my-2"
-                                                    @click="likePost(parsedData[index].id)">♡</button>
+                                                    @click="likePost(parsedData[index].id)">{{parsedData[index].good}}♡</button>
                                                 <!-- 他のボタンとフォーム -->
                                             </div>
 
@@ -56,23 +55,9 @@
                                                 <input type="hidden" name="_token" :value=csrfToken>
                                                 <input type="hidden" name="post_id" :value=parsedData[index].id>
                                                 <button class="reply-btn interaction-button my-2">
-                                                    リプライを見る
+                                                    返信
                                                 </button>
                                             </form>
-
-                                            <button class="reply-btn interaction-button my-2"
-                                                @click="replyshow(index)">リプライ
-                                            </button>
-
-                                            <div :class="commentInput + parsedData[index].id" style="display: none;">
-                                                <div class="mb-3">
-                                                    <label for="commentInput" class="form-label">コメントを入力</label>
-                                                    <textarea class="form-control" id="commentInput" rows="3"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary"
-                                                    @click="replyPost(index)">投稿
-                                                </button>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
