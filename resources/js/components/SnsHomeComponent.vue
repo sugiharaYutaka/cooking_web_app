@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <head>
             <meta charset="UTF-8">
             <title>SNS - 投稿一覧</title>
@@ -17,7 +18,7 @@
                 <div class="row">
                     <div class="col">
                         <hr>
-                        <div v-for="(post,index) in parsedData" :key="index">
+                        <div v-for="(post, index) in parsedData" :key="index">
                             <div class="post-body">
                                 <div class="container">
                                     <div class="row mt-1">
@@ -47,19 +48,34 @@
                                         <div class="col text-end">
                                             <div class="like-form">
                                                 <input type="hidden" name="post_id" v-bind:value=parsedData[index].id>
-                                                <span class="like-count">{{parsedData[index].good}}</span> <!-- いいね数を表示 -->
-                                                <button type="submit" class="like-btn interaction-button my-2" @click="sendPost('like',parsedData[index].id)">♡</button>
+                                                <span class="like-count">{{ parsedData[index].good }}</span>
+                                                <!-- いいね数を表示 -->
+                                                <button type="submit" class="like-btn interaction-button my-2"
+                                                    @click="likePost(parsedData[index].id)">♡</button>
                                                 <!-- 他のボタンとフォーム -->
                                             </div>
-                                            <!--<button class="like-btn interaction-button my-2">♡</button>-->
-                                            <button class="reply-btn interaction-button my-2">リプライ</button>
-                                            <form :class="commentInput + parsedData[index].id" style="display: none;">
+
+                                            <form :action=_replyShowUrl method="post" style="display: inline;">
+                                                <input type="hidden" name="_token" :value=csrfToken>
+                                                <input type="hidden" name="post_id" :value=parsedData[index].id>
+                                                <button class="reply-btn interaction-button my-2">
+                                                    リプライを見る
+                                                </button>
+                                            </form>
+
+                                            <button class="reply-btn interaction-button my-2"
+                                                @click="replyshow(index)">リプライ
+                                            </button>
+
+                                            <div :class="commentInput + parsedData[index].id" style="display: none;">
                                                 <div class="mb-3">
                                                     <label for="commentInput" class="form-label">コメントを入力</label>
                                                     <textarea class="form-control" id="commentInput" rows="3"></textarea>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">投稿</button>
-                                            </form>
+                                                <button type="submit" class="btn btn-primary"
+                                                    @click="replyPost(index)">投稿
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -75,40 +91,76 @@
 
 <script>
 import Echo from 'laravel-echo';
-  export default {
-    props:["postData","replyUrl","profileUrl","imagePath"],
+export default {
+    props: ["postData", "replyUrl", "imagePath", "replyPostUrl","replyShowUrl"],
     data() {
-      return {
-        parsedData:null,
-        postMax:0,
-        _imagePath:null,
-        _replyUrl:null,
-        profileUrl:null,
-        commentInput:"comment-input"
-      };
+        return {
+            parsedData: null,
+            postMax: 0,
+            _imagePath: null,
+            _replyUrl: null,
+            _replyPostUrl: null,
+            _replyShowUrl: null,
+            commentInput: "comment-input",
+            csrfToken:null,
+        };
     },
-    methods:{
-        sendPost(target,postId){
+    methods: {
+        likePost(postId) {
             let formData = new FormData();
             formData.append('post_id', postId);
-            if (target == 'like'){
-                //replyUrlにPOST送信
-                axios.post(this._replyUrl,formData)
-            }else if (target == 'profile'){
-                //profileUrlにPOST送信
-                axios.post(this.profileUrl,formData)
+            //replyUrlにPOST送信
+            axios.post(this._replyUrl, formData)
+        },
+        replyshow(index) {
+            const commentInputClass = this.commentInput + this.parsedData[index].id;
+            const commentInput = document.querySelector('.' + commentInputClass);
+            if (commentInput) {
+                if (commentInput.style.display === 'none' || commentInput.style.display === '') {
+                    commentInput.style.display = 'block';
+                } else {
+                    commentInput.style.display = 'none';
+                }
             }
         },
+        replyPost(index) {
+            const commentInputClass = this.commentInput + this.parsedData[index].id;
+            const commentInput = document.querySelector('.' + commentInputClass);
+            const comment = commentInput.querySelector('textarea').value; // コメントの値を取得する
+            if (comment) {
+                let formData = new FormData();
+                formData.append('post_id', this.parsedData[index].id);
+                formData.append('comment', comment);
+
+                axios.post(this._replyPostUrl, formData) // ここでリプライ送信用のエンドポイントを指定
+                    .then(response => {
+                        // リプライが送信された後の処理をここに記述
+                        console.log('Reply sent successfully');
+                        // 他の更新やリダイレクトなどが必要ならば追加してください
+                    })
+                    .catch(error => {
+                        // エラーが発生した場合の処理
+                        console.error('Error sending reply:', error);
+                    });
+            }
+        }
+
     },
 
-    mounted(){
+    mounted() {
         //bladeから受けっとったデータの整形
         this.parsedData = JSON.parse(this.postData);
-        this._imagePath = this.imagePath.replaceAll('\\','').replaceAll('"','') + '/';
-        this._replyUrl = this.replyUrl.replaceAll('\\','').replaceAll('"','');
-        //console.log(this.parsedData)
-        //console.log(this._replyUrl)
-        //console.log(this._imagePath)
+        this._imagePath = this.imagePath.replaceAll('\\', '').replaceAll('"', '') + '/';
+        this._replyUrl = this.replyUrl.replaceAll('\\', '').replaceAll('"', '');
+        this._replyPostUrl = this.replyPostUrl.replaceAll('\\', '').replaceAll('"', '');
+        this._replyShowUrl = this.replyShowUrl.replaceAll('\\', '').replaceAll('"', '');
+
+        //snsapp.blade.phpに記述されているcsrfトークンを取得
+        this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        //console.log(this.parsedData);
+        //console.log(this._replyUrl);
+        //console.log(this._imagePath);
+        //console.log(this._replyPostUrl);
 
         //ページを最初に読み込んだ時の、投稿の数を入れとく
         this.postMax = this.parsedData.length;
@@ -127,8 +179,7 @@ import Echo from 'laravel-echo';
             } else {
                 //postMaxより要素数が多くなって値がかえって来た場合　多くなった分の要素を削除する
                 //いいねボタンを押す間に新しい投稿がされたときの対策
-                if(event.post_data.length > this.postMax)
-                {
+                if (event.post_data.length > this.postMax) {
                     event.post_data = event.post_data.slice(event.post_data.length - this.postMax,);
                 }
                 //postのデータ更新
@@ -136,17 +187,5 @@ import Echo from 'laravel-echo';
             }
         });
     }
-  };
-
-const replyButtons = document.querySelectorAll('.reply-btn8');
-replyButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        const commentInput = this.parentElement.nextElementSibling;
-        if (commentInput.style.display === 'none') {
-            commentInput.style.display = 'block';
-        } else {
-            commentInput.style.display = 'none';
-        }
-    });
-});
+};
 </script>

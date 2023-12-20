@@ -80,6 +80,35 @@ class RegisterController extends Controller
 
     public function process(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'email_confirmation' => 'required|email|same:email',
+            'password' => 'required|string|min:8|confirmed',
+        ], [
+            'name.required' => '名前を入力してください。',
+            'name.string' => '名前は文字列で入力してください。',
+            'name.max' => '名前は255文字以内で入力してください。',
+            'email.required' => 'メールアドレスを入力してください。',
+            'email.string' => '正しい形式のメールアドレスを入力してください。',
+            'email.email' => '有効なメールアドレスを入力してください。',
+            'email.max' => 'メールアドレスは255文字以内で入力してください。',
+            'email.unique' => 'そのメールアドレスは既に登録されています。',
+            'email_confirmation.required' => 'メールアドレス（確認用）を入力してください。',
+            'email_confirmation.email' => '有効なメールアドレスを入力してください。',
+            'email_confirmation.same' => '確認用メールアドレスが一致しません。',
+            'password.required' => 'パスワードを入力してください。',
+            'password.string' => 'パスワードは文字列で入力してください。',
+            'password.min' => 'パスワードは8文字以上で入力してください。',
+            'password.confirmed' => 'パスワードが一致しません。',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('register')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $name = $request->input('name');
         $email = $request->input('email');
 
@@ -99,7 +128,7 @@ class RegisterController extends Controller
             'comment' => '',
         ]);
 
-        $data = Models\User::where('email',$email)->first();
+        $data = Models\User::where('email', $email)->first();
         Auth::login($data);
         session([
             "email" => $data->email,

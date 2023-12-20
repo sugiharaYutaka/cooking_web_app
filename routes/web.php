@@ -46,12 +46,11 @@ use App\Http\Controllers\ChapterController;
 Route::get('/chapters', [App\Http\Controllers\ChapterController::class, 'index'])->name('study');
 Route::post('/chapters', [App\Http\Controllers\ChapterController::class, 'show']);
 
-Route::get('/chapter1', [App\Http\Controllers\Chapter1Controller::class, 'index'])->name('chapter1');
 Route::get('/top', [App\Http\Controllers\TopController::class, 'show'])->name('top');
 Route::get('/top', [App\Http\Controllers\TopController::class, 'show'])->name('top');
 Route::get('/top', [App\Http\Controllers\TopController::class, 'show'])->name('top');
 
-Route::get('/sns/post', [App\Http\Controllers\SNS\PostController::class, 'show'])->name('post');
+Route::get('/sns/post', [App\Http\Controllers\SNS\PostController::class, 'show'])->name('snspost');
 Route::post('/sns/post', [App\Http\Controllers\SNS\PostController::class, 'post']);
 
 Route::get('/profile', [App\Http\Controllers\SNS\ProfileController::class, 'show'])->name('profile');
@@ -75,6 +74,11 @@ Route::post('/process',           [App\Http\Controllers\Auth\RegisterController:
 
 //いいね機能
 Route::post('/like-post', [App\Http\Controllers\SNS\HomeController::class, 'likePost']);
+
+// reply
+Route::post('/reply', [App\Http\Controllers\SNS\ReplyController::class, 'reply']);
+Route::post('/replyShow', [App\Http\Controllers\SNS\ReplyController::class, 'replyShow']);
+
 
 Route::get('/knowledgeBox/kitchenknife', function () {
     return view('knowledgeBox.kitchenknife');
