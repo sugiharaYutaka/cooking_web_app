@@ -130,7 +130,7 @@
 
 
         @if ($email != $target_email)
-        <form action="{{ route('profile') }}" method="post" class="forminput">
+        <form action="{{ route('followprofile') }}" method="post" class="forminput">
             @csrf
             <input type="hidden" name="target_email" value="{{ $target_email }}" />
             @if ($is_following == true)
@@ -144,7 +144,7 @@
 
         <hr>
 
-        <form action="{{ route('profile') }}" method="post" enctype="multipart/form-data" class="forminput">
+        <form action="{{ route('updateprofile') }}" method="post" enctype="multipart/form-data" class="forminput">
             @method('PUT')
             @csrf
 

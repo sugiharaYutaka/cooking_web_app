@@ -12,11 +12,15 @@ class ProfileController extends Controller
     {
         $email = $request->session()->get('email');
 
-        if ($request->session()->has('target_email')) {
-            $target_email = $request->session()->get('target_email');
-            $request->session()->forget('target_email');
-        } else {
+        $post_id = $request->query('post_id');
+        if ($post_id == NULL) {
             $target_email = $email;
+        } else {
+            $sql = DB::table('sns_posts')
+                ->where('id', $post_id)
+                ->select('email')
+                ->first();
+            $target_email = $sql->email;
         }
 
         $icon_filename = $request->session()->get('icon_filename');
