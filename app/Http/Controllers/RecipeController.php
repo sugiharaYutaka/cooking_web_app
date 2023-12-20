@@ -16,4 +16,9 @@ class RecipeController extends Controller
     {
         return view('recipe.recipepost');
     }
+
+    public function bookmark()
+    {
+        return view('recipe.recipebookmark');
+    }
 }
