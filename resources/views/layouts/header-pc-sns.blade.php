@@ -19,27 +19,27 @@
             <div class="row border">
                 <nav class="navbar navbar-expand-lg navbar-light bg-color-2">
                     <div class="col-2 d-flex justify-content-center ps-5">
-                        <button type="button" style="border: none; background: transparent;" class="btn"><a href="{{ route('top') }}"><img class="logo" src="{{asset('image/logo.png')}}"></a></button>
+                        <a href="{{ route('top') }}"><button type="button" style="border: none; background: transparent;" class="btn"><a href="{{ route('top') }}"><img class="logo" src="{{asset('image/logo.png')}}"></button></a>
                     </div>
                     <div class="col-6">
                     </div>
                     <div class="col-1 d-flex justify-content-center">
-                        <button type="button" class="btn"><a href="{{ route('top') }}" class="no-underline text-dark"><img src="{{ asset('image/top.png') }}" class="footericon"><br>トップ</a></button>
+                        <a href="{{ route('top') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/top.png') }}" class="footericon"><br>トップ</button></a>
                     </div>
                     <div class="col-1 d-flex justify-content-center">
-                        <button type="button" class="btn"><a href="{{ route('sns') }}" class="no-underline text-dark"><img src="{{ asset('image/sns.png') }}" class="footericon"><br>タイムライン</a></button>
+                        <a href="{{ route('sns') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/sns.png') }}" class="footericon"><br>タイムライン</button></a>
                     </div>
                     <div class="col-1 d-flex justify-content-center">
-                        <button type="button" class="btn"><a href="{{ route('snspost') }}" class="no-underline text-dark"><img src="{{ asset('image/post.png') }}" class="footericon"><br>投稿</a></button>
+                        <a href="{{ route('snspost') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/post.png') }}" class="footericon"><br>投稿</button></a>
                     </div>
                     <div class="col-1 d-flex justify-content-center">
                         @guest
-                        <button type="button" class="btn"><a href="#modalProfile" data-bs-toggle="modal" class="no-underline text-dark"><img src=" {{ asset('image/profile.png') }}" class="footericon"><br>未ログイン</a></button>
+                        <a href="#modalProfile" data-bs-toggle="modal" class="no-underline text-dark"><button type="button" class="btn"><img src=" {{ asset('image/profile.png') }}" class="footericon"><br>未ログイン</button></a>
                         @else
                         @if (session('icon_filename') == "user_icon.png")
-                        <button type="button" class="btn"><a href="{{ route('profile') }}" class="no-underline text-dark"><img src="{{ asset('/image/user_icon.png') }}" class="footericon"><br>プロフィール</a></button>
+                        <a href="{{ route('profile') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('/image/user_icon.png') }}" class="footericon"><br>プロフィール</button></a>
                         @else
-                        <button type="button" class="btn"><a href="{{ route('profile') }}" class="no-underline text-dark"><img src=" {{ asset('/storage/img/' . session('icon_filename') )}}" class="footericon"><br>プロフィール</a></button>
+                        <a href="{{ route('profile') }}" class="no-underline text-dark"><button type="button" class="btn"><img src=" {{ asset('/storage/img/' . session('icon_filename') )}}" class="footericon"><br>プロフィール</button></a>
                         @endif
                         @endguest
                     </div>
