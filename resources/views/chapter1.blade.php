@@ -246,7 +246,7 @@
         </div>
     </div>
 
-    <button type="button"><a href="{{ route('post') }}">SNSに投稿してみよう!</a></button>
+    <button type="button"><a href="{{ route('snspost') }}">SNSに投稿してみよう!</a></button>
 
 
 </div>
