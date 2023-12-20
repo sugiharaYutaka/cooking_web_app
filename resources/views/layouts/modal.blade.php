@@ -10,74 +10,80 @@
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body bg-color-1">
+            <div class="modal-body bg-color-1 ps-0">
 
                 <div class="container-fluid">
                     <div class="row">
                         @guest
                         <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-md-10">
-                                    <div class="card-body">
-                                        @if(session('login_message'))
-                                        <strong class=" d-flex justify-content-center invalid-feedback"> {{ session('login_message')}}</strong><br>
-                                        @endif
-                                        <form method="POST" action="{{ route('login') }}">
-                                            @csrf
-                                            <div class="row mb-3">
-                                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('メールアドレス') }}</label>
+                            <div class="row">
 
-                                                <div class="col-md-8">
-                                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <div class="card-body mt-3">
+                                    @if(session('login_message'))
+                                    <strong class="d-flex justify-content-center invalid-feedback"> {{ session('login_message')}}</strong><br>
+                                    @endif
+                                    <form method="POST" action="{{ route('login') }}">
+                                        @csrf
+                                        <div class="row mb-4 ms-5">
+                                            <label for="email" class="col-md-3 col-form-label text-md-end">{{ __('メールアドレス') }}</label>
+
+                                            <div class="col-md-7">
+                                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email">
 
 
-                                                </div>
                                             </div>
+                                        </div>
 
-                                            <div class="row mb-3">
-                                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('パスワード') }}</label>
+                                        <div class="row mb-4 ms-5">
+                                            <label for="password" class="col-md-3 col-form-label text-md-end">{{ __('パスワード') }}</label>
 
-                                                <div class="col-md-8">
-                                                    <input id="password" type="password" class="form-control" name="password" required autocomplete="new-password">
+                                            <div class="col-md-7">
+                                                <input id="password" type="password" class="form-control" name="password" required autocomplete="new-password">
 
 
-                                                </div>
                                             </div>
+                                        </div>
 
 
-                                            <div class="row mb-0">
-                                                <div class="col-md-6 offset-md-4">
-                                                    <button type="submit" class="btn bg-color-1" style="border: 1px solid #776B5D;">
-                                                        {{ __('ログイン') }}
-                                                    </button>
-                                                </div>
+                                        <div class="row mb-0">
+                                            <div class="d-flex justify-content-center">
+                                                <button type="submit" class="btn bg-color-1" style="border: 1px solid #776B5D;">
+                                                    {{ __('ログイン') }}
+                                                </button>
                                             </div>
-                                        </form>
+                                        </div>
+                                    </form>
+
+
+
+                                    <!--<a href="{{ route('register') }}" class="btn border-top border-bottom my-2">アカウント登録</a><br>-->
+                                    <div class="d-flex justify-content-center mt-2">
+                                        <span class="my-2">新規アカウント登録は</span>
+                                        <a href="{{ route('register') }}" class="my-2">こちら</a>
                                     </div>
-                                </div>
-                            </div>
-                            <!--<a href="{{ route('register') }}" class="btn border-top border-bottom my-2">アカウント登録</a><br>-->
-                            <div class="col-md-6 offset-md-4">
-                                <a href="{{ route('register') }}" class="btn my-2">アカウント登録</a>
-                            </div>
 
-                            @else
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn border-top border-bottom my-2">ログアウト</button><br>
-                            </form>
-                            @endguest
+                                    @else
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn border-top border-bottom my-2">ログアウト</button><br>
+                                    </form>
+                                    @endguest
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                @if(session('login_message'))
+                <script>
+                    $(document).ready(function() {
+                        $('#modalProfile').modal('show');
+                    });
+                </script>
+                @else
+                @endif
             </div>
         </div>
     </div>
-    @if(session('login_message'))
-    <script>
-        $(document).ready(function() {
-            $('#modalProfile').modal('show');
-        });
-    </script>
-    @else
-    @endif
+</div>
