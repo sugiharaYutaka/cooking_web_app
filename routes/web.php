@@ -54,8 +54,9 @@ Route::get('/sns/post', [App\Http\Controllers\SNS\PostController::class, 'show']
 Route::post('/sns/post', [App\Http\Controllers\SNS\PostController::class, 'post']);
 
 Route::get('/profile', [App\Http\Controllers\SNS\ProfileController::class, 'show'])->name('profile');
-Route::put('/profile', [App\Http\Controllers\SNS\ProfileController::class, 'update']);
-Route::post('/profile', [App\Http\Controllers\SNS\ProfileController::class, 'follow']);
+Route::post('/profile', [App\Http\Controllers\SNS\ProfileController::class, 'show'])->name('profile');
+Route::put('/updateprofile', [App\Http\Controllers\SNS\ProfileController::class, 'update'])->name('updateprofile');
+Route::post('/followprofile', [App\Http\Controllers\SNS\ProfileController::class, 'follow'])->name('followprofile');
 
 Route::get('/taktiedebug', [App\Http\Controllers\TaktiedebugController::class, 'show'])->name('taktiedebug');
 Route::post('/taktiedebugreg', [App\Http\Controllers\TaktiedebugController::class, 'register'])->name('taktiedebugreg');

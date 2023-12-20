@@ -23,13 +23,10 @@
                                 <div class="container">
                                     <div class="row mt-1">
                                         <div class="col-2 text-end">
-                                            <!--
-                                            <img class="post-icon" :src="_imagePath + parsedData[index].icon_filename">
-                                            -->
-                                            <input type="image" class="post-icon" :src="_imagePath + parsedData[index].icon_filename" @click="sendPost('profile', parsedData[index].id)">
+                                            <input type="image" class="post-icon" :src="_imagePath + parsedData[index].icon_filename" @click="showProfile(parsedData[index].id)">
                                         </div>
                                         <div class="col align-self-center">
-                                            <span class="h5">{{ parsedData[index].name }}</span>
+                                            <span class="h5" @click="showProfile(parsedData[index].id)">{{ parsedData[index].name }}</span>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -92,7 +89,7 @@
 <script>
 import Echo from 'laravel-echo';
 export default {
-    props: ["postData", "replyUrl", "imagePath", "replyPostUrl","replyShowUrl"],
+    props: ["postData", "replyUrl", "imagePath", "replyPostUrl","replyShowUrl","profileUrl"],
     data() {
         return {
             parsedData: null,
@@ -101,6 +98,7 @@ export default {
             _replyUrl: null,
             _replyPostUrl: null,
             _replyShowUrl: null,
+            _profileUrl: null,
             commentInput: "comment-input",
             csrfToken:null,
         };
@@ -143,8 +141,10 @@ export default {
                         console.error('Error sending reply:', error);
                     });
             }
+        },
+        showProfile(postId) {
+            location.href = '/profile?post_id=' + postId;
         }
-
     },
 
     mounted() {
@@ -154,6 +154,7 @@ export default {
         this._replyUrl = this.replyUrl.replaceAll('\\', '').replaceAll('"', '');
         this._replyPostUrl = this.replyPostUrl.replaceAll('\\', '').replaceAll('"', '');
         this._replyShowUrl = this.replyShowUrl.replaceAll('\\', '').replaceAll('"', '');
+        this._profileUrl = this.profileUrl.replaceAll('\\', '').replaceAll('"', '');
 
         //snsapp.blade.phpに記述されているcsrfトークンを取得
         this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
