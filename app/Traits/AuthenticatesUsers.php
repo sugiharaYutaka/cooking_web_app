@@ -61,7 +61,7 @@ trait AuthenticatesUsers
 
             return $this->sendLoginResponse($request);
         }
-        session()->flash('login_message', 'ログインに失敗しました。');
+        session()->flash('login_message', 'ユーザー情報が一致しません。再度お試しください。');
 
 
         // If the login attempt was unsuccessful we will increment the number of attempts
