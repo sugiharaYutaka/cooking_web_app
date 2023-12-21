@@ -80,6 +80,10 @@
         margin-top: 15vh;
         margin-bottom: 15vh;
     }
+    .post-margin {
+        padding-left: 0;
+        margin-left: 0;
+    }
 }
 
 /* PC ScreenSize */
@@ -107,6 +111,9 @@
         margin-top: 20vh;
         margin-bottom: 20vh;
     }
+    .post-margin {
+
+    }
 }
 
 /* {{ asset('index.css') }}*/
@@ -127,5 +134,11 @@
 .reply-btn {
     background-color: #1da1f2;
     color: #fff;
+    border: none;
+}
+.reply-btn:hover {
+    background-color: #016db0;
+    color: #ffffff;
+    transition: 0.3s;
     border: none;
 }
