@@ -14,8 +14,9 @@ class CreateSnsRepliesTable extends Migration
     public function up()
     {
         Schema::create('sns_replies', function (Blueprint $table) {
-            $table->id('id');
-            $table->foreign('id')
+            $table->id('index');  // これは実際には 'id' カラムとして動作します
+            $table->unsignedBigInteger('post_id');  // 外部キーとして使用するカラム
+            $table->foreign('post_id')
             ->references('id')
             ->on('sns_posts')
             ->onDelete('cascade');
