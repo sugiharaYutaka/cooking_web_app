@@ -11,8 +11,14 @@ class Recipe extends Model
 
     protected $fillable = [
         'id',
-        'dish_name',
+        'title',
         'level',
         'email',
+        'tag',
+        'description',
+        'dish_image_filename',
+        'step_text',
+        'step_image_filename',
+        'point',
     ];
 }
