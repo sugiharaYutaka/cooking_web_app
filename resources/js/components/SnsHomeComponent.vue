@@ -14,57 +14,52 @@
             <!-- コンテンツ -->
             <div class="container-fluid">
                 <h1>投稿一覧</h1>
-                <!-- 投稿を表示するカード -->
-                <div class="row">
-                    <div class="col">
-                        <hr>
-                        <div v-for="(post, index) in parsedData" :key="index">
-                            <div class="post-body">
-                                <div class="container ps-0 ms-0">
-                                    <div class="row mt-1">
-                                        <div class="col-2 text-end">
-                                            <input type="image" class="post-icon" :src="_imagePath + parsedData[index].icon_filename" @click="showProfile(parsedData[index].id)">
-                                        </div>
-                                        <div class="col align-self-center">
-                                            <span class="h5" @click="showProfile(parsedData[index].id)">{{ parsedData[index].name }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-10 offset-2">
-                                            <span>{{ parsedData[index].text }}</span>
-                                        </div>
-                                    </div>
-
-                                    <div v-if="parsedData[index].image_filename" class="row">
-                                        <div class="col-10 offset-2">
-                                            <img class="post-image" :src="_imagePath + parsedData[index].image_filename">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col text-end">
-                                            <div class="like-form" style="display: inline;">
-                                                <input type="hidden" name="post_id" v-bind:value=parsedData[index].id>
-                                                <!-- いいね数を表示 -->
-                                                <button type="submit" class="like-btn interaction-button my-2"
-                                                    @click="likePost(parsedData[index].id)">{{parsedData[index].good}}♡</button>
-                                                <!-- 他のボタンとフォーム -->
-                                            </div>
-
-                                            <form :action=_replyShowUrl method="post" style="display: inline;">
-                                                <input type="hidden" name="_token" :value=csrfToken>
-                                                <input type="hidden" name="post_id" :value=parsedData[index].id>
-                                                <button class="reply-btn interaction-button my-2">
-                                                    返信
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                <hr>
+                <div v-for="(post, index) in parsedData" :key="index">
+                    <div class="post-body">
+                        <div class="row mt-1">
+                            <div class="col-2 d-flex justify-content-center">
+                                <input type="image" class="post-icon" :src="_imagePath + 'icon/' +parsedData[index].icon_filename"
+                                    @click="showProfile(parsedData[index].id)">
                             </div>
-                            <hr>
+                            <div class="col-10 align-self-center">
+                                <span class="h5" @click="showProfile(parsedData[index].id)">{{ parsedData[index].name
+                                }}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10 offset-2">
+                                <span>{{ parsedData[index].text }}</span>
+                            </div>
+                        </div>
+
+                        <div v-if="parsedData[index].image_filename" class="row">
+                            <div class="col-10 offset-2">
+                                <img class="post-image" :src="_imagePath + 'post/' + parsedData[index].image_filename">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col text-end">
+                                <div class="like-form" style="display: inline;">
+                                    <input type="hidden" name="post_id" v-bind:value=parsedData[index].id>
+                                    <!-- いいね数を表示 -->
+                                    <button type="submit" class="like-btn interaction-button my-2"
+                                        @click="likePost(parsedData[index].id)">{{ parsedData[index].good }}♡</button>
+                                    <!-- 他のボタンとフォーム -->
+                                </div>
+
+                                <form :action=_replyShowUrl method="post" style="display: inline;">
+                                    <input type="hidden" name="_token" :value=csrfToken>
+                                    <input type="hidden" name="post_id" :value=parsedData[index].id>
+                                    <button class="reply-btn interaction-button my-2">
+                                        返信
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
+                    <hr>
                 </div>
             </div>
         </body>
@@ -74,7 +69,7 @@
 <script>
 import Echo from 'laravel-echo';
 export default {
-    props: ["postData", "replyUrl", "imagePath", "replyPostUrl","replyShowUrl","profileUrl"],
+    props: ["postData", "replyUrl", "imagePath", "replyPostUrl", "replyShowUrl", "profileUrl"],
     data() {
         return {
             parsedData: null,
@@ -85,7 +80,7 @@ export default {
             _replyShowUrl: null,
             _profileUrl: null,
             commentInput: "comment-input",
-            csrfToken:null,
+            csrfToken: null,
         };
     },
     methods: {

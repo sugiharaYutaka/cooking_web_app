@@ -5111,6 +5111,66 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5130,12 +5190,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["postId", "replyPostUrl"],
+  props: ["replyPostUrl", "mainPost", "allReply", "imagePath"],
   data: function data() {
     return {
-      _replyPostUrl: null,
-      commentInput: "comment-input"
+      after_replyPostUrl: null,
+      after_mainPost: null,
+      after_allReply: null,
+      after_imagePath: null,
+      icon_dir: "icon/",
+      post_dir: "post/"
     };
   },
   methods: {
@@ -5154,9 +5219,9 @@ __webpack_require__.r(__webpack_exports__);
       var comment = commentInput.querySelector('textarea').value; // コメントの値を取得する
       if (comment) {
         var formData = new FormData();
-        formData.append('post_id', this.postId);
+        formData.append('post_id', this.after_mainPost.id);
         formData.append('comment', comment);
-        axios.post(this._replyPostUrl, formData) // ここでリプライ送信用のエンドポイントを指定
+        axios.post(this.after_replyPostUrl, formData) // ここでリプライ送信用のエンドポイントを指定
         .then(function (response) {
           // リプライが送信された後の処理をここに記述
           console.log('Reply sent successfully');
@@ -5169,7 +5234,28 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this._replyPostUrl = this.replyPostUrl.replaceAll('\\', '').replaceAll('"', '');
+    var _this = this;
+    var mainPost_0 = JSON.parse(this.mainPost);
+    this.after_mainPost = mainPost_0[0];
+    this.after_allReply = JSON.parse(this.allReply);
+    this.after_replyPostUrl = this.replyPostUrl.replaceAll('\\', '').replaceAll('"', '');
+    this.after_imagePath = this.imagePath.replaceAll('\\', '').replaceAll('"', '') + '/';
+    window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
+      broadcaster: 'pusher',
+      key: "4bba746d7784feb8ad5b",
+      cluster: "ap3",
+      encrypted: true
+    });
+    window.Echo.channel('reply-channel').listen('ReplyEvent', function (event) {
+      if (event.error) {
+        console.error('Pusher error:', event.error);
+      } else {
+        _this.after_allReply = event.replies_data;
+        _this.after_mainPost = event.post_data[0];
+        console.log("after rep", _this.after_allReply);
+        console.log("after main", _this.after_mainPost);
+      }
+    });
   }
 });
 
@@ -5187,11 +5273,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
-//
-//
-//
-//
-//
 //
 //
 //
@@ -33925,42 +34006,160 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "button",
-      {
-        staticClass: "reply-btn interaction-button my-2",
-        on: {
-          click: function ($event) {
-            return _vm.replyshow()
-          },
-        },
-      },
-      [_vm._v("\n        返信\n    ")]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "commentInput", staticStyle: { display: "none" } },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary",
-            attrs: { type: "submit" },
-            on: {
-              click: function ($event) {
-                return _vm.replyPost()
-              },
-            },
-          },
-          [_vm._v("\n            投稿\n        ")]
-        ),
-      ]
-    ),
-  ])
+  return _c(
+    "div",
+    { staticClass: "body-margin" },
+    [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "post-body" }, [
+          _c("div", { staticClass: "row mt-1" }, [
+            _c("div", { staticClass: "col-2 d-flex justify-content-center" }, [
+              _c("img", {
+                staticClass: "post-icon",
+                attrs: {
+                  src:
+                    _vm.after_imagePath +
+                    "icon/" +
+                    _vm.after_mainPost.icon_filename,
+                },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-10 align-self-center" }, [
+              _c("span", { staticClass: "h3 text-color-gray" }, [
+                _vm._v(_vm._s(_vm.after_mainPost.name)),
+              ]),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "h5 col-10 offset-2" }, [
+              _c("span", [_vm._v(_vm._s(_vm.after_mainPost.text))]),
+            ]),
+          ]),
+          _vm._v(" "),
+          _vm.after_mainPost.image_filename
+            ? _c("div", [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-10 offset-2" }, [
+                    _c("img", {
+                      staticClass: "post-image",
+                      attrs: {
+                        src:
+                          _vm.after_imagePath +
+                          "post/" +
+                          _vm.after_mainPost.image_filename,
+                      },
+                    }),
+                  ]),
+                ]),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-12 text-end" }, [
+              _c(
+                "strong",
+                {
+                  staticClass: "like-count h5",
+                  staticStyle: { color: "#e0245e" },
+                },
+                [_vm._v(_vm._s(_vm.after_mainPost.good) + "♡")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticStyle: { display: "inline" } }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "reply-btn interaction-button my-2",
+                    on: {
+                      click: function ($event) {
+                        return _vm.replyshow()
+                      },
+                    },
+                  },
+                  [
+                    _vm._v(
+                      "\n                                返信\n                            "
+                    ),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "commentInput",
+                    staticStyle: { display: "none" },
+                  },
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.replyPost()
+                          },
+                        },
+                      },
+                      [
+                        _vm._v(
+                          "\n                                    投稿\n                                "
+                        ),
+                      ]
+                    ),
+                  ]
+                ),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _vm._l(_vm.after_allReply, function (reply) {
+        return _c("div", [
+          _c("div", { staticClass: "post-body" }, [
+            _c("div", { staticClass: "row mt-1" }, [
+              _c("div", { staticClass: "col-2 text-end" }, [
+                _c("img", {
+                  staticClass: "post-icon",
+                  attrs: {
+                    src: _vm.after_imagePath + "icon/" + reply.icon_filename,
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-10 align-self-center" }, [
+                _c("span", { staticClass: "h5 text-color-gray" }, [
+                  _vm._v(_vm._s(reply.name)),
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-color-gray" }, [
+                  _vm._v(_vm._s(reply.created_at)),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-10 offset-2" }, [
+                _c("span", [_vm._v(_vm._s(reply.text))]),
+              ]),
+            ]),
+          ]),
+        ])
+      }),
+      _vm._v(" "),
+      _c("hr"),
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function () {
@@ -34007,163 +34206,146 @@ var render = function () {
     _vm._m(0),
     _vm._v(" "),
     _c("body", { staticClass: "body-margin" }, [
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("h1", [_vm._v("投稿一覧")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col" },
-            [
-              _c("hr"),
-              _vm._v(" "),
-              _vm._l(_vm.parsedData, function (post, index) {
-                return _c("div", { key: index }, [
-                  _c("div", { staticClass: "post-body" }, [
-                    _c("div", { staticClass: "container ps-0 ms-0" }, [
-                      _c("div", { staticClass: "row mt-1" }, [
-                        _c("div", { staticClass: "col-2 text-end" }, [
-                          _c("input", {
-                            staticClass: "post-icon",
-                            attrs: {
-                              type: "image",
-                              src:
-                                _vm._imagePath +
-                                _vm.parsedData[index].icon_filename,
-                            },
+      _c(
+        "div",
+        { staticClass: "container-fluid" },
+        [
+          _c("h1", [_vm._v("投稿一覧")]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _vm._l(_vm.parsedData, function (post, index) {
+            return _c("div", { key: index }, [
+              _c("div", { staticClass: "post-body" }, [
+                _c("div", { staticClass: "row mt-1" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-2 d-flex justify-content-center" },
+                    [
+                      _c("input", {
+                        staticClass: "post-icon",
+                        attrs: {
+                          type: "image",
+                          src:
+                            _vm._imagePath +
+                            "icon/" +
+                            _vm.parsedData[index].icon_filename,
+                        },
+                        on: {
+                          click: function ($event) {
+                            return _vm.showProfile(_vm.parsedData[index].id)
+                          },
+                        },
+                      }),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-10 align-self-center" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "h5",
+                        on: {
+                          click: function ($event) {
+                            return _vm.showProfile(_vm.parsedData[index].id)
+                          },
+                        },
+                      },
+                      [_vm._v(_vm._s(_vm.parsedData[index].name))]
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-10 offset-2" }, [
+                    _c("span", [_vm._v(_vm._s(_vm.parsedData[index].text))]),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _vm.parsedData[index].image_filename
+                  ? _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-10 offset-2" }, [
+                        _c("img", {
+                          staticClass: "post-image",
+                          attrs: {
+                            src:
+                              _vm._imagePath +
+                              "post/" +
+                              _vm.parsedData[index].image_filename,
+                          },
+                        }),
+                      ]),
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col text-end" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "like-form",
+                        staticStyle: { display: "inline" },
+                      },
+                      [
+                        _c("input", {
+                          attrs: { type: "hidden", name: "post_id" },
+                          domProps: { value: _vm.parsedData[index].id },
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "like-btn interaction-button my-2",
+                            attrs: { type: "submit" },
                             on: {
                               click: function ($event) {
-                                return _vm.showProfile(_vm.parsedData[index].id)
+                                return _vm.likePost(_vm.parsedData[index].id)
                               },
                             },
-                          }),
-                        ]),
+                          },
+                          [_vm._v(_vm._s(_vm.parsedData[index].good) + "♡")]
+                        ),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "form",
+                      {
+                        staticStyle: { display: "inline" },
+                        attrs: { action: _vm._replyShowUrl, method: "post" },
+                      },
+                      [
+                        _c("input", {
+                          attrs: { type: "hidden", name: "_token" },
+                          domProps: { value: _vm.csrfToken },
+                        }),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col align-self-center" }, [
-                          _c(
-                            "span",
-                            {
-                              staticClass: "h5",
-                              on: {
-                                click: function ($event) {
-                                  return _vm.showProfile(
-                                    _vm.parsedData[index].id
-                                  )
-                                },
-                              },
-                            },
-                            [_vm._v(_vm._s(_vm.parsedData[index].name))]
-                          ),
-                        ]),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col-10 offset-2" }, [
-                          _c("span", [
-                            _vm._v(_vm._s(_vm.parsedData[index].text)),
-                          ]),
-                        ]),
-                      ]),
-                      _vm._v(" "),
-                      _vm.parsedData[index].image_filename
-                        ? _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-10 offset-2" }, [
-                              _c("img", {
-                                staticClass: "post-image",
-                                attrs: {
-                                  src:
-                                    _vm._imagePath +
-                                    _vm.parsedData[index].image_filename,
-                                },
-                              }),
-                            ]),
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col text-end" }, [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "like-form",
-                              staticStyle: { display: "inline" },
-                            },
-                            [
-                              _c("input", {
-                                attrs: { type: "hidden", name: "post_id" },
-                                domProps: { value: _vm.parsedData[index].id },
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "like-btn interaction-button my-2",
-                                  attrs: { type: "submit" },
-                                  on: {
-                                    click: function ($event) {
-                                      return _vm.likePost(
-                                        _vm.parsedData[index].id
-                                      )
-                                    },
-                                  },
-                                },
-                                [
-                                  _vm._v(
-                                    _vm._s(_vm.parsedData[index].good) + "♡"
-                                  ),
-                                ]
-                              ),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "form",
-                            {
-                              staticStyle: { display: "inline" },
-                              attrs: {
-                                action: _vm._replyShowUrl,
-                                method: "post",
-                              },
-                            },
-                            [
-                              _c("input", {
-                                attrs: { type: "hidden", name: "_token" },
-                                domProps: { value: _vm.csrfToken },
-                              }),
-                              _vm._v(" "),
-                              _c("input", {
-                                attrs: { type: "hidden", name: "post_id" },
-                                domProps: { value: _vm.parsedData[index].id },
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "reply-btn interaction-button my-2",
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                                                返信\n                                            "
-                                  ),
-                                ]
-                              ),
-                            ]
-                          ),
-                        ]),
-                      ]),
-                    ]),
+                        _c("input", {
+                          attrs: { type: "hidden", name: "post_id" },
+                          domProps: { value: _vm.parsedData[index].id },
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          { staticClass: "reply-btn interaction-button my-2" },
+                          [
+                            _vm._v(
+                              "\n                                    返信\n                                "
+                            ),
+                          ]
+                        ),
+                      ]
+                    ),
                   ]),
-                  _vm._v(" "),
-                  _c("hr"),
-                ])
-              }),
-            ],
-            2
-          ),
-        ]),
-      ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+            ])
+          }),
+        ],
+        2
+      ),
     ]),
   ])
 }

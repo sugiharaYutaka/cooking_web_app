@@ -16,13 +16,13 @@ class CreateSnsFollowersTable extends Migration
         Schema::create('sns_followers', function (Blueprint $table) {
             $table->id();
 
-            $table->string('follower_email')->unique()->nullable(false);
+            $table->string('follower_email')->nullable(false);
             $table->foreign('follower_email')
             ->references('email')
             ->on('users')
             ->onDelete('cascade');
 
-            $table->string('following_email')->unique()->nullable(false);
+            $table->string('following_email')->nullable(false);
             $table->foreign('following_email')
             ->references('email')
             ->on('users')

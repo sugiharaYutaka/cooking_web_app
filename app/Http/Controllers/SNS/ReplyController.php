@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\SNS;
 
+use App\Events\ReplyEvent;
 use App\Models\SnsPost;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,13 +21,13 @@ class ReplyController extends Controller
             $newReply = SnsReply::create([
                 'email' => $email,
                 'text' => $comment,
-                'id' => $postId,
+                'post_id' => $postId,
             ]);
+            broadcast(new ReplyEvent($postId));
         }
         else
         {
             session()->flash('login_message',"ログインしてください");
-            return route('sns');
         }
 
     }
@@ -37,17 +38,17 @@ class ReplyController extends Controller
         //userテーブルのemailとsns_repliesテーブルのemailをキーにして結合
         //sns_repliesテーブルのidが一致したレコードを選択
         $allReply = SnsReply::select([
-            'sns_replies.id',
+            'sns_replies.post_id',
             'sns_replies.email',
             'sns_replies.text',
         ])
         ->from('sns_replies')
         ->join('users', function ($join) use ($postId){
             $join->on('sns_replies.email', '=', 'users.email')
-            ->where('sns_replies.id', '=', $postId);
+            ->where('sns_replies.post_id', '=', $postId);
         })
         ->select('users.name','users.icon_filename', 'sns_replies.*')
-        ->orderBy('sns_replies.id', 'desc')
+        ->orderBy('sns_replies.index', 'desc')
         ->get();
 
 

@@ -10,7 +10,7 @@ class SnsReply extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
+        'post_id',
         'email',
         'text',
     ];
