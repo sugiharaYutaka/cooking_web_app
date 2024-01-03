@@ -58,7 +58,7 @@
 @media(max-width:750px) {
     .logo {
         width: 144px;
-        height: 24px;
+        height: 36px;
     }
     .post-icon{
         border-radius: 50%;
@@ -89,8 +89,8 @@
 /* PC ScreenSize */
 @media(min-width:751px) {
     .logo {
-        width: 215px;
-        height: 36px;
+        width: 120px;
+        height: 30px;
     }
     .post-icon{
         border-radius: 50%;

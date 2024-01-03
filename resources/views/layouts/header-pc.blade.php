@@ -73,10 +73,6 @@
             width: 250px;
         }
 
-        .logo{
-            width: 128px;
-            height: 20px;
-        }
     </style>
 
 </body>
