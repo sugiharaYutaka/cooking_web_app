@@ -22,6 +22,9 @@ window.Vue = require('vue').default;
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('sns-home-component', require('./components/SnsHomeComponent.vue').default);
 Vue.component('reply-form-component', require('./components/ReplyFormComponent.vue').default);
+Vue.component('recipe-post-pc-component', require('./components/RecipePostPcComponent.vue').default);
+Vue.component('recipe-post-phone-component', require('./components/RecipePostPhoneComponent.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
