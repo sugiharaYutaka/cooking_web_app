@@ -48,10 +48,27 @@
 .user-icon:hover {
     transform: scale(1.05, 1.05);
 }
+.del-tag:hover{
+    background: linear-gradient(135deg, rgb(198, 198, 198), rgb(166, 166, 166));
+    background-color: #868a8e;
+}
 
 /* ブラウザによって自動で余白を追加される可能性があるので*/
 .p0 {
     padding: 0;
+}
+
+.rounded-top-L{
+    border-top-right-radius: 0px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.rounded-top-R{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
 
 /* Phone ScreenSize */
