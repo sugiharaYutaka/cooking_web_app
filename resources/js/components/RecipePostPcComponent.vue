@@ -186,7 +186,7 @@
                             class="h6 ms-1">難易度</span></label>
                     <div class="col">
                         <div class="mx-5">
-                            <select id="level">
+                            <select class="form-control" id="level">
                                 <option value="1">☆</option>
                                 <option value="2">☆☆</option>
                                 <option value="3">☆☆☆</option>
