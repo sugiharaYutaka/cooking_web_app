@@ -16,8 +16,11 @@ class Recipe extends Model
         'email',
         'tag',
         'description',
+        'ingredients',
         'dish_image_filename',
         'step_text',
+        'step_number',
+        'step_title',
         'step_image_filename',
         'point',
     ];

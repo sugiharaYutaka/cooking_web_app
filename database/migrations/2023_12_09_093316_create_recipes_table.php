@@ -30,8 +30,10 @@ class CreateRecipesTable extends Migration
 
             $table->string('description');//レシピの説明
             $table->string('dish_image_filename');//レシピの画像
+            $table->string('ingredients');//材料'//'を区切り文字とする
             $table->unsignedInteger('step_number');//工程の数　投稿するときに工程をいくつ追加したか
             $table->string('step_text');//工程の説明　'//'を区切り文字とする
+            $table->string('step_title')->nullable(true);;//工程のタイトル　'//'を区切り文字とする
             $table->string('step_image_filename');//工程の画像　'//'を区切り文字とする　画像がない工程はNULLとする
             //例 koutei1.png//NULL//koutei2.png//
 
