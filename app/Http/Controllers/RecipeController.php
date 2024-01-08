@@ -10,7 +10,8 @@ class RecipeController extends Controller
 {
     public function index()
     {
-        return view('recipe.recipe');
+        $recipePost = $this->getRecipe();
+        return view('recipe.recipe',compact('recipePost'));
     }
 
     public function post()
@@ -66,5 +67,40 @@ class RecipeController extends Controller
             'point' => $request->point,
             'step_number' =>  $request->stepCount,
         ]);
+    }
+    public function getRecipe()
+    {
+        $result = Recipe::select([
+            'recipes.id',
+            'recipes.title',
+            'recipes.level',
+            'recipes.tag',
+            'recipes.description',
+            'recipes.ingredients',
+            'recipes.dish_image_filename',
+            'recipes.step_text',
+            'recipes.step_image_filename',
+            'recipes.point',
+            'recipes.step_number',
+        ])
+        ->from('recipes')
+        ->join('users', function ($join){
+            $join->on('recipes.email', '=', 'users.email');
+        })
+        ->select('users.name','users.icon_filename', 'recipes.*')
+        ->orderBy('recipes.id', 'desc')
+        ->take(5)
+        ->get();
+
+        $array =[];
+        foreach($result as $row){
+            $row['step_text'] = explode('//',$row['step_text']);
+            $row['step_image_filename'] = explode('//',$row['step_image_filename']);
+            $row['ingredients'] = explode('//',$row['ingredients']);
+            $row['tag'] = explode('//',$row['tag']);
+
+            array_push($array,$row);
+        }
+        return $array;
     }
 }
