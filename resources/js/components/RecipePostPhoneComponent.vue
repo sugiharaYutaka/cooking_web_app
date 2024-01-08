@@ -219,8 +219,10 @@
 </template>
 <script>
 export default {
+    props: ["postUrl"],
     data() {
         return {
+            _postUrl:"",
             stepCount: 3,
             dishImage: null,
 
@@ -446,7 +448,7 @@ export default {
                 formData.append('level', element.value)
                 formData.append('tag', this.tagList)
                 formData.append('stepCount', this.stepCount);
-                axios.post('/recipe/postForm', formData)
+                axios.post(this._postUrl, formData)
                 //window.location.href = 'https://example.com';
             }
 
@@ -454,6 +456,7 @@ export default {
     },
 
     mounted() {
+        this._postUrl = this.postUrl.replaceAll('\\', '').replaceAll('"', '');
     }
 };
 </script>

@@ -60,6 +60,6 @@
 </head>
 
 <div id="app">
-    <recipe-post-phone-component></recipe-post-phone-component>
+    <recipe-post-phone-component post-url="{{ json_encode( url('/recipe/postForm') ) }}"></recipe-post-phone-component>
 </div>
 </html>

@@ -61,6 +61,6 @@
 
 
 <div id="app">
-    <recipe-post-pc-component></recipe-post-pc-component>
+    <recipe-post-pc-component post-url="{{ json_encode( url('/recipe/postForm') ) }}"></recipe-post-pc-component>
 </div>
 </html>
