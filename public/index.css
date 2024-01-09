@@ -200,3 +200,14 @@
 .circle-btn:hover {
     transform: scale(1.05, 1.05);
 }
+
+.sidebar {
+    position: fixed; /* サイドバーを固定 */
+    top: 2; /* 上端からの位置 */
+    left: 0; /* 左端からの位置 */
+    width: 250px; /* サイドバーの幅 */
+    height: 100%; /* サイドバーの高さ */
+    overflow-y: auto; /* 縦スクロールを有効にする */
+    background-color: #f5f5f5; /* サイドバーの背景色 */
+    /* その他のスタイルやデザインを追加 */
+}

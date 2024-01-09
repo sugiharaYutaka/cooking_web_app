@@ -311,8 +311,8 @@ export default {
             if (rules.indexOf('required') != -1 && value.length == 0) {
                 message['required'] = '必須項目です';
             }
-            if (rules.indexOf('max20') != -1 && value.length > 20) {
-                message['max20'] = '20文字未満にしてください';
+            if (rules.indexOf('max50') != -1 && value.length > 20) {
+                message['max50'] = '50文字未満にしてください';
             }
             if (rules.indexOf('max500') != -1 && value.length > 500) {
                 message['max500'] = '500文字未満にしてください';
@@ -354,7 +354,7 @@ export default {
             let checkSumMax = 5 + (this.stepCount * 2)
 
             let result = null;
-            if (result = this.validate(this.title, ['required', 'max20'])) {
+            if (result = this.validate(this.title, ['required', 'max50'])) {
                 //バリデーションエラー発生
                 this.validateError['title'] = result;
                 this.formClass['title'] = 'form-control is-invalid';
@@ -367,7 +367,7 @@ export default {
                 checkSum++;
             }
 
-            if (result = this.validate(this.description, ['required', 'max20'])) {
+            if (result = this.validate(this.description, ['required', 'max50'])) {
                 //バリデーションエラー発生
                 this.validateError['description'] = result;
                 this.formClass['description'] = 'form-control is-invalid';
