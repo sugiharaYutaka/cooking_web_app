@@ -14,7 +14,7 @@
         <h1>chapter1 親子丼</h1>
 
         <div class="centerimg">
-            <img src="{{ asset('images/oyakodon.jpg') }}" class="sizeimg"><br>
+            <img src="{{ asset('image/chapter/oyakodon.jpg') }}" class="sizeimg"><br>
         </div>
 
         <!--- 料理の説明文 --->

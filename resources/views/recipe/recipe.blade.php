@@ -17,6 +17,12 @@
                     </button>
                 </div>
 
+                <div class="row">
+                    <button class="bg-color-2 circle-btn border">
+                        <a href="{{ route('recipebookmark') }}" class="no-underline text-color-4 h3">bookmark</a>
+                    </button>
+                </div>
+
                 @foreach ($recipePost as $post)
                 <div class="row border my-5 bg-color-3">
                     <div class="col-12 my-2">
@@ -57,11 +63,16 @@
                         <p class='h5'>ポイント・コツ</p>
                         <p>{{ $post->point }}</p>
                     </div>
+
+                    <!--- ブックマーク追加ボタン --->
+                    <div class="row">
+                        <button class="bg-color-2 circle-btn border">
+                            < class="no-underline text-color-4 h3">bookmark</a>
+                        </button>
+                    </div>
                 </div>
                 @endforeach
             </div>
-        </div>
-    </div>
 
 
 </body>

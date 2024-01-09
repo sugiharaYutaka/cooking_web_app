@@ -2,10 +2,16 @@
 
 
 <style>
+    h1 {
+        padding-top: 100px;
+    }
 
+    .card {
+        margin-top: 50px;
+    }
 </style>
 
-    <h1>ブックマーク</h1>
+<h1>ブックマーク</h1>
 
 
 
