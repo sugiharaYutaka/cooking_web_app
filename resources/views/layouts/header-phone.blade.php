@@ -23,13 +23,13 @@
           </div>
           <div class="col-2">
             @guest
-            <a href="#modalProfile" data-bs-toggle="modal"><img src="{{ asset('image/user_icon.png') }}" class="user-icon" style="width: 48px; height: 48px;" /></a>
+            <a href="#modalProfile" data-bs-toggle="modal"><img src="{{ asset('/image/icon/user_icon.png') }}" class="user-icon" style="width: 48px; height: 48px;" /></a>
             @else
             @if (session('icon_filename') == "user_icon.png")
-            <a href="#modalProfile" data-bs-toggle="modal"><img src="{{ asset('image/user_icon.png') }}" class="user-icon" style="width: 48px; height: 48px;" /></a>
+            <a href="#modalProfile" data-bs-toggle="modal"><img src="{{ asset('/image/icon/user_icon.png') }}" class="user-icon" style="width: 48px; height: 48px;" /></a>
 
             @else
-            <a href="#modalProfile" data-bs-toggle="modal"><img src=" {{ asset('/storage/img/' . session('icon_filename') )}}" class="user-icon" style="width: 48px; height: 48px;" /></a>
+            <a href="#modalProfile" data-bs-toggle="modal"><img src=" {{ asset('/image/icon/' . session('icon_filename') )}}" class="user-icon" style="width: 48px; height: 48px;" /></a>
             @endif
             @endguest
           </div>

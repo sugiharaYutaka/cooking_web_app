@@ -48,17 +48,34 @@
 .user-icon:hover {
     transform: scale(1.05, 1.05);
 }
+.del-tag:hover{
+    background: linear-gradient(135deg, rgb(198, 198, 198), rgb(166, 166, 166));
+    background-color: #868a8e;
+}
 
 /* ブラウザによって自動で余白を追加される可能性があるので*/
 .p0 {
     padding: 0;
 }
 
+.rounded-top-L{
+    border-top-right-radius: 0px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.rounded-top-R{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
 /* Phone ScreenSize */
 @media(max-width:750px) {
     .logo {
         width: 144px;
-        height: 24px;
+        height: 36px;
     }
     .post-icon{
         border-radius: 50%;
@@ -80,13 +97,17 @@
         margin-top: 15vh;
         margin-bottom: 15vh;
     }
+    .post-margin {
+        padding-left: 0;
+        margin-left: 0;
+    }
 }
 
 /* PC ScreenSize */
 @media(min-width:751px) {
     .logo {
-        width: 215px;
-        height: 36px;
+        width: 120px;
+        height: 30px;
     }
     .post-icon{
         border-radius: 50%;
@@ -107,6 +128,9 @@
         margin-top: 20vh;
         margin-bottom: 20vh;
     }
+    .post-margin {
+
+    }
 }
 
 /* {{ asset('index.css') }}*/
@@ -122,8 +146,8 @@
     min-width: 0;
     word-wrap: break-word;
     background-color: #fff;
-    background-clip: border-box;
-  }
+    background-clip: border-box;}
+
 
 
 
@@ -154,4 +178,25 @@
 /* リンクにホバーした際のスタイル */
 .sidebar ul li a:hover {
     color: #555; /* ホバー時の色 */
+}
+
+.reply-btn {
+    background-color: #1da1f2;
+    color: #fff;
+    border: none;
+}
+.reply-btn:hover {
+    background-color: #016db0;
+    color: #ffffff;
+    transition: 0.3s;
+    border: none;
+}
+
+.circle-btn {
+    border-radius: 50%;
+    width:50px;
+    height:50px;
+}
+.circle-btn:hover {
+    transform: scale(1.05, 1.05);
 }

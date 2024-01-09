@@ -24,7 +24,7 @@
                     <div class="col-1"></div>
                     <div class="col-3" style="margin-left: 10px;">
                         <form action="/search" method="GET" class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
+                            <input class="form-control mr-sm-2" type="search" placeholder="タグ検索" aria-label="Search" name="query">
                         </form>
                     </div>
                     <div class="col-1"></div>
@@ -33,7 +33,7 @@
                         <a href="{{ route('study') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/study.png') }}" class="footericon"><br>勉強</button></a>
                     </div>
                     <div class="col-1 d-flex justify-content-center">
-                        <a href="{{ route('recipe') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/recipe.png') }}" class="footericon"><br>レシピ</button></a>
+                        <a href="{{ route('recipe1') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/recipe.png') }}" class="footericon"><br>献立</button></a>
                     </div>
                     <div class="col-1 d-flex justify-content-center">
                         <a href="{{ route('sns') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/sns.png') }}" class="footericon"><br>SNS</button></a>
@@ -46,9 +46,9 @@
                         <a href="#modalProfile" data-bs-toggle="modal" class="no-underline text-dark"><button type="button" class="btn"><img src=" {{ asset('image/profile.png') }}" class="footericon"><br>未ログイン</button></a>
                         @else
                         @if (session('icon_filename') == "user_icon.png")
-                        <a href="{{ route('profile') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('/image/user_icon.png') }}" class="footericon"><br>プロフィール</button></a>
+                        <a href="{{ route('profile') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('/image/icon/user_icon.png') }}" class="footericon"><br>プロフィール</button></a>
                         @else
-                        <a href="{{ route('profile') }}" class="no-underline text-dark"><button type="button" class="btn"><img src=" {{ asset('/storage/img/' . session('icon_filename') )}}" class="footericon"><br>プロフィール</button></a>
+                        <a href="{{ route('profile') }}" class="no-underline text-dark"><button type="button" class="btn"><img src=" {{ asset('/image/icon/' . session('icon_filename') )}}" class="footericon"><br>プロフィール</button></a>
                         @endif
                         @endguest
                     </div>
@@ -75,11 +75,6 @@
 
         .custom-search-input {
             width: 250px;
-        }
-
-        .logo {
-            width: 128px;
-            height: 20px;
         }
     </style>
 

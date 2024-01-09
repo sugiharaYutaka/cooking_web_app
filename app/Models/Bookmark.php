@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SnsReply extends Model
+class Bookmark extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'post_id',
+        'id',
+        'recipe_id',
         'email',
-        'text',
     ];
 }

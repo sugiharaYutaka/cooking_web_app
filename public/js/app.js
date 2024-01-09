@@ -5100,10 +5100,943 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SnsHomeComponent.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SnsHomeComponent.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipePostPcComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipePostPcComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["postUrl"],
+  data: function data() {
+    return {
+      _postUrl: "",
+      stepCount: 3,
+      dishImage: null,
+      tagList: ['#ユーザ投稿'],
+      stepPlaceholder: ['まずは調味料を作ります。用意した醤油、酒、コチュジャンを混ぜ合わせます。', '次に鶏肉を一口大に切り、片栗粉をまぶします', 'フライパンに油を入れ、工程2で処理した鶏肉を焼いていきます'],
+      title: "",
+      description: "",
+      ingredients: "",
+      point: "",
+      stepText: Array.from({
+        length: 20
+      }, function () {
+        return '';
+      }),
+      stepImage: Array.from({
+        length: 20
+      }),
+      postStepImage: Array.from({
+        length: 20
+      }, function () {
+        return null;
+      }),
+      postDishImage: null,
+      validateError: {
+        title: [],
+        dishImage: [],
+        description: [],
+        ingredients: [],
+        point: [],
+        stepImage: Array.from({
+          length: 20
+        }),
+        stepText: Array.from({
+          length: 20
+        }),
+        check: false
+      },
+      formClass: {
+        title: 'form-control',
+        dishImage: 'form-control',
+        description: 'form-control',
+        ingredients: 'form-control',
+        point: 'form-control',
+        stepImage: Array.from({
+          length: 20
+        }, function () {
+          return 'form-control';
+        }),
+        stepText: Array.from({
+          length: 20
+        }, function () {
+          return 'form-control';
+        })
+      }
+    };
+  },
+  methods: {
+    addStep: function addStep() {
+      if (this.stepCount < 20) {
+        this.stepCount++;
+      }
+    },
+    deleteStep: function deleteStep() {
+      if (this.stepCount > 1) {
+        this.stepCount--;
+      }
+    },
+    addTag: function addTag() {
+      var tag = document.getElementById("select-tag").value;
+      if (tag != "" && this.tagList.indexOf(tag) == -1) {
+        this.tagList.push(tag);
+      }
+    },
+    deleteTag: function deleteTag(tag) {
+      var index = this.tagList.indexOf(tag);
+      if (index >= 0) {
+        this.tagList.splice(index);
+      }
+    },
+    changeImage: function changeImage(event) {
+      var _this = this;
+      var image = event.target.files[0];
+      this.postDishImage = image;
+      var fileReader = new FileReader();
+      fileReader.onload = function (e) {
+        _this.dishImage = e.target.result;
+      };
+      fileReader.readAsDataURL(image);
+    },
+    changeStepImage: function changeStepImage(event, index) {
+      var _this2 = this;
+      var image = event.target.files[0];
+      this.postStepImage[index] = image;
+      var fileReader = new FileReader();
+      fileReader.onload = function (e) {
+        _this2.stepImage[index] = e.target.result;
+      };
+      fileReader.readAsDataURL(image);
+    },
+    validate: function validate(value, rules) {
+      var message = {};
+      if (rules.indexOf('required') != -1 && value.length == 0) {
+        message['required'] = '必須項目です';
+      }
+      if (rules.indexOf('max20') != -1 && value.length > 20) {
+        message['max20'] = '20文字未満にしてください';
+      }
+      if (rules.indexOf('max500') != -1 && value.length > 500) {
+        message['max500'] = '500文字未満にしてください';
+      }
+      if (rules.indexOf('slash') != -1 && value.search('/') != -1) {
+        message['slash'] = '/を使用しないでください';
+      }
+      if (Object.keys(message).length) {
+        return message;
+      } else {
+        return false;
+      }
+    },
+    validateFile: function validateFile(value, rules) {
+      var message = {};
+      try {
+        if (rules.indexOf('required') != -1 && value == null) {
+          message['required'] = '必須項目です';
+        }
+        if (rules.indexOf('max3MB') != -1 && value.size > 3072000) {
+          message['max3MB'] = 'ファイルサイズは3MB未満にしてください';
+        }
+      } catch (e) {
+        message['required'] = '必須項目です';
+      }
+      if (Object.keys(message).length) {
+        return message;
+      } else {
+        return false;
+      }
+    },
+    postForm: function postForm() {
+      var formData = new FormData();
+      var checkSum = 0;
+      var checkSumMax = 5 + this.stepCount * 2;
+      var result = null;
+      if (result = this.validate(this.title, ['required', 'max20'])) {
+        //バリデーションエラー発生
+        this.validateError['title'] = result;
+        this.formClass['title'] = 'form-control is-invalid';
+      } else {
+        //バリデーション成功
+        this.formClass['title'] = 'form-control';
+        this.validateError['title'] = null;
+        formData.append('title', this.title);
+        checkSum++;
+      }
+      if (result = this.validate(this.description, ['required', 'max20'])) {
+        //バリデーションエラー発生
+        this.validateError['description'] = result;
+        this.formClass['description'] = 'form-control is-invalid';
+      } else {
+        //バリデーション成功
+        this.formClass['description'] = 'form-control';
+        this.validateError['description'] = null;
+        formData.append('description', this.description);
+        checkSum++;
+      }
+      if (result = this.validate(this.ingredients, ['required', 'max500', 'slash'])) {
+        //バリデーションエラー発生
+        this.validateError['ingredients'] = result;
+        this.formClass['ingredients'] = 'form-control is-invalid';
+      } else {
+        //バリデーション成功
+        this.formClass['ingredients'] = 'form-control';
+        this.validateError['ingredients'] = null;
+        formData.append('ingredients', this.ingredients.replace('\n', "//"));
+        checkSum++;
+      }
+      if (result = this.validate(this.point, ['required', 'max500'])) {
+        //バリデーションエラー発生
+        this.validateError['point'] = result;
+        this.formClass['point'] = 'form-control is-invalid';
+      } else {
+        //バリデーション成功
+        this.formClass['point'] = 'form-control';
+        this.validateError['point'] = null;
+        formData.append('point', this.point);
+        checkSum++;
+      }
+      if (result = this.validateFile(this.postDishImage, ['required', 'max3MB'])) {
+        //バリデーションエラー発生
+        this.validateError['dishImage'] = result;
+        this.formClass['dishImage'] = 'form-control is-invalid';
+      } else {
+        //バリデーション成功
+        this.formClass['dishImage'] = 'form-control';
+        this.validateError['dishImage'] = null;
+        formData.append('dishImage', this.postDishImage);
+        checkSum++;
+      }
+      for (var index = 0; index < this.stepCount; index++) {
+        if ((result = this.validateFile(this.postStepImage[index], ['max3MB'])) && this.postStepImage[index] != null) {
+          this.validateError['stepImage'][index] = result;
+          this.formClass['stepImage'][index] = 'form-control is-invalid';
+        } else {
+          this.formClass['stepImage'][index] = 'form-control';
+          this.validateError['stepImage'][index] = null;
+          formData.append('step' + String(index + 1) + 'Image', this.postStepImage[index]);
+          checkSum++;
+        }
+        if (result = this.validate(this.stepText[index], ['required', 'max500', 'slash'])) {
+          this.validateError['stepText'][index] = result;
+          this.formClass['stepText'][index] = 'form-control is-invalid';
+        } else {
+          this.formClass['stepText'][index] = 'form-control';
+          this.validateError['stepText'][index] = null;
+          formData.append('step' + String(index + 1) + 'Text', this.stepText[index]);
+          checkSum++;
+        }
+      }
+      if (checkSum == checkSumMax) {
+        var element = document.getElementById('level');
+        formData.append('level', element.value);
+        formData.append('tag', this.tagList);
+        formData.append('stepCount', this.stepCount);
+        axios.post(this._postUrl, formData);
+        //window.location.href = 'https://example.com';
+      }
+    }
+  },
+  mounted: function mounted() {
+    this._postUrl = this.postUrl.replaceAll('\\', '').replaceAll('"', '');
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipePostPhoneComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipePostPhoneComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["postUrl"],
+  data: function data() {
+    return {
+      _postUrl: "",
+      stepCount: 3,
+      dishImage: null,
+      tagList: ['#ユーザ投稿'],
+      stepPlaceholder: ['まずは調味料を作ります。用意した醤油、酒、コチュジャンを混ぜ合わせます。', '次に鶏肉を一口大に切り、片栗粉をまぶします', 'フライパンに油を入れ、工程2で処理した鶏肉を焼いていきます'],
+      title: "",
+      description: "",
+      ingredients: "",
+      point: "",
+      stepText: Array.from({
+        length: 20
+      }, function () {
+        return '';
+      }),
+      stepImage: Array.from({
+        length: 20
+      }),
+      postStepImage: Array.from({
+        length: 20
+      }, function () {
+        return null;
+      }),
+      postDishImage: null,
+      validateError: {
+        title: [],
+        dishImage: [],
+        description: [],
+        ingredients: [],
+        point: [],
+        stepImage: Array.from({
+          length: 20
+        }),
+        stepText: Array.from({
+          length: 20
+        }),
+        check: false
+      },
+      formClass: {
+        title: 'form-control',
+        dishImage: 'form-control',
+        description: 'form-control',
+        ingredients: 'form-control',
+        point: 'form-control',
+        stepImage: Array.from({
+          length: 20
+        }, function () {
+          return 'form-control';
+        }),
+        stepText: Array.from({
+          length: 20
+        }, function () {
+          return 'form-control';
+        })
+      }
+    };
+  },
+  methods: {
+    addStep: function addStep() {
+      if (this.stepCount < 20) {
+        this.stepCount++;
+      }
+    },
+    deleteStep: function deleteStep() {
+      if (this.stepCount > 1) {
+        this.stepCount--;
+      }
+    },
+    addTag: function addTag() {
+      var tag = document.getElementById("select-tag").value;
+      if (tag != "" && this.tagList.indexOf(tag) == -1) {
+        this.tagList.push(tag);
+      }
+    },
+    deleteTag: function deleteTag(tag) {
+      var index = this.tagList.indexOf(tag);
+      if (index >= 0) {
+        this.tagList.splice(index);
+      }
+    },
+    changeImage: function changeImage(event) {
+      var _this = this;
+      var image = event.target.files[0];
+      this.postDishImage = image;
+      var fileReader = new FileReader();
+      fileReader.onload = function (e) {
+        _this.dishImage = e.target.result;
+      };
+      fileReader.readAsDataURL(image);
+    },
+    changeStepImage: function changeStepImage(event, index) {
+      var _this2 = this;
+      var image = event.target.files[0];
+      this.postStepImage[index] = image;
+      var fileReader = new FileReader();
+      fileReader.onload = function (e) {
+        _this2.stepImage[index] = e.target.result;
+      };
+      fileReader.readAsDataURL(image);
+    },
+    validate: function validate(value, rules) {
+      var message = {};
+      if (rules.indexOf('required') != -1 && value.length == 0) {
+        message['required'] = '必須項目です';
+      }
+      if (rules.indexOf('max20') != -1 && value.length > 20) {
+        message['max20'] = '20文字未満にしてください';
+      }
+      if (rules.indexOf('max500') != -1 && value.length > 500) {
+        message['max500'] = '500文字未満にしてください';
+      }
+      if (rules.indexOf('slash') != -1 && value.search('/') != -1) {
+        message['slash'] = '/を使用しないでください';
+      }
+      if (Object.keys(message).length) {
+        return message;
+      } else {
+        return false;
+      }
+    },
+    validateFile: function validateFile(value, rules) {
+      var message = {};
+      try {
+        if (rules.indexOf('required') != -1 && value == null) {
+          message['required'] = '必須項目です';
+        }
+        if (rules.indexOf('max3MB') != -1 && value.size > 3072000) {
+          message['max3MB'] = 'ファイルサイズは3MB未満にしてください';
+        }
+      } catch (e) {
+        message['required'] = '必須項目です';
+      }
+      if (Object.keys(message).length) {
+        return message;
+      } else {
+        return false;
+      }
+    },
+    postForm: function postForm() {
+      var formData = new FormData();
+      var checkSum = 0;
+      var checkSumMax = 5 + this.stepCount * 2;
+      var result = null;
+      if (result = this.validate(this.title, ['required', 'max20'])) {
+        //バリデーションエラー発生
+        this.validateError['title'] = result;
+        this.formClass['title'] = 'form-control is-invalid';
+      } else {
+        //バリデーション成功
+        this.formClass['title'] = 'form-control';
+        this.validateError['title'] = null;
+        formData.append('title', this.title);
+        checkSum++;
+      }
+      if (result = this.validate(this.description, ['required', 'max20'])) {
+        //バリデーションエラー発生
+        this.validateError['description'] = result;
+        this.formClass['description'] = 'form-control is-invalid';
+      } else {
+        //バリデーション成功
+        this.formClass['description'] = 'form-control';
+        this.validateError['description'] = null;
+        formData.append('description', this.description);
+        checkSum++;
+      }
+      if (result = this.validate(this.ingredients, ['required', 'max500', 'slash'])) {
+        //バリデーションエラー発生
+        this.validateError['ingredients'] = result;
+        this.formClass['ingredients'] = 'form-control is-invalid';
+      } else {
+        //バリデーション成功
+        this.formClass['ingredients'] = 'form-control';
+        this.validateError['ingredients'] = null;
+        formData.append('ingredients', this.ingredients.replace('\n', "//"));
+        checkSum++;
+      }
+      if (result = this.validate(this.point, ['required', 'max500'])) {
+        //バリデーションエラー発生
+        this.validateError['point'] = result;
+        this.formClass['point'] = 'form-control is-invalid';
+      } else {
+        //バリデーション成功
+        this.formClass['point'] = 'form-control';
+        this.validateError['point'] = null;
+        formData.append('point', this.point);
+        checkSum++;
+      }
+      if (result = this.validateFile(this.postDishImage, ['required', 'max3MB'])) {
+        //バリデーションエラー発生
+        this.validateError['dishImage'] = result;
+        this.formClass['dishImage'] = 'form-control is-invalid';
+      } else {
+        //バリデーション成功
+        this.formClass['dishImage'] = 'form-control';
+        this.validateError['dishImage'] = null;
+        formData.append('dishImage', this.postDishImage);
+        checkSum++;
+      }
+      for (var index = 0; index < this.stepCount; index++) {
+        if ((result = this.validateFile(this.postStepImage[index], ['max3MB'])) && this.postStepImage[index] != null) {
+          this.validateError['stepImage'][index] = result;
+          this.formClass['stepImage'][index] = 'form-control is-invalid';
+        } else {
+          this.formClass['stepImage'][index] = 'form-control';
+          this.validateError['stepImage'][index] = null;
+          formData.append('step' + String(index + 1) + 'Image', this.postStepImage[index]);
+          checkSum++;
+        }
+        if (result = this.validate(this.stepText[index], ['required', 'max500', 'slash'])) {
+          this.validateError['stepText'][index] = result;
+          this.formClass['stepText'][index] = 'form-control is-invalid';
+        } else {
+          this.formClass['stepText'][index] = 'form-control';
+          this.validateError['stepText'][index] = null;
+          formData.append('step' + String(index + 1) + 'Text', this.stepText[index]);
+          checkSum++;
+        }
+      }
+      if (checkSum == checkSumMax) {
+        var element = document.getElementById('level');
+        formData.append('level', element.value);
+        formData.append('tag', this.tagList);
+        formData.append('stepCount', this.stepCount);
+        axios.post(this._postUrl, formData);
+        //window.location.href = 'https://example.com';
+      }
+    }
+  },
+  mounted: function mounted() {
+    this._postUrl = this.postUrl.replaceAll('\\', '').replaceAll('"', '');
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ReplyFormComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ReplyFormComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5132,6 +6065,147 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["replyPostUrl", "mainPost", "allReply", "imagePath"],
+  data: function data() {
+    return {
+      after_replyPostUrl: null,
+      after_mainPost: null,
+      after_allReply: null,
+      after_imagePath: null,
+      icon_dir: "icon/",
+      post_dir: "post/"
+    };
+  },
+  methods: {
+    replyshow: function replyshow() {
+      var commentInput = document.querySelector('.commentInput');
+      if (commentInput) {
+        if (commentInput.style.display === 'none' || commentInput.style.display === '') {
+          commentInput.style.display = 'block';
+        } else {
+          commentInput.style.display = 'none';
+        }
+      }
+    },
+    replyPost: function replyPost() {
+      var commentInput = document.querySelector('.commentInput');
+      var comment = commentInput.querySelector('textarea').value; // コメントの値を取得する
+      if (comment) {
+        var formData = new FormData();
+        formData.append('post_id', this.after_mainPost.id);
+        formData.append('comment', comment);
+        axios.post(this.after_replyPostUrl, formData) // ここでリプライ送信用のエンドポイントを指定
+        .then(function (response) {
+          // リプライが送信された後の処理をここに記述
+          console.log('Reply sent successfully');
+          // 他の更新やリダイレクトなどが必要ならば追加してください
+        })["catch"](function (error) {
+          // エラーが発生した場合の処理
+          console.error('Error sending reply:', error);
+        });
+      }
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+    var mainPost_0 = JSON.parse(this.mainPost);
+    this.after_mainPost = mainPost_0[0];
+    this.after_allReply = JSON.parse(this.allReply);
+    this.after_replyPostUrl = this.replyPostUrl.replaceAll('\\', '').replaceAll('"', '');
+    this.after_imagePath = this.imagePath.replaceAll('\\', '').replaceAll('"', '') + '/';
+    window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
+      broadcaster: 'pusher',
+      key: "4bba746d7784feb8ad5b",
+      cluster: "ap3",
+      encrypted: true
+    });
+    window.Echo.channel('reply-channel').listen('ReplyEvent', function (event) {
+      if (event.error) {
+        console.error('Pusher error:', event.error);
+      } else {
+        _this.after_allReply = event.replies_data;
+        _this.after_mainPost = event.post_data[0];
+        console.log("after rep", _this.after_allReply);
+        console.log("after main", _this.after_mainPost);
+      }
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SnsHomeComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SnsHomeComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
 //
 //
 //
@@ -5329,6 +6403,9 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 
 Vue.component('example-component', (__webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]));
 Vue.component('sns-home-component', (__webpack_require__(/*! ./components/SnsHomeComponent.vue */ "./resources/js/components/SnsHomeComponent.vue")["default"]));
+Vue.component('reply-form-component', (__webpack_require__(/*! ./components/ReplyFormComponent.vue */ "./resources/js/components/ReplyFormComponent.vue")["default"]));
+Vue.component('recipe-post-pc-component', (__webpack_require__(/*! ./components/RecipePostPcComponent.vue */ "./resources/js/components/RecipePostPcComponent.vue")["default"]));
+Vue.component('recipe-post-phone-component', (__webpack_require__(/*! ./components/RecipePostPhoneComponent.vue */ "./resources/js/components/RecipePostPhoneComponent.vue")["default"]));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33623,6 +34700,123 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/RecipePostPcComponent.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/RecipePostPcComponent.vue ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _RecipePostPcComponent_vue_vue_type_template_id_bbac7e7e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RecipePostPcComponent.vue?vue&type=template&id=bbac7e7e& */ "./resources/js/components/RecipePostPcComponent.vue?vue&type=template&id=bbac7e7e&");
+/* harmony import */ var _RecipePostPcComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RecipePostPcComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/RecipePostPcComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RecipePostPcComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RecipePostPcComponent_vue_vue_type_template_id_bbac7e7e___WEBPACK_IMPORTED_MODULE_0__.render,
+  _RecipePostPcComponent_vue_vue_type_template_id_bbac7e7e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/RecipePostPcComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/RecipePostPhoneComponent.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/RecipePostPhoneComponent.vue ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _RecipePostPhoneComponent_vue_vue_type_template_id_7a52cb08___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RecipePostPhoneComponent.vue?vue&type=template&id=7a52cb08& */ "./resources/js/components/RecipePostPhoneComponent.vue?vue&type=template&id=7a52cb08&");
+/* harmony import */ var _RecipePostPhoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RecipePostPhoneComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/RecipePostPhoneComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RecipePostPhoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RecipePostPhoneComponent_vue_vue_type_template_id_7a52cb08___WEBPACK_IMPORTED_MODULE_0__.render,
+  _RecipePostPhoneComponent_vue_vue_type_template_id_7a52cb08___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/RecipePostPhoneComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ReplyFormComponent.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/ReplyFormComponent.vue ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ReplyFormComponent_vue_vue_type_template_id_13d05ffa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReplyFormComponent.vue?vue&type=template&id=13d05ffa& */ "./resources/js/components/ReplyFormComponent.vue?vue&type=template&id=13d05ffa&");
+/* harmony import */ var _ReplyFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReplyFormComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ReplyFormComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReplyFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReplyFormComponent_vue_vue_type_template_id_13d05ffa___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ReplyFormComponent_vue_vue_type_template_id_13d05ffa___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ReplyFormComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/SnsHomeComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/SnsHomeComponent.vue ***!
@@ -33678,6 +34872,54 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/RecipePostPcComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/RecipePostPcComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RecipePostPcComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./RecipePostPcComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipePostPcComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RecipePostPcComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/RecipePostPhoneComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/RecipePostPhoneComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RecipePostPhoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./RecipePostPhoneComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipePostPhoneComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RecipePostPhoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ReplyFormComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/ReplyFormComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReplyFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ReplyFormComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ReplyFormComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReplyFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/SnsHomeComponent.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/SnsHomeComponent.vue?vue&type=script&lang=js& ***!
@@ -33707,6 +34949,57 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ExampleComponent.vue?vue&type=template&id=299e239e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/RecipePostPcComponent.vue?vue&type=template&id=bbac7e7e&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/RecipePostPcComponent.vue?vue&type=template&id=bbac7e7e& ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RecipePostPcComponent_vue_vue_type_template_id_bbac7e7e___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RecipePostPcComponent_vue_vue_type_template_id_bbac7e7e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RecipePostPcComponent_vue_vue_type_template_id_bbac7e7e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./RecipePostPcComponent.vue?vue&type=template&id=bbac7e7e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipePostPcComponent.vue?vue&type=template&id=bbac7e7e&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/RecipePostPhoneComponent.vue?vue&type=template&id=7a52cb08&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/RecipePostPhoneComponent.vue?vue&type=template&id=7a52cb08& ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RecipePostPhoneComponent_vue_vue_type_template_id_7a52cb08___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RecipePostPhoneComponent_vue_vue_type_template_id_7a52cb08___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RecipePostPhoneComponent_vue_vue_type_template_id_7a52cb08___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./RecipePostPhoneComponent.vue?vue&type=template&id=7a52cb08& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipePostPhoneComponent.vue?vue&type=template&id=7a52cb08&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ReplyFormComponent.vue?vue&type=template&id=13d05ffa&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/ReplyFormComponent.vue?vue&type=template&id=13d05ffa& ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReplyFormComponent_vue_vue_type_template_id_13d05ffa___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReplyFormComponent_vue_vue_type_template_id_13d05ffa___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReplyFormComponent_vue_vue_type_template_id_13d05ffa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ReplyFormComponent.vue?vue&type=template&id=13d05ffa& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ReplyFormComponent.vue?vue&type=template&id=13d05ffa&");
 
 
 /***/ }),
@@ -33776,6 +35069,1589 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipePostPcComponent.vue?vue&type=template&id=bbac7e7e&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipePostPcComponent.vue?vue&type=template&id=bbac7e7e& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render),
+/* harmony export */   staticRenderFns: () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("html", { attrs: { lang: "ja" } }, [
+    _c("body", { staticClass: "body-margin" }, [
+      _c("div", { staticClass: "card mt-5 p0" }, [
+        _c("div", { staticClass: "container-fluid p-0" }, [
+          _c(
+            "div",
+            { staticClass: "row m-0" },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "mx-5" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.title,
+                        expression: "title",
+                      },
+                    ],
+                    class: _vm.formClass["title"],
+                    attrs: { placeholder: "鶏もも肉の甘辛チキン" },
+                    domProps: { value: _vm.title },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.title = $event.target.value
+                      },
+                    },
+                  }),
+                  _vm._v(" "),
+                  _vm.validateError["title"]
+                    ? _c("div", [
+                        _c(
+                          "ul",
+                          _vm._l(_vm.validateError["title"], function (error) {
+                            return _c("li", { staticClass: "h6 text-danger" }, [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(error) +
+                                  "\n                                "
+                              ),
+                            ])
+                          }),
+                          0
+                        ),
+                      ])
+                    : _vm._e(),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "mx-5" }, [
+                  _c("input", {
+                    class: _vm.formClass["dishImage"],
+                    attrs: { type: "file", accept: "image/*" },
+                    on: { change: _vm.changeImage },
+                  }),
+                  _vm._v(" "),
+                  _vm.validateError["dishImage"]
+                    ? _c("div", [
+                        _c(
+                          "ul",
+                          _vm._l(
+                            _vm.validateError["dishImage"],
+                            function (error) {
+                              return _c(
+                                "li",
+                                { staticClass: "h6 text-danger" },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(error) +
+                                      "\n                                "
+                                  ),
+                                ]
+                              )
+                            }
+                          ),
+                          0
+                        ),
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { attrs: { id: "image-preview-container" } }, [
+                    _vm.dishImage
+                      ? _c("img", {
+                          staticClass: "image-preview",
+                          attrs: {
+                            id: "ryouri_pre",
+                            alt: "料理写真プレビュー",
+                            src: _vm.dishImage,
+                          },
+                        })
+                      : _vm._e(),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "mx-5" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.description,
+                        expression: "description",
+                      },
+                    ],
+                    class: _vm.formClass["description"],
+                    attrs: {
+                      placeholder:
+                        "鶏もも肉を、醤油とザラメ糖を使って、甘辛く仕上げた一品。寒い日にぴったりです。",
+                    },
+                    domProps: { value: _vm.description },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.description = $event.target.value
+                      },
+                    },
+                  }),
+                  _vm._v(" "),
+                  _vm.validateError["description"]
+                    ? _c("div", [
+                        _c(
+                          "ul",
+                          _vm._l(
+                            _vm.validateError["description"],
+                            function (error) {
+                              return _c(
+                                "li",
+                                { staticClass: "h6 text-danger" },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(error) +
+                                      "\n                                "
+                                  ),
+                                ]
+                              )
+                            }
+                          ),
+                          0
+                        ),
+                      ])
+                    : _vm._e(),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "mx-5" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.ingredients,
+                        expression: "ingredients",
+                      },
+                    ],
+                    class: _vm.formClass["ingredients"],
+                    attrs: { placeholder: "醤油:大さじ3" },
+                    domProps: { value: _vm.ingredients },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.ingredients = $event.target.value
+                      },
+                    },
+                  }),
+                  _vm._v(" "),
+                  _vm.validateError["ingredients"]
+                    ? _c("div", [
+                        _c(
+                          "ul",
+                          _vm._l(
+                            _vm.validateError["ingredients"],
+                            function (error) {
+                              return _c(
+                                "li",
+                                { staticClass: "h6 text-danger" },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(error) +
+                                      "\n                                "
+                                  ),
+                                ]
+                              )
+                            }
+                          ),
+                          0
+                        ),
+                      ])
+                    : _vm._e(),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(4),
+              _vm._v(" "),
+              _vm._l(_vm.stepCount, function (index) {
+                return _c("div", [
+                  _c("div", { staticClass: "card my-2" }, [
+                    _c("div", { staticClass: "container mt-2" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-8" }, [
+                          _c("input", {
+                            staticClass: "form-control btn",
+                            attrs: { required: "", readonly: "" },
+                            domProps: { value: "工程" + index },
+                          }),
+                          _vm._v(" "),
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.stepText[index - 1],
+                                expression: "stepText[index - 1]",
+                              },
+                            ],
+                            class: _vm.formClass["stepText"][index - 1],
+                            attrs: {
+                              id: "userInput",
+                              placeholder: _vm.stepPlaceholder[index - 1],
+                            },
+                            domProps: { value: _vm.stepText[index - 1] },
+                            on: {
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.stepText,
+                                  index - 1,
+                                  $event.target.value
+                                )
+                              },
+                            },
+                          }),
+                          _vm._v(" "),
+                          _vm.validateError["stepText"][index - 1]
+                            ? _c("div", [
+                                _c(
+                                  "ul",
+                                  _vm._l(
+                                    _vm.validateError["stepText"][index - 1],
+                                    function (error) {
+                                      return _c(
+                                        "li",
+                                        { staticClass: "h6 text-danger" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                " +
+                                              _vm._s(error) +
+                                              "\n                                            "
+                                          ),
+                                        ]
+                                      )
+                                    }
+                                  ),
+                                  0
+                                ),
+                              ])
+                            : _vm._e(),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-4" }, [
+                          _c("label", { staticClass: "form-label2 col-3" }, [
+                            _vm._v("工程写真"),
+                          ]),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("input", {
+                            class: _vm.formClass["stepImage"][index - 1],
+                            attrs: {
+                              type: "file",
+                              id: "image",
+                              accept: "image/*",
+                              "ml-auto": "",
+                            },
+                            on: {
+                              change: function ($event) {
+                                return _vm.changeStepImage($event, index - 1)
+                              },
+                            },
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { attrs: { id: "image-preview-container" } },
+                            [
+                              _vm.stepImage[index - 1]
+                                ? _c("img", {
+                                    staticClass: "image-preview",
+                                    attrs: {
+                                      alt: "プレビュー",
+                                      src: _vm.stepImage[index - 1],
+                                    },
+                                  })
+                                : _vm._e(),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.validateError["stepImage"][index - 1]
+                            ? _c("div", [
+                                _c(
+                                  "ul",
+                                  _vm._l(
+                                    _vm.validateError["stepImage"][index - 1],
+                                    function (error) {
+                                      return _c(
+                                        "li",
+                                        { staticClass: "h6 text-danger" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                " +
+                                              _vm._s(error) +
+                                              "\n                                            "
+                                          ),
+                                        ]
+                                      )
+                                    }
+                                  ),
+                                  0
+                                ),
+                              ])
+                            : _vm._e(),
+                        ]),
+                      ]),
+                    ]),
+                  ]),
+                ])
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "container mt-5" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "offset-8 col-2" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-secondary col-12 mt-2",
+                        attrs: { type: "submit" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.addStep()
+                          },
+                        },
+                      },
+                      [_vm._v("工程を追加")]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-2" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-secondary col-12 mt-2",
+                        attrs: { type: "submit", "ml-auto": "" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.deleteStep()
+                          },
+                        },
+                      },
+                      [_vm._v("工程を削除")]
+                    ),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(5),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "mx-5" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.point,
+                        expression: "point",
+                      },
+                    ],
+                    class: _vm.formClass["point"],
+                    attrs: {
+                      placeholder:
+                        "鶏肉を焼く時に皮を下にして焼くのがおすすめです。",
+                    },
+                    domProps: { value: _vm.point },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.point = $event.target.value
+                      },
+                    },
+                  }),
+                  _vm._v(" "),
+                  _vm.validateError["point"]
+                    ? _c("div", [
+                        _c(
+                          "ul",
+                          _vm._l(_vm.validateError["point"], function (error) {
+                            return _c("li", { staticClass: "h6 text-danger" }, [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(error) +
+                                  "\n                                "
+                              ),
+                            ])
+                          }),
+                          0
+                        ),
+                      ])
+                    : _vm._e(),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(6),
+              _vm._v(" "),
+              _c("div", { staticClass: "container-fluid" }, [
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(7),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-3 me-1 ps-0" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn btn-outline-secondary rounded-top-R h-100 py-0 px-1",
+                        on: { click: _vm.addTag },
+                      },
+                      [_c("span", { staticClass: "h5" }, [_vm._v("＋")])]
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col" }, [
+                    _c("div", { staticClass: "mx-5" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "form-control h-100",
+                          staticStyle: { "border-top-left-radius": "0" },
+                        },
+                        _vm._l(_vm.tagList, function (tag) {
+                          return _c("span", [
+                            _c(
+                              "span",
+                              {
+                                staticClass: "btn rounded-5 my-1 mx-1",
+                                staticStyle: {
+                                  "background-color": "rgb(198, 198, 198)",
+                                },
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "h6",
+                                    staticStyle: { color: "rgb(39, 158, 255)" },
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                                " +
+                                        _vm._s(tag) +
+                                        "\n                                            "
+                                    ),
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "rounded-5 del-tag px-1",
+                                    staticStyle: { color: "rgb(63, 63, 63)" },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.deleteTag(tag)
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                                ✕\n                                            "
+                                    ),
+                                  ]
+                                ),
+                              ]
+                            ),
+                          ])
+                        }),
+                        0
+                      ),
+                    ]),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(8),
+              _vm._v(" "),
+              _vm._m(9),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col d-flex justify-content-center" },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary mt-5 mb-3",
+                        attrs: { type: "button" },
+                        on: { click: _vm.postForm },
+                      },
+                      [_c("span", { staticClass: "mx-5" }, [_vm._v("投稿")])]
+                    ),
+                  ]
+                ),
+              ]),
+            ],
+            2
+          ),
+        ]),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom rounded-top bg-color-3 mb-2" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("タイトル")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom border-top bg-color-3 mt-5 mb-2" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("料理写真")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom border-top bg-color-3 mt-5 mb-2" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("レシピの紹介")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom border-top bg-color-3 mt-5 mb-2" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("材料(1人前)")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom border-top bg-color-3 mt-5 mb-2" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("作り方")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom border-top bg-color-3 mt-5 mb-2 p-0" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("コツ・豆知識")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom border-top bg-color-3 mt-5 mb-2 p-0" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("タグ")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-3 ms-5 pe-0" }, [
+      _c(
+        "select",
+        {
+          staticClass: "form-control rounded-top-L",
+          attrs: { id: "select-tag" },
+        },
+        [
+          _c("option", { attrs: { value: "" } }, [_vm._v("タグを選択")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#魚" } }, [_vm._v("#魚")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#肉" } }, [_vm._v("#肉")]),
+        ]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom border-top bg-color-3 mt-5 mb-2 p-0" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("難易度")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col" }, [
+      _c("div", { staticClass: "mx-5" }, [
+        _c("select", { staticClass: "form-control", attrs: { id: "level" } }, [
+          _c("option", { attrs: { value: "1" } }, [_vm._v("☆")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2" } }, [_vm._v("☆☆")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "3" } }, [_vm._v("☆☆☆")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "4" } }, [_vm._v("☆☆☆☆")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "5" } }, [_vm._v("☆☆☆☆☆")]),
+        ]),
+      ]),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipePostPhoneComponent.vue?vue&type=template&id=7a52cb08&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/RecipePostPhoneComponent.vue?vue&type=template&id=7a52cb08& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render),
+/* harmony export */   staticRenderFns: () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("html", { attrs: { lang: "ja" } }, [
+    _c("body", { staticClass: "body-margin" }, [
+      _c("div", { staticClass: "card mx-1 p0" }, [
+        _c("div", { staticClass: "container-fluid p-0" }, [
+          _c(
+            "div",
+            { staticClass: "row m-0" },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "mx-2" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.title,
+                        expression: "title",
+                      },
+                    ],
+                    class: _vm.formClass["title"],
+                    staticStyle: { margin: "0", padding: "0" },
+                    attrs: { placeholder: "鶏もも肉の甘辛チキン" },
+                    domProps: { value: _vm.title },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.title = $event.target.value
+                      },
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _vm.validateError["title"]
+                  ? _c("div", [
+                      _c(
+                        "ul",
+                        _vm._l(_vm.validateError["title"], function (error) {
+                          return _c("li", { staticClass: "h6 text-danger" }, [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(error) +
+                                "\n                            "
+                            ),
+                          ])
+                        }),
+                        0
+                      ),
+                    ])
+                  : _vm._e(),
+              ]),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "mx-2" }, [
+                  _c("input", {
+                    class: _vm.formClass["dishImage"],
+                    attrs: { type: "file", accept: "image/*" },
+                    on: { change: _vm.changeImage },
+                  }),
+                  _vm._v(" "),
+                  _vm.validateError["dishImage"]
+                    ? _c("div", [
+                        _c(
+                          "ul",
+                          _vm._l(
+                            _vm.validateError["dishImage"],
+                            function (error) {
+                              return _c(
+                                "li",
+                                { staticClass: "h6 text-danger" },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(error) +
+                                      "\n                                "
+                                  ),
+                                ]
+                              )
+                            }
+                          ),
+                          0
+                        ),
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { attrs: { id: "image-preview-container" } }, [
+                    _vm.dishImage
+                      ? _c("img", {
+                          staticClass: "image-preview",
+                          attrs: {
+                            id: "ryouri_pre",
+                            alt: "料理写真プレビュー",
+                            src: _vm.dishImage,
+                          },
+                        })
+                      : _vm._e(),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "mx-2" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.description,
+                        expression: "description",
+                      },
+                    ],
+                    class: _vm.formClass["description"],
+                    staticStyle: { margin: "0", padding: "0" },
+                    attrs: {
+                      placeholder:
+                        "鶏もも肉を、醤油とザラメ糖を使って、甘辛く仕上げた一品。寒い日にぴったりです。",
+                    },
+                    domProps: { value: _vm.description },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.description = $event.target.value
+                      },
+                    },
+                  }),
+                  _vm._v(" "),
+                  _vm.validateError["description"]
+                    ? _c("div", [
+                        _c(
+                          "ul",
+                          _vm._l(
+                            _vm.validateError["description"],
+                            function (error) {
+                              return _c(
+                                "li",
+                                { staticClass: "h6 text-danger" },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(error) +
+                                      "\n                                "
+                                  ),
+                                ]
+                              )
+                            }
+                          ),
+                          0
+                        ),
+                      ])
+                    : _vm._e(),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "mx-2" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.ingredients,
+                        expression: "ingredients",
+                      },
+                    ],
+                    class: _vm.formClass["ingredients"],
+                    staticStyle: { margin: "0", padding: "0" },
+                    attrs: { placeholder: "醤油:大さじ3" },
+                    domProps: { value: _vm.ingredients },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.ingredients = $event.target.value
+                      },
+                    },
+                  }),
+                  _vm._v(" "),
+                  _vm.validateError["ingredients"]
+                    ? _c("div", [
+                        _c(
+                          "ul",
+                          _vm._l(
+                            _vm.validateError["ingredients"],
+                            function (error) {
+                              return _c(
+                                "li",
+                                { staticClass: "h6 text-danger" },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(error) +
+                                      "\n                                "
+                                  ),
+                                ]
+                              )
+                            }
+                          ),
+                          0
+                        ),
+                      ])
+                    : _vm._e(),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(4),
+              _vm._v(" "),
+              _vm._l(_vm.stepCount, function (index) {
+                return _c("div", [
+                  _c("div", { staticClass: "card my-2 mx-1" }, [
+                    _c("div", { staticClass: "container mt-2" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-12" }, [
+                          _c("label", { staticClass: "form-label2" }, [
+                            _vm._v(_vm._s("工程" + index)),
+                          ]),
+                          _vm._v(" "),
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.stepText[index - 1],
+                                expression: "stepText[index - 1]",
+                              },
+                            ],
+                            class: _vm.formClass["stepText"][index - 1],
+                            staticStyle: { margin: "0", padding: "0" },
+                            attrs: {
+                              id: "userInput",
+                              placeholder: _vm.stepPlaceholder[index - 1],
+                            },
+                            domProps: { value: _vm.stepText[index - 1] },
+                            on: {
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.stepText,
+                                  index - 1,
+                                  $event.target.value
+                                )
+                              },
+                            },
+                          }),
+                          _vm._v(" "),
+                          _vm.validateError["stepText"][index - 1]
+                            ? _c("div", [
+                                _c(
+                                  "ul",
+                                  _vm._l(
+                                    _vm.validateError["stepText"][index - 1],
+                                    function (error) {
+                                      return _c(
+                                        "li",
+                                        { staticClass: "h6 text-danger" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                " +
+                                              _vm._s(error) +
+                                              "\n                                            "
+                                          ),
+                                        ]
+                                      )
+                                    }
+                                  ),
+                                  0
+                                ),
+                              ])
+                            : _vm._e(),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-12 mt-3" }, [
+                          _c("label", { staticClass: "form-label2" }, [
+                            _vm._v("工程写真"),
+                          ]),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("input", {
+                            class: _vm.formClass["stepImage"][index - 1],
+                            attrs: {
+                              type: "file",
+                              id: "image",
+                              accept: "image/*",
+                              "ml-auto": "",
+                            },
+                            on: {
+                              change: function ($event) {
+                                return _vm.changeStepImage($event, index - 1)
+                              },
+                            },
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { attrs: { id: "image-preview-container" } },
+                            [
+                              _vm.stepImage[index - 1]
+                                ? _c("img", {
+                                    staticClass: "image-preview",
+                                    attrs: {
+                                      alt: "プレビュー",
+                                      src: _vm.stepImage[index - 1],
+                                    },
+                                  })
+                                : _vm._e(),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.validateError["stepImage"][index - 1]
+                            ? _c("div", [
+                                _c(
+                                  "ul",
+                                  _vm._l(
+                                    _vm.validateError["stepImage"][index - 1],
+                                    function (error) {
+                                      return _c(
+                                        "li",
+                                        { staticClass: "h6 text-danger" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                " +
+                                              _vm._s(error) +
+                                              "\n                                            "
+                                          ),
+                                        ]
+                                      )
+                                    }
+                                  ),
+                                  0
+                                ),
+                              ])
+                            : _vm._e(),
+                        ]),
+                      ]),
+                    ]),
+                  ]),
+                ])
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "container mt-5" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-12" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-secondary col-12 mt-2",
+                        attrs: { type: "submit" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.addStep()
+                          },
+                        },
+                      },
+                      [_vm._v("工程を追加")]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-12" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-secondary col-12 mt-2",
+                        attrs: { type: "submit", "ml-auto": "" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.deleteStep()
+                          },
+                        },
+                      },
+                      [_vm._v("工程を削除")]
+                    ),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(5),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("div", { staticClass: "mx-2" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.point,
+                        expression: "point",
+                      },
+                    ],
+                    class: _vm.formClass["point"],
+                    staticStyle: { margin: "0", padding: "0" },
+                    attrs: {
+                      placeholder:
+                        "鶏肉を焼く時に皮を下にして焼くのがおすすめです。",
+                    },
+                    domProps: { value: _vm.point },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.point = $event.target.value
+                      },
+                    },
+                  }),
+                  _vm._v(" "),
+                  _vm.validateError["point"]
+                    ? _c("div", [
+                        _c(
+                          "ul",
+                          _vm._l(_vm.validateError["point"], function (error) {
+                            return _c("li", { staticClass: "h6 text-danger" }, [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(error) +
+                                  "\n                                "
+                              ),
+                            ])
+                          }),
+                          0
+                        ),
+                      ])
+                    : _vm._e(),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(6),
+              _vm._v(" "),
+              _c("div", { staticClass: "container-fluid" }, [
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(7),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col me-1 ps-0" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn btn-outline-secondary rounded-top-R h-100 py-0 px-1",
+                        on: { click: _vm.addTag },
+                      },
+                      [_c("span", { staticClass: "h5" }, [_vm._v("＋")])]
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col" }, [
+                    _c("div", { staticClass: "mx-2" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "form-control h-100",
+                          staticStyle: { "border-top-left-radius": "0" },
+                        },
+                        _vm._l(_vm.tagList, function (tag) {
+                          return _c("span", [
+                            _c(
+                              "span",
+                              {
+                                staticClass: "btn rounded-5 my-1 mx-1",
+                                staticStyle: {
+                                  "background-color": "rgb(198, 198, 198)",
+                                },
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "h6",
+                                    staticStyle: { color: "rgb(39, 158, 255)" },
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                                " +
+                                        _vm._s(tag) +
+                                        "\n                                            "
+                                    ),
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "rounded-5 del-tag px-1",
+                                    staticStyle: { color: "rgb(63, 63, 63)" },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.deleteTag(tag)
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                                ✕\n                                            "
+                                    ),
+                                  ]
+                                ),
+                              ]
+                            ),
+                          ])
+                        }),
+                        0
+                      ),
+                    ]),
+                  ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _vm._m(8),
+              _vm._v(" "),
+              _vm._m(9),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col d-flex justify-content-center" },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary mt-5 mb-3",
+                        attrs: { type: "button" },
+                        on: { click: _vm.postForm },
+                      },
+                      [_c("span", { staticClass: "mx-5" }, [_vm._v("投稿")])]
+                    ),
+                  ]
+                ),
+              ]),
+            ],
+            2
+          ),
+        ]),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom rounded-top bg-color-3 mb-2" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("タイトル")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom border-top bg-color-3 mt-5 mb-2" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("料理写真")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom border-top bg-color-3 mt-5 mb-2" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("レシピの紹介")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom border-top bg-color-3 mt-5 mb-2" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("材料(1人前)")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom border-top bg-color-3 mt-5 mb-2" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("作り方")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom border-top bg-color-3 mt-5 mb-2 p-0" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("コツ・豆知識")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom border-top bg-color-3 mt-5 mb-2 p-0" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("タグ")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col ms-2 pe-0" }, [
+      _c(
+        "select",
+        {
+          staticClass: "form-control rounded-top-L",
+          attrs: { id: "select-tag" },
+        },
+        [
+          _c("option", { attrs: { value: "" } }, [_vm._v("タグを選択")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#魚" } }, [_vm._v("#魚")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#肉" } }, [_vm._v("#肉")]),
+        ]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "border-bottom border-top bg-color-3 mt-5 mb-2 p-0" },
+      [_c("span", { staticClass: "h6 ms-1" }, [_vm._v("難易度")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col" }, [
+      _c("div", { staticClass: "mx-2" }, [
+        _c("select", { staticClass: "form-control", attrs: { id: "level" } }, [
+          _c("option", { attrs: { value: "1" } }, [_vm._v("☆")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2" } }, [_vm._v("☆☆")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "3" } }, [_vm._v("☆☆☆")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "4" } }, [_vm._v("☆☆☆☆")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "5" } }, [_vm._v("☆☆☆☆☆")]),
+        ]),
+      ]),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ReplyFormComponent.vue?vue&type=template&id=13d05ffa&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ReplyFormComponent.vue?vue&type=template&id=13d05ffa& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   render: () => (/* binding */ render),
+/* harmony export */   staticRenderFns: () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "body-margin" },
+    [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "post-body" }, [
+          _c("div", { staticClass: "row mt-1" }, [
+            _c("div", { staticClass: "col-2 d-flex justify-content-center" }, [
+              _c("img", {
+                staticClass: "post-icon",
+                attrs: {
+                  src:
+                    _vm.after_imagePath +
+                    "icon/" +
+                    _vm.after_mainPost.icon_filename,
+                },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-10 align-self-center" }, [
+              _c("span", { staticClass: "h3 text-color-gray" }, [
+                _vm._v(_vm._s(_vm.after_mainPost.name)),
+              ]),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "h5 col-10 offset-2" }, [
+              _c("span", [_vm._v(_vm._s(_vm.after_mainPost.text))]),
+            ]),
+          ]),
+          _vm._v(" "),
+          _vm.after_mainPost.image_filename
+            ? _c("div", [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-10 offset-2" }, [
+                    _c("img", {
+                      staticClass: "post-image",
+                      attrs: {
+                        src:
+                          _vm.after_imagePath +
+                          "post/" +
+                          _vm.after_mainPost.image_filename,
+                      },
+                    }),
+                  ]),
+                ]),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-12 text-end" }, [
+              _c(
+                "strong",
+                {
+                  staticClass: "like-count h5",
+                  staticStyle: { color: "#e0245e" },
+                },
+                [_vm._v(_vm._s(_vm.after_mainPost.good) + "♡")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticStyle: { display: "inline" } }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "reply-btn interaction-button my-2",
+                    on: {
+                      click: function ($event) {
+                        return _vm.replyshow()
+                      },
+                    },
+                  },
+                  [
+                    _vm._v(
+                      "\n                                返信\n                            "
+                    ),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "commentInput",
+                    staticStyle: { display: "none" },
+                  },
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.replyPost()
+                          },
+                        },
+                      },
+                      [
+                        _vm._v(
+                          "\n                                    投稿\n                                "
+                        ),
+                      ]
+                    ),
+                  ]
+                ),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _vm._l(_vm.after_allReply, function (reply) {
+        return _c("div", [
+          _c("div", { staticClass: "post-body" }, [
+            _c("div", { staticClass: "row mt-1" }, [
+              _c("div", { staticClass: "col-2 text-end" }, [
+                _c("img", {
+                  staticClass: "post-icon",
+                  attrs: {
+                    src: _vm.after_imagePath + "icon/" + reply.icon_filename,
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-10 align-self-center" }, [
+                _c("span", { staticClass: "h5 text-color-gray" }, [
+                  _vm._v(_vm._s(reply.name)),
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-color-gray" }, [
+                  _vm._v(_vm._s(reply.created_at)),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-10 offset-2" }, [
+                _c("span", [_vm._v(_vm._s(reply.text))]),
+              ]),
+            ]),
+          ]),
+        ])
+      }),
+      _vm._v(" "),
+      _c("hr"),
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mb-3" }, [
+      _c(
+        "label",
+        { staticClass: "form-label", attrs: { for: "commentInput" } },
+        [_vm._v("コメントを入力")]
+      ),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "form-control",
+        attrs: { id: "commentInput", rows: "3" },
+      }),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SnsHomeComponent.vue?vue&type=template&id=6dce67b1&":
 /*!****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SnsHomeComponent.vue?vue&type=template&id=6dce67b1& ***!
@@ -33796,202 +36672,146 @@ var render = function () {
     _vm._m(0),
     _vm._v(" "),
     _c("body", { staticClass: "body-margin" }, [
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("h1", [_vm._v("投稿一覧")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col" },
-            [
-              _c("hr"),
-              _vm._v(" "),
-              _vm._l(_vm.parsedData, function (post, index) {
-                return _c("div", { key: index }, [
-                  _c("div", { staticClass: "post-body" }, [
-                    _c("div", { staticClass: "container" }, [
-                      _c("div", { staticClass: "row mt-1" }, [
-                        _c("div", { staticClass: "col-2 text-end" }, [
-                          _c("input", {
-                            staticClass: "post-icon",
-                            attrs: {
-                              type: "image",
-                              src:
-                                _vm._imagePath +
-                                _vm.parsedData[index].icon_filename,
-                            },
+      _c(
+        "div",
+        { staticClass: "container-fluid" },
+        [
+          _c("h1", [_vm._v("投稿一覧")]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _vm._l(_vm.parsedData, function (post, index) {
+            return _c("div", { key: index }, [
+              _c("div", { staticClass: "post-body" }, [
+                _c("div", { staticClass: "row mt-1" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-2 d-flex justify-content-center" },
+                    [
+                      _c("input", {
+                        staticClass: "post-icon",
+                        attrs: {
+                          type: "image",
+                          src:
+                            _vm._imagePath +
+                            "icon/" +
+                            _vm.parsedData[index].icon_filename,
+                        },
+                        on: {
+                          click: function ($event) {
+                            return _vm.showProfile(_vm.parsedData[index].id)
+                          },
+                        },
+                      }),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-10 align-self-center" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "h5",
+                        on: {
+                          click: function ($event) {
+                            return _vm.showProfile(_vm.parsedData[index].id)
+                          },
+                        },
+                      },
+                      [_vm._v(_vm._s(_vm.parsedData[index].name))]
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-10 offset-2" }, [
+                    _c("span", [_vm._v(_vm._s(_vm.parsedData[index].text))]),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _vm.parsedData[index].image_filename
+                  ? _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-10 offset-2" }, [
+                        _c("img", {
+                          staticClass: "post-image",
+                          attrs: {
+                            src:
+                              _vm._imagePath +
+                              "post/" +
+                              _vm.parsedData[index].image_filename,
+                          },
+                        }),
+                      ]),
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col text-end" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "like-form",
+                        staticStyle: { display: "inline" },
+                      },
+                      [
+                        _c("input", {
+                          attrs: { type: "hidden", name: "post_id" },
+                          domProps: { value: _vm.parsedData[index].id },
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "like-btn interaction-button my-2",
+                            attrs: { type: "submit" },
                             on: {
                               click: function ($event) {
-                                return _vm.showProfile(_vm.parsedData[index].id)
+                                return _vm.likePost(_vm.parsedData[index].id)
                               },
                             },
-                          }),
-                        ]),
+                          },
+                          [_vm._v(_vm._s(_vm.parsedData[index].good) + "♡")]
+                        ),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "form",
+                      {
+                        staticStyle: { display: "inline" },
+                        attrs: { action: _vm._replyShowUrl, method: "post" },
+                      },
+                      [
+                        _c("input", {
+                          attrs: { type: "hidden", name: "_token" },
+                          domProps: { value: _vm.csrfToken },
+                        }),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col align-self-center" }, [
-                          _c(
-                            "span",
-                            {
-                              staticClass: "h5",
-                              on: {
-                                click: function ($event) {
-                                  return _vm.showProfile(
-                                    _vm.parsedData[index].id
-                                  )
-                                },
-                              },
-                            },
-                            [_vm._v(_vm._s(_vm.parsedData[index].name))]
-                          ),
-                        ]),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col-10 offset-2" }, [
-                          _c("span", [
-                            _vm._v(_vm._s(_vm.parsedData[index].text)),
-                          ]),
-                        ]),
-                      ]),
-                      _vm._v(" "),
-                      _vm.parsedData[index].image_filename
-                        ? _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-10 offset-2" }, [
-                              _c("img", {
-                                staticClass: "post-image",
-                                attrs: {
-                                  src:
-                                    _vm._imagePath +
-                                    _vm.parsedData[index].image_filename,
-                                },
-                              }),
-                            ]),
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col text-end" }, [
-                          _c("div", { staticClass: "like-form" }, [
-                            _c("input", {
-                              attrs: { type: "hidden", name: "post_id" },
-                              domProps: { value: _vm.parsedData[index].id },
-                            }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "like-count" }, [
-                              _vm._v(_vm._s(_vm.parsedData[index].good)),
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "like-btn interaction-button my-2",
-                                attrs: { type: "submit" },
-                                on: {
-                                  click: function ($event) {
-                                    return _vm.likePost(
-                                      _vm.parsedData[index].id
-                                    )
-                                  },
-                                },
-                              },
-                              [_vm._v("♡")]
+                        _c("input", {
+                          attrs: { type: "hidden", name: "post_id" },
+                          domProps: { value: _vm.parsedData[index].id },
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          { staticClass: "reply-btn interaction-button my-2" },
+                          [
+                            _vm._v(
+                              "\n                                    返信\n                                "
                             ),
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "form",
-                            {
-                              staticStyle: { display: "inline" },
-                              attrs: {
-                                action: _vm._replyShowUrl,
-                                method: "post",
-                              },
-                            },
-                            [
-                              _c("input", {
-                                attrs: { type: "hidden", name: "_token" },
-                                domProps: { value: _vm.csrfToken },
-                              }),
-                              _vm._v(" "),
-                              _c("input", {
-                                attrs: { type: "hidden", name: "post_id" },
-                                domProps: { value: _vm.parsedData[index].id },
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "reply-btn interaction-button my-2",
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                                                リプライを見る\n                                            "
-                                  ),
-                                ]
-                              ),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "reply-btn interaction-button my-2",
-                              on: {
-                                click: function ($event) {
-                                  return _vm.replyshow(index)
-                                },
-                              },
-                            },
-                            [
-                              _vm._v(
-                                "リプライ\n                                        "
-                              ),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              class:
-                                _vm.commentInput + _vm.parsedData[index].id,
-                              staticStyle: { display: "none" },
-                            },
-                            [
-                              _vm._m(1, true),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary",
-                                  attrs: { type: "submit" },
-                                  on: {
-                                    click: function ($event) {
-                                      return _vm.replyPost(index)
-                                    },
-                                  },
-                                },
-                                [
-                                  _vm._v(
-                                    "投稿\n                                            "
-                                  ),
-                                ]
-                              ),
-                            ]
-                          ),
-                        ]),
-                      ]),
-                    ]),
+                          ]
+                        ),
+                      ]
+                    ),
                   ]),
-                  _vm._v(" "),
-                  _c("hr"),
-                ])
-              }),
-            ],
-            2
-          ),
-        ]),
-      ]),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+            ])
+          }),
+        ],
+        2
+      ),
     ]),
   ])
 }
@@ -34010,23 +36830,6 @@ var staticRenderFns = [
           href: "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
           rel: "stylesheet",
         },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-3" }, [
-      _c(
-        "label",
-        { staticClass: "form-label", attrs: { for: "commentInput" } },
-        [_vm._v("コメントを入力")]
-      ),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: { id: "commentInput", rows: "3" },
       }),
     ])
   },
