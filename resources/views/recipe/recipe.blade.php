@@ -4,12 +4,6 @@
 <html lang="ja">
 
 
-<div class="sidebar" style="padding-top: 100px;">
-    <h2>タグ検索</h2>
-    <ul>
-        
-    </ul>
-</div>
 
 <body class="body-margin">
     <div class="container-fluid">

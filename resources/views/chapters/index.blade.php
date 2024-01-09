@@ -206,7 +206,7 @@
                     </h2>
                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
                         <div class="accordion-body" style="text-align: center;">
-                            <img src="images/oyakodon.jpg" alt="チャプター1の画像" style="width: 100%; max-width: 400px; height: auto;">
+                            <img src="image/chapter/oyakodon.jpg" alt="チャプター1の画像" style="width: 100%; max-width: 400px; height: auto;">
                             <strong style="font-size: 24px; display: block; margin: 5px auto;">親子丼</strong><br>
                             <strong>鶏肉と卵を使ったシンプルでおいしい料理です。手軽に作れるので初心者におすすめです。</strong><br>
                             <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
