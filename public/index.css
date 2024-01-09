@@ -124,3 +124,34 @@
     background-color: #fff;
     background-clip: border-box;
   }
+
+
+
+/* サイドバー全体のスタイル */
+.sidebar {
+    background-color: #f2f2f2; /* 背景色 */
+    width: 250px; /* 幅 */
+    padding: 20px; /* 内側の余白 */
+}
+
+/* サイドバー内のリストのスタイル */
+.sidebar ul {
+    list-style: none; /* 箇条書きのマーカーを消す */
+    padding: 0;
+}
+
+/* リスト項目のスタイル */
+.sidebar ul li {
+    margin-bottom: 10px; /* 項目間の余白 */
+}
+
+/* リンクのスタイル */
+.sidebar ul li a {
+    text-decoration: none; /* 下線を消す */
+    color: #333; /* リンクの色 */
+}
+
+/* リンクにホバーした際のスタイル */
+.sidebar ul li a:hover {
+    color: #555; /* ホバー時の色 */
+}

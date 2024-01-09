@@ -21,11 +21,14 @@
                     <div class="col-2 d-flex justify-content-center ps-5">
                         <button type="button" style="border: none; background: transparent;" class="btn"><a href="{{ route('top') }}"><img class="logo" src="{{asset('image/logo.png')}}"></a></button>
                     </div>
-                    <div class="col-5" style="margin-left: 10px;">
+                    <div class="col-1"></div>
+                    <div class="col-3" style="margin-left: 10px;">
                         <form action="/search" method="GET" class="form-inline my-2 my-lg-0">
                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query">
                         </form>
                     </div>
+                    <div class="col-1"></div>
+
                     <div class="col-1 d-flex justify-content-center">
                         <a href="{{ route('study') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/study.png') }}" class="footericon"><br>勉強</button></a>
                     </div>
@@ -69,11 +72,12 @@
                 height: 32px;
             }
         }
-        .custom-search-input{
+
+        .custom-search-input {
             width: 250px;
         }
 
-        .logo{
+        .logo {
             width: 128px;
             height: 20px;
         }
