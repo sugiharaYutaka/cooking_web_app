@@ -67,7 +67,7 @@
                     <!--- ブックマーク追加ボタン --->
                     <div class="row">
                         <button class="bg-color-2 circle-btn border">
-                            < class="no-underline text-color-4 h3">bookmark</a>
+                            <a class="no-underline text-color-4 h3">bookmark</a>
                         </button>
                     </div>
                 </div>
