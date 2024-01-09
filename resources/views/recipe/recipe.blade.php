@@ -4,14 +4,7 @@
 <html lang="ja">
 
 
-<div class="sidebar" style="padding-top: 100px;">
-    <h2>タグ検索</h2>
-    <ul>
-        @foreach($tags as $tag)
-        <li><a href="{{ route('recipe', ['tag' => $tag]) }}">{{ $tag }}</a></li>
-        @endforeach
-    </ul>
-</div>
+
 
 <body class="body-margin">
     <div class="container-fluid">
