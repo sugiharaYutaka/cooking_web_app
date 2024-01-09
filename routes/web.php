@@ -39,7 +39,7 @@ Route::get('/top', [App\Http\Controllers\TopController::class, 'show']);
 Route::get('/recipe1', [App\Http\Controllers\RecipeController::class, 'index'])->name('recipe1');
 Route::get('/recipe/post', [App\Http\Controllers\RecipeController::class, 'post'])->name('recipepost');
 Route::get('/recipe/bookmark', [App\Http\Controllers\RecipeController::class, 'bookmark'])->name('recipebookmark');
-Route::post('/recipe/postForm',[App\Http\Controllers\RecipeController::class, 'insertRecipe']);
+Route::post('/recipe/postForm', [App\Http\Controllers\RecipeController::class, 'insertRecipe']);
 
 
 
@@ -94,3 +94,6 @@ Route::get('/knowledgeBox/skillet', function () {
 Route::get('/ComingSoon', function () {
     return '近日追加予定！！！';
 })->name('ComingSoon');
+
+// サイドバー
+Route::get('/recipe/filter',  [App\Http\Controllers\SidebarController::class, 'index'])->name('tags');
