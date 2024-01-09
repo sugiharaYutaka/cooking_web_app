@@ -7,9 +7,7 @@
 <div class="sidebar" style="padding-top: 100px;">
     <h2>タグ検索</h2>
     <ul>
-        @foreach($tags as $tag)
-        <li><a href="{{ route('recipe', ['tag' => $tag]) }}">{{ $tag }}</a></li>
-        @endforeach
+        
     </ul>
 </div>
 
@@ -18,6 +16,12 @@
         <div class="row">
             <button class="bg-color-2 circle-btn border">
                 <a href="{{ route('recipepost') }}" class="no-underline text-color-4 h3">+</a>
+            </button>
+        </div>
+
+        <div class="row">
+            <button class="bg-color-2 circle-btn border">
+                <a href="{{ route('recipebookmark') }}" class="no-underline text-color-4 h3">bookmark</a>
             </button>
         </div>
 
@@ -61,6 +65,13 @@
                 <p class='h5'>ポイント・コツ</p>
                 <p>{{ $post->point }}</p>
             </div>
+
+            <!--- ブックマーク追加ボタン --->
+            <div class="row">
+            <button class="bg-color-2 circle-btn border">
+                < class="no-underline text-color-4 h3">bookmark</a>
+            </button>
+        </div>
         </div>
         @endforeach
     </div>
