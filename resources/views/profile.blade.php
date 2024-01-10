@@ -123,9 +123,9 @@
     <div class="center">
         <h1>プロフィール</h1>
         @if ($icon_filename == "user_icon.png")
-        <img class="imgcircle" src="{{ asset('image/user_icon.png') }}">
+        <img class="imgcircle" src="{{ asset('/image/icon/user_icon.png') }}">
         @else
-        <img class="imgcircle" src="{{ asset('/storage/img/'.$icon_filename) }}">
+        <img class="imgcircle" src="{{ asset('/image/icon/'.$icon_filename) }}">
         @endif
 
 

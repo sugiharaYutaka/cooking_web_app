@@ -59,13 +59,18 @@ class ProfileController extends Controller
 
 
         if ($request->file('image')) {
-            $path = $request->file('image')->store('public/img');
 
+            $image = $request->file('image');
+            //時間とファイル名を結合して一意のファイル名を生成
+            $image_filename = time() . $image->getClientOriginalName();
+            $image->move(public_path('/image/icon'), $image_filename);
+
+            //$path = $request->file('image')->store('public/img');
             DB::table('users')
                 ->where('email', $email)
-                ->update(['icon_filename' => basename($path)]);
+                ->update(['icon_filename' => $image_filename]);
 
-            $request->session()->put('icon_filename', basename($path));
+            $request->session()->put('icon_filename', $image_filename);
         }
 
 
