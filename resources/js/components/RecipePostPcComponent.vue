@@ -1,5 +1,7 @@
-<!-- Vue コンポーネント内のテンプレート -->
+
 <template>
+    <html lang="ja">
+
     <!-- 既存のコードがここにあると仮定 -->
 
     <!-- モーダルのテンプレート -->
@@ -11,13 +13,6 @@
             <button @click="cancelPost">キャンセル</button>
         </div>
     </div>
-</template>
-
-
-
-
-<template>
-    <html lang="ja">
 
     <body class="body-margin">
         <div class="card mt-5 p0">
@@ -98,9 +93,10 @@
                                         <textarea :class="formClass['stepText'][index - 1]" id="userInput"
                                             :placeholder="stepPlaceholder[index - 1]" v-model="stepText[index - 1]">
                                         </textarea>
-                                        <div v-if="validateError['stepText'][index-1]">
+                                        <div v-if="validateError['stepText'][index - 1]">
                                             <ul>
-                                                <li v-for="error in validateError['stepText'][index-1]" class="h6 text-danger">
+                                                <li v-for="error in validateError['stepText'][index - 1]"
+                                                    class="h6 text-danger">
                                                     {{ error }}
                                                 </li>
                                             </ul>
@@ -109,15 +105,16 @@
                                     <div class="col-4">
                                         <label class="form-label2 col-3">工程写真</label>
                                         <br>
-                                        <input type="file" :class="formClass['stepImage'][index-1]" id="image" accept="image/*"
-                                            @change="changeStepImage($event, index - 1)" ml-auto>
+                                        <input type="file" :class="formClass['stepImage'][index - 1]" id="image"
+                                            accept="image/*" @change="changeStepImage($event, index - 1)" ml-auto>
                                         <div id="image-preview-container">
                                             <img class="image-preview" alt="プレビュー" v-bind:src="stepImage[index - 1]"
                                                 v-if="stepImage[index - 1]">
                                         </div>
-                                        <div v-if="validateError['stepImage'][index-1]">
+                                        <div v-if="validateError['stepImage'][index - 1]">
                                             <ul>
-                                                <li v-for="error in validateError['stepImage'][index-1]" class="h6 text-danger">
+                                                <li v-for="error in validateError['stepImage'][index - 1]"
+                                                    class="h6 text-danger">
                                                     {{ error }}
                                                 </li>
                                             </ul>
@@ -235,9 +232,10 @@ export default {
     props: ["postUrl"],
     data() {
         return {
-            _postUrl:"",
+            _postUrl: "",
             stepCount: 3,
             dishImage: null,
+            showConfirmationModal: false,
 
             tagList: ['#ユーザ投稿'],
             stepPlaceholder: [
@@ -263,7 +261,7 @@ export default {
                 point: [],
                 stepImage: Array.from({ length: 20 }),
                 stepText: Array.from({ length: 20 }),
-                check:false,
+                check: false,
             },
 
             formClass: {
@@ -280,28 +278,28 @@ export default {
 
     // モーダルのメソッド
     methods: {
-    confirmPost() {
-    let element = document.getElementById('level');
-    formData.append('level', element.value)
-    formData.append('tag', this.tagList)
-    formData.append('stepCount', this.stepCount);
-    axios.post(this._postUrl, formData)
-        .then(response => {
-            // 投稿が成功した場合の処理
-            // モーダルを非表示にする
-            this.showConfirmationModal = false;
-            // 投稿が完了した後のリダイレクト
-            window.location.href = '/recipes';
-        })
-        .catch(error => {
-            // エラー時の処理
-            console.error('投稿エラー:', error);
-            // エラー処理を行う（例えば、エラーメッセージを表示するなど）
-        });
-},
-cancelPost() {
-    this.showConfirmationModal = false; // モーダルを非表示にする
-}
+        confirmPost() {
+            let element = document.getElementById('level');
+            formData.append('level', element.value)
+            formData.append('tag', this.tagList)
+            formData.append('stepCount', this.stepCount);
+            axios.post(this._postUrl, formData)
+                .then(response => {
+                    // 投稿が成功した場合の処理
+                    // モーダルを非表示にする
+                    this.showConfirmationModal = false;
+                    // 投稿が完了した後のリダイレクト
+                    window.location.href = '/recipes';
+                })
+                .catch(error => {
+                    // エラー時の処理
+                    console.error('投稿エラー:', error);
+                    // エラー処理を行う（例えば、エラーメッセージを表示するなど）
+                });
+        },
+        cancelPost() {
+            this.showConfirmationModal = false; // モーダルを非表示にする
+        }
     },
     methods: {
         addStep() {
@@ -398,11 +396,11 @@ cancelPost() {
                 this.validateError['title'] = result;
                 this.formClass['title'] = 'form-control is-invalid';
             }
-            else{
+            else {
                 //バリデーション成功
                 this.formClass['title'] = 'form-control';
                 this.validateError['title'] = null;
-                formData.append('title',this.title);
+                formData.append('title', this.title);
                 checkSum++;
             }
 
@@ -412,11 +410,11 @@ cancelPost() {
                 this.formClass['description'] = 'form-control is-invalid';
 
             }
-            else{
+            else {
                 //バリデーション成功
                 this.formClass['description'] = 'form-control';
                 this.validateError['description'] = null;
-                formData.append('description',this.description);
+                formData.append('description', this.description);
                 checkSum++;
             }
 
@@ -425,11 +423,11 @@ cancelPost() {
                 this.validateError['ingredients'] = result;
                 this.formClass['ingredients'] = 'form-control is-invalid';
             }
-            else{
+            else {
                 //バリデーション成功
                 this.formClass['ingredients'] = 'form-control';
                 this.validateError['ingredients'] = null;
-                formData.append('ingredients',this.ingredients.replace('\n', "//"));
+                formData.append('ingredients', this.ingredients.replace('\n', "//"));
                 checkSum++;
             }
 
@@ -438,11 +436,11 @@ cancelPost() {
                 this.validateError['point'] = result;
                 this.formClass['point'] = 'form-control is-invalid';
             }
-            else{
+            else {
                 //バリデーション成功
                 this.formClass['point'] = 'form-control';
                 this.validateError['point'] = null;
-                formData.append('point',this.point);
+                formData.append('point', this.point);
                 checkSum++;
             }
 
@@ -451,11 +449,11 @@ cancelPost() {
                 this.validateError['dishImage'] = result;
                 this.formClass['dishImage'] = 'form-control is-invalid';
             }
-            else{
+            else {
                 //バリデーション成功
                 this.formClass['dishImage'] = 'form-control';
                 this.validateError['dishImage'] = null;
-                formData.append('dishImage',this.postDishImage);
+                formData.append('dishImage', this.postDishImage);
                 checkSum++;
             }
 
@@ -464,32 +462,32 @@ cancelPost() {
                     this.validateError['stepImage'][index] = result;
                     this.formClass['stepImage'][index] = 'form-control is-invalid';
                 }
-                else{
-                    this.formClass['stepImage'][index]  = 'form-control';
+                else {
+                    this.formClass['stepImage'][index] = 'form-control';
                     this.validateError['stepImage'][index] = null;
-                    formData.append('step'+ String(index + 1) +'Image',this.postStepImage[index]);
+                    formData.append('step' + String(index + 1) + 'Image', this.postStepImage[index]);
                     checkSum++;
                 }
-                if (result = this.validate(this.stepText[index], ['required', 'max500','slash'])) {
+                if (result = this.validate(this.stepText[index], ['required', 'max500', 'slash'])) {
                     this.validateError['stepText'][index] = result;
                     this.formClass['stepText'][index] = 'form-control is-invalid';
                 }
-                else{
-                    this.formClass['stepText'][index]  = 'form-control';
+                else {
+                    this.formClass['stepText'][index] = 'form-control';
                     this.validateError['stepText'][index] = null;
-                    formData.append('step'+ String(index + 1) +'Text',this.stepText[index]);
+                    formData.append('step' + String(index + 1) + 'Text', this.stepText[index]);
                     checkSum++;
                 }
             }
 
-            if(checkSum == checkSumMax){
+            if (checkSum == checkSumMax) {
                 this.showConfirmationModal = true;
 
                 let element = document.getElementById('level');
-                formData.append('level',element.value)
-                formData.append('tag',this.tagList)
-                formData.append('stepCount',this.stepCount);
-                axios.post(this._postUrl,formData);
+                formData.append('level', element.value)
+                formData.append('tag', this.tagList)
+                formData.append('stepCount', this.stepCount);
+                axios.post(this._postUrl, formData);
                 //window.location.href = 'https://example.com';
             }
 
