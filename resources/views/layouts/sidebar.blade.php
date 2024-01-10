@@ -1,5 +1,5 @@
 <!-- sidebar.blade.php -->
-<div class="sidebar">
+<div class="">
     <h2>タグで検索</h2>
     <form action="{{ route('tags') }}" method="GET">
         <div class="form-group">
