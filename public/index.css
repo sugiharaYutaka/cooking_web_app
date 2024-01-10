@@ -209,5 +209,12 @@
     height: 100%; /* サイドバーの高さ */
     overflow-y: auto; /* 縦スクロールを有効にする */
     background-color: #f5f5f5; /* サイドバーの背景色 */
-    /* その他のスタイルやデザインを追加 */
+    transition: transform 0.3s ease-in-out;
+}
+.sidebar.sidebar-closed {
+    transform: translateX(-100%); /* サイドバーを左に移動して非表示にする */
+}
+
+.sidebar.sidebar-open {
+    transform: translateX(0); /* サイドバーを表示 */
 }

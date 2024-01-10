@@ -11,6 +11,8 @@
     <title>home</title>
     <link type="text/css" rel="stylesheet" href="{{ asset('index.css') }}" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <script src="{{ asset('js/sidebar.js') }}"></script>
+
 </head>
 
 <body>

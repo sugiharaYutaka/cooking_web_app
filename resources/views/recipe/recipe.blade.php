@@ -3,14 +3,15 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-
 <body class="body-margin">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3"> <!-- サイドバーの幅を指定 -->
+
+            <div class="col-md-3">
                 @include('layouts.sidebar')
             </div>
             <div class="col-md-9">
+                <button id="sidebar-close-button">&#8594;</button>
                 <div class="row">
                     <button class="bg-color-2 circle-btn border">
                         <a href="{{ route('recipepost') }}" class="no-underline text-color-4 h3">+</a>
@@ -74,10 +75,8 @@
                 @endforeach
             </div>
 
-
 </body>
 
 </html>
-
 
 @extends('layouts.footer')
