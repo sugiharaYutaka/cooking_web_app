@@ -47,5 +47,4 @@
 
 </html>
 
-
 @extends('layouts.footer')
