@@ -6,27 +6,23 @@
 <body class="body-margin">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-3 border"> <!-- サイドバーの幅を指定 -->
+            <div class="col-3"> <!-- サイドバーの幅を指定 -->
                 @include('layouts.sidebar')
             </div>
             <div class="col-9 p-0">
                 <div class="container">
                     <div class="row border my-5 bg-color-3">
                         <div class="col-12 my-2">
-                            <span class='h5'>タイトル</span>
-                            <span>{{ $post->title }}</span>
+                            <span>{{ $post['title'] }}</span>
                         </div>
                         <div class="col-12 my-2">
-                            <span class='h5'>料理の画像</span>
                             <img src="{{ asset('/recipe/image/' . $post->dish_image_filename) }}" class=""
-                                style="width:30%;">
+                                style="width:70%;">
                         </div>
                         <div class="col-12 my-2">
-                            <span class='h5'>レシピの説明</span>
                             <span>{{ $post->description }}</span>
                         </div>
                         <div class="col-12 my-2">
-                            <span class='h5'>タグ</span>
                             @foreach ($post->tag as $tag)
                                 <span style="color:rgb(0, 187, 200)">{{ $tag }}</span>
                             @endforeach

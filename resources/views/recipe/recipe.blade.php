@@ -21,25 +21,23 @@
                             <a href="{{ route('recipebookmark') }}" class="no-underline text-color-4 h3">bookmark</a>
                         </button>
                     </div>
-                    @foreach ($recipePost as $post)
-                        <div class="row border my-5 bg-color-3">
-                            <div class="col-12 my-2">
-                                <span class='h5'>タイトル</span>
-                                <span>{{ $post->title }}</span>
-                            </div>
-                            <div class="col-12 my-2">
-                                <span class='h5'>料理の画像</span>
-                                <a href="{{ url('/recipe/onepost', $post->id) }}">
-                                    <img src="{{ asset('/recipe/image/' . $post->dish_image_filename) }}" class=""
-                                    style="width:30%;">
-                                </a>
-                            </div>
-                            <div class="col-12 my-2">
-                                <span class='h5'>レシピの説明</span>
-                                <span>{{ $post->description }}</span>
-                            </div>
+
+                    <div class="row border my-5">
+                        @foreach ($recipePost as $post)
+                        <div class="col-4 my-2 border">
+                            <p class="h5">{{ $post->title }}</p>
+
+                            <a href="{{ url('/recipe/onepost', $post->id) }}">
+                                <img src="{{ asset('/recipe/image/' . $post->dish_image_filename) }}" class=""
+                                    style="width:100%;">
+                            </a>
+
+                            <p>{{ $post->description }}</p>
+
                         </div>
-                    @endforeach
+
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,6 +46,5 @@
 </body>
 
 </html>
-
 
 @extends('layouts.footer')

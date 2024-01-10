@@ -11,7 +11,7 @@ class RecipeController extends Controller
     public function index()
     {
         $recipePost = $this->getRecipe();
-        return view('recipe.recipe',compact('recipePost'));
+        return view('recipe.recipe', compact('recipePost'));
     }
 
     public function post()
@@ -21,7 +21,7 @@ class RecipeController extends Controller
 
     public function insertRecipe(Request $request)
     {
-        $tag =  str_replace(',','//',$request->tag);
+        $tag = str_replace(',', '//', $request->tag);
 
         $dish_image = $request->file('dishImage');
         //時間とファイル名を結合して一意のファイル名を生成
@@ -30,20 +30,19 @@ class RecipeController extends Controller
 
         $stepText = "";
         $stepImage_filename = "";
-        for ($index = 1; $index <= $request->stepCount; $index++){
-            $stepText = $stepText . $request->input('step' . (string)$index . 'Text');
-            $Image = $request->file('step' . (string)$index . 'Image');
+        for ($index = 1; $index <= $request->stepCount; $index++) {
+            $stepText = $stepText . $request->input('step' . (string) $index . 'Text');
+            $Image = $request->file('step' . (string) $index . 'Image');
 
-            if($Image == null){//stepの画像が何もなかった場合
+            if ($Image == null) { //stepの画像が何もなかった場合
                 $stepImage_filename = $stepImage_filename . 'NULL';
-            }
-            else{//stepの画像があった場合
+            } else { //stepの画像があった場合
                 $img_filename = time() . $Image->getClientOriginalName();
                 $Image->move(public_path('recipe/image'), $img_filename);
                 $stepImage_filename = $stepImage_filename . $img_filename;
             }
 
-            if($index != $request->stepCount){//区切り文字追加
+            if ($index != $request->stepCount) { //区切り文字追加
                 $stepText = $stepText . '//';
                 $stepImage_filename = $stepImage_filename . '//';
             }
@@ -60,7 +59,7 @@ class RecipeController extends Controller
             'step_text' => $stepText,
             'step_image_filename' => $stepImage_filename,
             'point' => $request->point,
-            'step_number' =>  $request->stepCount,
+            'step_number' => $request->stepCount,
         ]);
     }
     public function getRecipe()
@@ -78,42 +77,40 @@ class RecipeController extends Controller
             'recipes.point',
             'recipes.step_number',
         ])
-        ->from('recipes')
-        ->join('users', function ($join){
-            $join->on('recipes.email', '=', 'users.email');
-        })
-        ->select('users.name','users.icon_filename', 'recipes.*')
-        ->orderBy('recipes.id', 'desc')
-        ->take(5)
-        ->get();
+            ->from('recipes')
+            ->join('users', function ($join) {
+                $join->on('recipes.email', '=', 'users.email');
+            })
+            ->select('users.name', 'users.icon_filename', 'recipes.*')
+            ->orderBy('recipes.id', 'desc')
+            ->take(5)
+            ->get();
 
-        $array =[];
-        foreach($result as $row){
-            $row['step_text'] = explode('//',$row['step_text']);
-            $row['step_image_filename'] = explode('//',$row['step_image_filename']);
-            $row['ingredients'] = explode('//',$row['ingredients']);
-            $row['tag'] = explode('//',$row['tag']);
+        $array = [];
+        foreach ($result as $row) {
+            $row['step_text'] = explode('//', $row['step_text']);
+            $row['step_image_filename'] = explode('//', $row['step_image_filename']);
+            $row['ingredients'] = explode('//', $row['ingredients']);
+            $row['tag'] = explode('//', $row['tag']);
 
-            array_push($array,$row);
+            array_push($array, $row);
         }
         return $array;
     }
     public function oneRecipe($id)
     {
         $result = Recipe::where('recipes.id', '=', $id)
-        ->get();
+            ->get();
 
-        $post =[];
-        var_dump($result[0]);
-        /*
-        $result->step_text = explode('//',$result->step_text);
-        $result->step_image_filename = explode('//',$result->step_image_filename);
-        $result->ingredients = explode('//',$result->ingredients);
-        $result->tag = explode('//',$result->tag);
 
-        $post = $result;
-        var_dump($post);
-        */
-        //return view('recipe.recipeone',compact('post'));
+        $post = Recipe::join('users', 'users.email', '=', 'recipes.email')
+            ->where('recipes.id', $id) // IDが1のユーザーに関連する投稿を取得
+            ->first();
+        $post['step_text'] = explode('//', $post['step_text']);
+        $post['step_image_filename'] = explode('//', $post['step_image_filename']);
+        $post['ingredients'] = explode('//', $post['ingredients']);
+        $post['tag'] = explode('//', $post['tag']);
+
+        return view('recipe.recipeone', compact('post'));
     }
 }
