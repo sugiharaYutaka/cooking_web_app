@@ -444,6 +444,7 @@ export default {
                 formData.append('tag',this.tagList)
                 formData.append('stepCount',this.stepCount);
                 axios.post(this._postUrl,formData)
+                window.confirm('この内容で投稿して宜しいですか？');
                 //window.location.href = 'https://example.com';
             }
 

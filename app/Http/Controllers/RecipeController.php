@@ -19,11 +19,6 @@ class RecipeController extends Controller
         return view('recipe.recipepost');
     }
 
-    public function bookmark()
-    {
-        return view('recipe.recipebookmark');
-    }
-
     public function insertRecipe(Request $request)
     {
         $tag = str_replace(',', '//', $request->tag);
