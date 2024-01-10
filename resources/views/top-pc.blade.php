@@ -64,9 +64,25 @@
             flex: 35%;
         }
 
+        .flex-left {
+            width: 100%;
+        }
+
+        .flex-left .contents .text {
+            width: 100%;
+        }
+
+        .flex-left .contents .img {
+            width: 50%;
+        }
+
+
+
+
         .flex-right {
             display: flex;
             flex-direction: column;
+            width: 100%;
         }
 
 
@@ -122,6 +138,21 @@
         .iine .contents .text {
             display: flex;
             flex-direction: column;
+        }
+
+        .iine .contents .amount {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            max-width: 320px;
+            font-family: sans-serif;
+            color: #dc143c;
+            text-align: center;
+            overflow-wrap: anywhere;
+            background-color: transparent;
+            border: 2px solid #dc143c;
+            border-radius: 10px;
         }
 
         .iine p {
@@ -181,11 +212,9 @@
     <!-- 写真横スクロール -->
     <div class="Container">
         <div class="Box-Container">
-            <img class="Box" src="https://mpreview.aflo.com/epIejrhhrejN/afloimagemart_228170109.jpg">
-            <img class="Box" src="https://mpreview.aflo.com/n8vjjMgg0zIM/afloimagemart_214335497.jpg">
-            <img class="Box" src="https://mpreview.aflo.com/mWcJjXEENUWI/afloimagemart_24797895.jpg">
-            <img class="Box" src="https://mpreview.aflo.com/Y0zAjcxxF39u/afloimagemart_176749297.jpg">
-            <!-- 必要な数の.Box要素を追加 -->
+            @foreach($dish_image_filename as $name)
+            <img class="Box" src="{{ asset('/recipe/image/' . $name->dish_image_filename )}}">
+            @endforeach
         </div>
     </div>
     <div class="Arrow left">＜</div>
@@ -202,45 +231,34 @@
             <p class="text-center h6">過去30日間のいいね数</p>
             <div class="iine">
 
+                @php
+                $index = 0;
+                @endphp
+
+                @foreach($posts as $post)
+
+                @php
+                $index += 1;
+                @endphp
+
                 <hr>
 
                 <div class="first">
                     <div class="contents">
                         <div class="text">
-                            <img class="rank-img" src="https://illust-stock.com/wp-content/uploads/ranking-crown-no1.png">
-                            <button class="btn btn-sm btn-outline-danger mx-1">30♡</button>
-                            <p>タイトルーーーーー</p>
+                            <img class="rank-img" src='https://illust-stock.com/wp-content/uploads/ranking-crown-no{{ $index }}.png'>
+                            <p class="amount">{{ $post->good }}♡</p>
+                            <p>{{ $post->text }}</p>
                         </div>
-                        <img class="img" src="https://mpreview.aflo.com/epIejrhhrejN/afloimagemart_228170109.jpg">
+
+                        @if ($post->image_filename != "")
+                        <img class="img" src="{{ asset('/storage/img/' . $post->image_filename )}}">
+                        @endif
 
                     </div>
                 </div>
 
-                <hr>
-
-                <div class="second">
-                    <div class="contents">
-                        <div class="text">
-                            <img class="rank-img" src="https://illust-stock.com/wp-content/uploads/ranking-crown-no2.png">
-                            <button class="btn btn-sm btn-outline-danger mx-1">1♡</button>
-                            <p>タイトルーーーーー</p>
-                        </div>
-                        <img class="img" src="https://mpreview.aflo.com/n8vjjMgg0zIM/afloimagemart_214335497.jpg">
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="third">
-                    <div class="contents">
-                        <div class="text">
-                            <img class="rank-img" src="https://illust-stock.com/wp-content/uploads/ranking-crown-no3.png">
-                            <button class="btn btn-sm btn-outline-danger mx-1">3♡</button>
-                            <p>タイトルーーーーー</p>
-                        </div>
-                        <img class="img" src="https://mpreview.aflo.com/mWcJjXEENUWI/afloimagemart_24797895.jpg">
-                    </div>
-                </div>
+                @endforeach
             </div>
             <!-- いいね数ランキング end -->
         </div>
@@ -250,25 +268,34 @@
             <!-- 料理チュートリアル -->
             <p class="text-center h6">料理チュートリアル</p>
             <div class="tutorial">
-                <a href="{{ route('study') }}">
+                @if ($forward_chapter != 0)
+                <a href="{{ route('chapter' . $forward_chapter) }}">
                     <p>
                         次回のチャプターへ
                     </p>
-                    <img class="tutorial-img" src="https://mpreview.aflo.com/epIejrhhrejN/afloimagemart_228170109.jpg">
+                    <img class="tutorial-img" src="{{ asset('image/chapter/' . $forward_chapter_filename) }}">
                 </a>
+                @else
+                <a href="{{ route('study')}}">
+                    <p>
+                        次回のチャプター　近日公開
+                    </p>
+                    <img class="tutorial-img" src="{{ asset('image/chapter/' . $forward_chapter_filename) }}">
+                </a>
+                @endif
             </div>
 
             <div class="tutorial">
-                <a href="{{ route('study') }}">
+                <a href="{{ route('chapter' . $now_chapter) }}">
                     <p>
                         前回のチャプターへ
                     </p>
-                    <img class="tutorial-img" src="https://mpreview.aflo.com/epIejrhhrejN/afloimagemart_228170109.jpg">
+                    <img class="tutorial-img" src="{{ asset('image/chapter/' . $now_chapter_filename) }}">
                 </a>
             </div>
             <!-- 料理チュートリアル end -->
         </div>
-        
+
     </div>
 
 </body>
