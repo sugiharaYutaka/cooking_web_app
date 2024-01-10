@@ -1,3 +1,21 @@
+<!-- Vue コンポーネント内のテンプレート -->
+<template>
+    <!-- 既存のコードがここにあると仮定 -->
+
+    <!-- モーダルのテンプレート -->
+    <div v-if="showConfirmationModal" class="custom-modal">
+        <!-- モーダルのコンテンツ -->
+        <div class="modal-content">
+            <p>この内容で投稿して宜しいですか？</p>
+            <button @click="confirmPost">はい</button>
+            <button @click="cancelPost">キャンセル</button>
+        </div>
+    </div>
+</template>
+
+
+
+
 <template>
     <html lang="ja">
 
@@ -259,6 +277,32 @@ export default {
             }
         };
     },
+
+    // モーダルのメソッド
+    methods: {
+    confirmPost() {
+    let element = document.getElementById('level');
+    formData.append('level', element.value)
+    formData.append('tag', this.tagList)
+    formData.append('stepCount', this.stepCount);
+    axios.post(this._postUrl, formData)
+        .then(response => {
+            // 投稿が成功した場合の処理
+            // モーダルを非表示にする
+            this.showConfirmationModal = false;
+            // 投稿が完了した後のリダイレクト
+            window.location.href = '/recipes';
+        })
+        .catch(error => {
+            // エラー時の処理
+            console.error('投稿エラー:', error);
+            // エラー処理を行う（例えば、エラーメッセージを表示するなど）
+        });
+},
+cancelPost() {
+    this.showConfirmationModal = false; // モーダルを非表示にする
+}
+    },
     methods: {
         addStep() {
             if (this.stepCount < 20) {
@@ -439,12 +483,13 @@ export default {
             }
 
             if(checkSum == checkSumMax){
+                this.showConfirmationModal = true;
+
                 let element = document.getElementById('level');
                 formData.append('level',element.value)
                 formData.append('tag',this.tagList)
                 formData.append('stepCount',this.stepCount);
-                axios.post(this._postUrl,formData)
-                window.confirm('この内容で投稿して宜しいですか？');
+                axios.post(this._postUrl,formData);
                 //window.location.href = 'https://example.com';
             }
 
