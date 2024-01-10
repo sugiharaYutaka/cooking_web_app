@@ -311,7 +311,7 @@ export default {
             if (rules.indexOf('required') != -1 && value.length == 0) {
                 message['required'] = '必須項目です';
             }
-            if (rules.indexOf('max50') != -1 && value.length > 20) {
+            if (rules.indexOf('max50') != -1 && value.length > 50) {
                 message['max50'] = '50文字未満にしてください';
             }
             if (rules.indexOf('max500') != -1 && value.length > 500) {
