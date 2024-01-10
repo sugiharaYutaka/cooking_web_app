@@ -144,7 +144,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 50%;
+            width: 100px;
             max-width: 320px;
             font-family: sans-serif;
             color: #dc143c;
@@ -186,7 +186,7 @@
 
         .rank-img {
             position: absolute;
-            margin: 0px 21%;
+            margin: 0px 18%;
             transform: translateY(-50%);
             width: 50px;
         }
@@ -227,7 +227,12 @@
     <div class="flex">
 
         <div class="flex-left">
-            @if (isset($posts))
+            @if (!isset($posts))
+
+            <p class="text-center h6">ログインしてください</p>
+
+            @else
+
             <!-- いいね数ランキング -->
             <p class="text-center h6">過去30日間のいいね数</p>
             <div class="iine">
@@ -263,9 +268,6 @@
             </div>
             <!-- いいね数ランキング end -->
 
-            @else
-
-            <p class="text-center h6">ログインしろ</p>
             @endif
         </div>
 
@@ -273,7 +275,20 @@
         <div class="flex-right">
             <!-- 料理チュートリアル -->
             <p class="text-center h6">料理チュートリアル</p>
-            @if (isset($posts))
+
+            @if (!isset($posts))
+
+            <div class="tutorial">
+                <a href="{{ route('study')}}">
+                    <p>
+                        チャプター
+                    </p>
+                    <img class="tutorial-img" src="{{ asset('image/chapter/' . $chapter_filename) }}">
+                </a>
+            </div>
+
+            @else
+
             <div class="tutorial">
                 @if ($forward_chapter != 0)
                 <a href="{{ route('chapter' . $forward_chapter) }}">
@@ -301,16 +316,6 @@
                 </a>
             </div>
 
-            @else
-
-            <div class="tutorial">
-                <a href="{{ route('study')}}">
-                    <p>
-                        チャプター
-                    </p>
-                    <img class="tutorial-img" src="{{ asset('image/chapter/' . $chapter_filename) }}">
-                </a>
-            </div>
             @endif
             <!-- 料理チュートリアル end -->
         </div>
