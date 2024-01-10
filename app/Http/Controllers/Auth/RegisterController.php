@@ -127,6 +127,10 @@ class RegisterController extends Controller
             'history' => 0,
             'comment' => '',
         ]);
+        Models\Chapter::create([
+            'email' => $request->email,
+            'progress' => 1,
+        ]);
 
         $data = Models\User::where('email', $email)->first();
         Auth::login($data);
