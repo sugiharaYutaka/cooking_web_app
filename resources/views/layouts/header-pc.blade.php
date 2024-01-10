@@ -11,6 +11,8 @@
     <title>home</title>
     <link type="text/css" rel="stylesheet" href="{{ asset('index.css') }}" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <script src="{{ asset('js/sidebar.js') }}"></script>
+
 </head>
 
 <body>
@@ -33,7 +35,7 @@
                         <a href="{{ route('study') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/study.png') }}" class="footericon"><br>勉強</button></a>
                     </div>
                     <div class="col-1 d-flex justify-content-center">
-                        <a href="{{ route('recipe1') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/recipe.png') }}" class="footericon"><br>献立</button></a>
+                        <a href="{{ route('recipes') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/recipe.png') }}" class="footericon"><br>献立</button></a>
                     </div>
                     <div class="col-1 d-flex justify-content-center">
                         <a href="{{ route('sns') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/sns.png') }}" class="footericon"><br>SNS</button></a>
