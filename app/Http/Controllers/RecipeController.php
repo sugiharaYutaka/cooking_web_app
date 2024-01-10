@@ -103,4 +103,22 @@ class RecipeController extends Controller
         }
         return $array;
     }
+    public function oneRecipe($id)
+    {
+        $result = Recipe::where('recipes.id', '=', $id)
+        ->get();
+
+        $post =[];
+        var_dump($result[0]);
+        /*
+        $result->step_text = explode('//',$result->step_text);
+        $result->step_image_filename = explode('//',$result->step_image_filename);
+        $result->ingredients = explode('//',$result->ingredients);
+        $result->tag = explode('//',$result->tag);
+
+        $post = $result;
+        var_dump($post);
+        */
+        //return view('recipe.recipeone',compact('post'));
+    }
 }
