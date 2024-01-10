@@ -246,7 +246,7 @@
             <div class="tutorial">
                 <a href="{{ route('chapter' . $now_chapter) }}">
                     <p>
-                        前回のチャプターへ
+                        現在のチャプターへ
                     </p>
                     <img class="tutorial-img" src="{{ asset('image/chapter/' . $now_chapter_filename) }}">
                 </a>
