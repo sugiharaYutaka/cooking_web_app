@@ -24,7 +24,7 @@ class TopController extends Controller
             ->get();
 
 
-        if ($request->session()->has('email')) {
+        if (!$request->session()->has('email')) {
             $chapter_filename = $chapter_filenames[1];
 
             return view('top', compact('dish_image_filename', 'chapter_filename'));
