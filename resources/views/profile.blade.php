@@ -122,22 +122,30 @@
 <body>
     <div class="center">
         <h1>プロフィール</h1>
+        @if (!isset($email) && !isset($target_email))
+        <p>ログインしてください</p>
+        @else
+
+
+
         @if ($icon_filename == "user_icon.png")
         <img class="imgcircle" src="{{ asset('/image/icon/user_icon.png') }}">
         @else
-        <img class="imgcircle" src="{{ asset('/image/icon/'.$icon_filename) }}">
+        <img class="imgcircle" src="{{ asset('/image/icon/' . $icon_filename) }}">
         @endif
 
 
-        @if ($email != $target_email)
+        @if ($is_following != 2 && $email != $target_email)
         <form action="{{ route('followprofile') }}" method="post" class="forminput">
             @csrf
             <input type="hidden" name="target_email" value="{{ $target_email }}" />
-            @if ($is_following == true)
+
+            @if ($is_following == 1)
             <input class="submit-button" type="submit" value="フォローを外す">
-            @else
+            @elseif ($is_following == 0)
             <input class="submit-button" type="submit" value="フォローする">
             @endif
+
         </form>
         @endif
 
@@ -200,6 +208,7 @@
             @endif
 
         </form>
+        @endif
     </div>
 </body>
 
