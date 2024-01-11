@@ -65,16 +65,16 @@ Route::get('/taktiedebug', [App\Http\Controllers\TaktiedebugController::class, '
 Route::post('/taktiedebugreg', [App\Http\Controllers\TaktiedebugController::class, 'register'])->name('taktiedebugreg');
 
 
-Route::get('/debug',          [App\Http\Controllers\DebugController::class, 'show'])->name('debug');
+Route::get('/debug', [App\Http\Controllers\DebugController::class, 'show'])->name('debug');
 Route::post('/debugRegister', [App\Http\Controllers\DebugController::class, 'getRegister'])->name('debugRegister');
-Route::post('/debugPost',     [App\Http\Controllers\DebugController::class, 'getPost'])->name('debugPost');
-Route::post('/debugReply',    [App\Http\Controllers\DebugController::class, 'getReply'])->name('debugReply');
-Route::post('/debugProfile',  [App\Http\Controllers\DebugController::class, 'getProfile'])->name('debugProfile');
-Route::post('/debugFollow',   [App\Http\Controllers\DebugController::class, 'getFollow'])->name('debugFollow');
-Route::post('/debugChapter',  [App\Http\Controllers\DebugController::class, 'getChapter'])->name('debugChapter');
+Route::post('/debugPost', [App\Http\Controllers\DebugController::class, 'getPost'])->name('debugPost');
+Route::post('/debugReply', [App\Http\Controllers\DebugController::class, 'getReply'])->name('debugReply');
+Route::post('/debugProfile', [App\Http\Controllers\DebugController::class, 'getProfile'])->name('debugProfile');
+Route::post('/debugFollow', [App\Http\Controllers\DebugController::class, 'getFollow'])->name('debugFollow');
+Route::post('/debugChapter', [App\Http\Controllers\DebugController::class, 'getChapter'])->name('debugChapter');
 
-Route::get('/register',          [App\Http\Controllers\Auth\RegisterController::class, 'show'])->name('register');
-Route::post('/process',           [App\Http\Controllers\Auth\RegisterController::class, 'process'])->name('process');
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'show'])->name('register');
+Route::post('/process', [App\Http\Controllers\Auth\RegisterController::class, 'process'])->name('process');
 
 //いいね機能
 Route::post('/like-post', [App\Http\Controllers\SNS\HomeController::class, 'likePost']);
@@ -97,4 +97,4 @@ Route::get('/ComingSoon', function () {
 })->name('ComingSoon');
 
 // サイドバー
-Route::get('/recipe/filter',  [App\Http\Controllers\SidebarController::class, 'index'])->name('tags');
+Route::get('/recipe/filter', [App\Http\Controllers\SidebarController::class, 'index'])->name('tags');
