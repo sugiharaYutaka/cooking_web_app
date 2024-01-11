@@ -113,7 +113,7 @@
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/measuringcup.jpg') }}" class="card-img-top custom-image-size d-flex justify-content-center">
+                                        <img src="{{ asset('image/knowledge/saibashi.jpeg') }}" class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
                                     おかずを各自の皿に取り分け、または料理を作るのに使う箸。
                             </div>
@@ -130,7 +130,7 @@
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/measuringcup.jpg') }}" class="card-img-top custom-image-size d-flex justify-content-center">
+                                        <img src="{{ asset('image/knowledge/tongu.jpg') }}" class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
                                     角砂糖や調理中のスパゲッティなど、食品をはさむＶ字型の金属製道具。
                             </div>
