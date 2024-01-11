@@ -122,7 +122,7 @@
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/chopsticks.jpeg') }}"
+                                        <img src="{{ asset('image/knowledge/chopsticks.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
                                     おかずを各自の皿に取り分け、または料理を作るのに使う箸。
