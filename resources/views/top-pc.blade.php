@@ -229,7 +229,7 @@
         <div class="flex-left">
             @if (!isset($posts))
 
-            <p class="text-center h6">ログインしてください</p>
+            <p class="text-center h6">投稿はありません</p>
 
             @else
 

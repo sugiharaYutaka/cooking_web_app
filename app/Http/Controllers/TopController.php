@@ -16,6 +16,14 @@ class TopController extends Controller
         );
         $max_chapter = count($chapter_filenames) - 1;
 
+        $posts = DB::table('sns_posts')
+                ->where([
+                    ['created_at', '>=', date('Y-m-d H:i:s', time() - ( 30 * 24 * 60 * 60) )] //30日
+                ])
+                ->select('text', 'image_filename', 'good')
+                ->orderByDesc('good')
+                ->limit(3)
+                ->get();
 
         $dish_image_filename = DB::table('recipes')
             ->select('dish_image_filename')
@@ -30,16 +38,6 @@ class TopController extends Controller
             return view('top', compact('dish_image_filename', 'chapter_filename'));
         } else {
             $email = $request->session()->get('email');
-
-            $posts = DB::table('sns_posts')
-                ->where([
-                    ['created_at', '>=', date('Y-m-d H:i:s', time() - (30 * 24 * 60 * 60))], // 30日
-                    ['email', '=', $email],
-                ])
-                ->select('text', 'image_filename', 'good')
-                ->orderByDesc('good')
-                ->limit(3)
-                ->get();
 
 
             $chapter = DB::table('chapters')
