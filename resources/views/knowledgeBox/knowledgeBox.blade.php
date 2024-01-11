@@ -14,17 +14,21 @@
     <div class="container" style="padding-top: 100px;">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">調理器具</button>
+                <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button"
+                    role="tab" aria-controls="tab1" aria-selected="true">調理器具</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">調味料</button>
+                <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button"
+                    role="tab" aria-controls="tab2" aria-selected="false">調味料</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">切り方</button>
+                <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button"
+                    role="tab" aria-controls="tab3" aria-selected="false">切り方</button>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab" style="padding-top: 10px;">
+            <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab"
+                style="padding-top: 10px;">
                 <!-- 調理器具 -->
                 <div class="row">
                     <!-- Tab 1のコンテンツを3x3のグリッドで配置 -->
@@ -36,7 +40,8 @@
                             <div class="card-body">
                                 <a href="{{ route('kitchenknife') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/kitchenknife.jpg') }}" class="card-img-top custom-image-size d-flex justify-content-center">
+                                        <img src="{{ asset('image/knowledge/kitchenknife.jpg') }}"
+                                            class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
                                     食物の調理に使う薄くて平たい刃物。<br>　
                             </div>
@@ -51,7 +56,8 @@
                             <div class="card-body">
                                 <a href="{{ route('skillet') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/skillet.jpg') }}" class="card-img-top custom-image-size d-flex justify-content-center">
+                                        <img src="{{ asset('image/knowledge/skillet.jpg') }}"
+                                            class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
                                     炒めもの・フライ料理などに使う、柄がついて底が浅くて平たいなべ。
                             </div>
@@ -66,7 +72,8 @@
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/cuttingboard.jpg') }}" class="card-img-top custom-image-size d-flex justify-content-center">
+                                        <img src="{{ asset('image/knowledge/cuttingboard.jpg') }}"
+                                            class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
                                     まな板は、調理で食材を切る際に台として用いる道具。
                             </div>
@@ -83,7 +90,8 @@
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/ladle.jpg') }}" class="card-img-top custom-image-size d-flex justify-content-center">
+                                        <img src="{{ asset('image/knowledge/ladle.jpg') }}"
+                                            class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
                                     食物を掬うための調理器具。<br>　
                             </div>
@@ -98,7 +106,8 @@
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/measuringcup.jpg') }}" class="card-img-top custom-image-size d-flex justify-content-center">
+                                        <img src="{{ asset('image/knowledge/measuringcup.jpg') }}"
+                                            class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
                                     調理の際に体積の計量に用いられる、目盛りがついたカップ。
                             </div>
@@ -113,7 +122,8 @@
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/measuringcup.jpg') }}" class="card-img-top custom-image-size d-flex justify-content-center">
+                                        <img src="{{ asset('image/knowledge/measuringcup.jpg') }}"
+                                            class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
                                     おかずを各自の皿に取り分け、または料理を作るのに使う箸。
                             </div>
@@ -130,7 +140,8 @@
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/measuringcup.jpg') }}" class="card-img-top custom-image-size d-flex justify-content-center">
+                                        <img src="{{ asset('image/knowledge/measuringcup.jpg') }}"
+                                            class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
                                     角砂糖や調理中のスパゲッティなど、食品をはさむＶ字型の金属製道具。
                             </div>
@@ -145,7 +156,8 @@
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/pot.jpg') }}" class="card-img-top custom-image-size d-flex justify-content-center">
+                                        <img src="{{ asset('image/knowledge/pot.jpg') }}"
+                                            class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
                                     食物等を煮るための容器。<br>　
                             </div>
@@ -160,7 +172,8 @@
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/measuringcup.jpg') }}" class="card-img-top custom-image-size d-flex justify-content-center">
+                                        <img src="{{ asset('image/knowledge/bowl.jpg') }}"
+                                            class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
                                     料理の下ごしらえに使う道具。 <br>　
                             </div>
