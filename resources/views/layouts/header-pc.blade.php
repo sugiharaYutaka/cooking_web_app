@@ -26,7 +26,7 @@
                     <div class="col-1"></div>
                     <div class="col-3" style="margin-left: 10px;">
                         <form action="/search" method="GET" class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="タグ検索" aria-label="Search" name="query">
+                            <input class="form-control mr-sm-2" type="search" placeholder="献立検索" aria-label="Search" name="query">
                         </form>
                     </div>
                     <div class="col-1"></div>

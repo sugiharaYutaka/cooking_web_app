@@ -12,7 +12,7 @@
         <h1>chapter1 親子丼</h1>
 
         <div class="centerimg">
-            <img src="{{ asset('image/chapter/oyakodon.jpg') }}" class="sizeimg"><br>
+            <img src="{{ asset('image/chapter/oyakodon.png') }}" class="sizeimg"><br>
         </div>
 
         <!--- 料理の説明文 --->
@@ -41,13 +41,13 @@
                     <li class="inlist2"><u>調味料</u></li>
                     <li class="dashi">水 ··· 100ml</li>
                     <li class="dashi">しょうゆ ··· 大さじ1</li>
-                    <li class="dashi">みりん ··· 大さじ4</li>
+                    <li class="dashi">みりん ··· 大さじ1</li>
                     <li class="dashi">料理酒 ··· 大さじ1</li>
                     <li class="dashi">砂糖 ··· 大さじ1/2</li>
 
                     <li class="inlist3"><u>トッピング</u></li>
-                    <li>三つ葉 ··· 1/4束ほど（あれば色どりが良くなります）</li>
-                    
+                    <li>刻みネギ ··· 1/4束ほど（あれば色どりが良くなります）</li>
+
                 </ul>
             </div>
         </div>
@@ -81,7 +81,7 @@
                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div>
-                            <img src="{{ asset('images/torimomo.jpg') }}"><br>
+                            <img src="{{ asset('image/chapter/torimomo.jpg') }}"><br>
                         </div>
                     </div>
                 </div>
@@ -97,12 +97,13 @@
             <div class="m-3 fw-bold">STEP1 準備を整えよう</div>
         </div>
         <div class="card-body">
-            <div class="youtube_wrap">
-                <iframe src="https://www.youtube.com/embed/3O4J6E7ERjc" title="YouTube video player"></iframe>
+            <div class="">
+                <img class="w-100" src="{{ asset('image/chapter/hocho.png') }}">
+                <img class="w-100" src="{{ asset('image/chapter/tamanegi.png') }}">
             </div>
 
             <div class="cooking_text">
-                <br>まずは、動画の通りまな板と包丁を作業スペースに置きましょう。
+                <br>まずは、画像の通りまな板と包丁を作業スペースに置きましょう。
                 <br>ボールに玉ねぎ1個が漬かるくらいの水をため、玉ねぎを5分～10分程度漬けておきましょう。<br><br>
             </div>
 
@@ -111,29 +112,12 @@
     </div>
 
     <div class="card-chapter">
-        <div class="card-heade border-top border-bottomr">
-            STEP2 三つ葉を切ろう
-        </div>
-        <div class="card-body">
-            <div class="youtube_wrap">
-                <iframe src="https://www.youtube.com/embed/3O4J6E7ERjc" title="YouTube video player"></iframe>
-            </div>
-
-            <div class="cooking_text">
-                <br>まずは、根元を切り落としましょう。
-                <br>3cmくらいの幅で切ったら、別の器に置いておきましょう。
-            </div>
-            
-        </div>
-    </div>
-
-    <div class="card-chapter">
         <div class="card-header bg-color-2 border-top border-bottom">
-            <div class="m-3 fw-bold">STEP3 鶏もも肉を切ろう</div>
+            <div class="m-3 fw-bold">STEP2 鶏もも肉を切ろう</div>
         </div>
         <div class="card-body">
-            <div class="youtube_wrap">
-                <iframe src="https://www.youtube.com/embed/3O4J6E7ERjc" title="YouTube video player"></iframe>
+            <div class="">
+                <video class="w-100" src="{{ asset('image/chapter/TORINIKU_cut.mp4') }}"controls></video>
             </div>
 
             <div class="cooking_text">
@@ -145,11 +129,11 @@
 
     <div class="card-chapter">
         <div class="card-header bg-color-2 border-top border-bottom">
-            <div class="m-3 fw-bold">STEP4 玉ねぎを切ろう</div>
+            <div class="m-3 fw-bold">STEP3 玉ねぎを切ろう</div>
         </div>
         <div class="card-body">
-            <div class="youtube_wrap">
-                <iframe src="https://www.youtube.com/embed/3O4J6E7ERjc" title="YouTube video player"></iframe>
+            <div class="">
+                <video class="w-100" src="{{ asset('image/chapter/tamanegi.mp4') }}"controls></video>
             </div>
 
             <!--- 皮むき --->
@@ -167,8 +151,8 @@
 
             <!--- 切り方 --->
 
-            <div class="youtube_wrap">
-                <iframe src="https://www.youtube.com/embed/3O4J6E7ERjc" title="YouTube video player"></iframe>
+            <div class="">
+                <video class="w-100" src="{{ asset('image/chapter/tamanegi_cut.mp4') }}"controls></video>
             </div>
 
             <div class="cooking_text">
@@ -185,16 +169,18 @@
 
     <div class="card-chapter">
         <div class="card-header bg-color-2 border-top border-bottom">
-            <div class="m-3 fw-bold">STEP5 つゆを沸かそう</div>
+            <div class="m-3 fw-bold">STEP4 つゆを沸かそう</div>
         </div>
         <div class="card-body">
-            <div class="youtube_wrap">
-                <iframe src="https://www.youtube.com/embed/3O4J6E7ERjc" title="YouTube video player"></iframe>
+            <div class="">
+                <video class="w-100" src="{{ asset('image/chapter/CHOMIRYO.mp4') }}"controls></video>
+                <video class="w-100" src="{{ asset('image/chapter/YAKI.mp4') }}"controls></video>
             </div>
 
             <div class="cooking_text">
-                <br>フライパンに水を入れ、火をつけます。
-                <br>水以外の調味料も順番に入れていき、最後に玉ねぎも入れます。
+                <br>用意した調味料をすべて混ぜ合わせます
+                <br>火をつけて、調味料を入れます。
+                <br>その後、玉ねぎも入れます。
                 <br>煮立ったら鶏肉も入れましょう。
             </div>
 
@@ -209,14 +195,13 @@
             <div class="m-3 fw-bold">STEP6 卵で閉じよう</div>
         </div>
         <div class="card-body">
-            <div class="youtube_wrap">
-                <iframe src="https://www.youtube.com/embed/3O4J6E7ERjc" title="YouTube video player"></iframe>
+            <div class="">
+                <video class="w-100" src="{{ asset('image/chapter/TAMAGO.mp4') }}"controls></video>
             </div>
 
             <div class="cooking_text">
-                <br>鶏肉にも火が通ったら、溶き卵の半量を加えます。
-                <br>3秒くらいかき混ぜた後、蓋をして火を弱火にします。
-                <br>1分経ったら蓋を開け、残りの溶き卵も加えて、中火に戻します。
+                <br>鶏肉にも火が通ったら、溶き卵を加えます。
+                <br>3秒くらいかき混ぜた後、火を弱火にします。
                 <br>10秒ほど経ったら火を止めて、器にごはんをよそいましょう。
             </div>
 
@@ -232,19 +217,19 @@
             <div class="m-3 fw-bold">STEP7 完成!!!</div>
         </div>
         <div class="card-body">
-            <div class="youtube_wrap">
-                <iframe src="https://www.youtube.com/embed/3O4J6E7ERjc" title="YouTube video player"></iframe>
+            <div class="">
+                <video class="w-100" src="{{ asset('image/chapter/KANSEI.mp4') }}"controls></video>
             </div>
 
             <div class="cooking_text">
                 <br>ごはんの上に盛りつけましょう。
-                <br>三つ葉を用意している場合は、三つ葉を乗せて完成です。
+                <br>ネギを用意している場合は、ネギを乗せて完成です。
             </div>
 
         </div>
     </div>
 
-    <button type="button"><a href="{{ route('snspost') }}">SNSに投稿してみよう!</a></button>
+    <button type="button"><a  href="{{ route('snspost') }}">SNSに投稿してみよう!</a></button>
 
 
 </div>
