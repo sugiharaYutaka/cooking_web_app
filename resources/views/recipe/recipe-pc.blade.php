@@ -7,7 +7,7 @@
             <div class="sidebar col-3 border"> <!-- サイドバーの幅を指定 -->
                 @include('layouts.sidebar')
             </div>
-            <div class="offset-3 col-9 p-0">
+            <div class="col-9 p-0">
                 <div class="container">
                     <div class="row">
                         <!--- レシピ投稿に遷移するボタン --->

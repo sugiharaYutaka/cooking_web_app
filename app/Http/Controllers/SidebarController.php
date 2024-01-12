@@ -14,16 +14,18 @@ class SidebarController extends Controller
         // dd($request->all());
 
         $tags = $request->input('tags');
-        if ($tags) {
-            $recipePost = $this->getRecipeWithSpecificTags($tags);
+        $levels = $request->input('levels');
+
+        if ($tags || $levels) {
+            $recipePost = $this->getRecipeWithSpecificTags($tags, $levels);
         } else {
             // デフォルトの処理またはエラー処理を追加する場合
-            $recipePost = []; // 仮の空の配列を返す例
+            $recipePost = Recipe::latest()->take(5)->get(); // 仮の空の配列を返す例
         }
         return view('recipe.recipe', compact('recipePost'));
     }
 
-    public function getRecipeWithSpecificTags($tags)
+    public function getRecipeWithSpecificTags($tags, $levels)
     {
         $query = Recipe::select([
             'recipes.id',
@@ -41,11 +43,17 @@ class SidebarController extends Controller
             ->join('users', 'recipes.email', '=', 'users.email')
             ->select('users.name', 'users.icon_filename', 'recipes.*');
 
-        $query->where(function ($query) use ($tags) {
-            foreach ($tags as $tag) {
-                $query->Where('recipes.tag', 'LIKE', "%$tag%");
-            }
-        });
+        if ($tags) {
+            $query->where(function ($query) use ($tags) {
+                foreach ($tags as $tag) {
+                    $query->orWhere('recipes.tag', 'LIKE', "%$tag%");
+                }
+            });
+        }
+
+        if ($levels) {
+            $query->whereIn('recipes.level', $levels);
+        }
 
         $result = $query->orderBy('recipes.id', 'desc')
             ->take(5)
