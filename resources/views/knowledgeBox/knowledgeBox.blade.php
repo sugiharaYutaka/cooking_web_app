@@ -242,15 +242,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                おたま
+                                胡椒
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/ladle.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/pepper.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    食物を掬うための調理器具。<br>　
+                                    くしゃみが出ます。<br>　
                             </div>
                             </a>
                         </div>
@@ -258,15 +258,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                計量カップ
+                                味醂
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/measuringcup.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/sweetsake.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    調理の際に体積の計量に用いられる、目盛りがついたカップ。
+                                    スイートなお酒
                             </div>
                             </a>
                         </div>
