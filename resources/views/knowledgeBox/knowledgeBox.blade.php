@@ -208,15 +208,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                フライパン
+                                料理酒
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('skillet') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/skillet.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/cooking sake.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    炒めもの・フライ料理などに使う、柄がついて底が浅くて平たいなべ。
+                                    原料の米由来の有機酸やアミノ酸などは料理にうまみ・コクを付ける効果があります
                             </div>
                             </a>
                         </div>
@@ -224,15 +224,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                まな板
+                                醤油
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/cuttingboard.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/soy sauce.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    まな板は、調理で食材を切る際に台として用いる道具。
+                                    大豆などの穀物を主原料として、麹(こうじ)と食塩を加えて、発酵、熟成させた液体調味料
                             </div>
                             </a>
                         </div>
