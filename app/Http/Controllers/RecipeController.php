@@ -99,18 +99,15 @@ class RecipeController extends Controller
     }
     public function oneRecipe($id)
     {
-        $result = Recipe::where('recipes.id', '=', $id)
-            ->get();
-
 
         $post = Recipe::join('users', 'users.email', '=', 'recipes.email')
-            ->where('recipes.id', $id) // IDが1のユーザーに関連する投稿を取得
+            ->where('recipes.id', $id) // IDのユーザーに関連する投稿を取得
             ->first();
         $post['step_text'] = explode('//', $post['step_text']);
         $post['step_image_filename'] = explode('//', $post['step_image_filename']);
         $post['ingredients'] = explode('//', $post['ingredients']);
         $post['tag'] = explode('//', $post['tag']);
 
-        return view('recipe.recipeone', compact('post'));
+        return view('recipe.recipeone', compact('post','id'));
     }
 }

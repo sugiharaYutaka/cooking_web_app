@@ -200,7 +200,7 @@
                                         <img src="{{ asset('image/knowledge/oil.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    もこみち。<br>　
+                                    オリーブ樹の果実のみから採油されたもので、再エステル化等の処理を一切行わずに採油されたオイル<br>
                             </div>
                             </a>
                         </div>
@@ -250,7 +250,7 @@
                                         <img src="{{ asset('image/knowledge/pepper.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    くしゃみが出ます。<br>　
+                                    強い辛味とさわやかな香りが特徴的で、人気のある香辛料<br>　
                             </div>
                             </a>
                         </div>
@@ -266,7 +266,7 @@
                                         <img src="{{ asset('image/knowledge/sweetsake.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    スイートなお酒
+                                    砂糖に比べるとまろやかな甘さが感じられます。 芳醇な香りとエキス分によるうまみもあり、さまざまな調理効果が得られるのが特徴
                             </div>
                             </a>
                         </div>
@@ -282,7 +282,7 @@
                                         <img src="{{ asset('image/knowledge/sugar.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    甘い
+                                    甘みを持つ調味料（甘味料）である。植物から取り出されたショ糖（スクロース）を主成分とする甘味物質です。
                             </div>
                             </a>
                         </div>
@@ -292,15 +292,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                トング
+                                塩
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/tongu.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/salt.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    角砂糖や調理中のスパゲッティなど、食品をはさむＶ字型の金属製道具。
+                                    海水を煮詰めるとできる白い結晶。「塩」をサラサラになるまで乾燥さ せて、食用としたものを「食塩」と呼びます
                             </div>
                             </a>
                         </div>
@@ -308,15 +308,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                なべ
+                                味噌
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/pot.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/miso.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    食物等を煮るための容器。<br>　
+                                    主原料の大豆(だいず)を蒸すか煮るかして、麹(こうじ)と食塩を加えて、発酵、熟成させた半固体状の調味料<br>
                             </div>
                             </a>
                         </div>
@@ -324,15 +324,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                ボウル
+                                酢
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/bowl.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/vinegar.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    料理の下ごしらえに使う道具。 <br>　
+                                    糖質を含む食材を原料として、それをアルコール発酵させた後、酢酸発酵させた液体調味料 <br>　
                             </div>
                             </a>
                         </div>
