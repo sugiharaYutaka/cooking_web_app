@@ -276,7 +276,7 @@
             <!-- 料理チュートリアル -->
             <p class="text-center h6">料理チュートリアル</p>
 
-            @if (!isset($posts))
+            @if (!isset($now_chapter))
 
             <div class="tutorial">
                 <a href="{{ route('study')}}">
@@ -290,19 +290,19 @@
             @else
 
             <div class="tutorial">
-                @if ($forward_chapter != 0)
-                <a href="{{ route('chapter' . $forward_chapter) }}">
+                @if ($next_chapter != 0)
+                <a href="{{ route('chapter' . $next_chapter) }}">
                     <p>
                         次回のチャプターへ
                     </p>
-                    <img class="tutorial-img" src="{{ asset('image/chapter/' . $forward_chapter_filename) }}">
+                    <img class="tutorial-img" src="{{ asset('image/chapter/' . $next_chapter_filename) }}">
                 </a>
                 @else
                 <a href="{{ route('study')}}">
                     <p>
                         次回のチャプター　近日公開
                     </p>
-                    <img class="tutorial-img" src="{{ asset('image/chapter/' . $forward_chapter_filename) }}">
+                    <img class="tutorial-img" src="{{ asset('image/chapter/' . $next_chapter_filename) }}">
                 </a>
                 @endif
             </div>

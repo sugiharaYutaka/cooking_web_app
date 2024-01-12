@@ -16,14 +16,15 @@ class TopController extends Controller
         );
         $max_chapter = count($chapter_filenames) - 1;
 
+
         $posts = DB::table('sns_posts')
-                ->where([
-                    ['created_at', '>=', date('Y-m-d H:i:s', time() - ( 30 * 24 * 60 * 60) )] //30日
-                ])
-                ->select('text', 'image_filename', 'good')
-                ->orderByDesc('good')
-                ->limit(3)
-                ->get();
+            ->where([
+                ['created_at', '>=', date('Y-m-d H:i:s', time() - (30 * 24 * 60 * 60))] //30日
+            ])
+            ->select('text', 'image_filename', 'good')
+            ->orderByDesc('good')
+            ->limit(3)
+            ->get();
 
         $dish_image_filename = DB::table('recipes')
             ->select('dish_image_filename')
@@ -35,7 +36,7 @@ class TopController extends Controller
         if (!$request->session()->has('email')) {
             $chapter_filename = $chapter_filenames[1];
 
-            return view('top', compact('dish_image_filename', 'chapter_filename'));
+            return view('top', compact('dish_image_filename', 'posts', 'chapter_filename'));
         } else {
             $email = $request->session()->get('email');
 
@@ -46,15 +47,15 @@ class TopController extends Controller
                 ->first();
 
             $now_chapter = $chapter->progress;
-            $forward_chapter = $chapter->progress + 1;
-            if ($forward_chapter > $max_chapter) {
-                $forward_chapter = 0;
+            $next_chapter = $chapter->progress + 1;
+            if ($next_chapter > $max_chapter) {
+                $next_chapter = 0;
             }
 
             $now_chapter_filename = $chapter_filenames[$now_chapter];
-            $forward_chapter_filename = $chapter_filenames[$forward_chapter];
+            $next_chapter_filename = $chapter_filenames[$next_chapter];
 
-            return view('top', compact('dish_image_filename', 'posts', 'now_chapter', 'now_chapter_filename', 'forward_chapter', 'forward_chapter_filename'));
+            return view('top', compact('dish_image_filename', 'posts', 'now_chapter', 'now_chapter_filename', 'next_chapter', 'next_chapter_filename'));
         }
     }
 }
