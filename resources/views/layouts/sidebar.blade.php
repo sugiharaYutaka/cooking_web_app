@@ -42,8 +42,32 @@
                 <input class="form-check-input" type="checkbox" id="tag9" name="tags[]" value="揚げ料理">
                 <label class="form-check-label" for="tag4">揚げ料理</label>
             </div>
+
+            <label>難易度：</label><br>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="level1" name="levels[]" value="1">
+                <label class="form-check-label" for="level1">☆</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="level2" name="levels[]" value="2">
+                <label class="form-check-label" for="level2">☆☆</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="level3" name="levels[]" value="3">
+                <label class="form-check-label" for="level3">☆☆☆</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="level4" name="levels[]" value="4">
+                <label class="form-check-label" for="level4">☆☆☆☆</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="level5" name="levels[]" value="5">
+                <label class="form-check-label" for="level5">☆☆☆☆☆</label>
+            </div>
             <!-- 他のタグを追加 -->
         </div>
         <button type="submit" class="btn btn-primary">検索</button>
     </form>
+    <a href="{{ route('recipes') }}" class="no-underline text-dark">最初に戻る</a>
+
 </div>
