@@ -200,7 +200,7 @@
                                         <img src="{{ asset('image/knowledge/oil.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    オリーブ樹の果実のみから採油されたもので、再エステル化等の処理を一切行わずに採油されたオイル<br>　
+                                    オリーブ樹の果実のみから採油されたもので、再エステル化等の処理を一切行わずに採油されたオイル<br>
                             </div>
                             </a>
                         </div>
@@ -316,7 +316,7 @@
                                         <img src="{{ asset('image/knowledge/miso.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    主原料の大豆(だいず)を蒸すか煮るかして、麹(こうじ)と食塩を加えて、発酵、熟成させた半固体状の調味料<br>　
+                                    主原料の大豆(だいず)を蒸すか煮るかして、麹(こうじ)と食塩を加えて、発酵、熟成させた半固体状の調味料<br>
                             </div>
                             </a>
                         </div>
