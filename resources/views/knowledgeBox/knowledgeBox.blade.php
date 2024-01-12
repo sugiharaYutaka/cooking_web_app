@@ -185,7 +185,8 @@
             </div>
 
 
-            <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+            <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab"
+                 style="padding-top: 10px;">
                 <!-- 調味料 -->
                 <div class="row">
                     <!-- Tab 1のコンテンツを3x3のグリッドで配置 -->
