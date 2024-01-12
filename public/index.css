@@ -97,6 +97,9 @@
         margin-top: 10vh;
         margin-bottom: 15vh;
     }
+    .body-mt-top{
+        margin-top: 10vh;
+    }
     .post-margin {
         padding-left: 0;
         margin-left: 0;
@@ -127,6 +130,9 @@
     .body-margin {
         margin-top: 20vh;
         margin-bottom: 20vh;
+    }
+    .body-mt-top{
+        margin-top: 20vh;
     }
     .post-margin {
 

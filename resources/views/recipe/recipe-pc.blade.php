@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<body class="body-margin">
-    <div class="container-fluid">
-        <div class="row">
+<body class="body-mt-top">
+    <div class="container-fluid" style="height:100%;">
+        <div class="row" style="height:100%;">
             <div class="sidebar col-3 border"> <!-- サイドバーの幅を指定 -->
                 @include('layouts.sidebar')
             </div>
