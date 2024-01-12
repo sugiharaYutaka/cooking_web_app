@@ -140,7 +140,7 @@
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/tongu.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/tongu.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
                                     角砂糖や調理中のスパゲッティなど、食品をはさむＶ字型の金属製道具。
