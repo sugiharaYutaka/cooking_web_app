@@ -75,7 +75,7 @@
                                         <img src="{{ asset('image/knowledge/cuttingboard.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    まな板は、調理で食材を切る際に台として用いる道具。
+                                    まな板は、調理で食材を切る際に台として用いる道具。<br>　
                             </div>
                             </a>
                         </div>
@@ -93,7 +93,7 @@
                                         <img src="{{ asset('image/knowledge/ladle.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    食物を掬うための調理器具。<br>　
+                                    食物を掬うための調理器具。<br>
                             </div>
                             </a>
                         </div>
@@ -250,7 +250,7 @@
                                         <img src="{{ asset('image/knowledge/pepper.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    強い辛味とさわやかな香りが特徴的で、人気のある香辛料<br>　
+                                    強い辛味とさわやかな香りが特徴的で、人気のある香辛料<br>　<br>　
                             </div>
                             </a>
                         </div>
@@ -282,7 +282,7 @@
                                         <img src="{{ asset('image/knowledge/sugar.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    甘みを持つ調味料（甘味料）である。植物から取り出されたショ糖（スクロース）を主成分とする甘味物質です。
+                                    甘みを持つ調味料（甘味料）である。植物から取り出されたショ糖（スクロース）を主成分とする甘味物質です。<br>　
                             </div>
                             </a>
                         </div>
@@ -332,7 +332,7 @@
                                         <img src="{{ asset('image/knowledge/vinegar.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    糖質を含む食材を原料として、それをアルコール発酵させた後、酢酸発酵させた液体調味料 <br>　
+                                    糖質を含む食材を原料として、それをアルコール発酵させた後、酢酸発酵させた液体調味料 <br>
                             </div>
                             </a>
                         </div>
