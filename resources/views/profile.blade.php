@@ -208,6 +208,12 @@
             @endif
 
         </form>
+        @if ($email == $target_email)
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn border-top border-bottom my-2">ログアウト</button><br>
+        </form>
+        @endif
         @endif
     </div>
 </body>
