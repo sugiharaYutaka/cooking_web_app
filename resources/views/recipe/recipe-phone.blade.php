@@ -16,7 +16,7 @@
             <div class="col-12">
                 <div class="container">
                     <form action="/search" method="GET" class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="タグ検索" aria-label="Search" name="query">
+                        <input class="form-control mr-sm-2" type="search" placeholder="献立検索" aria-label="Search" name="query">
                     </form>
                     <div class="row">
                         <!--- レシピ投稿に遷移するボタン --->
@@ -28,7 +28,7 @@
                             <a href="{{ route('recipebookmark') }}" class="no-underline text-color-4 h3">bookmark</a>
                         </button>
 
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#recipemodalProfile" style="color: black; text-decoration: none;">工程名を選択</button>
+                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#recipemodalProfile" style="color: black; text-decoration: none;">タグ検索</button>
 
                     </div>
                     <div class="row border my-5">
