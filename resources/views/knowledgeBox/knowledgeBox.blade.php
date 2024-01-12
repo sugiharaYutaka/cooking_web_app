@@ -282,7 +282,7 @@
                                         <img src="{{ asset('image/knowledge/sugar.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    甘い
+                                    甘みを持つ調味料（甘味料）である。植物から取り出されたショ糖（スクロース）を主成分とする甘味物質です。
                             </div>
                             </a>
                         </div>
@@ -300,7 +300,7 @@
                                         <img src="{{ asset('image/knowledge/salt.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    食塩。
+                                    海水を煮詰めるとできる白い結晶。「塩」をサラサラになるまで乾燥さ せて、食用としたものを「食塩」と呼びます
                             </div>
                             </a>
                         </div>
@@ -316,7 +316,7 @@
                                         <img src="{{ asset('image/knowledge/miso.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    味噌汁。<br>　
+                                    主原料の大豆(だいず)を蒸すか煮るかして、麹(こうじ)と食塩を加えて、発酵、熟成させた半固体状の調味料<br>　
                             </div>
                             </a>
                         </div>
@@ -332,7 +332,7 @@
                                         <img src="{{ asset('image/knowledge/vinegar.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    酢。 <br>　
+                                    糖質を含む食材を原料として、それをアルコール発酵させた後、酢酸発酵させた液体調味料 <br>　
                             </div>
                             </a>
                         </div>
