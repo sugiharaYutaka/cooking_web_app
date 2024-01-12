@@ -6,10 +6,8 @@
 <body class="body-margin">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-3"> <!-- サイドバーの幅を指定 -->
-                @include('layouts.sidebar')
-            </div>
-            <div class="col-9 p-0">
+            
+            <div class="col-12">
                 <div class="container entirety">
                     <div class="row border my-5">
                         <div class="col-12 my-2">
@@ -19,9 +17,7 @@
                             <img src="{{ asset('/recipe/image/' . $post->dish_image_filename) }}" class=""
                                 style="width:70%;">
                         </div>
-                        <div class="col-12 my-2">
-                            <span>{{ $post->description }}</span>
-                        </div>
+
                         <div class="col-12 my-2 ">
                             @foreach ($post->tag as $tag)
                                 <span style="color:rgb(0, 187, 200)">{{ $tag }}</span>
@@ -30,19 +26,19 @@
                     
                         <div class="col-12 my-2 p-0">
                             <div class="card-header bg-color-2 border-top border-bottom">
-                                <div class="m-3 fw-bold">材料 (一人前)</div>
+                                <div class="m-3 fw-bold" style="font-size: 20px;">材料 (一人前)</div>
                             </div>
                             @foreach ($post->ingredients as $text)
-                                <p class="mx-5">・{{ $text }}</p>
+                                <p class="mx-5" style="font-size: 20px;">・{{ $text }}</p>
                             @endforeach
                         </div>
 
                         <div class="col-12 my-2 p-0">
                             @foreach ($post->step_text as $index => $text)
                             <div class="card-header mt-5 bg-color-2 border-top border-bottom">
-                                <div class="m-3 fw-bold">工程{{ $index + 1 }}</div>
+                                <div class="m-3 fw-bold" style="font-size: 20px;">工程{{ $index + 1 }}</div>
                             </div>
-                            <p class="mx-5">{{ $text }}</p>
+                            <p class="mx-5" style="font-size: 20px;">{{ $text }}</p>
 
                                 @if ($post->step_image_filename[$index] != 'NULL')
                                 <div class="d-flex justify-content-center">
