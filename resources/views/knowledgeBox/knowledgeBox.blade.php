@@ -274,15 +274,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                菜箸
+                                砂糖
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/chopsticks.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/sugar.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    おかずを各自の皿に取り分け、または料理を作るのに使う箸。
+                                    甘い
                             </div>
                             </a>
                         </div>
