@@ -162,7 +162,15 @@
                                 <select class="form-control rounded-top-L" id="select-tag">
                                     <option value="">タグを選択</option>
                                     <option value="#魚">#魚</option>
-                                    <option value="#肉">#肉</option>
+                                    <option value="#牛肉">#牛肉</option>
+                                    <option value="#豚肉">#豚肉</option>
+                                    <option value="#野菜">#野菜</option>
+                                    <option value="#卵">#卵</option>
+                                    <option value="#焼き料理">#焼き料理</option>
+                                    <option value="#ゆで料理">#ゆで料理</option>
+                                    <option value="#煮込み料理">#煮込み料理</option>
+                                    <option value="#揚げ料理">#揚げ料理</option>
+
                                 </select>
                             </div>
                             <div class="col-3 me-1 ps-0">
