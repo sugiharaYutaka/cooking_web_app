@@ -292,15 +292,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                トング
+                                塩
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/tongu.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/salt.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    角砂糖や調理中のスパゲッティなど、食品をはさむＶ字型の金属製道具。
+                                    食塩。
                             </div>
                             </a>
                         </div>
@@ -308,15 +308,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                なべ
+                                味噌
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/pot.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/miso.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    食物等を煮るための容器。<br>　
+                                    味噌汁。<br>　
                             </div>
                             </a>
                         </div>
