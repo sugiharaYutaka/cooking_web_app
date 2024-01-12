@@ -44,7 +44,7 @@
                                 <div class="like-form" style="display: inline;">
                                     <input type="hidden" name="post_id" v-bind:value=parsedData[index].id>
                                     <!-- いいね数を表示 -->
-                                    <button type="submit" class="like-btn interaction-button my-2"
+                                    <button type="submit" :id="'likebutton_' + parsedData[index].id" class="like-btn interaction-button my-2"
                                         @click="likePost(parsedData[index].id)">{{ parsedData[index].good }}♡</button>
                                     <!-- 他のボタンとフォーム -->
                                 </div>
@@ -85,6 +85,9 @@ export default {
     },
     methods: {
         likePost(postId) {
+            let likebutton = document.getElementById(`likebutton_${postId}`);
+            likebutton.textContent = parseInt(likebutton.textContent) + 1 + "♡";
+
             let formData = new FormData();
             formData.append('post_id', postId);
             //replyUrlにPOST送信

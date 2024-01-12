@@ -41,6 +41,7 @@ Route::get('/recipe/post', [App\Http\Controllers\RecipeController::class, 'post'
 Route::get('/recipe/bookmark', [App\Http\Controllers\BookmarkController::class, 'index'])->name('recipebookmark');
 Route::post('/recipe/postForm', [App\Http\Controllers\RecipeController::class, 'insertRecipe']);
 Route::get('/recipe/onepost/{id}', [App\Http\Controllers\RecipeController::class, 'oneRecipe']);
+Route::get('/recipe/addbookmark/{id}',[App\Http\Controllers\BookmarkController::class, 'addBookmark']);
 
 
 

@@ -44,4 +44,13 @@ class BookmarkController extends Controller
 
         return $result;
     }
+    public function addBookmark($id){
+        Bookmark::create([
+            'email' => session('email'),
+            'recipe_id' => $id,
+
+        ]);
+        return redirect()->back();
+    } 
+
 }

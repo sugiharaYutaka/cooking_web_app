@@ -75,7 +75,7 @@
                                         <img src="{{ asset('image/knowledge/cuttingboard.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    まな板は、調理で食材を切る際に台として用いる道具。
+                                    まな板は、調理で食材を切る際に台として用いる道具。<br>　
                             </div>
                             </a>
                         </div>
@@ -93,7 +93,7 @@
                                         <img src="{{ asset('image/knowledge/ladle.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    食物を掬うための調理器具。<br>　
+                                    食物を掬うための調理器具。<br>
                             </div>
                             </a>
                         </div>
@@ -140,7 +140,7 @@
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/tongu.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/tongu.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
                                     角砂糖や調理中のスパゲッティなど、食品をはさむＶ字型の金属製道具。
@@ -185,7 +185,8 @@
             </div>
 
 
-            <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+            <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab"
+                 style="padding-top: 10px;">
                 <!-- 調味料 -->
                 <div class="row">
                     <!-- Tab 1のコンテンツを3x3のグリッドで配置 -->
@@ -200,7 +201,7 @@
                                         <img src="{{ asset('image/knowledge/oil.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    もこみち。<br>　
+                                    オリーブ樹の果実のみから採油されたもので、再エステル化等の処理を一切行わずに採油されたオイル<br>
                             </div>
                             </a>
                         </div>
@@ -242,15 +243,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                おたま
+                                胡椒
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/ladle.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/pepper.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    食物を掬うための調理器具。<br>　
+                                    強い辛味とさわやかな香りが特徴的で、人気のある香辛料<br>　<br>　
                             </div>
                             </a>
                         </div>
@@ -258,15 +259,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                計量カップ
+                                味醂
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/measuringcup.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/sweetsake.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    調理の際に体積の計量に用いられる、目盛りがついたカップ。
+                                    砂糖に比べるとまろやかな甘さが感じられます。 芳醇な香りとエキス分によるうまみもあり、さまざまな調理効果が得られるのが特徴
                             </div>
                             </a>
                         </div>
@@ -274,15 +275,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                菜箸
+                                砂糖
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/chopsticks.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/sugar.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    おかずを各自の皿に取り分け、または料理を作るのに使う箸。
+                                    甘みを持つ調味料（甘味料）である。植物から取り出されたショ糖（スクロース）を主成分とする甘味物質です。<br>　
                             </div>
                             </a>
                         </div>
@@ -292,15 +293,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                トング
+                                塩
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/tongu.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/salt.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    角砂糖や調理中のスパゲッティなど、食品をはさむＶ字型の金属製道具。
+                                    海水を煮詰めるとできる白い結晶。「塩」をサラサラになるまで乾燥さ せて、食用としたものを「食塩」と呼びます
                             </div>
                             </a>
                         </div>
@@ -308,15 +309,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                なべ
+                                味噌
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/pot.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/miso.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    食物等を煮るための容器。<br>　
+                                    主原料の大豆(だいず)を蒸すか煮るかして、麹(こうじ)と食塩を加えて、発酵、熟成させた半固体状の調味料<br>
                             </div>
                             </a>
                         </div>
@@ -324,15 +325,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                ボウル
+                                酢
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/bowl.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/vinegar.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    料理の下ごしらえに使う道具。 <br>　
+                                    糖質を含む食材を原料として、それをアルコール発酵させた後、酢酸発酵させた液体調味料 <br>
                             </div>
                             </a>
                         </div>
