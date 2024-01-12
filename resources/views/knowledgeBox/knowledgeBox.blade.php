@@ -324,15 +324,15 @@
                     <div class="col-4 mb-3">
                         <div class="card">
                             <div class="card-header">
-                                ボウル
+                                酢
                             </div>
                             <div class="card-body">
                                 <a href="{{ route('ComingSoon') }}" class="no-underline text-dark">
                                     <div class="custom-image-size">
-                                        <img src="{{ asset('image/knowledge/bowl.jpg') }}"
+                                        <img src="{{ asset('image/knowledge/vinegar.jpg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    料理の下ごしらえに使う道具。 <br>　
+                                    酢。 <br>　
                             </div>
                             </a>
                         </div>
