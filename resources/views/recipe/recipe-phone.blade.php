@@ -18,18 +18,25 @@
                     <form action="/search" method="GET" class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="献立検索" aria-label="Search" name="query">
                     </form>
-                    <div class="row">
-                        <!--- レシピ投稿に遷移するボタン --->
-                        <button class="bg-color-2 circle-btn border">
-                            <a href="{{ route('recipepost') }}" class="no-underline text-color-4 h3">+</a>
-                        </button>
-                        <!--- ブックマークページに遷移するボタン --->
-                        <button class="bg-color-2 circle-btn border">
-                            <a href="{{ route('recipebookmark') }}" class="no-underline text-color-4 h3">bookmark</a>
-                        </button>
-
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#recipemodalProfile" style="color: black; text-decoration: none;">タグ検索</button>
-
+                    <div class="col-12">
+                        <div class="row">
+                            <!--- レシピ投稿に遷移するボタン --->
+                            <div class="col-2">
+                                <button class="bg-color-2 circle-btn border">
+                                    <a href="{{ route('recipepost') }}" class="no-underline text-color-4 h3">+</a>
+                                </button>
+                            </div>
+                            
+                            <!--- ブックマークページに遷移するボタン --->
+                            <div class="col-5">
+                                <button class="bg-color-2 circle-btn border">
+                                    <a href="{{ route('recipebookmark') }}" class="no-underline text-color-4 h3">bookmark</a>
+                                </button>
+                            </div>
+                            <div class="col-5">
+                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#recipemodalProfile" style="color: black; text-decoration: none;">タグ検索</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="row border my-5">
                         @foreach ($recipePost as $post)
