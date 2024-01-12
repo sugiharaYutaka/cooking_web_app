@@ -200,7 +200,7 @@
                                         <img src="{{ asset('image/knowledge/oil.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    もこみち。<br>　
+                                    オリーブ樹の果実のみから採油されたもので、再エステル化等の処理を一切行わずに採油されたオイル<br>　
                             </div>
                             </a>
                         </div>
@@ -250,7 +250,7 @@
                                         <img src="{{ asset('image/knowledge/pepper.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    くしゃみが出ます。<br>　
+                                    強い辛味とさわやかな香りが特徴的で、人気のある香辛料<br>　
                             </div>
                             </a>
                         </div>
@@ -266,7 +266,7 @@
                                         <img src="{{ asset('image/knowledge/sweetsake.jpeg') }}"
                                             class="card-img-top custom-image-size d-flex justify-content-center">
                                     </div>
-                                    スイートなお酒
+                                    砂糖に比べるとまろやかな甘さが感じられます。 芳醇な香りとエキス分によるうまみもあり、さまざまな調理効果が得られるのが特徴
                             </div>
                             </a>
                         </div>
