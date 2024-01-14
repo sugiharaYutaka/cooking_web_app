@@ -6104,6 +6104,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
+/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 //
 //
 //
@@ -6234,8 +6235,8 @@ __webpack_require__.r(__webpack_exports__);
     this.after_imagePath = this.imagePath.replaceAll('\\', '').replaceAll('"', '') + '/';
     window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
       broadcaster: 'pusher',
-      key: "4bba746d7784feb8ad5b",
-      cluster: "ap3",
+      key: process.env.MIX_PUSHER_APP_KEY,
+      cluster: process.env.MIX_PUSHER_APP_CLUSTER,
       encrypted: true
     });
     window.Echo.channel('reply-channel').listen('ReplyEvent', function (event) {
@@ -6265,6 +6266,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
+/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 //
 //
 //
@@ -6414,8 +6416,8 @@ __webpack_require__.r(__webpack_exports__);
     this.postMax = this.parsedData.length;
     window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
       broadcaster: 'pusher',
-      key: "4bba746d7784feb8ad5b",
-      cluster: "ap3",
+      key: process.env.MIX_PUSHER_APP_KEY,
+      cluster: process.env.MIX_PUSHER_APP_CLUSTER,
       encrypted: true
     });
     window.Echo.channel('good-channel').listen('GoodEvent', function (event) {
@@ -6489,6 +6491,7 @@ var app = new Vue({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
+/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 try {
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
@@ -6523,8 +6526,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "4bba746d7784feb8ad5b",
-  cluster: "ap3",
+  key: process.env.MIX_PUSHER_APP_KEY,
+  cluster: process.env.MIX_PUSHER_APP_CLUSTER,
   encrypted: true
 });
 

@@ -25,9 +25,12 @@
                     </div>
                     <div class="col-1"></div>
                     <div class="col-3" style="margin-left: 10px;">
-                        <form action="/search" method="GET" class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="献立検索" aria-label="Search" name="query">
-                            <button class="form-contorl btn btn-secondary"><img src="asset()"></button>
+                        <form action="{{ route('search') }}" method="POST" class="form-contorl my-2">
+                            @csrf
+                            <div class="input-group">
+                                <input class="form-control mr-sm-2" type="search" placeholder="献立検索" aria-label="Search" name="query">
+                                <button type="submit" class="form-contorl btn btn-outline-secondary"><i class="fa fa-search"></i></button>
+                            </div>
                         </form>
                     </div>
                     <div class="col-1"></div>

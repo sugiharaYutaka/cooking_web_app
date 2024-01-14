@@ -99,3 +99,6 @@ Route::get('/ComingSoon', function () {
 
 // サイドバー
 Route::get('/recipe/filter', [App\Http\Controllers\SidebarController::class, 'index'])->name('tags');
+
+// 検索
+Route::post('/recipe/search', [App\Http\Controllers\SearchController::class, 'show'])->name('search');
