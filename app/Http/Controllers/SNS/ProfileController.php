@@ -16,7 +16,7 @@ class ProfileController extends Controller
             $email = "notlogin";
         }
 
-        $post_id = $request->query('post_id');
+        $post_id = $request->post_id;
         if ($post_id == NULL) {
             if (!$request->session()->has('email')) {
                 return view('profile');

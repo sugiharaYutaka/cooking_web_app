@@ -19,8 +19,11 @@
                     <div class="post-body">
                         <div class="row mt-1">
                             <div class="col-2 d-flex justify-content-center">
-                                <input type="image" class="post-icon" :src="_imagePath + 'icon/' +parsedData[index].icon_filename"
-                                    @click="showProfile(parsedData[index].id)">
+                                <form :action=_profileUrl method="post">
+                                    <input type="hidden" name="_token" :value=csrfToken>
+                                    <input type="hidden" name="post_id" :value=parsedData[index].id>
+                                    <input type="image" name="submit" class="post-icon" :src="_imagePath + 'icon/' +parsedData[index].icon_filename">
+                                </form>
                             </div>
                             <div class="col-10 align-self-center">
                                 <span class="h5" @click="showProfile(parsedData[index].id)">{{ parsedData[index].name
