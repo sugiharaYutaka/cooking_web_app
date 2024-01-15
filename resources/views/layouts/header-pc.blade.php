@@ -17,7 +17,7 @@
 
 <body>
     <div class="header fixed-top">
-        <div class="container-fluid">
+        <div class="container-fluid p-0">
             <div class="row border">
                 <nav class="navbar navbar-expand-lg navbar-light bg-color-2">
                     <div class="col-2 d-flex justify-content-center ps-5">
