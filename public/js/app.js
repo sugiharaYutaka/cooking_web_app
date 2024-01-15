@@ -6300,6 +6300,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -36760,21 +36763,33 @@ var render = function () {
                     "div",
                     { staticClass: "col-2 d-flex justify-content-center" },
                     [
-                      _c("input", {
-                        staticClass: "post-icon",
-                        attrs: {
-                          type: "image",
-                          src:
-                            _vm._imagePath +
-                            "icon/" +
-                            _vm.parsedData[index].icon_filename,
-                        },
-                        on: {
-                          click: function ($event) {
-                            return _vm.showProfile(_vm.parsedData[index].id)
-                          },
-                        },
-                      }),
+                      _c(
+                        "form",
+                        { attrs: { action: _vm._profileUrl, method: "post" } },
+                        [
+                          _c("input", {
+                            attrs: { type: "hidden", name: "_token" },
+                            domProps: { value: _vm.csrfToken },
+                          }),
+                          _vm._v(" "),
+                          _c("input", {
+                            attrs: { type: "hidden", name: "post_id" },
+                            domProps: { value: _vm.parsedData[index].id },
+                          }),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "post-icon",
+                            attrs: {
+                              type: "image",
+                              name: "submit",
+                              src:
+                                _vm._imagePath +
+                                "icon/" +
+                                _vm.parsedData[index].icon_filename,
+                            },
+                          }),
+                        ]
+                      ),
                     ]
                   ),
                   _vm._v(" "),
