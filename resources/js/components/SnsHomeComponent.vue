@@ -26,8 +26,7 @@
                                 </form>
                             </div>
                             <div class="col-10 align-self-center">
-                                <span class="h5" @click="showProfile(parsedData[index].id)">{{ parsedData[index].name
-                                }}</span>
+                                <span class="h5">{{ parsedData[index].name }}</span>
                             </div>
                         </div>
                         <div class="row">
@@ -127,9 +126,6 @@ export default {
                         console.error('Error sending reply:', error);
                     });
             }
-        },
-        showProfile(postId) {
-            location.href = '/profile?post_id=' + postId;
         }
     },
 
