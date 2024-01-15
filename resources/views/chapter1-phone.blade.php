@@ -1,7 +1,7 @@
 <script src="https://www.academic-gihara0655.com/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 <link href="https://www.academic-gihara0655.com/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet">
 
-<link type="text/css" rel="stylesheet" href="{{ asset('') . 'chapter-' . (Agent::isMobile() ? 'phone' : 'pc') . '.css'}}" />
+<link type="text/css" rel="stylesheet" href="{{ asset('chapter-phone.css')}}" />
 
 <div class="entirety body-margin">
     <div class="container-fluid p-0">
@@ -29,7 +29,7 @@
                 <div class="m-3 fw-bold">親子丼の材料（１人前）</div>
             </div>
             <div class="card-body">
-                <ul>
+                <ul class="m-0">
                     <li class="inlist1"><u>具材</u></li>
                     <li>ごはん ··· 200g</li>
                     <li>鶏もも肉 ··· 100g</li>
