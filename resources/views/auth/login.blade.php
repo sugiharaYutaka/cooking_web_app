@@ -15,27 +15,17 @@
                             <p class="h5" style="text-align: center;">ログインしてください</p>
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
-                                <div class="row mb-4">
-                                    <label for="email" class="col-3 col-form-label text-end">{{ __('メールアドレス')
-                                        }}</label>
-
-                                    <div class="col-7">
-                                        <input id="email" type="email" class="form-control" name="email"
-                                            value="{{ old('email') }}" required autocomplete="email">
-
-
+                                <div class="row mb-4 ">
+                                    <div class="offset-2 col-8">
+                                        <label for="email" class="col-form-label text-end">{{ __('メールアドレス') }}</label>
+                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email">
                                     </div>
                                 </div>
 
-                                <div class="row mb-4">
-                                    <label for="password" class="col-md-3 col-form-label text-md-end">{{ __('パスワード')
-                                        }}</label>
-
-                                    <div class="col-7">
-                                        <input id="password" type="password" class="form-control" name="password"
-                                            required autocomplete="new-password">
-
-
+                                <div class="row mb-4 ">
+                                    <div class="offset-2 col-8">
+                                        <label for="password" class="col-form-label text-md-end">{{ __('パスワード') }}</label>
+                                        <input id="password" type="password" class="form-control" name="password" required autocomplete="new-password">
                                     </div>
                                 </div>
 
