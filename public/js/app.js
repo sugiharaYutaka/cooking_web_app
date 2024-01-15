@@ -6302,7 +6302,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -6358,9 +6357,6 @@ __webpack_require__.r(__webpack_exports__);
           console.error('Error sending reply:', error);
         });
       }
-    },
-    showProfile: function showProfile(postId) {
-      location.href = '/profile?post_id=' + postId;
     }
   },
   mounted: function mounted() {
@@ -36794,18 +36790,9 @@ var render = function () {
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-10 align-self-center" }, [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "h5",
-                        on: {
-                          click: function ($event) {
-                            return _vm.showProfile(_vm.parsedData[index].id)
-                          },
-                        },
-                      },
-                      [_vm._v(_vm._s(_vm.parsedData[index].name))]
-                    ),
+                    _c("span", { staticClass: "h5" }, [
+                      _vm._v(_vm._s(_vm.parsedData[index].name)),
+                    ]),
                   ]),
                 ]),
                 _vm._v(" "),
