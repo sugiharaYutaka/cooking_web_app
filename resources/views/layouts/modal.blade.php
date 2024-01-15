@@ -63,6 +63,7 @@
                                     </div>
 
                                     @else
+                                    <a href="{{ route('profile') }}" class="no-underline text-dark"><button type="button" class="btn">プロフィール</button></a>
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn border-top border-bottom my-2">ログアウト</button><br>
