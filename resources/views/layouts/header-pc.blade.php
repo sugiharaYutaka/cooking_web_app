@@ -36,7 +36,7 @@
                     <div class="col-1"></div>
 
                     <div class="col-1 d-flex justify-content-center">
-                        <a href="{{ route('recipebookmark') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/study.png') }}" class="footericon"><br>ブックマーク</button></a>
+                        <a href="{{ route('recipebookmark') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/bookmark.png') }}" class="footericon"><br>ブックマーク</button></a>
                     </div>
 
                     <div class="col-1 d-flex justify-content-center">
