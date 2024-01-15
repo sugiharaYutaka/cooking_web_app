@@ -6232,6 +6232,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -6302,6 +6304,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -6309,6 +6316,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       parsedData: null,
+      offset: 0,
+      limit: 10,
       postMax: 0,
       _imagePath: null,
       _replyUrl: null,
@@ -6326,7 +6335,7 @@ __webpack_require__.r(__webpack_exports__);
       var formData = new FormData();
       formData.append('post_id', postId);
       //replyUrlにPOST送信
-      axios.post(this._replyUrl, formData);
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post(this._replyUrl, formData);
     },
     replyshow: function replyshow(index) {
       var commentInputClass = this.commentInput + this.parsedData[index].id;
@@ -6347,7 +6356,7 @@ __webpack_require__.r(__webpack_exports__);
         var formData = new FormData();
         formData.append('post_id', this.parsedData[index].id);
         formData.append('comment', comment);
-        axios.post(this._replyPostUrl, formData) // ここでリプライ送信用のエンドポイントを指定
+        axios__WEBPACK_IMPORTED_MODULE_1___default().post(this._replyPostUrl, formData) // ここでリプライ送信用のエンドポイントを指定
         .then(function (response) {
           // リプライが送信された後の処理をここに記述
           console.log('Reply sent successfully');
@@ -6357,12 +6366,25 @@ __webpack_require__.r(__webpack_exports__);
           console.error('Error sending reply:', error);
         });
       }
+    },
+    loadData: function loadData() {
+      var _this = this;
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("/snsMore?offset=".concat(this.offset, "&limit=").concat(this.limit)).then(function (response) {
+        _this.parsedData = response.data.data;
+      });
+
+      //ページを最初に読み込んだ時の、投稿の数を入れとく
+      this.postMax = this.parsedData.length;
+    },
+    loadMore: function loadMore() {
+      this.limit += 10;
+      this.loadData();
     }
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
     //bladeから受けっとったデータの整形
-    this.parsedData = JSON.parse(this.postData);
+    //this.parsedData = JSON.parse(this.postData);
     this._imagePath = this.imagePath.replaceAll('\\', '').replaceAll('"', '') + '/';
     this._replyUrl = this.replyUrl.replaceAll('\\', '').replaceAll('"', '');
     this._replyPostUrl = this.replyPostUrl.replaceAll('\\', '').replaceAll('"', '');
@@ -6376,8 +6398,7 @@ __webpack_require__.r(__webpack_exports__);
     //console.log(this._imagePath);
     //console.log(this._replyPostUrl);
 
-    //ページを最初に読み込んだ時の、投稿の数を入れとく
-    this.postMax = this.parsedData.length;
+    this.loadData();
     window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
       broadcaster: 'pusher',
       key: "4bba746d7784feb8ad5b",
@@ -6390,11 +6411,11 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         //postMaxより要素数が多くなって値がかえって来た場合　多くなった分の要素を削除する
         //いいねボタンを押す間に新しい投稿がされたときの対策
-        if (event.post_data.length > _this.postMax) {
-          event.post_data = event.post_data.slice(event.post_data.length - _this.postMax);
+        if (event.post_data.length > _this2.postMax) {
+          event.post_data = event.post_data.slice(event.post_data.length - _this2.postMax);
         }
         //postのデータ更新
-        _this.parsedData = event.post_data;
+        _this2.parsedData = event.post_data;
       }
     });
   }
@@ -36886,6 +36907,8 @@ var render = function () {
               _c("hr"),
             ])
           }),
+          _vm._v(" "),
+          _c("button", { on: { click: _vm.loadMore } }, [_vm._v("もっと見る")]),
         ],
         2
       ),
@@ -49048,6 +49071,18 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	
