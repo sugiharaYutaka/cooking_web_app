@@ -7,7 +7,7 @@
                 <div class="container">
                     <div class="row">
 
-                        <div class="card-body mt-3">
+                        <div class="card-body mt-3 bg-color-1 p-5">
                             @if(session('login_message'))
                             <strong class="d-flex justify-content-center invalid-feedback"> {{
                                 session('login_message')}}</strong><br>
@@ -15,11 +15,11 @@
                             <p class="h5" style="text-align: center;">ログインしてください</p>
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
-                                <div class="row mb-4 ms-5">
-                                    <label for="email" class="col-md-3 col-form-label text-md-end">{{ __('メールアドレス')
+                                <div class="row mb-4">
+                                    <label for="email" class="col-3 col-form-label text-end">{{ __('メールアドレス')
                                         }}</label>
 
-                                    <div class="col-md-7">
+                                    <div class="col-7">
                                         <input id="email" type="email" class="form-control" name="email"
                                             value="{{ old('email') }}" required autocomplete="email">
 
@@ -27,11 +27,11 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-4 ms-5">
+                                <div class="row mb-4">
                                     <label for="password" class="col-md-3 col-form-label text-md-end">{{ __('パスワード')
                                         }}</label>
 
-                                    <div class="col-md-7">
+                                    <div class="col-7">
                                         <input id="password" type="password" class="form-control" name="password"
                                             required autocomplete="new-password">
 
