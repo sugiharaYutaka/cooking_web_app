@@ -24,6 +24,7 @@
         <div class="container">
             <div class="row text-center my-1">
                 <div class="btn-group" role="group" aria-label="Button group">
+                    <button type="button" class="btn"><a href="{{ route('recipebookmark') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/study.png') }}" class="footericon"><br>ブックマーク</a></button>
                     <button type="button" class="btn"><a href="{{ route('study') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/study.png') }}" class="footericon"><br>勉強</a></button>
                     <button type="button" class="btn"><a href="{{ route('recipes') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/recipe.png') }}" class="footericon"><br>献立</a></button>
                     <button type="button" class="btn"><a href="{{ route('sns') }}" class="no-underline text-dark d-block"><img src="{{ asset('image/SNS.png') }}" class="footericon"><br>SNS</a></button>
