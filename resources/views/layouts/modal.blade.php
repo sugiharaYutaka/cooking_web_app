@@ -12,7 +12,7 @@
             </div>
             <div class="modal-body bg-color-1 ps-0">
 
-                <div class="container-fluid">
+                <div class="container-fluid p-0">
                     <div class="row">
                         @guest
                         <div class="container">
