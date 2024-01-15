@@ -9,6 +9,13 @@ use App\Models\Recipe;
 
 class BookmarkController extends Controller
 {
+
+    public function __construct()
+    {
+        // 'auth' ミドルウェアを使用して、'index' アクション以外のアクションにのみ適用
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $result = $this->getBookmarkedRecipes();
@@ -44,6 +51,7 @@ class BookmarkController extends Controller
 
         return $result;
     }
+
     public function addBookmark($id){
         Bookmark::create([
             'email' => session('email'),
