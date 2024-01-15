@@ -23,7 +23,7 @@
                     <div class="col-2 d-flex justify-content-center ps-5">
                         <button type="button" style="border: none; background: transparent;" class="btn"><a href="{{ route('top') }}"><img class="logo" src="{{asset('image/logo.png')}}"></a></button>
                     </div>
-                    <div class="col-1"></div>
+                    <!--- <div class="col-1"></div> --->
                     <div class="col-3" style="margin-left: 10px;">
                         <form action="{{ route('search') }}" method="POST" class="form-contorl my-2">
                             @csrf
@@ -34,6 +34,10 @@
                         </form>
                     </div>
                     <div class="col-1"></div>
+
+                    <div class="col-1 d-flex justify-content-center">
+                        <a href="{{ route('recipebookmark') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/study.png') }}" class="footericon"><br>ブックマーク</button></a>
+                    </div>
 
                     <div class="col-1 d-flex justify-content-center">
                         <a href="{{ route('study') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/study.png') }}" class="footericon"><br>勉強</button></a>
