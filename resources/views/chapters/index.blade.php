@@ -206,7 +206,7 @@
                     </h2>
                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
                         <div class="accordion-body" style="text-align: center;">
-                            <img src="image/chapter/oyakodon.jpg" alt="チャプター1の画像" style="width: 100%; max-width: 400px; height: auto;">
+                            <img src="image/chapter/oyakodon.png" alt="チャプター1の画像" style="width: 100%; max-width: 400px; height: auto;">
                             <strong style="font-size: 24px; display: block; margin: 5px auto;">親子丼</strong><br>
                             <strong>鶏肉と卵を使ったシンプルでおいしい料理です。手軽に作れるので初心者におすすめです。</strong><br>
                             <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
@@ -244,13 +244,13 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button type="button" class="accordion-button collapsed text-center" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefour" aria-expanded="false" aria-controls="panelsStayOpen-collapsefour" style="background-color: #676F77;color: #F3EEEA;">
-                            <span class="mx-auto d-block">チャプター3</span>
+                            <span class="mx-auto d-block">チャプター4</span>
                         </button>
                     </h2>
                     <div id="panelsStayOpen-collapsefour" class="accordion-collapse collapse">
                         <div class="accordion-body">
                             <strong style="font-size: 24px; display: block; margin: 5px auto;">NULL</strong><br>
-                            <strong>チャプター3の詳細な内容がここに表示されます。</strong><br>
+                            <strong>チャプター4の詳細な内容がここに表示されます。</strong><br>
                             <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
                         </div>
                     </div>
