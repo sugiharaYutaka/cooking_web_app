@@ -8,6 +8,13 @@ use App\Models\Recipe;
 
 class RecipeController extends Controller
 {
+
+    public function __construct()
+    {
+        // 'auth' ミドルウェアを使用して、'index' アクション以外のアクションにのみ適用
+        $this->middleware('auth')->only('post');
+    }
+
     public function index()
     {
         $recipePost = $this->getRecipe();
