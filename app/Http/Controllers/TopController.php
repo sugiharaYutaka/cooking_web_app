@@ -11,8 +11,8 @@ class TopController extends Controller
     public function show(Request $request)
     {
         $chapter_filenames = array(
-            0 => "oyakodon.jpg",
-            1 => "oyakodon.jpg",
+            0 => "oyakodon.png",
+            1 => "oyakodon.png",
         );
         $max_chapter = count($chapter_filenames) - 1;
 
