@@ -2,58 +2,120 @@
 
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>知識箱</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>包丁の種類と用途</title>
 
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      padding-top: 100px;
+      background-color: #f0f0f0;
+    }
+
+    .section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px; /* 上下左右にパディングを追加 */
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .section_title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section_lead p {
+      text-align: justify;
+    }
+
+    .item_list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .item_list li {
+      margin-bottom: 40px; /* アイテム間のマージンを調整 */
+    }
+
+    .img img {
+      max-width: 100%;
+      padding-top: 40px;
+      height: auto;
+      display: block;
+    }
+
+    .title {
+      font-size: 24px; /* タイトルのフォントサイズを大きく */
+      font-weight: bold;
+      margin: 20px 0; /* タイトルの上下のマージンを調整 */
+      text-align: center;
+    }
+
+    .content p {
+      text-align: justify;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="container" style="padding-top: 100px;">
-        <h1>包丁の種類と用途</h1>
-            <div class="col-4 mb-3">
-                <div class="card">
-                    <div class="card-header">
-                        牛刀包丁
-                    </div>
-                    <div class="card-body">
-                        <a href="{{ route('kitchenknife') }}" class="no-underline text-dark">
-                            <div class="custom-image-size">
-                                <img src="{{ asset('image/knowledge/gyuto.jpeg') }}"
-                                    class="card-img-top custom-image-size d-flex justify-content-center">
-                            </div>
-                            世界中で広く使われている、基本的な包丁です。肉を切ったり野菜を細かく刻んだり、魚をさばくことにもお使いいただけます。<br>
-                    </div>
-                    </a>
-                </div>
-            </div>
+
+  <div class="section">
+    <h2 class="section_title">包丁の種類と用途</h2>
+    <div class="section_lead">
+      <p>多くのご家庭では、どの食材でも使える三徳包丁や牛刀包丁、細かい作業に適したペティナイフをお持ちかと思います。<br>包丁には、野菜専用の包丁や魚専用の包丁などの食材に合わせた料理人向けの包丁があり、多岐に渡ります。<br>ここでは、包丁の種類と用途をご紹介いたします。</p>
     </div>
+
+    <ul class="item_list">
+      <li>
+        <figure class="img">
+          <a href="/products/gyuto.html">
+            <img src="{{ asset('image/knowledge/gyuto.jpeg') }}">
+          </a>
+        </figure>
+        <div class="title">
+          <a>牛刀包丁</a>
+        </div>
+        <div class="content">
+          <p>世界中で広く使われている、西洋の万能包丁です。元々は大きい肉を小さく切ることを設計されましたが、肉以外にも野菜を細かく刻んだり、魚をさばくことにもお使いいただけます。</p>
+        </div>
+      </li>
+
+      <li>
+        <figure class="img">
+          <a href="/products/gyuto.html">
+            <img src="{{ asset('image/knowledge/deba.jpeg') }}">
+          </a>
+        </figure>
+        <div class="title">
+          <a>出刃包丁</a>
+        </div>
+        <div class="content">
+          <p>魚をさばく時に使用する包丁です。刃が厚めに作られており、重量も重いため、魚の骨を切る事もできるのが特徴です。肉を切ることにもお使いいただけます。</p>
+        </div>
+      </li>
+
+      <li>
+        <figure class="img">
+          <a href="/products/gyuto.html">
+            <img src="{{ asset('image/knowledge/peti.jpeg') }}">
+          </a>
+        </figure>
+        <div class="title">
+          <a>ペティナイフ</a>
+        </div>
+        <div class="content">
+          <p>「小さい」を意味する包丁で、果物や野菜の皮むきなど細かい作業をするときに使用します。サイズが小さく、重さも軽いため、小さい食材に向いています。</p>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
 </body>
-
-<style>
-  .card {
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  .card-header {
-    background-color: #f0f0f0;
-    padding: 10px;
-    text-align: center; /* 中央寄せを追加 */
-    font-weight: bold;
-  }
-
-  .card-body {
-    padding: 20px;
-  }
-</style>
-
-
-
 </html>
 
 
