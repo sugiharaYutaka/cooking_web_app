@@ -6317,7 +6317,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       parsedData: [],
       offset: 0,
-      limit: 2,
+      limit: 10,
       postMax: 0,
       _imagePath: null,
       _replyUrl: null,
@@ -6375,13 +6375,9 @@ __webpack_require__.r(__webpack_exports__);
 
       //ページを最初に読み込んだ時の、投稿の数を入れとく
       this.postMax = this.parsedData.length;
-      var morepostbutton = document.getElementById("morepostbutton");
-      morepostbutton.disabled = null;
     },
     loadMore: function loadMore() {
-      var morepostbutton = document.getElementById("morepostbutton");
-      morepostbutton.disabled = "disabled";
-      this.offset += 2;
+      this.offset += this.limit;
       this.loadData();
     }
   },
@@ -36914,10 +36910,7 @@ var render = function () {
           _vm._v(" "),
           _c(
             "button",
-            {
-              attrs: { id: "morepostbutton", disabled: "" },
-              on: { click: _vm.loadMore },
-            },
+            { staticClass: "more-post", on: { click: _vm.loadMore } },
             [_vm._v("もっと見る")]
           ),
         ],

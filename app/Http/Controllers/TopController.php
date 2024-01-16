@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\SnsPost;
+use App\Models\User;
 
 class TopController extends Controller
 {
@@ -25,6 +27,22 @@ class TopController extends Controller
             ->orderByDesc('good')
             ->limit(3)
             ->get();
+
+        // tuika
+        $datas = SnsPost::select([
+            'sns_posts.id',
+            'sns_posts.email',
+            'sns_posts.good'
+        ])
+            ->from('sns_posts')
+            ->join('users', function ($join) {
+                $join->on('sns_posts.email', '=', 'users.email');
+            })
+            ->select('users.name', 'users.icon_filename')
+            ->orderByDesc('good')
+            ->limit(3)
+            ->get();
+
 
         $dish_image_filename = DB::table('recipes')
             ->select('dish_image_filename')
@@ -55,7 +73,7 @@ class TopController extends Controller
             $now_chapter_filename = $chapter_filenames[$now_chapter];
             $next_chapter_filename = $chapter_filenames[$next_chapter];
 
-            return view('top', compact('dish_image_filename', 'posts', 'now_chapter', 'now_chapter_filename', 'next_chapter', 'next_chapter_filename'));
+            return view('top', compact('dish_image_filename', 'posts', 'now_chapter', 'now_chapter_filename', 'next_chapter', 'next_chapter_filename', 'datas'));
         }
     }
 }
