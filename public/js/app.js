@@ -6148,6 +6148,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -36731,10 +36733,13 @@ var staticRenderFns = [
         [_vm._v("コメントを入力")]
       ),
       _vm._v(" "),
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: { id: "commentInput", rows: "3" },
-      }),
+      _c("div", { staticStyle: { align: "right", "margin-left": "17%" } }, [
+        _c("textarea", {
+          staticClass: "form-control",
+          staticStyle: { border: "2px solid #ccc" },
+          attrs: { id: "commentInput", rows: "3" },
+        }),
+      ]),
     ])
   },
 ]
@@ -36910,11 +36915,7 @@ var render = function () {
           _vm._v(" "),
           _c(
             "button",
-            {
-              staticClass: "more-post btn btn-secondary",
-              attrs: { type: "button" },
-              on: { click: _vm.loadMore },
-            },
+            { staticClass: "more-post", on: { click: _vm.loadMore } },
             [_vm._v("もっと見る")]
           ),
         ],

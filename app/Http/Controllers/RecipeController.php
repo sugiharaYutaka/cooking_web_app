@@ -17,7 +17,7 @@ class RecipeController extends Controller
 
     public function index()
     {
-        $recipePost = $this->getRecipe(0, 10);
+        $recipePost = $this->getRecipe();
         return view('recipe.recipe', compact('recipePost'));
     }
 
@@ -69,7 +69,7 @@ class RecipeController extends Controller
             'step_number' => $request->stepCount,
         ]);
     }
-    public function getRecipe($offset, $limit)
+    public function getRecipe()
     {
         $result = Recipe::select([
             'recipes.id',
@@ -90,11 +90,8 @@ class RecipeController extends Controller
             })
             ->select('users.name', 'users.icon_filename', 'recipes.*')
             ->orderBy('recipes.id', 'desc')
-            ->offset($offset)
-            ->limit($limit)
+            ->take(5)
             ->get();
-
-        return $result;
 
         $array = [];
         foreach ($result as $row) {
@@ -107,19 +104,6 @@ class RecipeController extends Controller
         }
         return $array;
     }
-
-    public function moreRecipe(Request $request)
-    {
-
-        $page = $request->get('page');
-        $perPage = 10; // 1ページあたりのデータ数
-
-        $recipePost = $this->getRecipe(($page - 1) * $perPage, $perPage);
-
-        return view('recipe.morerecipe')->with('recipePost', $recipePost);
-    }
-
-
     public function oneRecipe($id)
     {
 
@@ -131,6 +115,6 @@ class RecipeController extends Controller
         $post['ingredients'] = explode('//', $post['ingredients']);
         $post['tag'] = explode('//', $post['tag']);
 
-        return view('recipe.recipeone', compact('post', 'id'));
+        return view('recipe.recipeone', compact('post','id'));
     }
 }
