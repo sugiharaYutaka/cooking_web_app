@@ -73,7 +73,7 @@
       <li>
         <figure class="img">
           <a href="/products/gyuto.html">
-            <img src="{{ asset('image/knowledge/gyuto.jpeg') }}" alt="牛刀包丁">
+            <img src="{{ asset('image/knowledge/gyuto.jpeg') }}">
           </a>
         </figure>
         <div class="title">
@@ -84,7 +84,33 @@
         </div>
       </li>
 
-      <!-- 他のアイテムも同様に追加 -->
+      <li>
+        <figure class="img">
+          <a href="/products/gyuto.html">
+            <img src="{{ asset('image/knowledge/deba.jpeg') }}">
+          </a>
+        </figure>
+        <div class="title">
+          <a>出刃包丁</a>
+        </div>
+        <div class="content">
+          <p>魚をさばく時に使用する包丁です。刃が厚めに作られており、重量も重いため、魚の骨を切る事もできるのが特徴です。肉を切ることにもお使いいただけます。</p>
+        </div>
+      </li>
+
+      <li>
+        <figure class="img">
+          <a href="/products/gyuto.html">
+            <img src="{{ asset('image/knowledge/peti.jpeg') }}">
+          </a>
+        </figure>
+        <div class="title">
+          <a>ペティナイフ</a>
+        </div>
+        <div class="content">
+          <p>「小さい」を意味する包丁で、果物や野菜の皮むきなど細かい作業をするときに使用します。サイズが小さく、重さも軽いため、小さい食材に向いています。</p>
+        </div>
+      </li>
 
     </ul>
   </div>
