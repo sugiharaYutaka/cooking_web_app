@@ -244,7 +244,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button type="button" class="accordion-button collapsed text-center" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefour" aria-expanded="false" aria-controls="panelsStayOpen-collapsefour" style="background-color: #676F77;color: #F3EEEA;">
-                            <span class="mx-auto d-block">チャプター3</span>
+                            <span class="mx-auto d-block">チャプター4</span>
                         </button>
                     </h2>
                     <div id="panelsStayOpen-collapsefour" class="accordion-collapse collapse">
