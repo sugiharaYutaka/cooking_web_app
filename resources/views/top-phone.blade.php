@@ -169,7 +169,7 @@
         .rank-img {
             position: absolute;
             margin: 0px 27%;
-            transform: translateY(-50%);
+            transform: translateY(-70%);
             width: 50px;
         }
 
@@ -265,32 +265,26 @@
 
             <!-- いいね数ランキング -->
             <p class="text-center h6">過去30日間のいいね数</p>
-            <div class="iine">
+            <div class="idf mx-1">
 
-                @php
-                $index = 0;
-                @endphp
-
-                @foreach($posts as $post)
-
-                @php
-                $index += 1;
-                @endphp
+                @foreach($posts as $index => $post)
 
                 <hr>
 
-                <div class="first">
+                <div class="first mx-2">
                     <div class="contents">
                         <div class="text">
-                            <img class="rank-img" src='https://illust-stock.com/wp-content/uploads/ranking-crown-no{{ $index }}.png'>
-                            <p class="amount">{{ $post->good }}♡</p>
-                            <p>{{ $post->text }}</p>
+                            <img class="rank-img" src='https://illust-stock.com/wp-content/uploads/ranking-crown-no{{ $index+1 }}.png'>
+                            <img src="{{ asset('/image/icon/' . $datas[$index]->icon_filename )}}" class="user-icon" style="display: inline-block;">
+                            <span>{{ $datas[$index]->name }}</span><br>
+                            <span>{{ $post->text }}</span><br>
                         </div>
 
                         @if ($post->image_filename != "")
                         <img class="img" src="{{ asset('/storage/img/' . $post->image_filename )}}">
                         @endif
 
+                        <span class="amount" style="color:#dc143c;">{{ $post->good }}♡</span>
                     </div>
                 </div>
 
