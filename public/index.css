@@ -97,6 +97,9 @@
         margin-top: 10vh;
         margin-bottom: 15vh;
     }
+    .body-mt-top{
+        margin-top: 10vh;
+    }
     .post-margin {
         padding-left: 0;
         margin-left: 0;
@@ -127,6 +130,9 @@
     .body-margin {
         margin-top: 20vh;
         margin-bottom: 20vh;
+    }
+    .body-mt-top{
+        margin-top: 20vh;
     }
     .post-margin {
 
@@ -201,12 +207,12 @@
 }
 
 .sidebar {
-    position: fixed; /* サイドバーを固定 */
+    /*position: fixed; /* サイドバーを固定 */
     top: 2; /* 上端からの位置 */
     left: 0; /* 左端からの位置 */
 
     height: 100%; /* サイドバーの高さ */
-    overflow-y: auto; /* 縦スクロールを有効にする */
+    /*overflow-y: auto; /* 縦スクロールを有効にする */
     background-color: #f5f5f5; /* サイドバーの背景色 */
 }
 .sidebar.sidebar-closed {

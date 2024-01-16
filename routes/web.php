@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+Route::get('/', [App\Http\Controllers\TopController::class, 'show']);
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::get('/knowledgeBox', function () {
 Auth::routes();
 
 Route::get('/sns', [App\Http\Controllers\SNS\HomeController::class, 'index'])->name('sns');
+Route::get('/snsMore', [App\Http\Controllers\SNS\HomeController::class, 'morePost'])->name('snsMore');
 
 Route::get('/chapter1', [App\Http\Controllers\Chapter1Controller::class, 'index'])->name('chapter1');
 
@@ -41,6 +43,7 @@ Route::get('/recipe/post', [App\Http\Controllers\RecipeController::class, 'post'
 Route::get('/recipe/bookmark', [App\Http\Controllers\BookmarkController::class, 'index'])->name('recipebookmark');
 Route::post('/recipe/postForm', [App\Http\Controllers\RecipeController::class, 'insertRecipe']);
 Route::get('/recipe/onepost/{id}', [App\Http\Controllers\RecipeController::class, 'oneRecipe']);
+Route::get('/recipe/addbookmark/{id}', [App\Http\Controllers\BookmarkController::class, 'addBookmark']);
 
 
 
@@ -98,3 +101,6 @@ Route::get('/ComingSoon', function () {
 
 // サイドバー
 Route::get('/recipe/filter', [App\Http\Controllers\SidebarController::class, 'index'])->name('tags');
+
+// 検索
+Route::post('/recipe/search', [App\Http\Controllers\SearchController::class, 'show'])->name('search');

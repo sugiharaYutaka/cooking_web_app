@@ -5325,6 +5325,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["postUrl"],
@@ -5333,6 +5343,7 @@ __webpack_require__.r(__webpack_exports__);
       _postUrl: "",
       stepCount: 3,
       dishImage: null,
+      showConfirmationModal: false,
       tagList: ['#ユーザ投稿'],
       stepPlaceholder: ['まずは調味料を作ります。用意した醤油、酒、コチュジャンを混ぜ合わせます。', '次に鶏肉を一口大に切り、片栗粉をまぶします', 'フライパンに油を入れ、工程2で処理した鶏肉を焼いていきます'],
       title: "",
@@ -5434,8 +5445,8 @@ __webpack_require__.r(__webpack_exports__);
       if (rules.indexOf('required') != -1 && value.length == 0) {
         message['required'] = '必須項目です';
       }
-      if (rules.indexOf('max20') != -1 && value.length > 20) {
-        message['max20'] = '20文字未満にしてください';
+      if (rules.indexOf('max50') != -1 && value.length > 50) {
+        message['max50'] = '50文字未満にしてください';
       }
       if (rules.indexOf('max500') != -1 && value.length > 500) {
         message['max500'] = '500文字未満にしてください';
@@ -5472,7 +5483,7 @@ __webpack_require__.r(__webpack_exports__);
       var checkSum = 0;
       var checkSumMax = 5 + this.stepCount * 2;
       var result = null;
-      if (result = this.validate(this.title, ['required', 'max20'])) {
+      if (result = this.validate(this.title, ['required', 'max50'])) {
         //バリデーションエラー発生
         this.validateError['title'] = result;
         this.formClass['title'] = 'form-control is-invalid';
@@ -5483,7 +5494,7 @@ __webpack_require__.r(__webpack_exports__);
         formData.append('title', this.title);
         checkSum++;
       }
-      if (result = this.validate(this.description, ['required', 'max20'])) {
+      if (result = this.validate(this.description, ['required', 'max50'])) {
         //バリデーションエラー発生
         this.validateError['description'] = result;
         this.formClass['description'] = 'form-control is-invalid';
@@ -5548,12 +5559,16 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
       if (checkSum == checkSumMax) {
+        this.showConfirmationModal = true;
         var element = document.getElementById('level');
         formData.append('level', element.value);
         formData.append('tag', this.tagList);
         formData.append('stepCount', this.stepCount);
         axios.post(this._postUrl, formData);
+        alert('レシピを投稿しました');
         //window.location.href = 'https://example.com';
+      } else {
+        alert('登校内容を確認して、もう一度投稿してください');
       }
     }
   },
@@ -5794,6 +5809,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["postUrl"],
@@ -5903,8 +5926,8 @@ __webpack_require__.r(__webpack_exports__);
       if (rules.indexOf('required') != -1 && value.length == 0) {
         message['required'] = '必須項目です';
       }
-      if (rules.indexOf('max20') != -1 && value.length > 20) {
-        message['max20'] = '20文字未満にしてください';
+      if (rules.indexOf('max50') != -1 && value.length > 50) {
+        message['max50'] = '50文字未満にしてください';
       }
       if (rules.indexOf('max500') != -1 && value.length > 500) {
         message['max500'] = '500文字未満にしてください';
@@ -5941,7 +5964,7 @@ __webpack_require__.r(__webpack_exports__);
       var checkSum = 0;
       var checkSumMax = 5 + this.stepCount * 2;
       var result = null;
-      if (result = this.validate(this.title, ['required', 'max20'])) {
+      if (result = this.validate(this.title, ['required', 'max50'])) {
         //バリデーションエラー発生
         this.validateError['title'] = result;
         this.formClass['title'] = 'form-control is-invalid';
@@ -5952,7 +5975,7 @@ __webpack_require__.r(__webpack_exports__);
         formData.append('title', this.title);
         checkSum++;
       }
-      if (result = this.validate(this.description, ['required', 'max20'])) {
+      if (result = this.validate(this.description, ['required', 'max50'])) {
         //バリデーションエラー発生
         this.validateError['description'] = result;
         this.formClass['description'] = 'form-control is-invalid';
@@ -6022,7 +6045,10 @@ __webpack_require__.r(__webpack_exports__);
         formData.append('tag', this.tagList);
         formData.append('stepCount', this.stepCount);
         axios.post(this._postUrl, formData);
+        alert('レシピを投稿しました');
         //window.location.href = 'https://example.com';
+      } else {
+        alert('登校内容を確認して、もう一度投稿してください');
       }
     }
   },
@@ -6206,6 +6232,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -6274,13 +6302,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["postData", "replyUrl", "imagePath", "replyPostUrl", "replyShowUrl", "profileUrl"],
   data: function data() {
     return {
-      parsedData: null,
+      parsedData: [],
+      offset: 0,
+      limit: 2,
       postMax: 0,
       _imagePath: null,
       _replyUrl: null,
@@ -6293,10 +6330,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     likePost: function likePost(postId) {
+      var likebutton = document.getElementById("likebutton_".concat(postId));
+      likebutton.textContent = parseInt(likebutton.textContent) + 1 + "♡";
       var formData = new FormData();
       formData.append('post_id', postId);
       //replyUrlにPOST送信
-      axios.post(this._replyUrl, formData);
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post(this._replyUrl, formData);
     },
     replyshow: function replyshow(index) {
       var commentInputClass = this.commentInput + this.parsedData[index].id;
@@ -6317,7 +6356,7 @@ __webpack_require__.r(__webpack_exports__);
         var formData = new FormData();
         formData.append('post_id', this.parsedData[index].id);
         formData.append('comment', comment);
-        axios.post(this._replyPostUrl, formData) // ここでリプライ送信用のエンドポイントを指定
+        axios__WEBPACK_IMPORTED_MODULE_1___default().post(this._replyPostUrl, formData) // ここでリプライ送信用のエンドポイントを指定
         .then(function (response) {
           // リプライが送信された後の処理をここに記述
           console.log('Reply sent successfully');
@@ -6328,14 +6367,28 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-    showProfile: function showProfile(postId) {
-      location.href = '/profile?post_id=' + postId;
+    loadData: function loadData() {
+      var _this = this;
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("/snsMore?offset=".concat(this.offset, "&limit=").concat(this.limit)).then(function (response) {
+        _this.parsedData = _this.parsedData.concat(response.data.data);
+      });
+
+      //ページを最初に読み込んだ時の、投稿の数を入れとく
+      this.postMax = this.parsedData.length;
+      var morepostbutton = document.getElementById("morepostbutton");
+      morepostbutton.disabled = null;
+    },
+    loadMore: function loadMore() {
+      var morepostbutton = document.getElementById("morepostbutton");
+      morepostbutton.disabled = "disabled";
+      this.offset += 2;
+      this.loadData();
     }
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
     //bladeから受けっとったデータの整形
-    this.parsedData = JSON.parse(this.postData);
+    //this.parsedData = JSON.parse(this.postData);
     this._imagePath = this.imagePath.replaceAll('\\', '').replaceAll('"', '') + '/';
     this._replyUrl = this.replyUrl.replaceAll('\\', '').replaceAll('"', '');
     this._replyPostUrl = this.replyPostUrl.replaceAll('\\', '').replaceAll('"', '');
@@ -6349,8 +6402,7 @@ __webpack_require__.r(__webpack_exports__);
     //console.log(this._imagePath);
     //console.log(this._replyPostUrl);
 
-    //ページを最初に読み込んだ時の、投稿の数を入れとく
-    this.postMax = this.parsedData.length;
+    this.loadData();
     window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
       broadcaster: 'pusher',
       key: "4bba746d7784feb8ad5b",
@@ -6363,11 +6415,11 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         //postMaxより要素数が多くなって値がかえって来た場合　多くなった分の要素を削除する
         //いいねボタンを押す間に新しい投稿がされたときの対策
-        if (event.post_data.length > _this.postMax) {
-          event.post_data = event.post_data.slice(event.post_data.length - _this.postMax);
+        if (event.post_data.length > _this2.postMax) {
+          event.post_data = event.post_data.slice(event.post_data.length - _this2.postMax);
         }
         //postのデータ更新
-        _this.parsedData = event.post_data;
+        _this2.parsedData = event.post_data;
       }
     });
   }
@@ -35719,7 +35771,29 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("option", { attrs: { value: "#魚" } }, [_vm._v("#魚")]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "#肉" } }, [_vm._v("#肉")]),
+          _c("option", { attrs: { value: "#牛肉" } }, [_vm._v("#牛肉")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#豚肉" } }, [_vm._v("#豚肉")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#野菜" } }, [_vm._v("#野菜")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#卵" } }, [_vm._v("#卵")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#焼き料理" } }, [
+            _vm._v("#焼き料理"),
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#ゆで料理" } }, [
+            _vm._v("#ゆで料理"),
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#煮込み料理" } }, [
+            _vm._v("#煮込み料理"),
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#揚げ料理" } }, [
+            _vm._v("#揚げ料理"),
+          ]),
         ]
       ),
     ])
@@ -36414,7 +36488,29 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("option", { attrs: { value: "#魚" } }, [_vm._v("#魚")]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "#肉" } }, [_vm._v("#肉")]),
+          _c("option", { attrs: { value: "#牛肉" } }, [_vm._v("#牛肉")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#豚肉" } }, [_vm._v("#豚肉")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#野菜" } }, [_vm._v("#野菜")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#卵" } }, [_vm._v("#卵")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#焼き料理" } }, [
+            _vm._v("#焼き料理"),
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#ゆで料理" } }, [
+            _vm._v("#ゆで料理"),
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#煮込み料理" } }, [
+            _vm._v("#煮込み料理"),
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "#揚げ料理" } }, [
+            _vm._v("#揚げ料理"),
+          ]),
         ]
       ),
     ])
@@ -36688,37 +36784,40 @@ var render = function () {
                     "div",
                     { staticClass: "col-2 d-flex justify-content-center" },
                     [
-                      _c("input", {
-                        staticClass: "post-icon",
-                        attrs: {
-                          type: "image",
-                          src:
-                            _vm._imagePath +
-                            "icon/" +
-                            _vm.parsedData[index].icon_filename,
-                        },
-                        on: {
-                          click: function ($event) {
-                            return _vm.showProfile(_vm.parsedData[index].id)
-                          },
-                        },
-                      }),
+                      _c(
+                        "form",
+                        { attrs: { action: _vm._profileUrl, method: "post" } },
+                        [
+                          _c("input", {
+                            attrs: { type: "hidden", name: "_token" },
+                            domProps: { value: _vm.csrfToken },
+                          }),
+                          _vm._v(" "),
+                          _c("input", {
+                            attrs: { type: "hidden", name: "post_id" },
+                            domProps: { value: _vm.parsedData[index].id },
+                          }),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "post-icon",
+                            attrs: {
+                              type: "image",
+                              name: "submit",
+                              src:
+                                _vm._imagePath +
+                                "icon/" +
+                                _vm.parsedData[index].icon_filename,
+                            },
+                          }),
+                        ]
+                      ),
                     ]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-10 align-self-center" }, [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "h5",
-                        on: {
-                          click: function ($event) {
-                            return _vm.showProfile(_vm.parsedData[index].id)
-                          },
-                        },
-                      },
-                      [_vm._v(_vm._s(_vm.parsedData[index].name))]
-                    ),
+                    _c("span", { staticClass: "h5" }, [
+                      _vm._v(_vm._s(_vm.parsedData[index].name)),
+                    ]),
                   ]),
                 ]),
                 _vm._v(" "),
@@ -36762,7 +36861,10 @@ var render = function () {
                           "button",
                           {
                             staticClass: "like-btn interaction-button my-2",
-                            attrs: { type: "submit" },
+                            attrs: {
+                              type: "submit",
+                              id: "likebutton_" + _vm.parsedData[index].id,
+                            },
                             on: {
                               click: function ($event) {
                                 return _vm.likePost(_vm.parsedData[index].id)
@@ -36809,6 +36911,15 @@ var render = function () {
               _c("hr"),
             ])
           }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              attrs: { id: "morepostbutton", disabled: "" },
+              on: { click: _vm.loadMore },
+            },
+            [_vm._v("もっと見る")]
+          ),
         ],
         2
       ),
@@ -48971,6 +49082,18 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	

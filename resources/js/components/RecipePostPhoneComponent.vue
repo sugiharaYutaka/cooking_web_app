@@ -457,7 +457,11 @@ export default {
                 formData.append('tag', this.tagList)
                 formData.append('stepCount', this.stepCount);
                 axios.post(this._postUrl, formData)
+                alert('レシピを投稿しました');
                 //window.location.href = 'https://example.com';
+            }
+            else{
+                alert('登校内容を確認して、もう一度投稿してください');
             }
 
         },
