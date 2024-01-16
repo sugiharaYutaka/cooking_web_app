@@ -12,7 +12,7 @@
             </div>
             <div class="modal-body bg-color-1 ps-0">
 
-                <div class="container-fluid">
+                <div class="container-fluid p-0">
                     <div class="row">
                         @guest
                         <div class="container">
@@ -22,25 +22,19 @@
                                     @if(session('login_message'))
                                     <strong class="d-flex justify-content-center invalid-feedback"> {{ session('login_message')}}</strong><br>
                                     @endif
-                                    <form method="POST" action="{{ route('login') }}">
+                                    <form class="form-inline" method="POST" action="{{ route('login') }}">
                                         @csrf
-                                        <div class="row mb-4 ms-5">
-                                            <label for="email" class="col-md-3 col-form-label text-md-end">{{ __('メールアドレス') }}</label>
-
-                                            <div class="col-md-7">
+                                        <div class="row mb-4 ">
+                                            <div class="offset-2 col-8">
+                                                <label for="email" class="col-form-label text-end">{{ __('メールアドレス') }}</label>
                                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-
                                             </div>
                                         </div>
 
-                                        <div class="row mb-4 ms-5">
-                                            <label for="password" class="col-md-3 col-form-label text-md-end">{{ __('パスワード') }}</label>
-
-                                            <div class="col-md-7">
+                                        <div class="row mb-4 ">
+                                            <div class="offset-2 col-8">
+                                                <label for="password" class="col-form-label text-md-end">{{ __('パスワード') }}</label>
                                                 <input id="password" type="password" class="form-control" name="password" required autocomplete="new-password">
-
-
                                             </div>
                                         </div>
 
@@ -63,6 +57,7 @@
                                     </div>
 
                                     @else
+                                    <a href="{{ route('profile') }}" class="no-underline text-dark"><button type="button" class="btn">プロフィール</button></a>
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn border-top border-bottom my-2">ログアウト</button><br>

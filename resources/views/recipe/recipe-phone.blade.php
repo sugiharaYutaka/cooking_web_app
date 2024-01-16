@@ -15,26 +15,27 @@
         <div class="row">
             <div class="col-12">
                 <div class="container">
-                    <form action="/search" method="GET" class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="献立検索" aria-label="Search" name="query">
+                    <form action="{{ route('search') }}" method="POST" class="form-contorl my-2">
+                        @csrf
+                        <div class="input-group">
+                            <input class="form-control mr-sm-2" type="search" placeholder="献立検索" aria-label="Search"
+                                name="query">
+                            <button type="submit" class="form-contorl btn btn-outline-secondary"><i
+                                    class="fa fa-search"></i>
+                            </button>
+                        </div>
                     </form>
                     <div class="col-12">
                         <div class="row">
-                            <!--- レシピ投稿に遷移するボタン --->
-                            <div class="col-2">
-                                <button class="bg-color-2 circle-btn border">
-                                    <a href="{{ route('recipepost') }}" class="no-underline text-color-4 h3">+</a>
-                                </button>
-                            </div>
-                            
-                            <!--- ブックマークページに遷移するボタン --->
-                            <div class="col-5">
-                                <button class="bg-color-2 circle-btn border">
-                                    <a href="{{ route('recipebookmark') }}" class="no-underline text-color-4 h3">bookmark</a>
+                            <div class="offset-2 col-5">
+                                <button class="btn">
+                                    <a href="{{ route('recipepost') }}" class="no-underline text-color-5">投稿する</a>
                                 </button>
                             </div>
                             <div class="col-5">
-                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#recipemodalProfile" style="color: black; text-decoration: none;">タグ検索</button>
+                                <button type="button" class="btn" data-bs-toggle="modal"
+                                    data-bs-target="#recipemodalProfile"
+                                    style="color: black; text-decoration: none;">タグ検索</button>
                             </div>
                         </div>
                     </div>
@@ -44,7 +45,8 @@
                             <p class="h5">{{ $post->title }}</p>
 
                             <a href="{{ url('/recipe/onepost', $post->id) }}">
-                                <img src="{{ asset('/recipe/image/' . $post->dish_image_filename) }}" class="" style="width:100%;">
+                                <img src="{{ asset('/recipe/image/' . $post->dish_image_filename) }}" class=""
+                                    style="width:100%;">
                             </a>
 
                             <p>{{ $post->description }}</p>

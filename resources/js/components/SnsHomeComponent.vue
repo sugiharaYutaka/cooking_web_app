@@ -19,12 +19,14 @@
                     <div class="post-body">
                         <div class="row mt-1">
                             <div class="col-2 d-flex justify-content-center">
-                                <input type="image" class="post-icon" :src="_imagePath + 'icon/' +parsedData[index].icon_filename"
-                                    @click="showProfile(parsedData[index].id)">
+                                <form :action=_profileUrl method="post">
+                                    <input type="hidden" name="_token" :value=csrfToken>
+                                    <input type="hidden" name="post_id" :value=parsedData[index].id>
+                                    <input type="image" name="submit" class="post-icon" :src="_imagePath + 'icon/' +parsedData[index].icon_filename">
+                                </form>
                             </div>
                             <div class="col-10 align-self-center">
-                                <span class="h5" @click="showProfile(parsedData[index].id)">{{ parsedData[index].name
-                                }}</span>
+                                <span class="h5">{{ parsedData[index].name }}</span>
                             </div>
                         </div>
                         <div class="row">
@@ -61,6 +63,10 @@
                     </div>
                     <hr>
                 </div>
+
+                <!-- もっと見るボタン -->
+                <button @click="loadMore">もっと見る</button>
+
             </div>
         </body>
     </div>
@@ -68,11 +74,15 @@
 
 <script>
 import Echo from 'laravel-echo';
+import axios from 'axios';
+
 export default {
     props: ["postData", "replyUrl", "imagePath", "replyPostUrl", "replyShowUrl", "profileUrl"],
     data() {
         return {
             parsedData: null,
+            offset: 0,
+            limit: 10,
             postMax: 0,
             _imagePath: null,
             _replyUrl: null,
@@ -125,14 +135,23 @@ export default {
                     });
             }
         },
-        showProfile(postId) {
-            location.href = '/profile?post_id=' + postId;
-        }
+        loadData() {
+            axios.get(`/snsMore?offset=${this.offset}&limit=${this.limit}`).then(response => {
+                this.parsedData = response.data.data;
+            });
+
+            //ページを最初に読み込んだ時の、投稿の数を入れとく
+            this.postMax = this.parsedData.length;
+        },
+        loadMore() {
+            this.limit += 10;
+            this.loadData();
+        },
     },
 
     mounted() {
         //bladeから受けっとったデータの整形
-        this.parsedData = JSON.parse(this.postData);
+        //this.parsedData = JSON.parse(this.postData);
         this._imagePath = this.imagePath.replaceAll('\\', '').replaceAll('"', '') + '/';
         this._replyUrl = this.replyUrl.replaceAll('\\', '').replaceAll('"', '');
         this._replyPostUrl = this.replyPostUrl.replaceAll('\\', '').replaceAll('"', '');
@@ -146,8 +165,8 @@ export default {
         //console.log(this._imagePath);
         //console.log(this._replyPostUrl);
 
-        //ページを最初に読み込んだ時の、投稿の数を入れとく
-        this.postMax = this.parsedData.length;
+
+        this.loadData();
 
 
         window.Echo = new Echo({

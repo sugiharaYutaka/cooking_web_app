@@ -18,20 +18,19 @@
     <div class="container-fluid p0">
       <div class="row border">
         <nav class="navbar navbar-expand-lg navbar-light bg-color-2">
-          <div class="col-10">
+          <div class="col-9">
             <button type="button" style="border: none; background: transparent;" class="btn mx-2"><a href="{{ route('top') }}"><img class="logo" src="{{asset('image/logo.png')}}"></a></button>
           </div>
-          <div class="col-2">
-            @guest
-            <a href="#modalProfile" data-bs-toggle="modal"><img src="{{ asset('/image/icon/user_icon.png') }}" class="user-icon" style="width: 48px; height: 48px;" /></a>
-            @else
-            @if (session('icon_filename') == "user_icon.png")
-            <a href="#modalProfile" data-bs-toggle="modal"><img src="{{ asset('/image/icon/user_icon.png') }}" class="user-icon" style="width: 48px; height: 48px;" /></a>
-
-            @else
-            <a href="#modalProfile" data-bs-toggle="modal"><img src=" {{ asset('/image/icon/' . session('icon_filename') )}}" class="user-icon" style="width: 48px; height: 48px;" /></a>
-            @endif
-            @endguest
+          <div class="col-3 d-flex justify-content-center">
+              @guest
+              <a href="#modalProfile" data-bs-toggle="modal" class="no-underline text-dark"><button type="button" class="btn"><img src=" {{ asset('image/profile.png') }}" class="footericon"><br>未ログイン</button></a>
+              @else
+              @if (session('icon_filename') == "user_icon.png")
+              <a href="{{ route('profile') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('/image/icon/user_icon.png') }}" class="footericon"><br>プロフィール</button></a>
+              @else
+              <a href="{{ route('profile') }}" class="no-underline text-dark"><button type="button" class="btn"><img src=" {{ asset('/image/icon/' . session('icon_filename') )}}" class="footericon"><br>プロフィール</button></a>
+              @endif
+              @endguest
           </div>
         </nav>
       </div>

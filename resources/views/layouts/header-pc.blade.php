@@ -17,20 +17,27 @@
 
 <body>
     <div class="header fixed-top">
-        <div class="container-fluid">
+        <div class="container-fluid p-0">
             <div class="row border">
                 <nav class="navbar navbar-expand-lg navbar-light bg-color-2">
                     <div class="col-2 d-flex justify-content-center ps-5">
                         <button type="button" style="border: none; background: transparent;" class="btn"><a href="{{ route('top') }}"><img class="logo" src="{{asset('image/logo.png')}}"></a></button>
                     </div>
-                    <div class="col-1"></div>
+                    <!--- <div class="col-1"></div> --->
                     <div class="col-3" style="margin-left: 10px;">
-                        <form action="/search" method="GET" class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="献立検索" aria-label="Search" name="query">
-                            <button class="form-contorl btn btn-secondary"><img src="asset()"></button>
+                        <form action="{{ route('search') }}" method="POST" class="form-contorl my-2">
+                            @csrf
+                            <div class="input-group">
+                                <input class="form-control mr-sm-2" type="search" placeholder="献立検索" aria-label="Search" name="query">
+                                <button type="submit" class="form-contorl btn btn-outline-secondary"><i class="fa fa-search"></i></button>
+                            </div>
                         </form>
                     </div>
                     <div class="col-1"></div>
+
+                    <div class="col-1 d-flex justify-content-center">
+                        <a href="{{ route('recipebookmark') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/bookmark.png') }}" class="footericon"><br>ブックマーク</button></a>
+                    </div>
 
                     <div class="col-1 d-flex justify-content-center">
                         <a href="{{ route('study') }}" class="no-underline text-dark"><button type="button" class="btn"><img src="{{ asset('image/study.png') }}" class="footericon"><br>勉強</button></a>

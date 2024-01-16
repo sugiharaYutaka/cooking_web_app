@@ -5111,23 +5111,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -5353,7 +5336,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 //
 //
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_defineProperty(_defineProperty({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["postUrl"],
   data: function data() {
     return {
@@ -5414,204 +5397,185 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       }
     };
   },
-  // モーダルのメソッド
   methods: {
-    confirmPost: function confirmPost() {
-      var _this = this;
-      var element = document.getElementById('level');
-      formData.append('level', element.value);
-      formData.append('tag', this.tagList);
-      formData.append('stepCount', this.stepCount);
-      axios.post(this._postUrl, formData).then(function (response) {
-        // 投稿が成功した場合の処理
-        // モーダルを非表示にする
-        _this.showConfirmationModal = false;
-        // 投稿が完了した後のリダイレクト
-        window.location.href = '/recipes';
-      })["catch"](function (error) {
-        // エラー時の処理
-        console.error('投稿エラー:', error);
-        // エラー処理を行う（例えば、エラーメッセージを表示するなど）
-      });
+    addStep: function addStep() {
+      if (this.stepCount < 20) {
+        this.stepCount++;
+      }
     },
-    cancelPost: function cancelPost() {
-      this.showConfirmationModal = false; // モーダルを非表示にする
-    }
-  }
-}, "methods", {
-  addStep: function addStep() {
-    if (this.stepCount < 20) {
-      this.stepCount++;
-    }
-  },
-  deleteStep: function deleteStep() {
-    if (this.stepCount > 1) {
-      this.stepCount--;
-    }
-  },
-  addTag: function addTag() {
-    var tag = document.getElementById("select-tag").value;
-    if (tag != "" && this.tagList.indexOf(tag) == -1) {
-      this.tagList.push(tag);
-    }
-  },
-  deleteTag: function deleteTag(tag) {
-    var index = this.tagList.indexOf(tag);
-    if (index >= 0) {
-      this.tagList.splice(index);
-    }
-  },
-  changeImage: function changeImage(event) {
-    var _this2 = this;
-    var image = event.target.files[0];
-    this.postDishImage = image;
-    var fileReader = new FileReader();
-    fileReader.onload = function (e) {
-      _this2.dishImage = e.target.result;
-    };
-    fileReader.readAsDataURL(image);
-  },
-  changeStepImage: function changeStepImage(event, index) {
-    var _this3 = this;
-    var image = event.target.files[0];
-    this.postStepImage[index] = image;
-    var fileReader = new FileReader();
-    fileReader.onload = function (e) {
-      _this3.stepImage[index] = e.target.result;
-    };
-    fileReader.readAsDataURL(image);
-  },
-  validate: function validate(value, rules) {
-    var message = {};
-    if (rules.indexOf('required') != -1 && value.length == 0) {
-      message['required'] = '必須項目です';
-    }
-    if (rules.indexOf('max50') != -1 && value.length > 50) {
-      message['max50'] = '50文字未満にしてください';
-    }
-    if (rules.indexOf('max500') != -1 && value.length > 500) {
-      message['max500'] = '500文字未満にしてください';
-    }
-    if (rules.indexOf('slash') != -1 && value.search('/') != -1) {
-      message['slash'] = '/を使用しないでください';
-    }
-    if (Object.keys(message).length) {
-      return message;
-    } else {
-      return false;
-    }
-  },
-  validateFile: function validateFile(value, rules) {
-    var message = {};
-    try {
-      if (rules.indexOf('required') != -1 && value == null) {
+    deleteStep: function deleteStep() {
+      if (this.stepCount > 1) {
+        this.stepCount--;
+      }
+    },
+    addTag: function addTag() {
+      var tag = document.getElementById("select-tag").value;
+      if (tag != "" && this.tagList.indexOf(tag) == -1) {
+        this.tagList.push(tag);
+      }
+    },
+    deleteTag: function deleteTag(tag) {
+      var index = this.tagList.indexOf(tag);
+      if (index >= 0) {
+        this.tagList.splice(index);
+      }
+    },
+    changeImage: function changeImage(event) {
+      var _this = this;
+      var image = event.target.files[0];
+      this.postDishImage = image;
+      var fileReader = new FileReader();
+      fileReader.onload = function (e) {
+        _this.dishImage = e.target.result;
+      };
+      fileReader.readAsDataURL(image);
+    },
+    changeStepImage: function changeStepImage(event, index) {
+      var _this2 = this;
+      var image = event.target.files[0];
+      this.postStepImage[index] = image;
+      var fileReader = new FileReader();
+      fileReader.onload = function (e) {
+        _this2.stepImage[index] = e.target.result;
+      };
+      fileReader.readAsDataURL(image);
+    },
+    validate: function validate(value, rules) {
+      var message = {};
+      if (rules.indexOf('required') != -1 && value.length == 0) {
         message['required'] = '必須項目です';
       }
-      if (rules.indexOf('max3MB') != -1 && value.size > 3072000) {
-        message['max3MB'] = 'ファイルサイズは3MB未満にしてください';
+      if (rules.indexOf('max50') != -1 && value.length > 50) {
+        message['max50'] = '50文字未満にしてください';
       }
-    } catch (e) {
-      message['required'] = '必須項目です';
-    }
-    if (Object.keys(message).length) {
-      return message;
-    } else {
-      return false;
+      if (rules.indexOf('max500') != -1 && value.length > 500) {
+        message['max500'] = '500文字未満にしてください';
+      }
+      if (rules.indexOf('slash') != -1 && value.search('/') != -1) {
+        message['slash'] = '/を使用しないでください';
+      }
+      if (Object.keys(message).length) {
+        return message;
+      } else {
+        return false;
+      }
+    },
+    validateFile: function validateFile(value, rules) {
+      var message = {};
+      try {
+        if (rules.indexOf('required') != -1 && value == null) {
+          message['required'] = '必須項目です';
+        }
+        if (rules.indexOf('max3MB') != -1 && value.size > 3072000) {
+          message['max3MB'] = 'ファイルサイズは3MB未満にしてください';
+        }
+      } catch (e) {
+        message['required'] = '必須項目です';
+      }
+      if (Object.keys(message).length) {
+        return message;
+      } else {
+        return false;
+      }
+    },
+    postForm: function postForm() {
+      var formData = new FormData();
+      var checkSum = 0;
+      var checkSumMax = 5 + this.stepCount * 2;
+      var result = null;
+      if (result = this.validate(this.title, ['required', 'max50'])) {
+        //バリデーションエラー発生
+        this.validateError['title'] = result;
+        this.formClass['title'] = 'form-control is-invalid';
+      } else {
+        //バリデーション成功
+        this.formClass['title'] = 'form-control';
+        this.validateError['title'] = null;
+        formData.append('title', this.title);
+        checkSum++;
+      }
+      if (result = this.validate(this.description, ['required', 'max50'])) {
+        //バリデーションエラー発生
+        this.validateError['description'] = result;
+        this.formClass['description'] = 'form-control is-invalid';
+      } else {
+        //バリデーション成功
+        this.formClass['description'] = 'form-control';
+        this.validateError['description'] = null;
+        formData.append('description', this.description);
+        checkSum++;
+      }
+      if (result = this.validate(this.ingredients, ['required', 'max500', 'slash'])) {
+        //バリデーションエラー発生
+        this.validateError['ingredients'] = result;
+        this.formClass['ingredients'] = 'form-control is-invalid';
+      } else {
+        //バリデーション成功
+        this.formClass['ingredients'] = 'form-control';
+        this.validateError['ingredients'] = null;
+        formData.append('ingredients', this.ingredients.replace('\n', "//"));
+        checkSum++;
+      }
+      if (result = this.validate(this.point, ['required', 'max500'])) {
+        //バリデーションエラー発生
+        this.validateError['point'] = result;
+        this.formClass['point'] = 'form-control is-invalid';
+      } else {
+        //バリデーション成功
+        this.formClass['point'] = 'form-control';
+        this.validateError['point'] = null;
+        formData.append('point', this.point);
+        checkSum++;
+      }
+      if (result = this.validateFile(this.postDishImage, ['required', 'max3MB'])) {
+        //バリデーションエラー発生
+        this.validateError['dishImage'] = result;
+        this.formClass['dishImage'] = 'form-control is-invalid';
+      } else {
+        //バリデーション成功
+        this.formClass['dishImage'] = 'form-control';
+        this.validateError['dishImage'] = null;
+        formData.append('dishImage', this.postDishImage);
+        checkSum++;
+      }
+      for (var index = 0; index < this.stepCount; index++) {
+        if ((result = this.validateFile(this.postStepImage[index], ['max3MB'])) && this.postStepImage[index] != null) {
+          this.validateError['stepImage'][index] = result;
+          this.formClass['stepImage'][index] = 'form-control is-invalid';
+        } else {
+          this.formClass['stepImage'][index] = 'form-control';
+          this.validateError['stepImage'][index] = null;
+          formData.append('step' + String(index + 1) + 'Image', this.postStepImage[index]);
+          checkSum++;
+        }
+        if (result = this.validate(this.stepText[index], ['required', 'max500', 'slash'])) {
+          this.validateError['stepText'][index] = result;
+          this.formClass['stepText'][index] = 'form-control is-invalid';
+        } else {
+          this.formClass['stepText'][index] = 'form-control';
+          this.validateError['stepText'][index] = null;
+          formData.append('step' + String(index + 1) + 'Text', this.stepText[index]);
+          checkSum++;
+        }
+      }
+      if (checkSum == checkSumMax) {
+        this.showConfirmationModal = true;
+        var element = document.getElementById('level');
+        formData.append('level', element.value);
+        formData.append('tag', this.tagList);
+        formData.append('stepCount', this.stepCount);
+        axios.post(this._postUrl, formData);
+        alert('レシピを投稿しました');
+        //window.location.href = 'https://example.com';
+      } else {
+        alert('登校内容を確認して、もう一度投稿してください');
+      }
     }
   },
-  postForm: function postForm() {
-    var formData = new FormData();
-    var checkSum = 0;
-    var checkSumMax = 5 + this.stepCount * 2;
-    var result = null;
-    if (result = this.validate(this.title, ['required', 'max50'])) {
-      //バリデーションエラー発生
-      this.validateError['title'] = result;
-      this.formClass['title'] = 'form-control is-invalid';
-    } else {
-      //バリデーション成功
-      this.formClass['title'] = 'form-control';
-      this.validateError['title'] = null;
-      formData.append('title', this.title);
-      checkSum++;
-    }
-    if (result = this.validate(this.description, ['required', 'max50'])) {
-      //バリデーションエラー発生
-      this.validateError['description'] = result;
-      this.formClass['description'] = 'form-control is-invalid';
-    } else {
-      //バリデーション成功
-      this.formClass['description'] = 'form-control';
-      this.validateError['description'] = null;
-      formData.append('description', this.description);
-      checkSum++;
-    }
-    if (result = this.validate(this.ingredients, ['required', 'max500', 'slash'])) {
-      //バリデーションエラー発生
-      this.validateError['ingredients'] = result;
-      this.formClass['ingredients'] = 'form-control is-invalid';
-    } else {
-      //バリデーション成功
-      this.formClass['ingredients'] = 'form-control';
-      this.validateError['ingredients'] = null;
-      formData.append('ingredients', this.ingredients.replace('\n', "//"));
-      checkSum++;
-    }
-    if (result = this.validate(this.point, ['required', 'max500'])) {
-      //バリデーションエラー発生
-      this.validateError['point'] = result;
-      this.formClass['point'] = 'form-control is-invalid';
-    } else {
-      //バリデーション成功
-      this.formClass['point'] = 'form-control';
-      this.validateError['point'] = null;
-      formData.append('point', this.point);
-      checkSum++;
-    }
-    if (result = this.validateFile(this.postDishImage, ['required', 'max3MB'])) {
-      //バリデーションエラー発生
-      this.validateError['dishImage'] = result;
-      this.formClass['dishImage'] = 'form-control is-invalid';
-    } else {
-      //バリデーション成功
-      this.formClass['dishImage'] = 'form-control';
-      this.validateError['dishImage'] = null;
-      formData.append('dishImage', this.postDishImage);
-      checkSum++;
-    }
-    for (var index = 0; index < this.stepCount; index++) {
-      if ((result = this.validateFile(this.postStepImage[index], ['max3MB'])) && this.postStepImage[index] != null) {
-        this.validateError['stepImage'][index] = result;
-        this.formClass['stepImage'][index] = 'form-control is-invalid';
-      } else {
-        this.formClass['stepImage'][index] = 'form-control';
-        this.validateError['stepImage'][index] = null;
-        formData.append('step' + String(index + 1) + 'Image', this.postStepImage[index]);
-        checkSum++;
-      }
-      if (result = this.validate(this.stepText[index], ['required', 'max500', 'slash'])) {
-        this.validateError['stepText'][index] = result;
-        this.formClass['stepText'][index] = 'form-control is-invalid';
-      } else {
-        this.formClass['stepText'][index] = 'form-control';
-        this.validateError['stepText'][index] = null;
-        formData.append('step' + String(index + 1) + 'Text', this.stepText[index]);
-        checkSum++;
-      }
-    }
-    if (checkSum == checkSumMax) {
-      this.showConfirmationModal = true;
-      var element = document.getElementById('level');
-      formData.append('level', element.value);
-      formData.append('tag', this.tagList);
-      formData.append('stepCount', this.stepCount);
-      axios.post(this._postUrl, formData);
-      //window.location.href = 'https://example.com';
-    }
+  mounted: function mounted() {
+    this._postUrl = this.postUrl.replaceAll('\\', '').replaceAll('"', '');
   }
-}), "mounted", function mounted() {
-  this._postUrl = this.postUrl.replaceAll('\\', '').replaceAll('"', '');
-}));
+});
 
 /***/ }),
 
@@ -6081,7 +6045,10 @@ __webpack_require__.r(__webpack_exports__);
         formData.append('tag', this.tagList);
         formData.append('stepCount', this.stepCount);
         axios.post(this._postUrl, formData);
+        alert('レシピを投稿しました');
         //window.location.href = 'https://example.com';
+      } else {
+        alert('登校内容を確認して、もう一度投稿してください');
       }
     }
   },
@@ -6265,6 +6232,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -6333,6 +6302,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -6340,6 +6316,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       parsedData: null,
+      offset: 0,
+      limit: 10,
       postMax: 0,
       _imagePath: null,
       _replyUrl: null,
@@ -6357,7 +6335,7 @@ __webpack_require__.r(__webpack_exports__);
       var formData = new FormData();
       formData.append('post_id', postId);
       //replyUrlにPOST送信
-      axios.post(this._replyUrl, formData);
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post(this._replyUrl, formData);
     },
     replyshow: function replyshow(index) {
       var commentInputClass = this.commentInput + this.parsedData[index].id;
@@ -6378,7 +6356,7 @@ __webpack_require__.r(__webpack_exports__);
         var formData = new FormData();
         formData.append('post_id', this.parsedData[index].id);
         formData.append('comment', comment);
-        axios.post(this._replyPostUrl, formData) // ここでリプライ送信用のエンドポイントを指定
+        axios__WEBPACK_IMPORTED_MODULE_1___default().post(this._replyPostUrl, formData) // ここでリプライ送信用のエンドポイントを指定
         .then(function (response) {
           // リプライが送信された後の処理をここに記述
           console.log('Reply sent successfully');
@@ -6389,14 +6367,24 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-    showProfile: function showProfile(postId) {
-      location.href = '/profile?post_id=' + postId;
+    loadData: function loadData() {
+      var _this = this;
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("/snsMore?offset=".concat(this.offset, "&limit=").concat(this.limit)).then(function (response) {
+        _this.parsedData = response.data.data;
+      });
+
+      //ページを最初に読み込んだ時の、投稿の数を入れとく
+      this.postMax = this.parsedData.length;
+    },
+    loadMore: function loadMore() {
+      this.limit += 10;
+      this.loadData();
     }
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
     //bladeから受けっとったデータの整形
-    this.parsedData = JSON.parse(this.postData);
+    //this.parsedData = JSON.parse(this.postData);
     this._imagePath = this.imagePath.replaceAll('\\', '').replaceAll('"', '') + '/';
     this._replyUrl = this.replyUrl.replaceAll('\\', '').replaceAll('"', '');
     this._replyPostUrl = this.replyPostUrl.replaceAll('\\', '').replaceAll('"', '');
@@ -6410,8 +6398,7 @@ __webpack_require__.r(__webpack_exports__);
     //console.log(this._imagePath);
     //console.log(this._replyPostUrl);
 
-    //ページを最初に読み込んだ時の、投稿の数を入れとく
-    this.postMax = this.parsedData.length;
+    this.loadData();
     window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
       broadcaster: 'pusher',
       key: "4bba746d7784feb8ad5b",
@@ -6424,11 +6411,11 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         //postMaxより要素数が多くなって値がかえって来た場合　多くなった分の要素を削除する
         //いいねボタンを押す間に新しい投稿がされたときの対策
-        if (event.post_data.length > _this.postMax) {
-          event.post_data = event.post_data.slice(event.post_data.length - _this.postMax);
+        if (event.post_data.length > _this2.postMax) {
+          event.post_data = event.post_data.slice(event.post_data.length - _this2.postMax);
         }
         //postのデータ更新
-        _this.parsedData = event.post_data;
+        _this2.parsedData = event.post_data;
       }
     });
   }
@@ -35147,20 +35134,6 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("html", { attrs: { lang: "ja" } }, [
-    _vm.showConfirmationModal
-      ? _c("div", { staticClass: "custom-modal" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _c("p", [_vm._v("この内容で投稿して宜しいですか？")]),
-            _vm._v(" "),
-            _c("button", { on: { click: _vm.confirmPost } }, [_vm._v("はい")]),
-            _vm._v(" "),
-            _c("button", { on: { click: _vm.cancelPost } }, [
-              _vm._v("キャンセル"),
-            ]),
-          ]),
-        ])
-      : _vm._e(),
-    _vm._v(" "),
     _c("body", { staticClass: "body-margin" }, [
       _c("div", { staticClass: "card mt-5 p0" }, [
         _c("div", { staticClass: "container-fluid p-0" }, [
@@ -36807,37 +36780,40 @@ var render = function () {
                     "div",
                     { staticClass: "col-2 d-flex justify-content-center" },
                     [
-                      _c("input", {
-                        staticClass: "post-icon",
-                        attrs: {
-                          type: "image",
-                          src:
-                            _vm._imagePath +
-                            "icon/" +
-                            _vm.parsedData[index].icon_filename,
-                        },
-                        on: {
-                          click: function ($event) {
-                            return _vm.showProfile(_vm.parsedData[index].id)
-                          },
-                        },
-                      }),
+                      _c(
+                        "form",
+                        { attrs: { action: _vm._profileUrl, method: "post" } },
+                        [
+                          _c("input", {
+                            attrs: { type: "hidden", name: "_token" },
+                            domProps: { value: _vm.csrfToken },
+                          }),
+                          _vm._v(" "),
+                          _c("input", {
+                            attrs: { type: "hidden", name: "post_id" },
+                            domProps: { value: _vm.parsedData[index].id },
+                          }),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "post-icon",
+                            attrs: {
+                              type: "image",
+                              name: "submit",
+                              src:
+                                _vm._imagePath +
+                                "icon/" +
+                                _vm.parsedData[index].icon_filename,
+                            },
+                          }),
+                        ]
+                      ),
                     ]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-10 align-self-center" }, [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "h5",
-                        on: {
-                          click: function ($event) {
-                            return _vm.showProfile(_vm.parsedData[index].id)
-                          },
-                        },
-                      },
-                      [_vm._v(_vm._s(_vm.parsedData[index].name))]
-                    ),
+                    _c("span", { staticClass: "h5" }, [
+                      _vm._v(_vm._s(_vm.parsedData[index].name)),
+                    ]),
                   ]),
                 ]),
                 _vm._v(" "),
@@ -36931,6 +36907,8 @@ var render = function () {
               _c("hr"),
             ])
           }),
+          _vm._v(" "),
+          _c("button", { on: { click: _vm.loadMore } }, [_vm._v("もっと見る")]),
         ],
         2
       ),
@@ -49093,6 +49071,18 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	

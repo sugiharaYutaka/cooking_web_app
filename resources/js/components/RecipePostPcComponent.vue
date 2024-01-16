@@ -1,19 +1,6 @@
 
 <template>
     <html lang="ja">
-
-    <!-- 既存のコードがここにあると仮定 -->
-
-    <!-- モーダルのテンプレート -->
-    <div v-if="showConfirmationModal" class="custom-modal">
-        <!-- モーダルのコンテンツ -->
-        <div class="modal-content">
-            <p>この内容で投稿して宜しいですか？</p>
-            <button @click="confirmPost">はい</button>
-            <button @click="cancelPost">キャンセル</button>
-        </div>
-    </div>
-
     <body class="body-margin">
         <div class="card mt-5 p0">
             <div class="container-fluid p-0">
@@ -284,31 +271,6 @@ export default {
         };
     },
 
-    // モーダルのメソッド
-    methods: {
-        confirmPost() {
-            let element = document.getElementById('level');
-            formData.append('level', element.value)
-            formData.append('tag', this.tagList)
-            formData.append('stepCount', this.stepCount);
-            axios.post(this._postUrl, formData)
-                .then(response => {
-                    // 投稿が成功した場合の処理
-                    // モーダルを非表示にする
-                    this.showConfirmationModal = false;
-                    // 投稿が完了した後のリダイレクト
-                    window.location.href = '/recipes';
-                })
-                .catch(error => {
-                    // エラー時の処理
-                    console.error('投稿エラー:', error);
-                    // エラー処理を行う（例えば、エラーメッセージを表示するなど）
-                });
-        },
-        cancelPost() {
-            this.showConfirmationModal = false; // モーダルを非表示にする
-        }
-    },
     methods: {
         addStep() {
             if (this.stepCount < 20) {
@@ -496,7 +458,11 @@ export default {
                 formData.append('tag', this.tagList)
                 formData.append('stepCount', this.stepCount);
                 axios.post(this._postUrl, formData);
+                alert('レシピを投稿しました');
                 //window.location.href = 'https://example.com';
+            }
+            else{
+                alert('登校内容を確認して、もう一度投稿してください');
             }
 
         },

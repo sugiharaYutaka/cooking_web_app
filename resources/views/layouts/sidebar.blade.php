@@ -1,7 +1,7 @@
 <!-- sidebar.blade.php -->
-<div class="">
+<div class="h-100">
     <h2>タグで検索</h2>
-    <form action="{{ route('tags') }}" method="GET">
+    <form action="{{ route('tags') }}" method="GET" class="h-100">
         <div class="form-group">
             <label>材料：</label><br>
             <div class="form-check">
@@ -67,7 +67,9 @@
             <!-- 他のタグを追加 -->
         </div>
         <button type="submit" class="btn btn-primary">検索</button>
+        <button class="btn btn-primary"><a href="{{ route('recipes') }}" class="no-underline text-color-1">最初に戻る</a></button>
     </form>
-    <a href="{{ route('recipes') }}" class="no-underline text-dark">最初に戻る</a>
+
+    <button class="btn btn-primary mt-3"><a href="{{ route('recipepost') }}" class="no-underline text-color-1">投稿を作成する</a></button>
 
 </div>

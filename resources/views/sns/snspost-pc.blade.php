@@ -29,7 +29,7 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-md-8">
                 <div class="card mt-5">
-                    <div class="card-header">Create Image Post</div>
+                    <div class="card-header">SNS投稿</div>
 
                     <div class="card-body d-flex flex-column ">
                         <button type="button" class="mt-3" style="border: none; background: none;">テキストを入力</button>
