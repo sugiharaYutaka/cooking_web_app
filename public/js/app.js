@@ -36910,7 +36910,11 @@ var render = function () {
           _vm._v(" "),
           _c(
             "button",
-            { staticClass: "more-post", on: { click: _vm.loadMore } },
+            {
+              staticClass: "more-post btn btn-secondary",
+              attrs: { type: "button" },
+              on: { click: _vm.loadMore },
+            },
             [_vm._v("もっと見る")]
           ),
         ],
