@@ -19,7 +19,7 @@ class ProfileController extends Controller
         $post_id = $request->post_id;
         if ($post_id == NULL) {
             if (!$request->session()->has('email')) {
-                return view('profile');
+                return view('auth.login');
             } else {
                 $target_email = $email;
                 $icon_filename = $request->session()->get('icon_filename');
@@ -110,7 +110,9 @@ class ProfileController extends Controller
 
     public function follow(Request $request)
     {
-        if ($request->session()->has('email')) {
+        if (!$request->session()->has('email')) {
+            return view('auth.login');
+        } else {
             $email = $request->session()->get('email');
             $target_email = $request->target_email;
 

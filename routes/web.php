@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 /*Route::get('/', function () {
     return view('welcome');
 });*/
+
 Route::get('/', [App\Http\Controllers\TopController::class, 'show']);
 
 /*
@@ -39,6 +40,7 @@ Route::get('/chapter1', [App\Http\Controllers\Chapter1Controller::class, 'index'
 Route::get('/top', [App\Http\Controllers\TopController::class, 'show']);
 
 Route::get('/recipes', [App\Http\Controllers\RecipeController::class, 'index'])->name('recipes');
+Route::get('/recipesMore', [App\Http\Controllers\RecipeController::class, 'moreRecipe'])->name('recipesMore');
 Route::get('/recipe/post', [App\Http\Controllers\RecipeController::class, 'post'])->name('recipepost');
 Route::get('/recipe/bookmark', [App\Http\Controllers\BookmarkController::class, 'index'])->name('recipebookmark');
 Route::post('/recipe/postForm', [App\Http\Controllers\RecipeController::class, 'insertRecipe']);

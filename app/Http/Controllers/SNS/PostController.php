@@ -24,18 +24,20 @@ class PostController extends Controller
     public function post(Request $request)
     {
         if ($request->file('image')) {
-            $path = $request->file('image')->store('public/img');
+            $image = $request->file('image');
+            //時間とファイル名を結合して一意のファイル名を生成
+            $image_filename = time() . $image->getClientOriginalName();
+            $image->move(public_path('/image/post'), $image_filename);
         } else {
-            $path = NULL;
+            $image_filename = NULL;
         }
 
         $newPost = Models\SnsPost::create([
             'email' => $request->email,
             'text' => $request->text,
-            'image_filename' => basename($path),
+            'image_filename' => $image_filename,
         ]);
         //event(new YourEventName($newPost));
         return redirect("/sns");
     }
-
 }

@@ -65,7 +65,7 @@
                 </div>
 
                 <!-- もっと見るボタン -->
-                <button class="more-post" @click="loadMore">もっと見る</button>
+                <button type="button" class="more-post btn btn-secondary" @click="loadMore">もっと見る</button>
 
             </div>
         </body>
