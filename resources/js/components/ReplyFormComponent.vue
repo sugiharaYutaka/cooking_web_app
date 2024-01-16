@@ -37,7 +37,9 @@
                             <div class="commentInput" style="display: none;">
                                 <div class="mb-3">
                                     <label for="commentInput" class="form-label">コメントを入力</label>
-                                    <textarea class="form-control" id="commentInput" rows="3"></textarea>
+                                    <div style="align: right; margin-left: 17%;"">
+                                        <textarea class="form-control" id="commentInput" rows="3" style="border: 2px solid #ccc;"></textarea>
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary" @click="replyPost()">
                                     投稿
