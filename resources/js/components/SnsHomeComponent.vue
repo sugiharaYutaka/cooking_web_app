@@ -65,7 +65,7 @@
                 </div>
 
                 <!-- もっと見るボタン -->
-                <button @click="loadMore">もっと見る</button>
+                <button class="more-post" @click="loadMore">もっと見る</button>
 
             </div>
         </body>
@@ -80,7 +80,7 @@ export default {
     props: ["postData", "replyUrl", "imagePath", "replyPostUrl", "replyShowUrl", "profileUrl"],
     data() {
         return {
-            parsedData: null,
+            parsedData: [],
             offset: 0,
             limit: 10,
             postMax: 0,
@@ -137,14 +137,14 @@ export default {
         },
         loadData() {
             axios.get(`/snsMore?offset=${this.offset}&limit=${this.limit}`).then(response => {
-                this.parsedData = response.data.data;
+                this.parsedData = this.parsedData.concat(response.data.data);
             });
 
             //ページを最初に読み込んだ時の、投稿の数を入れとく
             this.postMax = this.parsedData.length;
         },
         loadMore() {
-            this.limit += 10;
+            this.offset += this.limit;
             this.loadData();
         },
     },

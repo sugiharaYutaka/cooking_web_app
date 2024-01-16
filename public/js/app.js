@@ -6315,9 +6315,9 @@ __webpack_require__.r(__webpack_exports__);
   props: ["postData", "replyUrl", "imagePath", "replyPostUrl", "replyShowUrl", "profileUrl"],
   data: function data() {
     return {
-      parsedData: null,
+      parsedData: [],
       offset: 0,
-      limit: 10,
+      limit: 2,
       postMax: 0,
       _imagePath: null,
       _replyUrl: null,
@@ -6370,14 +6370,18 @@ __webpack_require__.r(__webpack_exports__);
     loadData: function loadData() {
       var _this = this;
       axios__WEBPACK_IMPORTED_MODULE_1___default().get("/snsMore?offset=".concat(this.offset, "&limit=").concat(this.limit)).then(function (response) {
-        _this.parsedData = response.data.data;
+        _this.parsedData = _this.parsedData.concat(response.data.data);
       });
 
       //ページを最初に読み込んだ時の、投稿の数を入れとく
       this.postMax = this.parsedData.length;
+      var morepostbutton = document.getElementById("morepostbutton");
+      morepostbutton.disabled = null;
     },
     loadMore: function loadMore() {
-      this.limit += 10;
+      var morepostbutton = document.getElementById("morepostbutton");
+      morepostbutton.disabled = "disabled";
+      this.offset += 2;
       this.loadData();
     }
   },
@@ -36908,7 +36912,14 @@ var render = function () {
             ])
           }),
           _vm._v(" "),
-          _c("button", { on: { click: _vm.loadMore } }, [_vm._v("もっと見る")]),
+          _c(
+            "button",
+            {
+              attrs: { id: "morepostbutton", disabled: "" },
+              on: { click: _vm.loadMore },
+            },
+            [_vm._v("もっと見る")]
+          ),
         ],
         2
       ),
