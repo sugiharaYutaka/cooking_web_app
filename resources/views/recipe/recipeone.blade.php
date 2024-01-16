@@ -6,7 +6,7 @@
 <body class="body-margin">
     <div class="container-fluid">
         <div class="row">
-            
+
             <div class="col-12">
                 <div class="container entirety">
                     <div class="row border my-5">
@@ -23,7 +23,7 @@
                                 <span style="color:rgb(0, 187, 200)">{{ $tag }}</span>
                             @endforeach
                         </div>
-                    
+
                         <div class="col-12 my-2 p-0">
                             <div class="card-header bg-color-2 border-top border-bottom">
                                 <div class="m-3 fw-bold" style="font-size: 20px;">材料 (一人前)</div>
@@ -54,9 +54,11 @@
 
                         <!--- ブックマーク追加ボタン --->
                         <div class="row">
-                            <button class="bg-color-2 circle-btn border">
-                                <a href="{{ url('/recipe/addbookmark', $id) }}" class="no-underline text-color-4 h3" >bookmark</a>
-                            </button>
+                            <div class="col-6">
+                                <button class="btn btn-outline-secondary my-2">
+                                    <a href="{{ url('/recipe/addbookmark', $id) }}" class="no-underline h3" >ブックマーク</a>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -204,6 +204,15 @@
             color: #f1443e;
             font-size: 1em;
         }
+        .idf {
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #8b8b8b;
+            border-radius: 5px;
+            background-color: #fff;
+            font-size: 1em;
+        }
+
     </style>
 
 </head>
@@ -235,27 +244,26 @@
 
             <!-- いいね数ランキング -->
             <p class="text-center h6">過去30日間のいいね数</p>
-            <div class="iine">
+            <div class="idf mx-1">
 
                 @foreach($posts as $index => $post)
 
                 <hr>
 
-                <div class="first">
+                <div class="first mx-2">
                     <div class="contents">
                         <div class="text">
                             <img class="rank-img" src='https://illust-stock.com/wp-content/uploads/ranking-crown-no{{ $index+1 }}.png'>
-                            <img src="{{ asset('/image/icon/' . $datas[$index]->icon_filename )}}" class="user-icon" style="display: inline-block;"> {{ $datas[$index]->name }}
-                            <p class=" amount">{{ $post->good }}♡</p>
-                            <p>{{ $post->text }}</p>
-
-
+                            <img src="{{ asset('/image/icon/' . $datas[$index]->icon_filename )}}" class="user-icon" style="display: inline-block;">
+                            <span>{{ $datas[$index]->name }}</span><br>
+                            <span>{{ $post->text }}</span><br>
                         </div>
 
                         @if ($post->image_filename != "")
                         <img class="img" src="{{ asset('/storage/img/' . $post->image_filename )}}">
                         @endif
 
+                        <span class="amount" style="color:#dc143c;">{{ $post->good }}♡</span>
                     </div>
                 </div>
 
