@@ -30,7 +30,7 @@ class GoodEvent implements ShouldBroadcast
 
         $data = SnsPost::where("id", "=", $post_id)->first();
         $this->good_count = $data->good;
-        $this->post_data = $this->toriaezu($offset, $limit);
+        $this->post_data = $post_id; //$this->toriaezu($offset, $limit);
     }
 
     /**
