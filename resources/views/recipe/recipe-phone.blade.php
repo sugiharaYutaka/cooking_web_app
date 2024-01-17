@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body style="margin-top: 8vh;">
+<body class="body-margin">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
