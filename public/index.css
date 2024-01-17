@@ -90,6 +90,7 @@
     }
     .post-image{
         border-radius: 5px;
+        width:100%
     }
     .body-margin {
         margin-top: 15vh;
