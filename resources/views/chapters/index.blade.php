@@ -171,6 +171,72 @@
             color: #f1443e;
             font-size: 1em;
         }
+
+
+
+
+
+
+
+
+
+        .accordion {
+            margin: 1em auto;
+            max-width: 120vw;
+        }
+        .toggle {
+            display: none;
+        }
+        .option {
+            position: relative;
+        }
+        .title,
+        .content {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+            transition: all 0.3s;
+        }
+        .title {
+            background-color: #676F77;
+            border: solid 1px #ccc;
+            padding: 1em;
+            display: block;
+            color: #ffffff;
+            font-weight: bold;
+            text-align: center;
+        }
+        .title::after,
+        .title::before {
+            content: "";
+            position: absolute;
+            right: 1.25em;
+            top: 1.25em;
+            width: 2px;
+            height: 0.75em;
+            background-color: #444;
+            transition: all 0.3s;
+        }
+        .title::after {
+            transform: rotate(90deg);
+        }
+        .content {
+            max-height: 0;
+            overflow: hidden;
+        }
+        .content p {
+            margin: 0;
+            padding: 0.5em 1em 1em;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .toggle:checked + .title + .content {
+            max-height: 500px;
+            transition: all 0.5s;
+        }
+        .toggle:checked + .title::before {
+            transform: rotate(90deg) !important;
+        }
     </style>
 
 </head>
@@ -198,77 +264,69 @@
         <div class="row mx-2">
         <div class="accordion" id="accordionPanelsStayOpenExample">
 
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                    <button type="button" class="accordion-button collapsed text-center" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne" style="background-color: #676F77;color: #F3EEEA;">
-                            <span class="mx-auto d-block">チャプター1</span>
-                        </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
-                        <div class="accordion-body" style="text-align: center;">
-                            <img src="image/chapter/oyakodon.png" alt="チャプター1の画像" style="width: 100%; max-width: 400px; height: auto;">
-                            <strong style="font-size: 24px; display: block; margin: 5px auto;">親子丼</strong><br>
-                            <strong>鶏肉と卵を使ったシンプルでおいしい料理です。手軽に作れるので初心者におすすめです。</strong><br>
-                            <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
-                        </div>
+            <div class="accordion">
+
+                <div class="option">
+                    <input type="checkbox" id="toggle1" class="toggle">
+                    <label class="title" for="toggle1">チャプター1</label>
+                    <div class="content">
+                        <img src="image/chapter/oyakodon.png" alt="チャプター1の画像" style="width: 100%; max-width: 400px; height: auto;">
+                        <strong style="font-size: 24px; display: block; margin: 5px auto;">親子丼</strong><br>
+                        <strong>鶏肉と卵を使ったシンプルでおいしい料理です。手軽に作れるので初心者におすすめです。</strong><br>
+                        <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
+                        <p></p>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button type="button" class="accordion-button collapsed text-center" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo" style="background-color: #676F77;color: #F3EEEA;">
-                            <span class="mx-auto d-block">チャプター2</span>
-                        </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-                        <div class="accordion-body">
-                            <strong style="font-size: 24px; display: block; margin: 5px auto;">近日追加予定!!</strong><br>
-                            <strong>チャプター2の詳細な内容がここに表示されます。</strong><br>
-                            <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
-                        </div>
+                
+                <div class="option">
+                    <input type="checkbox" id="toggle2" class="toggle">
+                    <label class="title" for="toggle2">チャプター2</label>
+                    <div class="content">
+                        <strong style="font-size: 24px; display: block; margin: 5px auto;">近日追加予定!!</strong><br>
+                        <strong>チャプター2の詳細な内容がここに表示されます。</strong><br>
+                        <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
+                        <p></p>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button type="button" class="accordion-button collapsed text-center" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree" style="background-color: #676F77;color: #F3EEEA;">
-                            <span class="mx-auto d-block">チャプター3</span>
-                        </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
-                        <div class="accordion-body">
-                            <strong style="font-size: 24px; display: block; margin: 5px auto;">近日追加予定!!</strong><br>
-                            <strong>チャプター3の詳細な内容がここに表示されます。</strong><br>
-                            <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
-                        </div>
+                
+                <div class="option">
+                    <input type="checkbox" id="toggle3" class="toggle">
+                    <label class="title" for="toggle3">チャプター3</label>
+                    <div class="content">
+                        <strong style="font-size: 24px; display: block; margin: 5px auto;">近日追加予定!!</strong><br>
+                        <strong>チャプター3の詳細な内容がここに表示されます。</strong><br>
+                        <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
+                        <p></p>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button type="button" class="accordion-button collapsed text-center" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefour" aria-expanded="false" aria-controls="panelsStayOpen-collapsefour" style="background-color: #676F77;color: #F3EEEA;">
-                            <span class="mx-auto d-block">チャプター4</span>
-                        </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapsefour" class="accordion-collapse collapse">
-                        <div class="accordion-body">
-                            <strong style="font-size: 24px; display: block; margin: 5px auto;">近日追加予定!!</strong><br>
-                            <strong>チャプター4の詳細な内容がここに表示されます。</strong><br>
-                            <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
-                        </div>
+                
+                <div class="option">
+                    <input type="checkbox" id="toggle4" class="toggle">
+                    <label class="title" for="toggle4">チャプター4</label>
+                    <div class="content">
+                        <strong style="font-size: 24px; display: block; margin: 5px auto;">近日追加予定!!</strong><br>
+                        <strong>チャプター4の詳細な内容がここに表示されます。</strong><br>
+                        <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
+                        <p></p>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button type="button" class="accordion-button collapsed text-center" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapsefive" aria-expanded="false" aria-controls="panelsStayOpen-collapsefive" style="background-color: #676F77;color: #F3EEEA;">
-                            <span class="mx-auto d-block">チャプター5</span>
-                        </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapsefive" class="accordion-collapse collapse">
-                        <div class="accordion-body">
-                            <strong style="font-size: 24px; display: block; margin: 5px auto;">近日追加予定!!</strong><br>
-                            <strong>チャプター5の詳細な内容がここに表示されます。</strong><br>
-                            <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
-                        </div>
+                
+                <div class="option">
+                    <input type="checkbox" id="toggle5" class="toggle">
+                    <label class="title" for="toggle5">チャプター5</label>
+                    <div class="content">
+                        <strong style="font-size: 24px; display: block; margin: 5px auto;">近日追加予定!!</strong><br>
+                        <strong>チャプター5の詳細な内容がここに表示されます。</strong><br>
+                        <a href="{{ route('chapter1') }}"><button type="button" class="btn btn-outline-secondary btn-sm">作り方説明</button></a>
+                        <p></p>
                     </div>
                 </div>
+                
+                </div>
+
+
+
+
                 
             </div>
         </div>
