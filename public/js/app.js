@@ -6386,7 +6386,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
     //bladeから受けっとったデータの整形
     //this.parsedData = JSON.parse(this.postData);
     this._imagePath = this.imagePath.replaceAll('\\', '').replaceAll('"', '') + '/';
@@ -6415,11 +6414,14 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         //postMaxより要素数が多くなって値がかえって来た場合　多くなった分の要素を削除する
         //いいねボタンを押す間に新しい投稿がされたときの対策
-        if (event.post_data.length > _this2.postMax) {
-          event.post_data = event.post_data.slice(event.post_data.length - _this2.postMax);
-        }
+        //if (event.post_data.length > this.postMax) {
+        //    event.post_data = event.post_data.slice(event.post_data.length - this.postMax,);
+        //}
         //postのデータ更新
-        _this2.parsedData = event.post_data;
+        //this.parsedData = event.post_data;
+
+        var likebutton = document.getElementById("likebutton_".concat(event.post_data));
+        likebutton.textContent = event.good_count + "♡";
       }
     });
   }
