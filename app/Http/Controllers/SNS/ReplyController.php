@@ -14,7 +14,7 @@ class ReplyController extends Controller
     public function __construct()
     {
         // 'auth' ミドルウェアを使用して、'index' アクション以外のアクションにのみ適用
-        $this->middleware('auth')->except('reply');
+        $this->middleware('auth');
     }
 
     public function reply(Request $request)
