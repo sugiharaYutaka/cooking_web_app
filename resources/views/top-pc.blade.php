@@ -255,7 +255,7 @@
                         <div class="text">
                             <img class="rank-img" src='https://illust-stock.com/wp-content/uploads/ranking-crown-no{{ $index+1 }}.png'>
                             <img src="{{ asset('/image/icon/' . $datas[$index]->icon_filename )}}" class="user-icon" style="display: inline-block;">
-                            <span>{{ $datas[$index]->name }}</span><br>
+                            <span>{{ $datas[$index]->name }}</span><br> 
                             <span>{{ $post->text }}</span><br>
                         </div>
 
