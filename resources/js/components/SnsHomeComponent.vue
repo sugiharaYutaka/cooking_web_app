@@ -100,6 +100,8 @@ export default {
 
             let formData = new FormData();
             formData.append('post_id', postId);
+            formData.append('offset', this.offset);
+            formData.append('limit', this.limit);
             //replyUrlにPOST送信
             axios.post(this._replyUrl, formData)
         },

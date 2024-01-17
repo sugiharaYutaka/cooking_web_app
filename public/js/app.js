@@ -6048,7 +6048,7 @@ __webpack_require__.r(__webpack_exports__);
         alert('レシピを投稿しました');
         //window.location.href = 'https://example.com';
       } else {
-        alert('登校内容を確認して、もう一度投稿してください');
+        alert('投稿に失敗しました。内容を確認して、もう一度投稿してください');
       }
     }
   },
@@ -6336,6 +6336,8 @@ __webpack_require__.r(__webpack_exports__);
       likebutton.textContent = parseInt(likebutton.textContent) + 1 + "♡";
       var formData = new FormData();
       formData.append('post_id', postId);
+      formData.append('offset', this.offset);
+      formData.append('limit', this.limit);
       //replyUrlにPOST送信
       axios__WEBPACK_IMPORTED_MODULE_1___default().post(this._replyUrl, formData);
     },
@@ -36915,7 +36917,11 @@ var render = function () {
           _vm._v(" "),
           _c(
             "button",
-            { staticClass: "more-post", on: { click: _vm.loadMore } },
+            {
+              staticClass: "more-post btn btn-secondary",
+              attrs: { type: "button" },
+              on: { click: _vm.loadMore },
+            },
             [_vm._v("もっと見る")]
           ),
         ],
