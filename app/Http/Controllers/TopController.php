@@ -54,7 +54,7 @@ class TopController extends Controller
         if (!$request->session()->has('email')) {
             $chapter_filename = $chapter_filenames[1];
 
-            return view('top', compact('dish_image_filename', 'posts', 'chapter_filename'));
+            return view('top', compact('dish_image_filename', 'posts', 'chapter_filename','datas'));
         } else {
             $email = $request->session()->get('email');
 
