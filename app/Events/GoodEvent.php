@@ -19,11 +19,18 @@ class GoodEvent implements ShouldBroadcast
 
     public $good_count;
     public $post_data;
-    public function __construct($post_id)
+    public function __construct($post_id, $offset, $limit)
     {
+        if ($offset == NULL) {
+            $offset = 0;
+        }
+        if ($limit == NULL) {
+            $limit = 1;
+        }
+
         $data = SnsPost::where("id", "=", $post_id)->first();
         $this->good_count = $data->good;
-        $this->post_data = $this->toriaezu();
+        $this->post_data = $this->toriaezu($offset, $limit);
     }
 
     /**
@@ -36,13 +43,15 @@ class GoodEvent implements ShouldBroadcast
         return new Channel('good-channel');
     }
 
-    private function toriaezu()
+    private function toriaezu($offset, $limit)
     {
         $data = DB::table('sns_posts')
-        ->leftJoin('users', 'sns_posts.email', '=', 'users.email')
-        ->select('sns_posts.*', 'users.name','users.icon_filename')
-        ->orderBy('sns_posts.id', 'desc')
-        ->get();
+            ->leftJoin('users', 'sns_posts.email', '=', 'users.email')
+            ->select('sns_posts.*', 'users.name', 'users.icon_filename')
+            ->orderBy('sns_posts.id', 'desc')
+            ->offset($offset)
+            ->limit($limit)
+            ->get();
 
         return $data;
     }
