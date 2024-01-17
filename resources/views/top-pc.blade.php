@@ -260,7 +260,7 @@
                         </div>
 
                         @if ($post->image_filename != "")
-                        <img class="img" src="{{ asset('/image/' . $post->image_filename )}}">
+                        <img class="img" src="{{ asset('/image/post/' . $post->image_filename )}}">
                         @endif
 
                         <span class="amount" style="color:#dc143c;">{{ $post->good }}♡</span>
