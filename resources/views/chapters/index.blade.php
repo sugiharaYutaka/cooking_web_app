@@ -245,10 +245,13 @@
 
     <div class="Container">
         <div class="Box-Container">
-            <img class="Box" src="https://mpreview.aflo.com/epIejrhhrejN/afloimagemart_228170109.jpg">
-            <img class="Box" src="https://mpreview.aflo.com/n8vjjMgg0zIM/afloimagemart_214335497.jpg">
-            <img class="Box" src="https://mpreview.aflo.com/mWcJjXEENUWI/afloimagemart_24797895.jpg">
-            <img class="Box" src="https://mpreview.aflo.com/Y0zAjcxxF39u/afloimagemart_176749297.jpg">
+            <img class="Box" src="{{ asset('image/chapter/oyakodon.png' )}}">
+            <img class="Box" src="{{ asset('image/chapter/comingsoon.png' )}}">
+            <img class="Box" src="{{ asset('image/chapter/oyakodon.png' )}}">
+            <img class="Box" src="{{ asset('image/chapter/comingsoon.png' )}}">
+            <img class="Box" src="{{ asset('image/chapter/oyakodon.png' )}}">
+            <img class="Box" src="{{ asset('image/chapter/comingsoon.png' )}}">
+            <img class="Box" src="{{ asset('image/chapter/oyakodon.png' )}}">
             <!-- 必要な数の.Box要素を追加 -->
         </div>
     </div>
