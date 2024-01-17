@@ -104,9 +104,6 @@ class HomeController extends Controller
     //いいね機能
     public function likePost(Request $request)
     {
-        $offset = $request->offset;
-        $limit = $request->limit;
-
         $postId = $request->post_id;
         // 該当の投稿を取得
         $post = SnsPost::find($postId);
@@ -122,7 +119,7 @@ class HomeController extends Controller
             // 必要に応じてレスポンスなどの追加処理を行うこともできます
 
             //return redirect()->route('sns');
-            broadcast(new GoodEvent($postId, $offset, $limit));
+            broadcast(new GoodEvent($postId));
         } else {
             return response()->json(['message' => '投稿が見つかりません'], 404);
         }

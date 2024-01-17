@@ -191,7 +191,7 @@ export default {
                 //this.parsedData = event.post_data;
 
                 let likebutton = document.getElementById(`likebutton_${event.post_data}`);
-                likebutton.textContent = parseInt(likebutton.textContent) + 1 + "♡";
+                likebutton.textContent = event.good_count + "♡";
             }
         });
     }

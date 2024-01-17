@@ -6421,7 +6421,7 @@ __webpack_require__.r(__webpack_exports__);
         //this.parsedData = event.post_data;
 
         var likebutton = document.getElementById("likebutton_".concat(event.post_data));
-        likebutton.textContent = parseInt(likebutton.textContent) + 1 + "♡";
+        likebutton.textContent = event.good_count + "♡";
       }
     });
   }
