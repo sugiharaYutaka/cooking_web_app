@@ -100,6 +100,8 @@ export default {
 
             let formData = new FormData();
             formData.append('post_id', postId);
+            formData.append('offset', this.offset);
+            formData.append('limit', this.limit);
             //replyUrlにPOST送信
             axios.post(this._replyUrl, formData)
         },
@@ -182,11 +184,14 @@ export default {
             } else {
                 //postMaxより要素数が多くなって値がかえって来た場合　多くなった分の要素を削除する
                 //いいねボタンを押す間に新しい投稿がされたときの対策
-                if (event.post_data.length > this.postMax) {
-                    event.post_data = event.post_data.slice(event.post_data.length - this.postMax,);
-                }
+                //if (event.post_data.length > this.postMax) {
+                //    event.post_data = event.post_data.slice(event.post_data.length - this.postMax,);
+                //}
                 //postのデータ更新
-                this.parsedData = event.post_data;
+                //this.parsedData = event.post_data;
+
+                let likebutton = document.getElementById(`likebutton_${event.post_data}`);
+                likebutton.textContent = event.good_count + "♡";
             }
         });
     }

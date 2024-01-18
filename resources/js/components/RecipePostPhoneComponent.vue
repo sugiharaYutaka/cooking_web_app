@@ -461,7 +461,7 @@ export default {
                 //window.location.href = 'https://example.com';
             }
             else{
-                alert('登校内容を確認して、もう一度投稿してください');
+                alert('投稿に失敗しました。内容を確認して、もう一度投稿してください');
             }
 
         },

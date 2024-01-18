@@ -6048,7 +6048,7 @@ __webpack_require__.r(__webpack_exports__);
         alert('レシピを投稿しました');
         //window.location.href = 'https://example.com';
       } else {
-        alert('登校内容を確認して、もう一度投稿してください');
+        alert('投稿に失敗しました。内容を確認して、もう一度投稿してください');
       }
     }
   },
@@ -6336,6 +6336,8 @@ __webpack_require__.r(__webpack_exports__);
       likebutton.textContent = parseInt(likebutton.textContent) + 1 + "♡";
       var formData = new FormData();
       formData.append('post_id', postId);
+      formData.append('offset', this.offset);
+      formData.append('limit', this.limit);
       //replyUrlにPOST送信
       axios__WEBPACK_IMPORTED_MODULE_1___default().post(this._replyUrl, formData);
     },
@@ -6384,7 +6386,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
     //bladeから受けっとったデータの整形
     //this.parsedData = JSON.parse(this.postData);
     this._imagePath = this.imagePath.replaceAll('\\', '').replaceAll('"', '') + '/';
@@ -6413,11 +6414,14 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         //postMaxより要素数が多くなって値がかえって来た場合　多くなった分の要素を削除する
         //いいねボタンを押す間に新しい投稿がされたときの対策
-        if (event.post_data.length > _this2.postMax) {
-          event.post_data = event.post_data.slice(event.post_data.length - _this2.postMax);
-        }
+        //if (event.post_data.length > this.postMax) {
+        //    event.post_data = event.post_data.slice(event.post_data.length - this.postMax,);
+        //}
         //postのデータ更新
-        _this2.parsedData = event.post_data;
+        //this.parsedData = event.post_data;
+
+        var likebutton = document.getElementById("likebutton_".concat(event.post_data));
+        likebutton.textContent = event.good_count + "♡";
       }
     });
   }
@@ -36915,7 +36919,11 @@ var render = function () {
           _vm._v(" "),
           _c(
             "button",
-            { staticClass: "more-post", on: { click: _vm.loadMore } },
+            {
+              staticClass: "more-post btn btn-secondary",
+              attrs: { type: "button" },
+              on: { click: _vm.loadMore },
+            },
             [_vm._v("もっと見る")]
           ),
         ],

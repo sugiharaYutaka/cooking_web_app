@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body style="margin-top: 8vh;">
+<body class="body-margin">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -39,14 +39,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row border my-5">
+                    <div id="recipe-container" class="row border my-5">
                         @foreach ($recipePost as $post)
-                        <div class="col-4 my-2 border">
+                        <div class="col-12 my-2 border">
                             <p class="h5">{{ $post->title }}</p>
 
                             <a href="{{ url('/recipe/onepost', $post->id) }}">
-                                <img src="{{ asset('/recipe/image/' . $post->dish_image_filename) }}" class=""
-                                    style="width:100%;">
+                                <img src="{{ asset('/recipe/image/' . $post->dish_image_filename) }}" class="img-fluid"
+                                    style="width:100%; max-height: 200px; object-fit: cover; object-position: center;">>
                             </a>
 
                             <p>{{ $post->description }}</p>
@@ -56,11 +56,31 @@
                         @endforeach
                     </div>
                 </div>
+                <button type="button" id="load-more" class="more-post btn btn-secondary">もっと見る</button>
             </div>
         </div>
     </div>
 
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var page = 2; // 初期ページ
+
+        $('#load-more').on('click', function() {
+            $.ajax({
+                url: '/recipesMore',
+                type: 'GET',
+                data: { page: page },
+                success: function(response) {
+                    $('#recipe-container').append(response);
+                    page++;
+                }
+            });
+        });
+    });
+</script>
 
 </html>
 @extends('layouts.recipemodal')
