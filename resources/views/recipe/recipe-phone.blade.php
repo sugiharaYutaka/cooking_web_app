@@ -45,8 +45,8 @@
                             <p class="h5">{{ $post->title }}</p>
 
                             <a href="{{ url('/recipe/onepost', $post->id) }}">
-                                <img src="{{ asset('/recipe/image/' . $post->dish_image_filename) }}" class="img-fluid"
-                                    style="width:100%; max-height: 200px; object-fit: cover; object-position: center;">>
+                                <img src="{{ asset('/recipe/image/' . $post->dish_image_filename) }}" class="img-fluid rounded-2"
+                                    style="width:100%; max-height: 200px; object-fit: cover; object-position: center;">
                             </a>
 
                             <p>{{ $post->description }}</p>
