@@ -41,24 +41,24 @@ class BookmarkController extends Controller
             'recipe_id',
             'email'
         ])
-        ->from('bookmarks')
-        ->join('recipes', function ($join){
-            $join->on('bookmarks.recipe_id', '=', 'recipes.id');
-        })
-        ->where('bookmarks.email', $email)
-        ->select('recipes.title','recipes.dish_image_filename','recipes.description')
-        ->get();
+            ->from('bookmarks')
+            ->join('recipes', function ($join) {
+                $join->on('bookmarks.recipe_id', '=', 'recipes.id');
+            })
+            ->where('bookmarks.email', $email)
+            ->select('recipes.id', 'recipes.title', 'recipes.dish_image_filename', 'recipes.description')
+            ->get();
 
         return $result;
     }
 
-    public function addBookmark($id){
+    public function addBookmark($id)
+    {
         Bookmark::create([
             'email' => session('email'),
             'recipe_id' => $id,
 
         ]);
         return redirect()->back();
-    } 
-
+    }
 }
