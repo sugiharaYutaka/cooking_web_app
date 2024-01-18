@@ -14,7 +14,7 @@
 <h1>ブックマーク</h1>
 
 <div class="container">
-    <div class="row justify-content-between">
+    <div id="bookmark-container" class="row justify-content-between">
         @foreach ($result as $post)
         <div class="row border col-md-6 my-2 bg-color-1">
             <div class="my-2">
@@ -33,8 +33,27 @@
         </div>
         @endforeach
     </div>
+    <button type="button" id="load-more" class="more-post btn btn-secondary">もっと見る</button>
 </div>
 
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var page = 2; // 初期ページ
+
+        $('#load-more').on('click', function() {
+            $.ajax({
+                url: '/recipe/bookmarkMore',
+                type: 'GET',
+                data: { page: page },
+                success: function(response) {
+                    $('#bookmark-container').append(response);
+                    page++;
+                }
+            });
+        });
+    });
+</script>
 
 @extends('layouts.footer')

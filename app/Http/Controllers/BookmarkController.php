@@ -18,11 +18,11 @@ class BookmarkController extends Controller
 
     public function index()
     {
-        $result = $this->getBookmarkedRecipes();
+        $result = $this->getBookmarkedRecipes(0, 10);
         return view('recipe.recipebookmark', compact('result'));
     }
 
-    public function getBookmarkedRecipes()
+    public function getBookmarkedRecipes($offset, $limit)
     {
         /*
         // ログインしているユーザーのIDまたはEmailを取得
@@ -47,10 +47,25 @@ class BookmarkController extends Controller
             })
             ->where('bookmarks.email', $email)
             ->select('recipes.id', 'recipes.title', 'recipes.dish_image_filename', 'recipes.description')
+            ->offset($offset)
+            ->limit($limit)
             ->get();
 
         return $result;
     }
+
+
+    public function moreBookmark(Request $request)
+    {
+
+        $page = $request->get('page');
+        $perPage = 10; // 1ページあたりのデータ数
+
+        $result = $this->getBookmarkedRecipes(($page - 1) * $perPage, $perPage);
+
+        return view('recipe.morebookmark')->with('result', $result);
+    }
+
 
     public function addBookmark($id)
     {
