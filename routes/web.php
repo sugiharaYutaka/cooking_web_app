@@ -43,6 +43,7 @@ Route::get('/recipes', [App\Http\Controllers\RecipeController::class, 'index'])-
 Route::get('/recipesMore', [App\Http\Controllers\RecipeController::class, 'moreRecipe'])->name('recipesMore');
 Route::get('/recipe/post', [App\Http\Controllers\RecipeController::class, 'post'])->name('recipepost');
 Route::get('/recipe/bookmark', [App\Http\Controllers\BookmarkController::class, 'index'])->name('recipebookmark');
+Route::get('/recipe/bookmarkMore', [App\Http\Controllers\BookmarkController::class, 'moreBookmark'])->name('morebookmark');
 Route::post('/recipe/postForm', [App\Http\Controllers\RecipeController::class, 'insertRecipe']);
 Route::get('/recipe/onepost/{id}', [App\Http\Controllers\RecipeController::class, 'oneRecipe']);
 Route::get('/recipe/addbookmark/{id}', [App\Http\Controllers\BookmarkController::class, 'addBookmark']);
