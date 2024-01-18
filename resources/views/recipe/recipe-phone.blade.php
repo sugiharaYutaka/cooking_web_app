@@ -41,7 +41,7 @@
                     </div>
                     <div id="recipe-container" class="row border my-5">
                         @foreach ($recipePost as $post)
-                        <div class="col-4 my-2 border">
+                        <div class="col-12 my-2 border">
                             <p class="h5">{{ $post->title }}</p>
 
                             <a href="{{ url('/recipe/onepost', $post->id) }}">
