@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
+use App\Models\Bookmark;
 
 class RecipeController extends Controller
 {
@@ -132,6 +133,20 @@ class RecipeController extends Controller
         $post['ingredients'] = explode('//', $post['ingredients']);
         $post['tag'] = explode('//', $post['tag']);
 
-        return view('recipe.recipeone', compact('post', 'id'));
+
+        $bookmark = Bookmark::select('id')
+            ->where([
+                ['email', '=', session('email')],
+                ['recipe_id', '=', $id],
+            ])
+            ->count();
+
+        if (intval($bookmark) > 0) {
+            $is_bookmarked = true;
+        } else {
+            $is_bookmarked = false;
+        }
+
+        return view('recipe.recipeone', compact('post', 'id', 'is_bookmarked'));
     }
 }

@@ -51,12 +51,18 @@
                         <div class="col-12 my-2">
                             <div class="textBox">{{ $post->point }}</div>
                         </div>
-
+                        
                         <!--- ブックマーク追加ボタン --->
                         <div class="row">
                             <div class="col-6">
                                 <button class="btn btn-outline-secondary my-2">
+
+                                    @if ($is_bookmarked == false)
                                     <a href="{{ url('/recipe/addbookmark', $id) }}" class="no-underline h3" >ブックマーク</a>
+                                    @else
+                                    <a href="{{ url('/recipe/removebookmark', $id) }}" class="no-underline h3" >ブックマークを解除</a>
+                                    @endif
+
                                 </button>
                             </div>
                         </div>

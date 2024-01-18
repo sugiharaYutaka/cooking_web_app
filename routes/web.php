@@ -47,6 +47,7 @@ Route::get('/recipe/bookmarkMore', [App\Http\Controllers\BookmarkController::cla
 Route::post('/recipe/postForm', [App\Http\Controllers\RecipeController::class, 'insertRecipe']);
 Route::get('/recipe/onepost/{id}', [App\Http\Controllers\RecipeController::class, 'oneRecipe']);
 Route::get('/recipe/addbookmark/{id}', [App\Http\Controllers\BookmarkController::class, 'addBookmark']);
+Route::get('/recipe/removebookmark/{id}', [App\Http\Controllers\BookmarkController::class, 'removeBookmark']);
 
 
 

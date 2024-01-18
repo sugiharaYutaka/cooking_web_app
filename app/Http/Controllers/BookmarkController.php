@@ -76,4 +76,16 @@ class BookmarkController extends Controller
         ]);
         return redirect()->back();
     }
+
+
+    public function removeBookmark($id)
+    {
+        Bookmark::where([
+            ['email', '=', session('email')],
+            ['recipe_id', '=', $id],
+        ])
+            ->delete();
+
+        return redirect()->back();
+    }
 }
