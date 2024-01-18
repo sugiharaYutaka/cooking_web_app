@@ -22,6 +22,10 @@
     color: #676F77;
 }
 
+.bg-color-0 {
+    background-color: #ffffff;
+}
+
 .bg-color-1 {
     background-color: #F3EEEA;
 }
@@ -107,6 +111,9 @@
         padding-left: 0;
         margin-left: 0;
     }
+    .pc-side-margine{
+        
+    }
 }
 
 /* PC ScreenSize */
@@ -139,10 +146,13 @@
     .post-margin {
 
     }
+    .pc-side-margine{
+        margin-left: 20%;
+        margin-right: 20%;
+    }
 }
 
 /* {{ asset('index.css') }}*/
-
 .no-underline {
     text-decoration: none;
 }

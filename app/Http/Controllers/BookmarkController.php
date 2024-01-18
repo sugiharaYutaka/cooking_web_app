@@ -18,11 +18,11 @@ class BookmarkController extends Controller
 
     public function index()
     {
-        $result = $this->getBookmarkedRecipes();
+        $result = $this->getBookmarkedRecipes(0, 10);
         return view('recipe.recipebookmark', compact('result'));
     }
 
-    public function getBookmarkedRecipes()
+    public function getBookmarkedRecipes($offset, $limit)
     {
         /*
         // ログインしているユーザーのIDまたはEmailを取得
@@ -41,24 +41,39 @@ class BookmarkController extends Controller
             'recipe_id',
             'email'
         ])
-        ->from('bookmarks')
-        ->join('recipes', function ($join){
-            $join->on('bookmarks.recipe_id', '=', 'recipes.id');
-        })
-        ->where('bookmarks.email', $email)
-        ->select('recipes.title','recipes.dish_image_filename','recipes.description')
-        ->get();
+            ->from('bookmarks')
+            ->join('recipes', function ($join) {
+                $join->on('bookmarks.recipe_id', '=', 'recipes.id');
+            })
+            ->where('bookmarks.email', $email)
+            ->select('recipes.id', 'recipes.title', 'recipes.dish_image_filename', 'recipes.description')
+            ->offset($offset)
+            ->limit($limit)
+            ->get();
 
         return $result;
     }
 
-    public function addBookmark($id){
+
+    public function moreBookmark(Request $request)
+    {
+
+        $page = $request->get('page');
+        $perPage = 10; // 1ページあたりのデータ数
+
+        $result = $this->getBookmarkedRecipes(($page - 1) * $perPage, $perPage);
+
+        return view('recipe.morebookmark')->with('result', $result);
+    }
+
+
+    public function addBookmark($id)
+    {
         Bookmark::create([
             'email' => session('email'),
             'recipe_id' => $id,
 
         ]);
         return redirect()->back();
-    } 
-
+    }
 }

@@ -7,7 +7,7 @@
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         </head>
 
-        <body class="body-margin">
+        <body class="body-margin pc-side-margine border-start border-end">
             <!-- ナビゲーションバー -->
             <!-- ...（前回のナビゲーションバー） ... -->
 
