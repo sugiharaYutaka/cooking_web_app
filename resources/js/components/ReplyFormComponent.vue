@@ -7,8 +7,11 @@
                     <div class="col-2 d-flex justify-content-center">
                         <img class="post-icon" :src="after_imagePath + 'icon/' + after_mainPost.icon_filename">
                     </div>
-                    <div class="col-10 align-self-center">
+                    <div class="col-8 align-self-center">
                         <span class="h3 text-color-gray">{{ after_mainPost.name }}</span>
+                    </div>
+                    <div class="col-2 text-end">
+                        <span v-if="after_mainPost.email==after_sessionEmail" class="h3 text-color-gray"></span>
                     </div>
                 </div>
 
@@ -37,7 +40,7 @@
                             <div class="commentInput" style="display: none;">
                                 <div class="mb-3">
                                     <label for="commentInput" class="form-label">コメントを入力</label>
-                                    <div style="align: right; margin-left: 17%;"">
+                                    <div style="align: right; margin-left: 17%;">
                                         <textarea class="form-control" id="commentInput" rows="3" style="border: 2px solid #ccc;"></textarea>
                                     </div>
                                 </div>
@@ -80,13 +83,14 @@
 <script>
 import Echo from 'laravel-echo';
 export default {
-    props: ["replyPostUrl", "mainPost", "allReply", "imagePath"],
+    props: ["replyPostUrl", "mainPost", "allReply", "imagePath","sessionEmail"],
     data() {
         return {
             after_replyPostUrl: null,
             after_mainPost: null,
             after_allReply: null,
             after_imagePath: null,
+            after_sessionEmail:null,
             icon_dir:"icon/",
             post_dir:"post/",
         };
@@ -131,6 +135,7 @@ export default {
         this.after_allReply = JSON.parse(this.allReply);
         this.after_replyPostUrl = this.replyPostUrl.replaceAll('\\', '').replaceAll('"', '');
         this.after_imagePath = this.imagePath.replaceAll('\\', '').replaceAll('"', '') + '/';
+        this.after_sessionEmail = this.sessionEmail.replaceAll('"', '')
 
         window.Echo = new Echo({
             broadcaster: 'pusher',
